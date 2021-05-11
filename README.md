@@ -11,5 +11,5 @@ Changes v1.1.
 
 -Añadido clase Dinero.
 
--Cambiado el sistema de movimiento para que se pare al soltar tecla.
+-Cambiado el sistema de movimiento para que se pare al soltar tecla. (solo wasd)
 
