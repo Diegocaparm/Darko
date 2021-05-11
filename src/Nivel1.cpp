@@ -5,6 +5,7 @@ void Nivel1::dibuja()
 	gluLookAt(hombre.posicion.x, y_ojo + 3, z_ojo,  // posicion del ojo
 		hombre.posicion.x, 7.5f, 0.0,      // hacia que punto mira  (0,0,0) 
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+
 	//Dibuja la estructura del nivel
 	caja.dibuja();
 	plataforma1.dibuja();
@@ -16,6 +17,9 @@ void Nivel1::dibuja()
 	plataforma7.dibuja();
 	plataforma8.dibuja();
 	plataforma9.dibuja();
+
+	//Dibuja la interfaz
+	n1.dibuja();
 
 	//Dibujamos lo animado
 	hombre.dibuja();
@@ -117,8 +121,47 @@ void Nivel1::inicializa()
 	tank.setPos(93.0f, 15.0f);
 }
 
-void Nivel1::tecla(unsigned char key)
+void Nivel1::teclaUp(unsigned char key)
 {
+	switch (key)
+	{
+	case 'a':
+		hombre.setVelx(0.0f);	//hombre.setVel(-5.0f,0.0f);
+		break;
+	case 'd':
+		hombre.setVelx(0.0f);
+		break;
+	case 'w':
+		if (hombre.salto == 1)
+			hombre.salto = 0;
+		break;
+	default:
+		hombre.setVelx(0.0f);
+		hombre.salto = 1;
+		break;
+	}
+}
+
+void Nivel1::teclaDown(unsigned char key)
+{
+	switch (key)
+	{
+	case 'a':
+		hombre.setVelx(-7.50f);	//hombre.setVel(-5.0f,0.0f);
+		break;
+	case 'd':
+		hombre.setVelx(7.50f);
+		break;
+	case 'w':
+		if (hombre.salto == 1)
+			hombre.salto = 0;
+		break;
+	default:
+		hombre.setVelx(0.0f);
+		hombre.salto = 1;
+		break;
+	}
+	/*
 	if (key == ' ') {
 		Interaccion::disparoInicializa(pdisparo, phombre);
 		//eneDisp1.velocidad.x = 2;
@@ -127,6 +170,7 @@ void Nivel1::tecla(unsigned char key)
 		//eneDisp1.posicion.y += 3;
 		//eneDisp1.velocidad.y = 0.0f;
 	//}
+	*/
 }
 
 void Nivel1::teclaEspecial(unsigned char key)

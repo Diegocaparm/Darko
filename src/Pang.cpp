@@ -9,7 +9,8 @@ Nivel1 nivel1;
 //NO HACE FALTA LLAMARLAS EXPLICITAMENTE
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
-void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
+void OnKeyDown(unsigned char key, int x, int y); //cuando se presione una tecla	
+void OnKeyUp(unsigned char key, int x, int y);//Cuando se suelta una tecla
 void onSpecialKeyboardDown(int key, int x, int y);
 //void onSpecialKeyboardUp(int key, int x, int y);
 
@@ -21,7 +22,7 @@ int main(int argc,char* argv[])
 	glutInit(&argc, argv);
 	glutInitWindowSize(800,600);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutCreateWindow("MiJuego");
+	glutCreateWindow("Gran juego de plataformas"); //Ya se cambiará el nombre
 
 	//habilitar luces y definir perspectiva
 	glEnable(GL_LIGHT0);
@@ -34,7 +35,8 @@ int main(int argc,char* argv[])
 	//Registrar los callbacks
 	glutDisplayFunc(OnDraw);
 	glutTimerFunc(25,OnTimer,0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
-	glutKeyboardFunc(OnKeyboardDown);
+	glutKeyboardFunc(OnKeyDown);
+	glutKeyboardUpFunc(OnKeyUp);
 	glutSpecialFunc(onSpecialKeyboardDown); //gestion de los cursores
 	//glutSpecialFunc(onSpecialKeyboardUp);
 
@@ -63,10 +65,17 @@ void OnDraw(void)
 }
 
 
-void OnKeyboardDown(unsigned char key, int x_t, int y_t)
+void OnKeyDown(unsigned char key, int x_t, int y_t)
 {
 	//poner aqui el código de teclado
-	nivel1.tecla(key);
+	nivel1.teclaDown(key);
+
+	glutPostRedisplay();
+}
+void OnKeyUp(unsigned char key, int x_t, int y_t)
+{
+	//poner aqui el código de teclado
+	nivel1.teclaUp(key);
 
 	glutPostRedisplay();
 }

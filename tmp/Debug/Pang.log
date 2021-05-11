@@ -1,0 +1,35 @@
+﻿  Bonus.cpp
+  Caja.cpp
+  Dinero.cpp
+  Disparo.cpp
+  DispEnem.cpp
+  DispTank.cpp
+  Interfaz.cpp
+  Nivel1.cpp
+  Tank.cpp
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Tank.cpp(16,57): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Tank.cpp(16,34): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Tank.cpp(18,56): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Tank.cpp(18,33): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Tank.cpp(65,81): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Tank.cpp(65,44): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Tank.cpp(67,80): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Tank.cpp(67,43): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+  EnemigoDisp.cpp
+C:\Users\mcz19\Downloads\Darko_v1.1\src\EnemigoDisp.cpp(19,25): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mcz19\Downloads\Darko_v1.1\src\EnemigoDisp.cpp(21,24): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mcz19\Downloads\Darko_v1.1\src\EnemigoDisp.cpp(23,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mcz19\Downloads\Darko_v1.1\src\EnemigoDisp.cpp(47,33): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  Hombre.cpp
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Hombre.cpp(17,25): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Hombre.cpp(19,24): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Hombre.cpp(21,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Hombre.cpp(46,23): warning C4305: '=': truncamiento de 'double' a 'float'
+  Interaccion.cpp
+  Pang.cpp
+  Pared.cpp
+  Vector2D.cpp
+  Vidas.cpp
+C:\Users\mcz19\Downloads\Darko_v1.1\src\Vidas.cpp(23,15): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+  Generando código...
+  Pang.vcxproj -> C:\Users\mcz19\Downloads\Darko_v1.1\bin\Pang.exe

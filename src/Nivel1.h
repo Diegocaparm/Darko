@@ -8,18 +8,14 @@
 #include "Interaccion.h"
 #include "DispEnem.h"			
 #include "Tank.h"
+#include "Interfaz.h"
 
 class Nivel1
 {
+//Atributos
 public:
-	void tecla(unsigned char key);
-	void teclaEspecial(unsigned char key);
-	void mueve();
-	void dibuja();	
-	void inicializa();
-	//void teclaEspecialUp(unsigned char key);
-	//void rotarOjo(); (Creo que no hace ni falta)
-
+	Interfaz n1;
+	
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
@@ -46,5 +42,17 @@ public:
 	//Esfera esfera, * pesfera = &esfera,
 		//esfera2, * pesfera2 = &esfera2;
 	//añadir los atributos que son los objetos del escenario
+
+	//Métodos
+public:
+	void teclaUp(unsigned char key);
+	void teclaDown(unsigned char key);
+
+	void teclaEspecial(unsigned char key);
+	void mueve();
+	void dibuja();
+	void inicializa();
+	//void teclaEspecialUp(unsigned char key);
+	//void rotarOjo(); (Creo que no hace ni falta)
 };
 
