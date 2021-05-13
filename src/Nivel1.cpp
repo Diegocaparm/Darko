@@ -17,6 +17,9 @@ void Nivel1::dibuja()
 	plataforma7.dibuja();
 	plataforma8.dibuja();
 	plataforma9.dibuja();
+	pincho1.dibuja();
+	pincho2.dibuja();
+	pincho3.dibuja();
 
 	//Dibuja la interfaz
 	n1.dibuja();
@@ -65,17 +68,17 @@ void Nivel1::mueve()
 	Interaccion::rebote(hombre, plataforma9);
 	
 	//Interacciones enemigos con el entorno
-	Interaccion::rebote(eneDisp1, caja);
+	//Podría hacerse una interacción (eneDisp, suelo) dentro de 
+	//la interacción (eneDisp, caja) para que  
+	//compute como plataforma y no se tiren por los pozos
+	Interaccion::rebote(eneDisp1, plataforma1);
 	Interaccion::rebote(eneDisp2, caja);
-	Interaccion::rebote(eneDisp2, plataforma2);
 	Interaccion::rebote(eneDisp3, caja);
-	Interaccion::rebote(eneDisp3, plataforma3);
 	Interaccion::rebote(eneDisp4, caja);
 	Interaccion::rebote(eneDisp5, caja);
-	Interaccion::rebote(eneDisp6, caja);
-	Interaccion::rebote(eneDisp6, plataforma6);
+	Interaccion::rebote(eneDisp6, plataforma4);
 	Interaccion::rebote(eneDisp7, caja);
-	Interaccion::rebote(eneDisp8, caja);
+	Interaccion::rebote(eneDisp8, plataforma7);
 	Interaccion::rebote(eneDisp9, caja);
 	Interaccion::rebote(tank, caja);	
 	Interaccion::rebote(tank, plataforma9);
@@ -92,33 +95,37 @@ void Nivel1::inicializa()
 	//Creacion de las plataformas
 	plataforma1.setPos(2.0f, 10.0f, -5.0f, 10.0f);
 	plataforma1.setColor(50, 150, 250);
-	plataforma2.setPos(17.0f, 5.0f, 8.0f, 5.0f);
+	plataforma2.setPos(27.0f, 5.0f, 18.0f, 5.0f);
 	plataforma2.setColor(150, 150, 50);
-	plataforma3.setPos(25.0f, 10.0f, 16.0f, 10.0f);
+	plataforma3.setPos(45.0f, 10.0f, 36.0f, 10.0f);
 	plataforma3.setColor(50, 150, 250);
-	plataforma4.setPos(38.0f, 5.0f, 27.0f, 5.0f);
+	plataforma4.setPos(68.0f, 5.0f, 57.0f, 5.0f);
 	plataforma4.setColor(150, 150, 50);
-	plataforma5.setPos(50.0f, 10.0f, 42.0f, 10.0f);
+	plataforma5.setPos(100.0f, 10.0f, 82.0f, 10.0f);
 	plataforma5.setColor(50, 150, 250);
-	plataforma6.setPos(63.0f, 5.0f, 58.0f, 5.0f);
+	plataforma6.setPos(123.0f, 5.0f, 108.0f, 5.0f);
 	plataforma6.setColor(150, 150, 50);
-	plataforma7.setPos(75.0f, 10.0f, 65.0f, 10.0f);
+	plataforma7.setPos(145.0f, 10.0f, 135.0f, 10.0f);
 	plataforma7.setColor(50, 150, 250);
-	plataforma8.setPos(85.0f, 5.0f, 78.0f, 5.0f);
+	plataforma8.setPos(175.0f, 5.0f, 158.0f, 5.0f);
 	plataforma8.setColor(150, 150, 50);
-	plataforma9.setPos(97.0f, 5.0f, 89.0f, 5.0f);
+	plataforma9.setPos(197.0f, 5.0f, 189.0f, 5.0f);
 	plataforma9.setColor(150, 150, 50);
+	pincho1.setPos(25.0f, 0.0f);
+	pincho2.setPos(42.0f, 10.0f);//Pincho en plataforma3
+	pincho3.setPos(148.0f, 0.0f);
+
 	//Creacion de los enemigos
-	eneDisp1.setPos(5.0f, 5.0f);
-	eneDisp2.setPos(15.0f, 6.0f);
-	eneDisp3.setPos(22.0f, 11.0f);
-	eneDisp4.setPos(45.0f, 5.0f);
-	eneDisp5.setPos(57.0f, 2.0f);
-	eneDisp6.setPos(62.0f, 6.0f);
-	eneDisp7.setPos(74.0f, 5.0f);
-	eneDisp8.setPos(81.0f, 2.0f);
-	eneDisp9.setPos(93.0f, 1.0f);
-	tank.setPos(93.0f, 15.0f);
+	eneDisp1.setPos(0.0f, 11.0f);//Enemigo en plataforma1
+	eneDisp2.setPos(15.0f, 0.0f);
+	eneDisp3.setPos(22.0f, 0.0f);
+	eneDisp4.setPos(35.0f, 0.0f);
+	eneDisp5.setPos(87.0f, 0.0f);
+	eneDisp6.setPos(62.0f, 7.0f);//Enemigo en plataforma4
+	eneDisp7.setPos(174.0f, 0.0f);
+	eneDisp8.setPos(140.0f, 11.0f);//Enemigo en plataforma7
+	eneDisp9.setPos(193.0f, 0.0f);
+	tank.setPos(193.0f, 15.0f);//Jefe en la plataforma final
 }
 
 void Nivel1::teclaUp(unsigned char key)

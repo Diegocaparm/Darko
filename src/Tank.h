@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include "Vector2D.h"
 #include "ColorRGB.h"
 #include "DispTank.h"

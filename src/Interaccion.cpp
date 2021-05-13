@@ -5,7 +5,7 @@
 void Interaccion::rebote(Hombre& h, Caja c)
 {
 	float xmin = c.pared_izq.limite2.x;
-	float xmax = c.suelo.limite1.x;
+	float xmax = c.techo.limite1.x;
 	if (h.posicion.x > xmax) {
 		h.posicion.x = xmax;
 	}
@@ -65,8 +65,8 @@ void Interaccion::disparoInicializa(Disparo* disparo, Hombre* hombre) {
 
 void Interaccion::rebote(EnemigoDisp& ene, Caja c)
 {
-	float xmin = c.suelo.limite2.x;
-	float xmax = c.suelo.limite1.x;
+	float xmin = c.techo.limite2.x;
+	float xmax = c.techo.limite1.x;
 	if (ene.posicion.x > xmax) {
 		ene.posicion.x = xmax;
 	}
@@ -127,8 +127,8 @@ void Interaccion::rebote(EnemigoDisp& ene, Pared p)
 
 void Interaccion::rebote(Tank& t, Caja c)
 {
-	float xmin = c.suelo.limite2.x;
-	float xmax = c.suelo.limite1.x;
+	float xmin = c.techo.limite2.x;
+	float xmax = c.techo.limite1.x;
 	if (t.posicion.x > xmax) {
 		t.posicion.x = xmax;
 	}

@@ -9,17 +9,18 @@
 #include "DispEnem.h"			
 #include "Tank.h"
 #include "Interfaz.h"
+#include "Pincho.h"
 
 class Nivel1
 {
 //Atributos
 public:
 	Interfaz n1;
-	
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
-	
+
+	//Estructura del nivel
 	Caja caja, * pcaja = &caja;
 	Pared plataforma1, * pplataforma1 = &plataforma1,
 		plataforma2, * pplataforma2 = &plataforma2,
@@ -30,7 +31,7 @@ public:
 		plataforma7, * pplataforma7 = &plataforma7,
 		plataforma8, * pplataforma8 = &plataforma8,
 		plataforma9, * pplataforma9 = &plataforma9;
-	//Estructura del nivel
+	Pincho pincho1, pincho2, pincho3;
 
 	Hombre hombre, * phombre = &hombre;
 	Disparo disparo, * pdisparo = &disparo;
@@ -38,6 +39,7 @@ public:
 		eneDisp6, eneDisp7, eneDisp8, eneDisp9;	//Enemigos simples		
 	Tank tank;									//Enemigos chetos
 	
+
 	//Bonus bonus, * pbonus = &bonus;
 	//Esfera esfera, * pesfera = &esfera,
 		//esfera2, * pesfera2 = &esfera2;

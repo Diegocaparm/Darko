@@ -24,7 +24,9 @@
     <ClCompile Include="src\Disparo.cpp" />
     <ClCompile Include="src\DispEnem.cpp" />
     <ClCompile Include="src\DispTank.cpp" />
+    <ClCompile Include="src\Interfaz.cpp" />
     <ClCompile Include="src\Nivel1.cpp" />
+    <ClCompile Include="src\Pincho.cpp" />
     <ClCompile Include="src\Tank.cpp" />
     <ClCompile Include="src\EnemigoDisp.cpp" />
     <ClCompile Include="src\Hombre.cpp" />
@@ -32,6 +34,7 @@
     <ClCompile Include="src\Pang.cpp" />
     <ClCompile Include="src\Pared.cpp" />
     <ClCompile Include="src\Vector2D.cpp" />
+    <ClCompile Include="src\Vidas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bonus.h" />
@@ -40,13 +43,16 @@
     <ClInclude Include="src\Disparo.h" />
     <ClInclude Include="src\DispEnem.h" />
     <ClInclude Include="src\DispTank.h" />
+    <ClInclude Include="src\Interfaz.h" />
     <ClInclude Include="src\Nivel1.h" />
+    <ClInclude Include="src\Pincho.h" />
     <ClInclude Include="src\Tank.h" />
     <ClInclude Include="src\EnemigoDisp.h" />
     <ClInclude Include="src\Hombre.h" />
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\Pared.h" />
     <ClInclude Include="src\Vector2D.h" />
+    <ClInclude Include="src\Vidas.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
