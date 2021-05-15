@@ -2,6 +2,16 @@
 Repositorio para el trabajo de Informática Industrial
 
 @Miguel:
+- Se ha comenzado la interacción entre enemigos.
+
+
+- La vida ahora se mueve junto al personaje.
+
+
+- Ajustado el ojo para moverse por el eje "y" también.
+
+
+@Miguel:
 
 Changes v1.1.
 
