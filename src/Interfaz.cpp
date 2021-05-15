@@ -1,23 +1,30 @@
 #include "Interfaz.h"
 
-void Interfaz::dibuja()
+void Interfaz::dibuja(Vector2D h)
 {
 	switch (corazon.getCantidad())
 	{
 	case 1:
-		corazon.dibuja(7);
+		corazon.dibuja(h.x, h.y);
 		break;
 	case 2:
-		corazon.dibuja(7);
-		corazon.dibuja(7-4);
+		corazon.dibuja(h.x + 3, h.y);
+		corazon.dibuja(h.x, h.y);
 		break;
 	case 3:
-		corazon.dibuja(7);
-		corazon.dibuja(7-3);
-		corazon.dibuja(7-6);
+		corazon.dibuja(h.x + 4, h.y);
+		corazon.dibuja(h.x + 2, h.y);
+		corazon.dibuja(h.x,h.y);
 		break;
 	default:
 		break;
 	}
-	
+	moneda.dibuja();
+
+}
+
+void Interfaz::mueve(float t)
+{
+	moneda.mueve();
+
 }

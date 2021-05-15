@@ -17,5 +17,7 @@ public:
 	static void rebote(EnemigoDisp& ene, Pared p);
 	static void rebote(Tank& t, Caja c);
 	static void rebote(Tank& t, Pared p);
+
+	static void rebote(Hombre& h, EnemigoDisp e); //Interacción entre Pj y enemigos
 };
 

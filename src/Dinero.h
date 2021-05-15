@@ -6,13 +6,16 @@ using ETSIDI::SpriteSequence;
 class Dinero
 {
 public:
-	int contador;
+	int actual;
 	Vector2D posicion;
-	SpriteSequence sprite{ "imagenes/moneda.png", 4 };
+	SpriteSequence sprite{ "imagenes/moneda.png", 7 };
 
 public:
 	Dinero();
 	void dibuja();
+	void setPos(float x, float y);
+	int getCantidad();
+	void mueve();
 
 };
 

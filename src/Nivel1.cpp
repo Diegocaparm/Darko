@@ -2,9 +2,9 @@
 
 void Nivel1::dibuja()
 {	//Creamos la cámara
-	gluLookAt(hombre.posicion.x, y_ojo + 3, z_ojo,  // posicion del ojo
-		hombre.posicion.x, 7.5f, 0.0,      // hacia que punto mira  (0,0,0) 
-		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+	gluLookAt(hombre.posicion.x, hombre.posicion.y + 8, z_ojo,  // posicion del ojo  
+		hombre.posicion.x, hombre.posicion.y+8, 0.0,      // hacia que punto mira  (0,0,0) 7.5f
+		0.0, hombre.posicion.y, 0.0);      // definimos hacia arriba (eje Y)    
 
 	//Dibuja la estructura del nivel
 	caja.dibuja();
@@ -22,7 +22,7 @@ void Nivel1::dibuja()
 	pincho3.dibuja();
 
 	//Dibuja la interfaz
-	n1.dibuja();
+	intz.dibuja(hombre.getPos());
 
 	//Dibujamos lo animado
 	hombre.dibuja();
@@ -43,6 +43,7 @@ void Nivel1::mueve()
 	//Movimientos personaje y disparo
 	hombre.mueve(0.025f);
 	disparo.mueve(0.025f);
+
 	//Movimiento de los enemigos
 	eneDisp1.mueve(0.025f);
 	eneDisp2.mueve(0.025f);
@@ -54,6 +55,9 @@ void Nivel1::mueve()
 	eneDisp8.mueve(0.025f);
 	eneDisp9.mueve(0.025f);
 	tank.mueve(0.025f);
+
+	//Movimiento Interfaz
+	intz.mueve(0.025f);
 
 	//Interacciones personaje con el entorno
 	Interaccion::rebote(hombre, caja);
@@ -82,6 +86,11 @@ void Nivel1::mueve()
 	Interaccion::rebote(eneDisp9, caja);
 	Interaccion::rebote(tank, caja);	
 	Interaccion::rebote(tank, plataforma9);
+
+	//Interaccion Pj con enemigo
+	Interaccion::rebote(hombre, eneDisp1);
+	Interaccion::rebote(hombre, eneDisp2);
+
 }
 
 void Nivel1::inicializa()

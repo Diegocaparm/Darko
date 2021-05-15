@@ -15,7 +15,7 @@ class Nivel1
 {
 //Atributos
 public:
-	Interfaz n1;
+	Interfaz intz;
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;

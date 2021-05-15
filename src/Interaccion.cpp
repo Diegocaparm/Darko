@@ -4,6 +4,8 @@
 
 void Interaccion::rebote(Hombre& h, Caja c)
 {
+	
+
 	float xmin = c.pared_izq.limite2.x;
 	float xmax = c.techo.limite1.x;
 	if (h.posicion.x > xmax) {
@@ -181,4 +183,33 @@ void Interaccion::rebote(Tank& t, Pared p)
 			t.sentido = 0;
 		}
 	}
+}
+
+void Interaccion::rebote(Hombre& h, EnemigoDisp e)
+{
+	float xmin = e.posicion.x - 0.1;
+	float xmax = e.posicion.x + 0.1;
+	float ymin = e.posicion.y-0.1;
+	float ymax = e.posicion.y+0.1;
+
+	Vector2D diferencia = (h.posicion - e.posicion);
+	float modulo = diferencia.modulo();
+
+	if (modulo <= 1.0) {
+
+		//h.velocidad.x = -10.0f;
+		h.aceleracion.x = -200.0f;
+	}
+	
+	/*
+	if (h.posicion.x >= xmin && h.posicion.y>=ymin && h.posicion.y<=ymax) {
+
+		h.posicion.x = xmin;
+		//h.posicion.x = xmin;
+	}*/
+	/*
+	if (h.posicion.x < xmax && h.posicion.y >= ymin && h.posicion.y <= ymax) {
+		h.velocidad.x = 5.0f;
+		//h.posicion.x = xmax;
+	}*/
 }

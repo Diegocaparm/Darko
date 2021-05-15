@@ -10,11 +10,15 @@ public:
 	int aumento;
 	int desviacion;
 	Vector2D posicion;
+	Vector2D velocidad;
+	Vector2D aceleracion;
 
 public:
 	Vidas();
 	void setPos(float x, float y);
-	void dibuja(int posicion);
+	void dibuja(float posx, float posy);
+	void mueve(float t);
+	void daño();
 	int getCantidad();
 	friend class Interfaz;
 
