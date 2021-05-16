@@ -1,5 +1,14 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
+@Diego
+
+Changes v1.3.
+
+- A falta de añadir los archivos referenciados, el menú está añadido
+
+
+- Las vidas se mueven ahora en el eje x con el personaje pero no saltan con él
+
 
 @Miguel:
 
