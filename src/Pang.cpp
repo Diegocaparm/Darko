@@ -1,5 +1,9 @@
+#include "Menu.h"
 #include "Nivel1.h"
 #include "freeglut.h"
+
+//Menu (Creo que deberíamos llamar todos los niveles como estados desde el menú e inicializarlos allí)
+Menu menu;
 
 //Mundo mundo;
 Nivel1 nivel1;
@@ -58,6 +62,7 @@ void OnDraw(void)
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
 	
+	menu.Dibuja(); //Dibujo el menú
 	nivel1.dibuja();
 
 	//no borrar esta linea ni poner nada despues
@@ -67,6 +72,8 @@ void OnDraw(void)
 
 void OnKeyDown(unsigned char key, int x_t, int y_t)
 {
+	menu.Tecla(key); //Creo que el código del teclado del nivel 1 también debería ir en el menú
+	
 	//poner aqui el código de teclado
 	nivel1.teclaDown(key);
 
@@ -81,6 +88,7 @@ void OnKeyUp(unsigned char key, int x_t, int y_t)
 }
 void onSpecialKeyboardDown(int key, int x, int y)
 {
+	menu.TeclaEspecial(key); //Creo que el código del teclado del nivel 1 también debería ir en el menú
 	nivel1.teclaEspecial(key);
 }
 /*void onSpecialKeyboardUp(int key, int x, int y)
@@ -91,7 +99,8 @@ void onSpecialKeyboardDown(int key, int x, int y)
 
 void OnTimer(int value)
 {
-//poner aqui el código de animacion
+	menu.Mueve(); //Lo mismo de antes
+	//poner aqui el código de animacion
 	nivel1.mueve();
 	//no borrar estas lineas
 	glutTimerFunc(25,OnTimer,0);

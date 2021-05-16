@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="src\Bonus.cpp" />
     <ClCompile Include="src\Caja.cpp" />
     <ClCompile Include="src\Disparo.cpp" />
@@ -44,6 +45,7 @@
     <ClInclude Include="src\DispEnem.h" />
     <ClInclude Include="src\DispTank.h" />
     <ClInclude Include="src\Interfaz.h" />
+    <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\Nivel1.h" />
     <ClInclude Include="src\Pincho.h" />
     <ClInclude Include="src\Tank.h" />
