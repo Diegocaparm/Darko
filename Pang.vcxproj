@@ -21,10 +21,12 @@
   <ItemGroup>
     <ClCompile Include="src\Bonus.cpp" />
     <ClCompile Include="src\Caja.cpp" />
+    <ClCompile Include="src\Dinero.cpp" />
     <ClCompile Include="src\Disparo.cpp" />
     <ClCompile Include="src\DispEnem.cpp" />
     <ClCompile Include="src\DispTank.cpp" />
     <ClCompile Include="src\Interfaz.cpp" />
+    <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Nivel1.cpp" />
     <ClCompile Include="src\Pincho.cpp" />
     <ClCompile Include="src\Tank.cpp" />
@@ -40,10 +42,12 @@
     <ClInclude Include="src\Bonus.h" />
     <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\ColorRGB.h" />
+    <ClInclude Include="src\Dinero.h" />
     <ClInclude Include="src\Disparo.h" />
     <ClInclude Include="src\DispEnem.h" />
     <ClInclude Include="src\DispTank.h" />
     <ClInclude Include="src\Interfaz.h" />
+    <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\Nivel1.h" />
     <ClInclude Include="src\Pincho.h" />
     <ClInclude Include="src\Tank.h" />

@@ -2,9 +2,9 @@
 
 void Nivel1::dibuja()
 {	//Creamos la cámara
-	gluLookAt(hombre.posicion.x, hombre.posicion.y + 8, z_ojo,  // posicion del ojo  
-		hombre.posicion.x, hombre.posicion.y+8, 0.0,      // hacia que punto mira  (0,0,0) 7.5f
-		0.0, hombre.posicion.y, 0.0);      // definimos hacia arriba (eje Y)    
+	gluLookAt(hombre.posicion.x, 11.5, z_ojo,  // posicion del ojo  
+		hombre.posicion.x, 7.5f, 0.0,      // hacia que punto mira  (hombre.posicion.y + 8)
+		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
 	//Dibuja la estructura del nivel
 	caja.dibuja();

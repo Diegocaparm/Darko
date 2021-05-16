@@ -20,11 +20,9 @@ void Interfaz::dibuja(Vector2D h)
 		break;
 	}
 	moneda.dibuja();
-
 }
 
 void Interfaz::mueve(float t)
 {
 	moneda.mueve();
-
 }

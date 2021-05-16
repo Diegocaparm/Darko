@@ -1,12 +1,12 @@
 #include "Nivel1.h"
 #include "freeglut.h"
+#include "Menu.h"
 
-//Mundo mundo;
+//Menu (Creo que deberíamos llamar todos los niveles como estados desde el menú e inicializarlos allí)
+Menu menu;
 Nivel1 nivel1;
 
-//los callback, funciones que seran llamadas automaticamente por la glut
-//cuando sucedan eventos
-//NO HACE FALTA LLAMARLAS EXPLICITAMENTE
+//Llamadas a callbacks
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void OnKeyDown(unsigned char key, int x, int y); //cuando se presione una tecla	
@@ -41,6 +41,7 @@ int main(int argc,char* argv[])
 	//glutSpecialFunc(onSpecialKeyboardUp);
 
 	//Inicializacion de la escena
+	//Puede que deba existir un menu.inicializa()
 	nivel1.inicializa();
 		
 	//pasarle el control a GLUT,que llamara a los callbacks
@@ -53,11 +54,12 @@ void OnDraw(void)
 {
 	//Borrado de la pantalla	
    	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	//Para definir el punto de vista
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
-	
+
+
+	menu.Dibuja(); //Dibujo el menú
 	nivel1.dibuja();
 
 	//no borrar esta linea ni poner nada despues
@@ -67,11 +69,12 @@ void OnDraw(void)
 
 void OnKeyDown(unsigned char key, int x_t, int y_t)
 {
-	//poner aqui el código de teclado
+	menu.Tecla(key); //Creo que el código del teclado del nivel 1 también debería ir en el menú
 	nivel1.teclaDown(key);
 
 	glutPostRedisplay();
 }
+
 void OnKeyUp(unsigned char key, int x_t, int y_t)
 {
 	//poner aqui el código de teclado
@@ -79,10 +82,13 @@ void OnKeyUp(unsigned char key, int x_t, int y_t)
 
 	glutPostRedisplay();
 }
+
 void onSpecialKeyboardDown(int key, int x, int y)
 {
+	menu.TeclaEspecial(key); //Creo que el código del teclado del nivel 1 también debería ir en el menú
 	nivel1.teclaEspecial(key);
 }
+
 /*void onSpecialKeyboardUp(int key, int x, int y)
 {
 	mundo.teclaEspecialUp(key);
@@ -91,9 +97,9 @@ void onSpecialKeyboardDown(int key, int x, int y)
 
 void OnTimer(int value)
 {
-//poner aqui el código de animacion
+	menu.Mueve(); //Lo mismo de antes
 	nivel1.mueve();
-	//no borrar estas lineas
-	glutTimerFunc(25,OnTimer,0);
+
+	glutTimerFunc(25, OnTimer, 0);
 	glutPostRedisplay();
 }

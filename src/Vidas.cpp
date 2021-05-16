@@ -20,7 +20,7 @@ void Vidas::setPos(float x, float y)
 void Vidas::dibuja(float posx, float posy)
 {
 	glPushMatrix();
-	glTranslatef(posx+9, posy+15, 0);
+	glTranslatef(posx+8, 15, 0); //Que avance hacia la derecha con el personaje, pero no hacia arriba
 	glColor3f(1.0f, 1.0f, 0.0f);
 	//glutSolidSphere(1, 20, 20);
 	
