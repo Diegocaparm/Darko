@@ -1,7 +1,5 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
-
-
 @Diego
 
 Changes v1.3.

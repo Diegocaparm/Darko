@@ -59,7 +59,7 @@ void OnDraw(void)
 	glLoadIdentity();
 
 
-	menu.Dibuja(); //Dibujo el menú
+	//menu.Dibuja(); //Dibujo el menú
 	nivel1.dibuja();
 
 	//no borrar esta linea ni poner nada despues

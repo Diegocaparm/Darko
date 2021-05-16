@@ -32,10 +32,7 @@ void Hombre::mueve(float t)
 	posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
 	velocidad = velocidad + aceleracion * t;
 
-	//Esto de abajo lo mejoraré
-	aceleracion.x = aceleracion.x / 10;
-	velocidad.x = velocidad.x / 5;
-	// :P
+	
 
 	Vector2D* pp = &posicion, * pv = &velocidad, * pa = &aceleracion;
 	if (velocidad.y > 0)	//sentido=0 sube     sentido=1 baja

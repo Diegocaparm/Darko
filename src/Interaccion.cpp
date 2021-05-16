@@ -187,29 +187,31 @@ void Interaccion::rebote(Tank& t, Pared p)
 
 void Interaccion::rebote(Hombre& h, EnemigoDisp e)
 {
-	float xmin = e.posicion.x - 0.1;
-	float xmax = e.posicion.x + 0.1;
-	float ymin = e.posicion.y-0.1;
-	float ymax = e.posicion.y+0.1;
+	bool izq = 0;	//Posicion relativa del Pj con enemigo. En la izquierda=TRUE
 
 	Vector2D diferencia = (h.posicion - e.posicion);
 	float modulo = diferencia.modulo();
+	if (h.posicion.x >= e.posicion.x) {
+		izq = false;
+	}
+	else {
+		izq = true;
+	}
 
-	if (modulo <= 1.0) {
+	if (modulo <= 0.5 && izq==true) {
+		//h.posicion.x -= 0.2;	//Con posicion funciona pero si se mantiene la tecla de ir a derecha se traspasa enemigo
+		h.aceleracion.x = -200;
 
-		//h.velocidad.x = -10.0f;
-		h.aceleracion.x = -200.0f;
+	}
+
+	if (modulo<=0.5 && izq==false) {
+		//h.posicion.x += 0.2; ////Con posicion funciona pero si se mantiene la tecla de ir a iquierda se traspasa enemigo
+		h.aceleracion.x = 200;
+
 	}
 	
-	/*
-	if (h.posicion.x >= xmin && h.posicion.y>=ymin && h.posicion.y<=ymax) {
-
-		h.posicion.x = xmin;
-		//h.posicion.x = xmin;
-	}*/
-	/*
-	if (h.posicion.x < xmax && h.posicion.y >= ymin && h.posicion.y <= ymax) {
-		h.velocidad.x = 5.0f;
-		//h.posicion.x = xmax;
-	}*/
+	if (modulo > 1.0 && modulo < 1.5) {
+		h.aceleracion.x = 0;
+		h.velocidad.x = 0;
+	}
 }
