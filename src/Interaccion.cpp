@@ -4,30 +4,91 @@
 
 void Interaccion::rebote(Hombre& h, Caja c)
 {
-	
-
 	float xmin = c.pared_izq.limite2.x;
-	float xmax = c.techo.limite1.x;
+	float xmax = c.pared_dcha.limite1.x;
 	if (h.posicion.x > xmax) {
 		h.posicion.x = xmax;
 	}
 	if (h.posicion.x < xmin) {
 		h.posicion.x = xmin;
 	}
-
-
-	float ymin = c.pared_dcha.limite2.y;
-	float ymax = c.pared_dcha.limite1.y - h.altura;
-	if (h.posicion.y > ymax) {
-		h.posicion.y = ymax;
-		h.velocidad.y = 0.0f;
-		h.aceleracion.y = -9.8f;
+	if ((h.posicion.x >= c.suelo1.limite2.x) && (h.posicion.x <= c.suelo1.limite1.x))
+	{
+		float ymin = c.pared_dcha.limite2.y;
+		float ymax = c.pared_dcha.limite1.y - h.altura;
+		if (h.posicion.y > ymax) {
+			h.posicion.y = ymax;
+			h.velocidad.y = 0.0f;
+			h.aceleracion.y = -9.8f;
+		}
+		if (h.posicion.y < ymin) {
+			h.posicion.y = ymin + 0.001f;
+			h.velocidad.y = 0.0f;
+			h.aceleracion.y = 0.0f;
 	}
-	if (h.posicion.y < ymin) {
-		h.posicion.y = ymin + 0.001f;
-		h.velocidad.y = 0.0f;
-		h.aceleracion.y = 0.0f;
 	}
+	if ((h.posicion.x >= c.suelo2.limite2.x) && (h.posicion.x <= c.suelo2.limite1.x))
+	{
+		float ymin = c.pared_dcha.limite2.y;
+		float ymax = c.pared_dcha.limite1.y - h.altura;
+		if (h.posicion.y > ymax) {
+			h.posicion.y = ymax;
+			h.velocidad.y = 0.0f;
+			h.aceleracion.y = -9.8f;
+		}
+		if (h.posicion.y < ymin) {
+			h.posicion.y = ymin + 0.001f;
+			h.velocidad.y = 0.0f;
+			h.aceleracion.y = 0.0f;
+		}
+	}
+	if ((h.posicion.x >= c.suelo3.limite2.x) && (h.posicion.x <= c.suelo3.limite1.x))
+	{
+		float ymin = c.pared_dcha.limite2.y;
+		float ymax = c.pared_dcha.limite1.y - h.altura;
+		if (h.posicion.y > ymax) {
+			h.posicion.y = ymax;
+			h.velocidad.y = 0.0f;
+			h.aceleracion.y = -9.8f;
+		}
+		if (h.posicion.y < ymin) {
+			h.posicion.y = ymin + 0.001f;
+			h.velocidad.y = 0.0f;
+			h.aceleracion.y = 0.0f;
+		}
+	}
+	if ((h.posicion.x >= c.suelo4.limite2.x) && (h.posicion.x <= c.suelo4.limite1.x))
+	{
+		float ymin = c.pared_dcha.limite2.y;
+		float ymax = c.pared_dcha.limite1.y - h.altura;
+		if (h.posicion.y > ymax) {
+			h.posicion.y = ymax;
+			h.velocidad.y = 0.0f;
+			h.aceleracion.y = -9.8f;
+		}
+		if (h.posicion.y < ymin) {
+			h.posicion.y = ymin + 0.001f;
+			h.velocidad.y = 0.0f;
+			h.aceleracion.y = 0.0f;
+		}
+	}
+	if ((h.posicion.x >= c.suelo5.limite2.x) && (h.posicion.x <= c.suelo5.limite1.x))
+	{
+		float ymin = c.pared_dcha.limite2.y;
+		float ymax = c.pared_dcha.limite1.y - h.altura;
+		if (h.posicion.y > ymax) {
+			h.posicion.y = ymax;
+			h.velocidad.y = 0.0f;
+			h.aceleracion.y = -9.8f;
+		}
+		if (h.posicion.y < ymin) {
+			h.posicion.y = ymin + 0.001f;
+			h.velocidad.y = 0.0f;
+			h.aceleracion.y = 0.0f;
+		}
+	}
+
+	//Faltaría la interacción del personaje con los pozos
 }
 
 void Interaccion::rebote(Hombre& h, Pared p)

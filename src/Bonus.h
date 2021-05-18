@@ -6,14 +6,13 @@
 class Bonus
 {
 	ColorRGB color;
-	Vector2D posicion, velocidad, aceleracion;
+	Vector2D posicion;
 
 public:
-
 	Bonus();
 	float lado;
 	void dibuja();
-	void mueve(float);
+	//void mueve(float);
 	void setPos(float, float);
 	void setColor(Byte, Byte, Byte);
 

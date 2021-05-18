@@ -20,6 +20,10 @@ void Nivel1::dibuja()
 	pincho1.dibuja();
 	pincho2.dibuja();
 	pincho3.dibuja();
+	bonus1.dibuja();
+	bonus2.dibuja();
+	bonus3.dibuja();
+	bonus4.dibuja();
 
 	//Dibuja la interfaz
 	intz.dibuja(hombre.getPos());
@@ -123,6 +127,10 @@ void Nivel1::inicializa()
 	pincho1.setPos(25.0f, 0.0f);
 	pincho2.setPos(42.0f, 10.0f);//Pincho en plataforma3
 	pincho3.setPos(148.0f, 0.0f);
+	bonus1.setPos(15.0f, 7.0f);
+	bonus2.setPos(35.0f, 7.0f);
+	bonus3.setPos(75.0f, 7.0f);
+	bonus4.setPos(185.0f, 7.0f);
 
 	//Creacion de los enemigos
 	eneDisp1.setPos(0.0f, 11.0f);//Enemigo en plataforma1

@@ -1,10 +1,10 @@
-#include "Menu.h"
+ #include "Menu.h"
 #include "freeglut.h"
 
 Menu::Menu()  //Constructor
 {
 	estado = START;                                  //Comienza el juego en START
-	ETSIDI::playMusica("bin/bso/intro.mp3", true);   //Se activa la música del inicio
+	ETSIDI::playMusica("bso/intro.mp3", true);   //Se activa la música del inicio
 }
 
 Menu::~Menu() //Destructor
@@ -22,7 +22,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 	{
 	case START:  //Estado de INICIO
 		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/start.png").id);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/start.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
@@ -38,7 +38,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 
 	case MENU: //Menu princupal (comenzar, controles, salir)
 		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/menu.png").id);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/menu.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
@@ -55,7 +55,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 	case CONTROLES:
 
 		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/controles.png").id);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/controles.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
@@ -71,7 +71,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 
 	case ESCOGE_PERSONAJE: //Escoger el personaje con el que se quiere jugar
 		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/escoge_personaje.png").id);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/escoge_personaje.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
@@ -86,7 +86,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		break;
 
 	case HISTORIA: //Presentacion de la historia
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/historia.png").id); //foto correo
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/historia.png").id); //foto correo
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
@@ -104,7 +104,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 
 	case SUERTE: //Deseamos animo
 		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/suerte.png").id); //foto animo
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/suerte.png").id); //foto animo
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
@@ -121,7 +121,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 
 	case VICTORIA: //Has ganado
 		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/victoria.png").id); //foto victoria
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/victoria.png").id); //foto victoria
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
@@ -139,7 +139,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 	case GAMEOVER: //Has perdido
 		glEnable(GL_TEXTURE_2D);
 
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/gameover.png").id); //foto derrrota
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/gameover.png").id); //foto derrrota
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
@@ -161,7 +161,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 			0.0, 1.0, 0.0);
 
 		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fin.png").id);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/fin.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
@@ -288,12 +288,12 @@ void Menu::Musica()
 	{
 	case HISTORIA:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/historia.mp3", true);
+		ETSIDI::playMusica("bso/historia.mp3", true);
 		break;
 
 	case MENU:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/intro.mp3", true);
+		ETSIDI::playMusica("bso/intro.mp3", true);
 		break;
 
 	/*case NIVEL1:
@@ -307,17 +307,17 @@ void Menu::Musica()
 
 	case VICTORIA:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/victoria.mp3", true);
+		ETSIDI::playMusica("bso/victoria.mp3", true);
 		break;
 
 	case GAMEOVER:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/gameover.mp3", true);
+		ETSIDI::playMusica("bso/gameover.mp3", true);
 		break;
 
 	case FIN:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/fin.mp3", true);
+		ETSIDI::playMusica("bso/fin.mp3", true);
 		break;
 	}
 
