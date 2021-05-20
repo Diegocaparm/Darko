@@ -7,6 +7,15 @@ EnemigoDisp::EnemigoDisp() {
 	altura = 2.0f;
 	aceleracion.x = 0.0f;
 	aceleracion.y = -9.8f;
+	//setPos(px, py);
+	dispEnem1.setPos(posicion.x, posicion.y + altura * 2 / 3);	//esta aqui para que este bien la posicion del disparo inicial
+
+}
+EnemigoDisp::EnemigoDisp(float px, float py) {
+	altura = 2.0f;
+	aceleracion.x = 0.0f;
+	aceleracion.y = -9.8f;
+	setPos(px, py);
 	dispEnem1.setPos(posicion.x, posicion.y + altura * 2 / 3);	//esta aqui para que este bien la posicion del disparo inicial
 }
 

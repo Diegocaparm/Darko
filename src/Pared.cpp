@@ -2,6 +2,12 @@
 #include "freeglut.h"
 
 Pared::Pared() {
+	//esto esta aqui porque la caja necesita paredes y no lo he cambiado todavia
+}
+
+Pared::Pared(float x1, float y1, float x2, float y2, Byte r, Byte g, Byte b) {
+	setPos(x1, y1, x2, y2);
+	setColor(r, g, b);
 }
 
 void Pared::dibuja()

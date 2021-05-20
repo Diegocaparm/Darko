@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\babosa.cpp" />
     <ClCompile Include="src\Bonus.cpp" />
     <ClCompile Include="src\Caja.cpp" />
     <ClCompile Include="src\Dinero.cpp" />
@@ -26,6 +27,8 @@
     <ClCompile Include="src\DispEnem.cpp" />
     <ClCompile Include="src\DispTank.cpp" />
     <ClCompile Include="src\Interfaz.cpp" />
+    <ClCompile Include="src\listaEnemDisp.cpp" />
+    <ClCompile Include="src\listaPlat.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Nivel1.cpp" />
     <ClCompile Include="src\Pincho.cpp" />
@@ -35,10 +38,12 @@
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\Pang.cpp" />
     <ClCompile Include="src\Pared.cpp" />
+    <ClCompile Include="src\Tentaculo.cpp" />
     <ClCompile Include="src\Vector2D.cpp" />
     <ClCompile Include="src\Vidas.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\babosa.h" />
     <ClInclude Include="src\Bonus.h" />
     <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\ColorRGB.h" />
@@ -47,6 +52,8 @@
     <ClInclude Include="src\DispEnem.h" />
     <ClInclude Include="src\DispTank.h" />
     <ClInclude Include="src\Interfaz.h" />
+    <ClInclude Include="src\listaEnemDisp.h" />
+    <ClInclude Include="src\listaPlat.h" />
     <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\Nivel1.h" />
     <ClInclude Include="src\Pincho.h" />
@@ -55,6 +62,7 @@
     <ClInclude Include="src\Hombre.h" />
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\Pared.h" />
+    <ClInclude Include="src\Tentaculo.h" />
     <ClInclude Include="src\Vector2D.h" />
     <ClInclude Include="src\Vidas.h" />
   </ItemGroup>
@@ -64,7 +72,7 @@
     <ProjectGuid>{e575fade-b6eb-4154-a1ed-8067a12eae98}</ProjectGuid>
     <RootNamespace>Pang</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Pang</ProjectName>
+    <ProjectName>Darko</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -4,91 +4,33 @@
 
 void Interaccion::rebote(Hombre& h, Caja c)
 {
+	rebote(h, c.techo);
+	rebote(h, c.pared_dcha);
+	rebote(h, c.pared_izq);
+	rebote(h, c.suelo1);
+	/*
 	float xmin = c.pared_izq.limite2.x;
-	float xmax = c.pared_dcha.limite1.x;
+	float xmax = c.techo.limite1.x;
 	if (h.posicion.x > xmax) {
 		h.posicion.x = xmax;
 	}
 	if (h.posicion.x < xmin) {
 		h.posicion.x = xmin;
 	}
-	if ((h.posicion.x >= c.suelo1.limite2.x) && (h.posicion.x <= c.suelo1.limite1.x))
-	{
-		float ymin = c.pared_dcha.limite2.y;
-		float ymax = c.pared_dcha.limite1.y - h.altura;
-		if (h.posicion.y > ymax) {
-			h.posicion.y = ymax;
-			h.velocidad.y = 0.0f;
-			h.aceleracion.y = -9.8f;
-		}
-		if (h.posicion.y < ymin) {
-			h.posicion.y = ymin + 0.001f;
-			h.velocidad.y = 0.0f;
-			h.aceleracion.y = 0.0f;
-	}
-	}
-	if ((h.posicion.x >= c.suelo2.limite2.x) && (h.posicion.x <= c.suelo2.limite1.x))
-	{
-		float ymin = c.pared_dcha.limite2.y;
-		float ymax = c.pared_dcha.limite1.y - h.altura;
-		if (h.posicion.y > ymax) {
-			h.posicion.y = ymax;
-			h.velocidad.y = 0.0f;
-			h.aceleracion.y = -9.8f;
-		}
-		if (h.posicion.y < ymin) {
-			h.posicion.y = ymin + 0.001f;
-			h.velocidad.y = 0.0f;
-			h.aceleracion.y = 0.0f;
-		}
-	}
-	if ((h.posicion.x >= c.suelo3.limite2.x) && (h.posicion.x <= c.suelo3.limite1.x))
-	{
-		float ymin = c.pared_dcha.limite2.y;
-		float ymax = c.pared_dcha.limite1.y - h.altura;
-		if (h.posicion.y > ymax) {
-			h.posicion.y = ymax;
-			h.velocidad.y = 0.0f;
-			h.aceleracion.y = -9.8f;
-		}
-		if (h.posicion.y < ymin) {
-			h.posicion.y = ymin + 0.001f;
-			h.velocidad.y = 0.0f;
-			h.aceleracion.y = 0.0f;
-		}
-	}
-	if ((h.posicion.x >= c.suelo4.limite2.x) && (h.posicion.x <= c.suelo4.limite1.x))
-	{
-		float ymin = c.pared_dcha.limite2.y;
-		float ymax = c.pared_dcha.limite1.y - h.altura;
-		if (h.posicion.y > ymax) {
-			h.posicion.y = ymax;
-			h.velocidad.y = 0.0f;
-			h.aceleracion.y = -9.8f;
-		}
-		if (h.posicion.y < ymin) {
-			h.posicion.y = ymin + 0.001f;
-			h.velocidad.y = 0.0f;
-			h.aceleracion.y = 0.0f;
-		}
-	}
-	if ((h.posicion.x >= c.suelo5.limite2.x) && (h.posicion.x <= c.suelo5.limite1.x))
-	{
-		float ymin = c.pared_dcha.limite2.y;
-		float ymax = c.pared_dcha.limite1.y - h.altura;
-		if (h.posicion.y > ymax) {
-			h.posicion.y = ymax;
-			h.velocidad.y = 0.0f;
-			h.aceleracion.y = -9.8f;
-		}
-		if (h.posicion.y < ymin) {
-			h.posicion.y = ymin + 0.001f;
-			h.velocidad.y = 0.0f;
-			h.aceleracion.y = 0.0f;
-		}
-	}
 
-	//Faltaría la interacción del personaje con los pozos
+
+	float ymin = c.pared_dcha.limite2.y;
+	float ymax = c.pared_dcha.limite1.y - h.altura;
+	if (h.posicion.y > ymax) {
+		h.posicion.y = ymax;
+		h.velocidad.y = 0.0f;
+		h.aceleracion.y = -9.8f;
+	}
+	if (h.posicion.y < ymin) {
+		h.posicion.y = ymin +0.01f;
+		h.velocidad.y = 0.0f;
+		h.aceleracion.y = 0.0f;
+	}*/
 }
 
 void Interaccion::rebote(Hombre& h, Pared p)
@@ -118,6 +60,10 @@ void Interaccion::rebote(Hombre& h, Pared p)
 			}
 	}
 }
+void Interaccion::rebote(Hombre& h, listaPlat p) {
+	for (int i = 0; i < p.numero; i++)
+		rebote(h, *p.lista[i]);
+}
 
 void Interaccion::disparoInicializa(Disparo* disparo, Hombre* hombre) {
 	disparo->radio = 0.2f;
@@ -128,7 +74,16 @@ void Interaccion::disparoInicializa(Disparo* disparo, Hombre* hombre) {
 
 void Interaccion::rebote(EnemigoDisp& ene, Caja c)
 {
-	float xmin = c.techo.limite2.x;
+	rebote(ene, c.techo);
+	rebote(ene, c.pared_dcha);
+	rebote(ene, c.pared_izq);
+	rebote(ene, c.suelo1);
+	rebote(ene, c.suelo2);
+	rebote(ene, c.suelo3);
+	rebote(ene, c.suelo4);
+	rebote(ene, c.suelo5);
+
+	/*float xmin = c.techo.limite2.x;
 	float xmax = c.techo.limite1.x;
 	if (ene.posicion.x > xmax) {
 		ene.posicion.x = xmax;
@@ -147,7 +102,7 @@ void Interaccion::rebote(EnemigoDisp& ene, Caja c)
 	}
 	if (ene.posicion.y < ymin) {
 		ene.posicion.y = ymin;
-	}
+	}*/
 }
 
 void Interaccion::rebote(EnemigoDisp& ene, Pared p)
@@ -248,31 +203,63 @@ void Interaccion::rebote(Tank& t, Pared p)
 
 void Interaccion::rebote(Hombre& h, EnemigoDisp e)
 {
-	bool izq = 0;	//Posicion relativa del Pj con enemigo. En la izquierda=TRUE
+	float xmin = e.posicion.x - 0.1;
+	float xmax = e.posicion.x + 0.1;
+	float ymin = e.posicion.y-0.1;
+	float ymax = e.posicion.y+0.1;
 
 	Vector2D diferencia = (h.posicion - e.posicion);
 	float modulo = diferencia.modulo();
-	if (h.posicion.x >= e.posicion.x) {
-		izq = false;
-	}
-	else {
-		izq = true;
-	}
 
-	if (modulo <= 0.5 && izq==true) {
-		//h.posicion.x -= 0.2;	//Con posicion funciona pero si se mantiene la tecla de ir a derecha se traspasa enemigo
-		h.aceleracion.x = -200;
+	if (modulo <= 1.0) {
 
-	}
-
-	if (modulo<=0.5 && izq==false) {
-		//h.posicion.x += 0.2; ////Con posicion funciona pero si se mantiene la tecla de ir a iquierda se traspasa enemigo
-		h.aceleracion.x = 200;
-
+		//h.velocidad.x = -10.0f;
+		h.aceleracion.x = -200.0f;
 	}
 	
-	if (modulo > 1.0 && modulo < 1.5) {
-		h.aceleracion.x = 0;
-		h.velocidad.x = 0;
+	/*
+	if (h.posicion.x >= xmin && h.posicion.y>=ymin && h.posicion.y<=ymax) {
+
+		h.posicion.x = xmin;
+		//h.posicion.x = xmin;
+	}*/
+	/*
+	if (h.posicion.x < xmax && h.posicion.y >= ymin && h.posicion.y <= ymax) {
+		h.velocidad.x = 5.0f;
+		//h.posicion.x = xmax;
+	}*/
+}
+void Interaccion::rebote(EnemigoDisp& ed1, EnemigoDisp& ed2) {
+	float xmin = ed1.posicion.x - 0.1;
+	float xmax = ed1.posicion.x + 0.1;
+	float ymin = ed1.posicion.y - 0.1;
+	float ymax = ed1.posicion.y + 0.1;
+
+	Vector2D diferencia = (ed2.posicion - ed1.posicion);
+	float modulo = diferencia.modulo();
+
+	if (modulo <= 1.0) {
+
+		//h.velocidad.x = -10.0f;
+		ed2.aceleracion.x = -200.0f;
 	}
+}
+
+void Interaccion::mov(Babosa& b, Hombre& h) {
+	Vector2D dist = b.posicion - h.posicion;
+	if (dist.modulo() < 5)
+		b.cerca = 1;
+	else
+		b.cerca = 0;
+	
+	if (b.posicion.x < h.posicion.x)
+		b.px = 0;
+	else
+		b.px = 1;
+	if (b.posicion.y < h.posicion.y + h.altura / 2)
+		b.py = 0;
+	else
+		b.py = 1;
+
+
 }
