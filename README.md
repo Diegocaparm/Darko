@@ -1,5 +1,14 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
+@David
+
+Changes v1.4?
+
+- Se han añadido los enemigos tentaculo y babosa
+
+- Se han añadido listas de plataformas y eneDisp
+
+- Se han arreglado las colisiones entre plataformas, hombre y eneDisp usando las listas
 
 
 @Diego

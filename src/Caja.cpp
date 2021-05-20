@@ -13,6 +13,19 @@ Caja::Caja() {
 	suelo4.setPos(150.0f, 0.0f, 139.0f, 0.0f);
 	suelo5.setColor(0, 100, 0);
 	suelo5.setPos(200.0f, 0.0f, 156.0f, 0.0f);
+	/*Pared* suelo1 = new Pared(50.0f, 0.0f, -30.0f, 0.0f, 0, 100, 0),
+		* suelo2 = new Pared(80.0f, 0.0f, 55.0f, 0.0f, 0, 100, 0),
+		* suelo3 = new Pared(132.0f, 0.0f, 87.0f, 0.0f, 0, 100, 0),
+		* suelo4 = new Pared(150.0f, 0.0f, 139.0f, 0.0f, 0, 100, 0),
+		* suelo5 = new Pared(200.0f, 0.0f, 156.0f, 0.0f, 0, 100, 0);
+	plataformas.agregar(suelo1);	
+	plataformas.agregar(suelo2);
+	plataformas.agregar(suelo3);
+	plataformas.agregar(suelo4);
+	plataformas.agregar(suelo5);
+		*/
+	//repetir lo de arriba para cada pared y techo y esas cosas de abajo
+	//imagino que tambien hay que agregarlo, quizas haya que subir el limite de plataformas
 
 	//Resto de paredes de la caja inicial
 	techo.setColor(0, 100, 0);

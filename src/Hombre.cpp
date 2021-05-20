@@ -32,24 +32,32 @@ void Hombre::mueve(float t)
 	posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
 	velocidad = velocidad + aceleracion * t;
 
-	
+	//Esto de abajo lo mejoraré
+	aceleracion.x = aceleracion.x / 10;
+	velocidad.x = velocidad.x / 5;
+	// :P
 
-	Vector2D* pp = &posicion, * pv = &velocidad, * pa = &aceleracion;
-	if (velocidad.y > 0)	//sentido=0 sube     sentido=1 baja
-		sentido = 0;
-	else
+	if (velocidad.y > 0.3f)
+		sentido = 0;			//0 subiendo    1 bajando
+	if (velocidad.y < -2)
+	//else
 		sentido = 1;
-	if (salto == 0){		//salto=1 puede saltar		salto=0 no puede saltar
-		aceleracion.y = 250;
-		salto = 1;
+	
+	if (flag == 0) {
+		aceleracion.y = -9.8f;
 	}
-	else
-		aceleracion.y = -9.8;
-
-	if (velocidad.y == 0) {
+	else {
+		if (salto == 1) {
+			aceleracion.y = 250;
+			flag = 0;
+			//salto = 0;						//comentar para salto infinito
+		}
+	}
+	if (velocidad.y < 0.3f && velocidad.y > -0.3f && sentido == 1 && salto == 0)
 		salto = 1;
 
-	}
+
+	
 }
 
 void Hombre::setColor(Byte r, Byte g, Byte b) {

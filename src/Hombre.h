@@ -4,7 +4,7 @@
 class Hombre
 {
 	ColorRGB color;
-	Vector2D posicion{ -4,2 }, velocidad, aceleracion;
+	Vector2D posicion{ -4,11 }, velocidad, aceleracion;
 
 public:
 	Hombre();
@@ -21,7 +21,8 @@ public:
 	friend class Nivel1;
 	friend class Interfaz;
 	friend class Vida;
+
 	bool mov;
-	int salto = 1, sentido = 0, zona = 0;
+	int salto = 1, sentido = 0, zona = 0, flag = 0;
 };
 

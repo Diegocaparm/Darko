@@ -6,11 +6,16 @@
 #include "Hombre.h"
 #include "Estela.h"
 #include "Interaccion.h"
-#include "DispEnem.h"			
+#include "EnemigoDisp.h"			
 #include "Tank.h"
 #include "Interfaz.h"
 #include "Pincho.h"
-#include "Bonus.h"
+
+#include "babosa.h"				//eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+#include "Tentaculo.h"
+
+#include "listaEnemDisp.h"
+#include "listaPlat.h"
 
 class Nivel1
 {
@@ -22,32 +27,31 @@ public:
 	float z_ojo;
 
 	//Estructura del nivel
-	Caja caja, * pcaja = &caja;
-	Pared plataforma1, * pplataforma1 = &plataforma1,
-		plataforma2, * pplataforma2 = &plataforma2,
-		plataforma3, * pplataforma3 = &plataforma3,
-		plataforma4, * pplataforma4 = &plataforma4,
-		plataforma5, * pplataforma5 = &plataforma5,
-		plataforma6, * pplataforma6 = &plataforma6,
-		plataforma7, * pplataforma7 = &plataforma7,
-		plataforma8, * pplataforma8 = &plataforma8,
-		plataforma9, * pplataforma9 = &plataforma9;
+	Caja caja;
+	Pared plataforma1, plataforma2, plataforma3, plataforma4, 
+		plataforma5, plataforma6, plataforma7, plataforma8, plataforma9;
+
 	Pincho pincho1, pincho2, pincho3;
-	Bonus bonus1, bonus2, bonus3, bonus4;
 
-	//Objetos animados del escenario
-	Hombre hombre, * phombre = &hombre;
-	Disparo disparo, * pdisparo = &disparo;
+	Hombre hombre;
+	Disparo disparo;
 	EnemigoDisp eneDisp1, eneDisp2, eneDisp3, eneDisp4, eneDisp5, 
-		eneDisp6, eneDisp7, eneDisp8, eneDisp9;	//Enemigos simples		
+		eneDisp6, eneDisp7, eneDisp8, eneDisp9; //Enemigos simples
 	Tank tank;									//Enemigos chetos
+	Babosa babosa;							
+	Tentaculo tentaculo;
+	listaEnemDisp enemigosDisp;
+	listaPlat plataformas;
+	//Bonus bonus, * pbonus = &bonus;
+	//Esfera esfera, * pesfera = &esfera,
+		//esfera2, * pesfera2 = &esfera2;
+	//añadir los atributos que son los objetos del escenario
 
-
-	
-public:
 	//Métodos
+public:
 	void teclaUp(unsigned char key);
 	void teclaDown(unsigned char key);
+
 	void teclaEspecial(unsigned char key);
 	void mueve();
 	void dibuja();
