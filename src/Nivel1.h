@@ -10,12 +10,11 @@
 #include "Tank.h"
 #include "Interfaz.h"
 #include "Pincho.h"
-
-#include "babosa.h"				//eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+#include "babosa.h"				
 #include "Tentaculo.h"
-
 #include "listaEnemDisp.h"
 #include "listaPlat.h"
+#include "Bonus.h"
 
 class Nivel1
 {
@@ -32,7 +31,7 @@ public:
 		plataforma5, plataforma6, plataforma7, plataforma8, plataforma9;
 
 	Pincho pincho1, pincho2, pincho3;
-
+	Bonus bonus1, bonus2, bonus3, bonus4;
 	Hombre hombre;
 	Disparo disparo;
 	EnemigoDisp eneDisp1, eneDisp2, eneDisp3, eneDisp4, eneDisp5, 

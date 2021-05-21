@@ -8,17 +8,11 @@ void Nivel1::dibuja()
 
 	//Dibuja la estructura del nivel
 	caja.dibuja();
-	/*plataforma1.dibuja();
-	plataforma2.dibuja();
-	plataforma3.dibuja();
-	plataforma4.dibuja();
-	plataforma5.dibuja();
-	plataforma6.dibuja();
-	plataforma7.dibuja();
-	plataforma8.dibuja();
-	plataforma9.dibuja();*/
 	plataformas.dibuja();
-
+	bonus1.dibuja();
+	bonus2.dibuja();
+	bonus3.dibuja();
+	bonus4.dibuja();
 	pincho1.dibuja();
 	pincho2.dibuja();
 	pincho3.dibuja();
@@ -28,19 +22,9 @@ void Nivel1::dibuja()
 
 	//Dibujamos lo animado
 	hombre.dibuja();
-	/*eneDisp1.dibuja();
-	eneDisp2.dibuja();
-	eneDisp3.dibuja();
-	eneDisp4.dibuja();
-	eneDisp5.dibuja();
-	eneDisp6.dibuja();
-	eneDisp7.dibuja();
-	eneDisp8.dibuja();
-	eneDisp9.dibuja();*/
 	enemigosDisp.dibuja();
 	tank.dibuja();
-
-	babosa.dibuja();			//eeeeeeeeeeeeeeeeeeeeeeeeeeeee
+	babosa.dibuja();			
 	tentaculo.dibuja();
 }
 
@@ -51,18 +35,9 @@ void Nivel1::mueve()
 	disparo.mueve(0.025f);
 
 	//Movimiento de los enemigos
-	/*eneDisp1.mueve(0.025f);
-	eneDisp2.mueve(0.025f);
-	eneDisp3.mueve(0.025f);
-	eneDisp4.mueve(0.025f);
-	eneDisp5.mueve(0.025f);
-	eneDisp6.mueve(0.025f);
-	eneDisp7.mueve(0.025f);
-	eneDisp8.mueve(0.025f);
-	eneDisp9.mueve(0.025f);*/
 	enemigosDisp.mueve(0.025f);
 	tank.mueve(0.025f);
-	babosa.mueve(0.025f);			//eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+	babosa.mueve(0.025f);
 	tentaculo.mueve(0.025f);
 
 	//Movimiento Interfaz
@@ -70,30 +45,9 @@ void Nivel1::mueve()
 
 	//Interacciones personaje con el entorno
 	Interaccion::rebote(hombre, caja);
-	/*Interaccion::rebote(hombre, plataforma1);
-	Interaccion::rebote(hombre, plataforma2);
-	Interaccion::rebote(hombre, plataforma3);
-	Interaccion::rebote(hombre, plataforma4);
-	Interaccion::rebote(hombre, plataforma5);
-	Interaccion::rebote(hombre, plataforma6);
-	Interaccion::rebote(hombre, plataforma7);
-	Interaccion::rebote(hombre, plataforma8);
-	Interaccion::rebote(hombre, plataforma9);*/
 	Interaccion::rebote(hombre, plataformas);
 
 	//Interacciones enemigos con el entorno
-	//Podría hacerse una interacción (eneDisp, suelo) dentro de 
-	//la interacción (eneDisp, caja) para que  
-	//compute como plataforma y no se tiren por los pozos
-	/*Interaccion::rebote(eneDisp1, plataforma1);			
-	Interaccion::rebote(eneDisp2, caja);
-	Interaccion::rebote(eneDisp3, caja);
-	Interaccion::rebote(eneDisp4, caja);
-	Interaccion::rebote(eneDisp5, caja);
-	Interaccion::rebote(eneDisp6, plataforma4);
-	Interaccion::rebote(eneDisp7, caja);
-	Interaccion::rebote(eneDisp8, plataforma7);
-	Interaccion::rebote(eneDisp9, caja);*/
 	enemigosDisp.rebote(caja);
 	enemigosDisp.rebote(plataformas);
 	Interaccion::rebote(tank, caja);	
@@ -111,27 +65,7 @@ void Nivel1::inicializa()
 	y_ojo = 7.5;
 	z_ojo = 30;
 
-	//bonus.setPos(5.0f, 5.0f);
-	//disparo.setPos(-5.0f, 0.0f);
-	//Creacion de las plataformas
-	/*plataforma1.setPos(2.0f, 10.0f, -5.0f, 10.0f);
-	plataforma1.setColor(50, 150, 250);
-	plataforma2.setPos(27.0f, 5.0f, 18.0f, 5.0f);
-	plataforma2.setColor(150, 150, 50);
-	plataforma3.setPos(45.0f, 10.0f, 36.0f, 10.0f);
-	plataforma3.setColor(50, 150, 250);
-	plataforma4.setPos(68.0f, 5.0f, 57.0f, 5.0f);
-	plataforma4.setColor(150, 150, 50);
-	plataforma5.setPos(100.0f, 10.0f, 82.0f, 10.0f);
-	plataforma5.setColor(50, 150, 250);
-	plataforma6.setPos(123.0f, 5.0f, 108.0f, 5.0f);
-	plataforma6.setColor(150, 150, 50);
-	plataforma7.setPos(145.0f, 10.0f, 135.0f, 10.0f);
-	plataforma7.setColor(50, 150, 250);
-	plataforma8.setPos(175.0f, 5.0f, 158.0f, 5.0f);
-	plataforma8.setColor(150, 150, 50);
-	plataforma9.setPos(197.0f, 5.0f, 189.0f, 5.0f);
-	plataforma9.setColor(150, 150, 50);*/
+	//Posicionamos todo el entorno
 	Pared* plat1 = new Pared(2.0f, 10.0f, -5.0f, 10.0f, 50, 150, 250),
 		* plat2 = new Pared(27.0f, 5.0f, 18.0f, 5.0f, 150, 150, 50),
 		* plat3 = new Pared(45.0f, 10.0f, 36.0f, 10.0f, 50, 150, 250),
@@ -154,34 +88,26 @@ void Nivel1::inicializa()
 	pincho1.setPos(25.0f, 0.0f);
 	pincho2.setPos(42.0f, 10.0f);//Pincho en plataforma3
 	pincho3.setPos(148.0f, 0.0f);
-
+	bonus1.setPos(15.0f, 7.0f);
+	bonus2.setPos(35.0f, 7.0f);
+	bonus3.setPos(75.0f, 7.0f);
+	bonus4.setPos(185.0f, 7.0f);
 
 
 	//Creacion de los enemigos
-	/*eneDisp1.setPos(0.0f, 9.0f);//Enemigo en plataforma1
-	eneDisp2.setPos(15.0f, 0.0f);
-	eneDisp3.setPos(22.0f, 0.0f);
-	eneDisp4.setPos(35.0f, 0.0f);
-	eneDisp5.setPos(87.0f, 0.0f);
-	eneDisp6.setPos(62.0f, 7.0f);//Enemigo en plataforma4
-	eneDisp7.setPos(174.0f, 0.0f);
-	eneDisp8.setPos(140.0f, 11.0f);//Enemigo en plataforma7
-	eneDisp9.setPos(193.0f, 0.0f);*/
 	tank.setPos(193.0f, 15.0f);//Jefe en la plataforma final
-
 	babosa.setPos(10.0f, 13.0f);
 	tentaculo.setPos(10.0f, 0.0f);
-
-	//meter enemigos en sus listas
-	EnemigoDisp* ped1 = new EnemigoDisp(0.0f, 9.0f),
+	EnemigoDisp* ped1 = new EnemigoDisp(0.0f, 9.0f), //Enemigo plat1
 		* ped2 = new EnemigoDisp(15.0f, 0.0f),
 		* ped3 = new EnemigoDisp(22.0f, 0.0f),
 		* ped4 = new EnemigoDisp(35.0f, 0.0f),
 		* ped5 = new EnemigoDisp(87.0f, 0.0f),
-		* ped6 = new EnemigoDisp(62.0f, 7.0f),
+		* ped6 = new EnemigoDisp(62.0f, 7.0f), //Enemigo plat4
 		* ped7 = new EnemigoDisp(174.0f, 0.0f),
-		* ped8 = new EnemigoDisp(140.0f, 11.0f),
+		* ped8 = new EnemigoDisp(140.0f, 11.0f), //Enemigo plat7
 		* ped9 = new EnemigoDisp(193.0f, 0.0f);
+	//meter enemigos en sus listas
 	enemigosDisp.agregar(ped1);
 	enemigosDisp.agregar(ped2);
 	enemigosDisp.agregar(ped3);
