@@ -2,6 +2,7 @@
 #include "Caja.h"
 #include "EnemigoDisp.h"
 #include "listaPlat.h"
+#include "Hombre.h"
 
 #define MAX_ENEMDISP 100
 class listaEnemDisp
@@ -20,9 +21,10 @@ public:
 	void destruirContenido();
 	void eliminar(int index);
 	void eliminar(EnemigoDisp* ene);
-	//EnemigoDisp* colision(Hombre& h);
 
 	//Esfera* operator[](int i);
 	int getNumero() { return numero; }
+
+	friend class Interaccion;
 };
 

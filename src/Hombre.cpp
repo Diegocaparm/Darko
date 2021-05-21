@@ -32,11 +32,6 @@ void Hombre::mueve(float t)
 	posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
 	velocidad = velocidad + aceleracion * t;
 
-	//Esto de abajo lo mejoraré
-	aceleracion.x = aceleracion.x / 10;
-	velocidad.x = velocidad.x / 5;
-	// :P
-
 	if (velocidad.y > 0.3f)
 		sentido = 0;			//0 subiendo    1 bajando
 	if (velocidad.y < -2)

@@ -4,11 +4,7 @@
 
 void Interaccion::rebote(Hombre& h, Caja c)
 {
-	rebote(h, c.techo);
-	rebote(h, c.pared_dcha);
-	rebote(h, c.pared_izq);
-	rebote(h, c.suelo1);
-	/*
+	//Generamos los límites de la caja en el eje x
 	float xmin = c.pared_izq.limite2.x;
 	float xmax = c.techo.limite1.x;
 	if (h.posicion.x > xmax) {
@@ -17,20 +13,13 @@ void Interaccion::rebote(Hombre& h, Caja c)
 	if (h.posicion.x < xmin) {
 		h.posicion.x = xmin;
 	}
-
-
-	float ymin = c.pared_dcha.limite2.y;
-	float ymax = c.pared_dcha.limite1.y - h.altura;
-	if (h.posicion.y > ymax) {
-		h.posicion.y = ymax;
-		h.velocidad.y = 0.0f;
-		h.aceleracion.y = -9.8f;
-	}
-	if (h.posicion.y < ymin) {
-		h.posicion.y = ymin +0.01f;
-		h.velocidad.y = 0.0f;
-		h.aceleracion.y = 0.0f;
-	}*/
+	//Tratamos los rebotes del techo y los suelos como plataformas standar
+	rebote(h, c.techo);
+	rebote(h, c.suelo1);
+	rebote(h, c.suelo2);
+	rebote(h, c.suelo3);
+	rebote(h, c.suelo4);
+	rebote(h, c.suelo5);
 }
 
 void Interaccion::rebote(Hombre& h, Pared p)
@@ -60,6 +49,7 @@ void Interaccion::rebote(Hombre& h, Pared p)
 			}
 	}
 }
+
 void Interaccion::rebote(Hombre& h, listaPlat p) {
 	for (int i = 0; i < p.numero; i++)
 		rebote(h, *p.lista[i]);
@@ -82,27 +72,6 @@ void Interaccion::rebote(EnemigoDisp& ene, Caja c)
 	rebote(ene, c.suelo3);
 	rebote(ene, c.suelo4);
 	rebote(ene, c.suelo5);
-
-	/*float xmin = c.techo.limite2.x;
-	float xmax = c.techo.limite1.x;
-	if (ene.posicion.x > xmax) {
-		ene.posicion.x = xmax;
-	}
-	if (ene.posicion.x < xmin) {
-		ene.posicion.x = xmin;
-	}
-
-
-	float ymin = c.pared_dcha.limite2.y;
-	float ymax = c.pared_dcha.limite1.y - ene.altura;
-	if (ene.posicion.y > ymax) {
-		ene.posicion.y = ymax;
-		ene.velocidad.y = 0.0f;
-		ene.aceleracion.y = -9.8f;
-	}
-	if (ene.posicion.y < ymin) {
-		ene.posicion.y = ymin;
-	}*/
 }
 
 void Interaccion::rebote(EnemigoDisp& ene, Pared p)
@@ -166,6 +135,7 @@ void Interaccion::rebote(Tank& t, Caja c)
 		t.posicion.y = ymin;
 	}
 }
+
 void Interaccion::rebote(Tank& t, Pared p)
 {
 	float xmin = p.limite2.x;//izq
@@ -201,34 +171,38 @@ void Interaccion::rebote(Tank& t, Pared p)
 	}
 }
 
-void Interaccion::rebote(Hombre& h, EnemigoDisp e)
+void Interaccion::rebote(Hombre & h, EnemigoDisp e)
 {
-	float xmin = e.posicion.x - 0.1;
-	float xmax = e.posicion.x + 0.1;
-	float ymin = e.posicion.y-0.1;
-	float ymax = e.posicion.y+0.1;
+	bool izq = 0;	//Posicion relativa del Pj con enemigo. En la izquierda=TRUE
 
 	Vector2D diferencia = (h.posicion - e.posicion);
 	float modulo = diferencia.modulo();
 
-	if (modulo <= 1.0) {
-
-		//h.velocidad.x = -10.0f;
-		h.aceleracion.x = -200.0f;
+	if (h.posicion.x >= e.posicion.x) {
+		izq = false;
 	}
-	
-	/*
-	if (h.posicion.x >= xmin && h.posicion.y>=ymin && h.posicion.y<=ymax) {
+	else {
+		izq = true;
+	}
 
-		h.posicion.x = xmin;
-		//h.posicion.x = xmin;
-	}*/
-	/*
-	if (h.posicion.x < xmax && h.posicion.y >= ymin && h.posicion.y <= ymax) {
-		h.velocidad.x = 5.0f;
-		//h.posicion.x = xmax;
-	}*/
+	if (modulo <= 0.5 && izq == true) {
+		h.posicion.x -= 0.2;	//Con posicion funciona pero si se mantiene la tecla de ir a derecha se traspasa enemigo
+		//h.aceleracion.x = -200;
+
+	}
+
+	if (modulo <= 0.3 && izq == false) {
+		h.posicion.x += 0.2;  //Con posicion funciona pero si se mantiene la tecla de ir a iquierda se traspasa enemigo
+		//h.aceleracion.x = 200;
+
+	}
+
+	if (modulo > 1.0 && modulo < 1.5) {
+		h.aceleracion.x = 0;
+		h.velocidad.x = 0;
+	}
 }
+
 void Interaccion::rebote(EnemigoDisp& ed1, EnemigoDisp& ed2) {
 	float xmin = ed1.posicion.x - 0.1;
 	float xmax = ed1.posicion.x + 0.1;
@@ -262,4 +236,23 @@ void Interaccion::mov(Babosa& b, Hombre& h) {
 		b.py = 1;
 
 
+}
+
+void Interaccion::recoleccion(Hombre h, Vidas& v)
+{
+	Vector2D posvida = v.getPos();
+
+	float mod = (posvida - h.posicion).modulo();
+
+	if (mod <= 0.5) {
+
+		v.aumento();
+		v.setRecogido(false);
+	}
+}
+
+void Interaccion::rebote(Hombre& h, listaEnemDisp l) 
+{
+	for (int i = 0; i < l.numero; i++)
+		rebote(h, *l.lista[i]);
 }

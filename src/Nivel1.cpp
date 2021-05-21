@@ -52,10 +52,11 @@ void Nivel1::mueve()
 	enemigosDisp.rebote(plataformas);
 	Interaccion::rebote(tank, caja);	
 	Interaccion::rebote(tank, plataforma9);
-
+	
 	//Interaccion Pj con enemigo
-	Interaccion::rebote(hombre, eneDisp1);
-	Interaccion::rebote(hombre, eneDisp2);
+	Interaccion::rebote(hombre, enemigosDisp);
+	//Interaccion::rebote(hombre, eneDisp1);
+	//Interaccion::rebote(hombre, eneDisp2);
 	Interaccion::mov(babosa, hombre);
 }
 

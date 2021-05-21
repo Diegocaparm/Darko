@@ -47,6 +47,7 @@ void listaEnemDisp::rebote(Pared p)
 	for (int i = 0; i < numero; i++)
 		Interaccion::rebote(*(lista[i]), p);
 }
+
 void listaEnemDisp::rebote(listaPlat lp) {
 	for (int i = 0; i < lp.numero; i++)
 		rebote(*lp.lista[i]);
@@ -87,13 +88,3 @@ void listaEnemDisp::eliminar(EnemigoDisp* e)
 			return;
 		}
 }
-
-/*EnemigoDisp* listaEnemDisp::colision(Hombre& h)
-{
-	for (int i = 0; i < numero; i++)
-	{
-		if (Interaccion::colision(*(lista[i]), h))
-			return lista[i];
-	}
-	return 0; //no hay colisión
-}*/

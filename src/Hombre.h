@@ -15,7 +15,6 @@ public:
 	void setVelx(float);		//antes era void setVel(float, float);
 	Vector2D getPos();
 
-
 	friend class Interaccion;
 	friend class Mundo;
 	friend class Nivel1;
