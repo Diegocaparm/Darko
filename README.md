@@ -7,7 +7,7 @@ Repositorio para el trabajo de Informática Industrial
 
 Changes v1.4.
 
-- Se ha añadido un nuevo sistema de vida bien nuevecito con listas y herencias.
+- Se ha añadido un nuevo sistema de vida con listas y herencias para la correcta implementacion.
 
 
 @David
