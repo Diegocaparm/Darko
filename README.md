@@ -1,8 +1,10 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
+
+
 @David
 
-Changes v1.4?
+Changes v1.4.
 
 - Se han añadido los enemigos tentaculo y babosa
 
