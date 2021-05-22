@@ -2,6 +2,14 @@
 Repositorio para el trabajo de Informática Industrial
 
 
+@Miguel
+
+
+Changes v1.4.
+
+- Se ha añadido un nuevo sistema de vida bien nuevecito con listas y herencias.
+
+
 @David
 
 Changes v1.4.
