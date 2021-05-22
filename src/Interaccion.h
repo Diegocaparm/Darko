@@ -16,10 +16,14 @@ public:
 	//PJ con entorno
 	static void rebote(Hombre& h, Caja c);
 	static void rebote(Hombre& h, Pared p);
-	static void rebote(Hombre& h, listaPlat lp); //Añadida por David
+	static void rebote(Hombre& h, listaPlat lp); 
 	static void disparoInicializa(Disparo*, Hombre*);
-	static void recoleccion(Hombre h, Vidas& v);
 
+	//Pj con vidas
+	static void rebote(Corazon& v, Pared p);
+	static void rebote(Corazon& v, Caja c);
+	static bool recoleccion(Corazon& v,Hombre h);
+	
 	//Enemigos con entorno
 	static void rebote(EnemigoDisp& ene, Caja c);
 	static void rebote(EnemigoDisp& ene, Pared p);

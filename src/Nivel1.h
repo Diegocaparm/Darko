@@ -15,12 +15,13 @@
 #include "listaEnemDisp.h"
 #include "listaPlat.h"
 #include "Bonus.h"
+#include"VidasRec.h"
 
 class Nivel1
 {
 //Atributos
 public:
-	Interfaz intz;
+	//Interfaz intz;
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
@@ -41,12 +42,15 @@ public:
 	Tentaculo tentaculo;
 	listaEnemDisp enemigosDisp;
 	listaPlat plataformas;
+	Vidas vidas;
+	VidasRec vidasR;
 	//Bonus bonus, * pbonus = &bonus;
 	//Esfera esfera, * pesfera = &esfera,
 		//esfera2, * pesfera2 = &esfera2;
 	//añadir los atributos que son los objetos del escenario
 
-	//Métodos
+
+//Métodos
 public:
 	void teclaUp(unsigned char key);
 	void teclaDown(unsigned char key);

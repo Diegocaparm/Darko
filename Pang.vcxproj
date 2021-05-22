@@ -22,6 +22,7 @@
     <ClCompile Include="src\babosa.cpp" />
     <ClCompile Include="src\Bonus.cpp" />
     <ClCompile Include="src\Caja.cpp" />
+    <ClCompile Include="src\Corazon.cpp" />
     <ClCompile Include="src\Dinero.cpp" />
     <ClCompile Include="src\Disparo.cpp" />
     <ClCompile Include="src\DispEnem.cpp" />
@@ -41,12 +42,14 @@
     <ClCompile Include="src\Tentaculo.cpp" />
     <ClCompile Include="src\Vector2D.cpp" />
     <ClCompile Include="src\Vidas.cpp" />
+    <ClCompile Include="src\VidasRec.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\babosa.h" />
     <ClInclude Include="src\Bonus.h" />
     <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\ColorRGB.h" />
+    <ClInclude Include="src\Corazon.h" />
     <ClInclude Include="src\Dinero.h" />
     <ClInclude Include="src\Disparo.h" />
     <ClInclude Include="src\DispEnem.h" />
@@ -65,6 +68,7 @@
     <ClInclude Include="src\Tentaculo.h" />
     <ClInclude Include="src\Vector2D.h" />
     <ClInclude Include="src\Vidas.h" />
+    <ClInclude Include="src\VidasRec.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

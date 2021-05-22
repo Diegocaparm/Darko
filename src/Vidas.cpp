@@ -3,96 +3,101 @@
 #include "Hombre.h"
 #include "ETSIDI.h"
 #include "Menu.h"
+#include "Interaccion.h"
 
 Vidas::Vidas()
 {
-	actual = 2;
-	maximo = 5;
-	recoger = true;
+	numero = 0;
+	for (int i = 0; i < MAX_VIDAS; i++)
+		lista[i] = 0;
+
 }
 
-void Vidas::setPos(float x, float y)
+bool Vidas::agregar(Corazon* c)
 {
-	posicion.x = x;
-	posicion.y = y;
+	for (int i = 0; i < numero; i++) //Evitar que se añada una vida ya existente
+		if (lista[i] == c)
+			return false;
+
+	if (numero < MAX_VIDAS)
+		lista[numero++] = c; // último puesto sin rellenar
+	else
+		return false; // capacidad máxima alcanzada
+	return true;
 }
 
-Vector2D Vidas::getPos()
+
+void Vidas::dibuja()
 {
-	Vector2D pos;
-	pos.x = posicion.x;
-	pos.y = posicion.y;
-	return pos;
+	for (int i = 0; i < numero; i++)
+		lista[i]->dibuja();
 }
 
-void Vidas::dibuja(float posx, float posy, bool r)
-{
-	if (r = true) {
-		glPushMatrix();
-		glTranslatef(posx, posy, 0); //Que avance hacia la derecha con el personaje, pero no hacia arriba
-		glColor3f(1.0f, 1.0f, 0.0f);
-		//glutSolidSphere(1, 20, 20);
-		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/corazon.png").id);
-		glDisable(GL_LIGHTING);
-		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex2f(0, 0);
-		glTexCoord2d(1, 1); glVertex2f(1.5, 0);
-		glTexCoord2d(1, 0); glVertex2f(1.5, 1.5);
-		glTexCoord2d(0, 0); glVertex2f(0, 1.5);
-		glEnd();
-		glEnable(GL_LIGHTING);
-		glDisable(GL_TEXTURE_2D);
-		glPopMatrix();
-	}
-	if (r = false) {
-		glPushMatrix();
-		glTranslatef(posx, posy, 0); //Que avance hacia la derecha con el personaje, pero no hacia arriba
-		glColor3f(1.0f, 1.0f, 0.0f);
-		glutSolidSphere(1, 20, 20);
-		glPopMatrix();
-	}
-}
+
 
 void Vidas::mueve(float t)
 {
-	posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
-	velocidad = velocidad + aceleracion * t;
-
-
+	for (int i = 0; i < numero; i++)
+		lista[i]->mueve(t);
 }
 
-void Vidas::daño()
+void Vidas::rebote(Pared pared)
 {
-	actual -= 1;
+	for (int i = 0; i < numero; i++)
+		Interaccion::rebote(*(lista[i]), pared);
+}
 
-	if (actual == 0) {
-		Menu GAMEOVER;	//Si se queda sin vidas el pj salta al gameover.
+void Vidas::rebote(Caja caja)
+{
+	for (int i = 0; i < numero; i++)
+		Interaccion::rebote(*(lista[i]), caja);
+}
+
+void Vidas::destruirContenido()
+{
+	for (int i = 0; i < numero; i++) // destrucción de corazones contenidos
+		delete lista[i];
+
+	numero = 0; // inicializa lista
+}
+
+void Vidas::eliminar(int index)
+{
+	if ((index < 0) || (index >= numero))
+		return;
+	delete lista[index];
+	numero--;
+	for (int i = index; i < numero; i++)
+		lista[i] = lista[i + 1];
+}
+
+void Vidas::eliminar(Corazon* e)
+{
+	for (int i = 0; i < numero; i++)
+		if (lista[i] == e)
+		{
+			eliminar(i);
+			return;
+		}
+}
+
+
+Corazon* Vidas::colision(Hombre h)
+{
+	for (int i = 0; i < numero; i++)
+	{
+		if (Interaccion::recoleccion(*(lista[i]), h))
+			return lista[i];
 	}
+	return 0; //no hay colisión
 }
 
-void Vidas::aumento()
+Corazon* Vidas::operator[](int i)
 {
-	actual += 1;
-	if (actual >= maximo) {
-		actual = maximo;		//Se tiene un maximo de 5 vidas.
-	}
+	if (i >= numero)//si me paso, devuelvo la ultima
+		i = numero - 1;
+	if (i < 0) //si el indice es negativo, devuelvo la primera
+		i = 0;
+	return lista[i];
 }
 
-
-int Vidas::getCantidad()
-{
-	return actual;	//Accede al atributo Cantidad
-}
-
-void Vidas::setRecogido(bool a)
-{
-	recoger = a;
-}
-
-bool Vidas::getRecogido()
-{
-
-	return recoger;
-}

@@ -1,30 +1,31 @@
 #pragma once
 #include <freeglut.h>
 #include <Vector2D.h>
+#include <Corazon.h>
+#include <Caja.h>
+#include <Hombre.h>
+
+#define MAX_VIDAS 10
 
 class Vidas
 {
-private:
-	int actual;
-	int maximo;
-	bool recoger;
-
-	Vector2D posicion;
-	Vector2D velocidad;
-	Vector2D aceleracion;
+public:
+	Corazon* lista[MAX_VIDAS];
+	int numero;
 
 public:
-	Vidas();									//Constructor
-	void setPos(float x, float y);				//Posición de vida
-	Vector2D getPos();							//retorna la posicion de vida	
-	void dibuja(float posx, float posy, bool r); //Dibuja Corazon
-	void mueve(float t);						//Movimiento del Corazón
-	void daño();								//Reduce la vida en 1, si se acaba salta a la pantalla de GameOver
-	void aumento();								//Aumenta la vida
-	int getCantidad();							//Retorna la cantidad de vidas actuales
-	void setRecogido(bool a);
-	bool getRecogido();
+	Vidas();							//Constructor
+	bool agregar(Corazon* c);			//Agrega Un Corazon
+	void dibuja();						//Dibuja Corazon	
+	void mueve(float t);
+	void rebote(Pared pared);
+	void rebote(Caja caja);
+	void destruirContenido();
+	void eliminar(int index);
+	void eliminar(Corazon* e);
+	Corazon* colision(Hombre h);
+	Corazon* operator [] (int i);
+	
 
 	friend class Interfaz;
-
 };

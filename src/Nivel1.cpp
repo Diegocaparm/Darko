@@ -17,8 +17,11 @@ void Nivel1::dibuja()
 	pincho2.dibuja();
 	pincho3.dibuja();
 
-	//Dibuja la interfaz
-	intz.dibuja(hombre.getPos());
+	//Dibuja Vida
+	vidas.dibuja();
+
+	//Dibuja Vidas Recogidas
+	vidasR.dibuja();
 
 	//Dibujamos lo animado
 	hombre.dibuja();
@@ -40,8 +43,12 @@ void Nivel1::mueve()
 	babosa.mueve(0.025f);
 	tentaculo.mueve(0.025f);
 
-	//Movimiento Interfaz
-	intz.mueve(0.025f);
+	//Movimiento Vidas
+	vidas.mueve(0.025f);
+	Vector2D pos=hombre.getPos();
+	for (int i = 0; i < 3; i++) 
+		vidasR.lista[i]->setPos(pos.x+8+i*2, 16);
+	vidasR.mueve(0.025f);
 
 	//Interacciones personaje con el entorno
 	Interaccion::rebote(hombre, caja);
@@ -58,6 +65,15 @@ void Nivel1::mueve()
 	//Interaccion::rebote(hombre, eneDisp1);
 	//Interaccion::rebote(hombre, eneDisp2);
 	Interaccion::mov(babosa, hombre);
+
+	//Interaccion Pj con Vida
+	 
+	//Elimina Vida recogida
+	Corazon* aux = vidas.colision(hombre);
+	if (aux != 0) {				//si alguna Vida ha chocado
+		vidas.eliminar(aux);
+		vidasR.agregar(new Corazon());
+	}
 }
 
 void Nivel1::inicializa()
@@ -68,7 +84,7 @@ void Nivel1::inicializa()
 
 	//Posicionamos todo el entorno
 	Pared* plat1 = new Pared(2.0f, 10.0f, -5.0f, 10.0f, 50, 150, 250),
-		* plat2 = new Pared(27.0f, 5.0f, 18.0f, 5.0f, 150, 150, 50),
+		* plat2 = new Pared(18.0f, 5.0f, 27.0f, 5.0f, 150, 150, 50),
 		* plat3 = new Pared(45.0f, 10.0f, 36.0f, 10.0f, 50, 150, 250),
 		* plat4 = new Pared(68.0f, 5.0f, 57.0f, 5.0f, 150, 150, 50),
 		* plat5 = new Pared(100.0f, 10.0f, 82.0f, 10.0f, 50, 150, 250),
@@ -118,6 +134,14 @@ void Nivel1::inicializa()
 	enemigosDisp.agregar(ped7);
 	enemigosDisp.agregar(ped8);
 	enemigosDisp.agregar(ped9);
+
+	//Creaccion de Vidas Recolectables
+	vidas.agregar(new Corazon(4.0f, 0.0f));
+
+	//Creaccion de las Vidas del Pj
+	for (int i = 0; i < vidasR.getVidas(); i++) 
+		vidasR.agregar(new Corazon());
+	
 }
 
 void Nivel1::teclaUp(unsigned char key)

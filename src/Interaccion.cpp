@@ -238,17 +238,41 @@ void Interaccion::mov(Babosa& b, Hombre& h) {
 
 }
 
-void Interaccion::recoleccion(Hombre h, Vidas& v)
+void Interaccion::rebote(Corazon& v, Pared p)
 {
-	Vector2D posvida = v.getPos();
+	float xmin = p.limite1.x;//izq
+	float xmax = p.limite2.x;//dcha
+	float ymin = p.limite1.y;//dw
+	float ymax = p.limite2.y;//up
 
-	float mod = (posvida - h.posicion).modulo();
-
-	if (mod <= 0.5) {
-
-		v.aumento();
-		v.setRecogido(false);
+	if (v.posicion.y < ymin || v.posicion.y>ymax) {
+		v.velocidad.y = 0;
 	}
+	if (v.posicion.x<xmin || v.posicion.x>xmax) {
+		v.velocidad.x = 0;
+	}
+}
+
+void Interaccion::rebote(Corazon& v, Caja c)
+{
+	rebote(v, c.techo);
+	rebote(v, c.pared_izq);
+	rebote(v, c.pared_dcha);
+	rebote(v, c.suelo1);
+	rebote(v, c.suelo2);
+	rebote(v, c.suelo3);
+	rebote(v, c.suelo4);
+	rebote(v, c.suelo5);
+}
+
+bool Interaccion::recoleccion(Corazon& v, Hombre h)
+{
+	Vector2D pos = h.getPos(); //la posicion de la base del hombre
+	pos.y += h.altura / 2.0f; //posicion del centro
+	float distancia = (v.posicion - pos).modulo();
+	if (distancia < v.radio)
+		return true;
+	return false;
 }
 
 void Interaccion::rebote(Hombre& h, listaEnemDisp l) 
