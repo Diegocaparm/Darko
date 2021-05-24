@@ -1,6 +1,13 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@Miguel
+
+Changes v1.5.
+
+
+- Se ha añadido sistema de vida y moneda renovado con listas y herencias. Ahora las vidas recolectadas aumenta.
+
 
 @David
 
