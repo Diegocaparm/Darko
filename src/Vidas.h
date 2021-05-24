@@ -5,7 +5,7 @@
 #include <Caja.h>
 #include <Hombre.h>
 
-#define MAX_VIDAS 10
+#define MAX_VIDAS 5
 
 class Vidas
 {

@@ -40,7 +40,7 @@ void Corazon::dibuja()
 		glTranslatef(posicion.x, posicion.y, 0); //Que avance hacia la derecha con el personaje, pero no hacia arriba
 		glColor3f(1.0f, 0.0f, 0.0f);
 		glutSolidSphere(radio, 20, 20);
-		/*glEnable(GL_TEXTURE_2D);
+		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/corazon.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
@@ -51,7 +51,7 @@ void Corazon::dibuja()
 		glTexCoord2d(0, 0); glVertex2f(0, 1.5);
 		glEnd();
 		glEnable(GL_LIGHTING);
-		glDisable(GL_TEXTURE_2D);*/
+		glDisable(GL_TEXTURE_2D);
 		glPopMatrix();
 }
 

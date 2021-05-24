@@ -39,6 +39,30 @@ void EnemigoDisp::dibuja()
 	//glRotatef(90, 1, 0, 0);
 	glPopMatrix();
 
+	//Añadido por Miguel (Dibuja los bordes de choque)
+	glPushMatrix();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.esquina1.x, hitbox.esquina1.y, 0);
+	glVertex3f(hitbox.esquina2.x, hitbox.esquina2.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.esquina2.x, hitbox.esquina2.y, 0);
+	glVertex3f(hitbox.esquina4.x, hitbox.esquina4.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.esquina4.x, hitbox.esquina4.y, 0);
+	glVertex3f(hitbox.esquina3.x, hitbox.esquina3.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.esquina3.x, hitbox.esquina3.y, 0);
+	glVertex3f(hitbox.esquina1.x, hitbox.esquina1.y, 0);
+	glEnd();
+	glPopMatrix();
+
 	dispEnem1.dibuja();
 }
 
@@ -70,6 +94,15 @@ void EnemigoDisp::mueve(float t)
 		else
 			velocidad.x = -1;
 	}
+
+	//Añadido por Miguel (crea las paredes de choque)
+	Vector2D e1, e2, e3, e4;
+	e1.x = posicion.x - 0.3f;	e1.y = posicion.y + 2.0f;
+	e2.x = posicion.x + 0.3f;	e2.y = posicion.y + 2.0f;
+	e3.x = posicion.x - 0.3f;	e3.y = posicion.y - 0.0f;
+	e4.x = posicion.x + 0.3f;	e4.y = posicion.y - 0.0f;
+	hitbox.setPos(e1,e2,e3,e4);
+
 }
 
 void EnemigoDisp::setColor(Byte r, Byte g, Byte b) {

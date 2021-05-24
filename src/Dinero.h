@@ -1,21 +1,29 @@
 #pragma once
 #include <Vector2D.h>
-#include <ETSIDI.h>
-using ETSIDI::SpriteSequence;
+#include <Moneda.h>
+#include <freeglut.h>
+#include <Caja.h>
+#include <Hombre.h>
+#define MAX_MONEDAS 50
 
 class Dinero
 {
-public:
-	int actual;
-	Vector2D posicion;
-	SpriteSequence sprite{ "imagenes/moneda.png", 7 };
+protected:
+	Moneda* lista[MAX_MONEDAS];
+	int numero;
 
 public:
-	Dinero();
-	void dibuja();
-	void setPos(float x, float y);
-	int getCantidad();
-	void mueve();
+	Dinero();							//Constructor
+	bool agregar(Moneda* d);			//Agrega Moneda
+	void dibuja();						//Dibuja Moneda	
+	void mueve(float t);				//Movimiento Moneda
+	void rebote(Pared pared);
+	void rebote(Caja caja);
+	void destruirContenido();
+	void eliminar(int index);
+	void eliminar(Moneda* d);
+	Moneda* colision(Hombre h);
+	Moneda* operator [] (int i);
 
 };
 

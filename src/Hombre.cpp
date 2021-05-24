@@ -5,6 +5,7 @@
 Hombre::Hombre() {
 	altura = 1.8f;
 	aceleracion.x = aceleracion.y = 0.0f;
+	mov = 0;
 }
 
 void Hombre::dibuja()
@@ -25,6 +26,31 @@ void Hombre::dibuja()
 	glTranslatef(0, 0, -altura * 5 / 6);
 	glRotatef(90, 1, 0, 0);
 	glPopMatrix();
+
+	//Añadido por Miguel (Dibuja los bordes de choque)
+	glPushMatrix();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.esquina1.x, hitbox.esquina1.y, 0);
+	glVertex3f(hitbox.esquina2.x, hitbox.esquina2.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.esquina2.x, hitbox.esquina2.y, 0);
+	glVertex3f(hitbox.esquina4.x, hitbox.esquina4.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.esquina4.x, hitbox.esquina4.y, 0);
+	glVertex3f(hitbox.esquina3.x, hitbox.esquina3.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.esquina3.x, hitbox.esquina3.y, 0);
+	glVertex3f(hitbox.esquina1.x, hitbox.esquina1.y, 0);
+	glEnd();
+	glPopMatrix();
+
 }
 
 void Hombre::mueve(float t)
@@ -51,8 +77,13 @@ void Hombre::mueve(float t)
 	if (velocidad.y < 0.3f && velocidad.y > -0.3f && sentido == 1 && salto == 0)
 		salto = 1;
 
-
-	
+	//Añadido por Miguel (crea las paredes de choque)
+	Vector2D e1, e2, e3, e4;
+	e1.x = posicion.x - 0.3f;	e1.y = posicion.y + 1.8f;
+	e2.x = posicion.x + 0.3f;	e2.y = posicion.y + 1.8f;
+	e3.x = posicion.x - 0.3f;	e3.y = posicion.y - 0.0f;
+	e4.x = posicion.x + 0.3f;	e4.y = posicion.y - 0.0f;
+	hitbox.setPos(e1, e2, e3, e4);
 }
 
 void Hombre::setColor(Byte r, Byte g, Byte b) {

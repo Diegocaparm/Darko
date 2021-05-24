@@ -2,11 +2,15 @@
 #include "Vector2D.h"
 #include "ColorRGB.h"
 #include "DispEnem.h"
+#include "Hitbox.h"
 
 class EnemigoDisp
 {
 	ColorRGB color;
-	Vector2D posicion, velocidad, aceleracion;
+	Vector2D posicion; 
+	Vector2D velocidad;
+	Vector2D aceleracion;
+	Hitbox hitbox;
 
 public:
 	EnemigoDisp();

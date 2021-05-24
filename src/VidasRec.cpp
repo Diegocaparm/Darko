@@ -1,13 +1,23 @@
 #include "VidasRec.h"
 
-//void VidasRec::mueve(float t)
-//{
-//	for (int i = 0; i < vida_actual; i++) {
-//		lista[i]->mueve(t);
-//	}
-//}
+void VidasRec::mueve(float t,float posx)
+{
+	/*for (int i = 0; i < getVidas(); i++)
+		lista[i]->setPos(posx + 8 + i * 2, 16);*/
+
+	for (int i = 0; i < numero; i++) {
+		lista[i]->setPos(posx + 4 + i * 2, 16);
+		lista[i]->mueve(t);
+	}
+}
 
 int VidasRec::getVidas()
 {
-	return vida_actual;
+	return vida_inicial;
 }
+
+//void VidasRec::reduceVida()
+//{
+//	eliminar()
+//}
+

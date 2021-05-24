@@ -171,36 +171,42 @@ void Interaccion::rebote(Tank& t, Pared p)
 	}
 }
 
-void Interaccion::rebote(Hombre & h, EnemigoDisp e)
+void Interaccion::rebote(Hombre & h, EnemigoDisp e,VidasRec& v)
 {
-	bool izq = 0;	//Posicion relativa del Pj con enemigo. En la izquierda=TRUE
+	//bool izq = 0;	//Posicion relativa del Pj con enemigo. En la izquierda=TRUE
 
-	Vector2D diferencia = (h.posicion - e.posicion);
-	float modulo = diferencia.modulo();
+	//Vector2D diferencia = (h.posicion - e.posicion);
+	//float modulo = diferencia.modulo();
 
-	if (h.posicion.x >= e.posicion.x) {
-		izq = false;
+	//if (h.posicion.x >= e.posicion.x) {
+	//	izq = false;
+	//}
+	//else {
+	//	izq = true;
+	//}
+
+	//if (modulo <= 0.5 && izq == true) {
+	//	h.posicion.x -= 1;	//Con posicion funciona pero si se mantiene la tecla de ir a derecha se traspasa enemigo
+	//	//h.aceleracion.x = -200;
+
+	//}
+
+	//if (modulo <= 0.2 && izq == false) {
+	//	h.posicion.x += 1;  //Con posicion funciona pero si se mantiene la tecla de ir a iquierda se traspasa enemigo
+	//	//h.aceleracion.x = 200;
+
+	//}
+
+	//Si se usa velocidad o aceleracion para el empuje
+	//if (modulo > 1.0 && modulo < 1.5) {
+	//	h.aceleracion.x = 0;
+	//	h.velocidad.x = 0;
+	//}
+	 
+	if (h.hitbox.izquierda.limite1.x == e.hitbox.derecha.limite1.x && h.hitbox.izquierda.limite1.y <= e.hitbox.derecha.limite1.y) {
+		v.eliminar(v.numero);
 	}
-	else {
-		izq = true;
-	}
 
-	if (modulo <= 0.5 && izq == true) {
-		h.posicion.x -= 0.2;	//Con posicion funciona pero si se mantiene la tecla de ir a derecha se traspasa enemigo
-		//h.aceleracion.x = -200;
-
-	}
-
-	if (modulo <= 0.3 && izq == false) {
-		h.posicion.x += 0.2;  //Con posicion funciona pero si se mantiene la tecla de ir a iquierda se traspasa enemigo
-		//h.aceleracion.x = 200;
-
-	}
-
-	if (modulo > 1.0 && modulo < 1.5) {
-		h.aceleracion.x = 0;
-		h.velocidad.x = 0;
-	}
 }
 
 void Interaccion::rebote(EnemigoDisp& ed1, EnemigoDisp& ed2) {
@@ -275,8 +281,45 @@ bool Interaccion::recoleccion(Corazon& v, Hombre h)
 	return false;
 }
 
-void Interaccion::rebote(Hombre& h, listaEnemDisp l) 
+void Interaccion::rebote(Moneda& m, Pared p)
+{
+	float xmin = p.limite1.x;//izq
+	float xmax = p.limite2.x;//dcha
+	float ymin = p.limite1.y;//dw
+	float ymax = p.limite2.y;//up
+
+	if (m.posicion.y < ymin || m.posicion.y>ymax) {
+		m.velocidad.y = 0;
+	}
+	if (m.posicion.x<xmin || m.posicion.x>xmax) {
+		m.velocidad.x = 0;
+	}
+}
+
+void Interaccion::rebote(Moneda& m, Caja c)
+{
+	rebote(m, c.techo);
+	rebote(m, c.pared_izq);
+	rebote(m, c.pared_dcha);
+	rebote(m, c.suelo1);
+	rebote(m, c.suelo2);
+	rebote(m, c.suelo3);
+	rebote(m, c.suelo4);
+	rebote(m, c.suelo5);
+}
+
+bool Interaccion::recoleccion(Moneda& v, Hombre h)
+{
+	Vector2D pos = h.getPos(); //la posicion de la base del hombre
+	pos.y += h.altura / 2.0f; //posicion del centro
+	float distancia = (v.posicion - pos).modulo();
+	if (distancia < v.radio)
+		return true;
+	return false;
+}
+
+void Interaccion::rebote(Hombre& h, listaEnemDisp l,VidasRec& v) 
 {
 	for (int i = 0; i < l.numero; i++)
-		rebote(h, *l.lista[i]);
+		rebote(h, *l.lista[i],v);
 }

@@ -37,7 +37,7 @@
 //	moneda.dibuja();
 //}
 
-void Interfaz::mueve(float t)
-{
-	moneda.mueve();
-}
+//void Interfaz::mueve(float t)
+//{
+//	moneda.mueve(0.025f);
+//}

@@ -15,9 +15,9 @@ Vidas::Vidas()
 
 bool Vidas::agregar(Corazon* c)
 {
-	for (int i = 0; i < numero; i++) //Evitar que se añada una vida ya existente
-		if (lista[i] == c)
-			return false;
+	//for (int i = 0; i < numero; i++) //Evitar que se añada una vida ya existente
+	//	if (lista[i] == c)
+	//		return false;
 
 	if (numero < MAX_VIDAS)
 		lista[numero++] = c; // último puesto sin rellenar

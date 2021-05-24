@@ -1,51 +1,103 @@
 #include "Dinero.h"
 #include "freeglut.h"
+#include "Hombre.h"
+#include "ETSIDI.h"
+#include "Menu.h"
+#include "Interaccion.h"
 
 Dinero::Dinero()
 {
-	actual = 0;
-	posicion.x = 10;
-	posicion.y = 10;
-	sprite.setCenter(1, 0);
-	sprite.setSize(2, 2);
+	numero = 0;
+	for (int i = 0; i < MAX_MONEDAS; i++)
+		lista[i] = 0;
 
 }
+
+bool Dinero::agregar(Moneda* d)
+{
+	//for (int i = 0; i < numero; i++) //Evitar que se añada una vida ya existente
+	//	if (lista[i] == c)
+	//		return false;
+
+	if (numero < MAX_VIDAS)
+		lista[numero++] = d; // último puesto sin rellenar
+	else
+		return false; // capacidad máxima alcanzada
+	return true;
+}
+
 
 void Dinero::dibuja()
 {
-	glPushMatrix();
-	glTranslatef(posicion.x, posicion.y, 0);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	//glutSolidSphere(5, 20, 20);
+	for (int i = 0; i < numero; i++)
+		lista[i]->dibuja();
+}
 
-	//gestion de direccion y animacion
-	/*if (velocidad.x > 0.01)sprite.flip(false, false);
-	if (velocidad.x < -0.01)sprite.flip(true, false);
-	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
-		sprite.setState(0);
-	else if (sprite.getState() == 0)
-		sprite.setState(1, false);*/
-	if (sprite.getState() == 0) {
-		sprite.setState(1, false);
+
+
+void Dinero::mueve(float t)
+{
+	for (int i = 0; i < numero; i++)
+		lista[i]->mueve(t);
+}
+
+void Dinero::rebote(Pared pared)
+{
+	for (int i = 0; i < numero; i++)
+		Interaccion::rebote(*(lista[i]), pared);
+}
+
+void Dinero::rebote(Caja caja)
+{
+	for (int i = 0; i < numero; i++)
+		Interaccion::rebote(*(lista[i]), caja);
+}
+
+void Dinero::destruirContenido()
+{
+	for (int i = 0; i < numero; i++) // destrucción de dinero contenido
+		delete lista[i];
+
+	numero = 0; // inicializa lista
+}
+
+void Dinero::eliminar(int index)
+{
+	if ((index < 0) || (index >= numero))
+		return;
+	delete lista[index];
+	numero--;
+	for (int i = index; i < numero; i++)
+		lista[i] = lista[i + 1];
+}
+
+void Dinero::eliminar(Moneda* e)
+{
+	for (int i = 0; i < numero; i++)
+		if (lista[i] == e)
+		{
+			eliminar(i);
+			return;
+		}
+}
+
+
+Moneda* Dinero::colision(Hombre h)
+{
+	for (int i = 0; i < numero; i++)
+	{
+		if (Interaccion::recoleccion(*(lista[i]), h))
+			return lista[i];
 	}
-
-	sprite.draw();
-	glPopMatrix();
+	return 0; //no hay colisión
 }
 
-void Dinero::setPos(float x, float y)
+Moneda* Dinero::operator[](int i)
 {
-	posicion.x = x;
-	posicion.y = y;
+	if (i >= numero)//si me paso, devuelvo la ultima
+		i = numero - 1;
+	if (i < 0) //si el indice es negativo, devuelvo la primera
+		i = 0;
+	return lista[i];
 }
 
-int Dinero::getCantidad()
-{
-	return actual;
-}
-
-void Dinero::mueve()
-{
-	sprite.loop();
-
-}

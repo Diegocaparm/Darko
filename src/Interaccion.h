@@ -9,6 +9,8 @@
 #include "Tank.h"
 #include "babosa.h"
 #include "Vidas.h"
+#include "VidasRec.h"
+#include "Dinero.h"
 
 class Interaccion
 {
@@ -19,11 +21,16 @@ public:
 	static void rebote(Hombre& h, listaPlat lp); 
 	static void disparoInicializa(Disparo*, Hombre*);
 
-	//Pj con vidas
+	//Pj con Corazones
 	static void rebote(Corazon& v, Pared p);
 	static void rebote(Corazon& v, Caja c);
 	static bool recoleccion(Corazon& v,Hombre h);
-	
+
+	//Pj con Monedas
+	static void rebote(Moneda& v, Pared p);
+	static void rebote(Moneda& v, Caja c);
+	static bool recoleccion(Moneda& v, Hombre h);
+
 	//Enemigos con entorno
 	static void rebote(EnemigoDisp& ene, Caja c);
 	static void rebote(EnemigoDisp& ene, Pared p);
@@ -31,9 +38,10 @@ public:
 	static void rebote(Tank& t, Pared p);
 
 	//Interacción entre Pj y enemigos
-	static void rebote(Hombre& h, EnemigoDisp e); 
+	static void rebote(Hombre& h, EnemigoDisp e, VidasRec& v); 
 	static void rebote(EnemigoDisp&, EnemigoDisp&);
 	static void mov(Babosa& b, Hombre& h);
-	static void rebote(Hombre& h, listaEnemDisp l);
+	static void rebote(Hombre& h, listaEnemDisp l,VidasRec& v);
+
 };
 

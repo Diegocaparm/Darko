@@ -18,10 +18,11 @@ void Nivel1::dibuja()
 	pincho3.dibuja();
 
 	//Dibuja Vida
-	vidas.dibuja();
+	vidas.dibuja();			//Dibuja vidas del entorno
+	vidasR.dibuja();		//Dibuja Vidas Recogidas
 
-	//Dibuja Vidas Recogidas
-	vidasR.dibuja();
+	//Dibuja Monedas
+	dineros.dibuja();		//Dibuja monedas del entorno
 
 	//Dibujamos lo animado
 	hombre.dibuja();
@@ -46,9 +47,12 @@ void Nivel1::mueve()
 	//Movimiento Vidas
 	vidas.mueve(0.025f);
 	Vector2D pos=hombre.getPos();
-	for (int i = 0; i < 3; i++) 
-		vidasR.lista[i]->setPos(pos.x+8+i*2, 16);
-	vidasR.mueve(0.025f);
+	vidasR.mueve(0.025f,pos.x);
+
+	//Movimiento Monedas
+	dineros.mueve(0.025f);
+	/*Vector2D pos = hombre.getPos();
+	vidasR.mueve(0.025f, pos.x);*/
 
 	//Interacciones personaje con el entorno
 	Interaccion::rebote(hombre, caja);
@@ -61,7 +65,7 @@ void Nivel1::mueve()
 	Interaccion::rebote(tank, plataforma9);
 	
 	//Interaccion Pj con enemigo
-	Interaccion::rebote(hombre, enemigosDisp);
+	Interaccion::rebote(hombre, enemigosDisp,vidasR);
 	//Interaccion::rebote(hombre, eneDisp1);
 	//Interaccion::rebote(hombre, eneDisp2);
 	Interaccion::mov(babosa, hombre);
@@ -69,10 +73,16 @@ void Nivel1::mueve()
 	//Interaccion Pj con Vida
 	 
 	//Elimina Vida recogida
-	Corazon* aux = vidas.colision(hombre);
-	if (aux != 0) {				//si alguna Vida ha chocado
-		vidas.eliminar(aux);
+	Corazon* aux_c = vidas.colision(hombre);
+	if (aux_c != 0) {				//si alguna Vida ha chocado
+		vidas.eliminar(aux_c);
 		vidasR.agregar(new Corazon());
+	}
+
+	//Elimina Monedas recogidas
+	Moneda* aux_m = dineros.colision(hombre);
+	if (aux_m != 0) {				//si alguna Moneda ha chocado
+		dineros.eliminar(aux_m);
 	}
 }
 
@@ -136,12 +146,17 @@ void Nivel1::inicializa()
 	enemigosDisp.agregar(ped9);
 
 	//Creaccion de Vidas Recolectables
-	vidas.agregar(new Corazon(4.0f, 0.0f));
+	vidas.agregar(new Corazon(4.0f, 0.0f));		//Corazon (Posicion x, Posicion y)
+	vidas.agregar(new Corazon(12.0f, 0.0f));
 
 	//Creaccion de las Vidas del Pj
 	for (int i = 0; i < vidasR.getVidas(); i++) 
 		vidasR.agregar(new Corazon());
 	
+
+	//Creaccion de Monedas Recolectables
+	dineros.agregar(new Moneda(8.0f, 0.0f));		//Moneda (Posicion x, Posicion y)
+	dineros.agregar(new Moneda(14.0f, 0.0f));
 }
 
 void Nivel1::teclaUp(unsigned char key)
