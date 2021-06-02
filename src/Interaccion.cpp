@@ -1,5 +1,6 @@
 #include "Interaccion.h"
 #include <math.h>
+#include "stdio.h"
 #define pi 3.14159265
 
 void Interaccion::rebote(Hombre& h, Caja c)
@@ -28,6 +29,7 @@ void Interaccion::rebote(Hombre& h, Pared p)
 	float xmax = p.limite1.x;//dcha
 	float ymin = p.limite2.y;//ab
 	float ymax = p.limite1.y - h.altura;//arr
+
 	if (h.posicion.y > ymin - h.altura / 2)
 		h.zona = 1;
 	else
@@ -232,40 +234,25 @@ void Interaccion::rebote(bomber& b, Pared p)
 
 void Interaccion::rebote(Hombre & h, EnemigoDisp e,VidasRec& v)
 {
-	//bool izq = 0;	//Posicion relativa del Pj con enemigo. En la izquierda=TRUE
 
-	//Vector2D diferencia = (h.posicion - e.posicion);
-	//float modulo = diferencia.modulo();
+	if (h.hitbox.compareRight(e.hitbox)) {
+		h.posicion.x -= 2;
 
-	//if (h.posicion.x >= e.posicion.x) {
-	//	izq = false;
-	//}
-	//else {
-	//	izq = true;
-	//}
-
-	//if (modulo <= 0.5 && izq == true) {
-	//	h.posicion.x -= 1;	//Con posicion funciona pero si se mantiene la tecla de ir a derecha se traspasa enemigo
-	//	//h.aceleracion.x = -200;
-
-	//}
-
-	//if (modulo <= 0.2 && izq == false) {
-	//	h.posicion.x += 1;  //Con posicion funciona pero si se mantiene la tecla de ir a iquierda se traspasa enemigo
-	//	//h.aceleracion.x = 200;
-
-	//}
-
-	//Si se usa velocidad o aceleracion para el empuje
-	//if (modulo > 1.0 && modulo < 1.5) {
-	//	h.aceleracion.x = 0;
-	//	h.velocidad.x = 0;
-	//}
-	 
-	if (h.hitbox.izquierda.limite1.x == e.hitbox.derecha.limite1.x && h.hitbox.izquierda.limite1.y <= e.hitbox.derecha.limite1.y) {
-		v.eliminar(v.numero);
 	}
+	if (h.hitbox.compareLeft(e.hitbox)) {
+		h.posicion.x += 2;
 
+	}
+	if (h.hitbox.compareUp(e.hitbox)) {
+		h.posicion.y -= 2;
+		h.velocidad.y = 0.0f;
+		h.aceleracion.y = -9.8f;
+	}
+	if (h.hitbox.compareDown(e.hitbox)) {
+		h.posicion.y += 2;
+		h.velocidad.y = 0.0f;
+		h.aceleracion.y = -9.8f;
+	}
 }
 
 void Interaccion::rebote(EnemigoDisp& ed1, EnemigoDisp& ed2) {

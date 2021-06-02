@@ -60,3 +60,11 @@ float Pared::distancia(Vector2D punto, Vector2D* direccion)
 	return distancia;
 }
 
+bool Pared::operator==(Pared p)
+{
+	if (limite1 == p.limite1 && limite2 == p.limite2) {
+		return true;
+	}
+	return false;
+}
+

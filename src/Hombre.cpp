@@ -4,7 +4,8 @@
 
 Hombre::Hombre() {
 	altura = 1.8f;
-	aceleracion.x = aceleracion.y = 0.0f;
+	aceleracion.x =  0.0f;
+	aceleracion.y = -9.8f;
 	mov = 0;
 }
 
@@ -58,6 +59,7 @@ void Hombre::mueve(float t)
 	posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
 	velocidad = velocidad + aceleracion * t;
 
+	//Salto de David
 	if (velocidad.y > 0.3f)
 		sentido = 0;			//0 subiendo    1 bajando
 	if (velocidad.y < -2)
@@ -77,7 +79,7 @@ void Hombre::mueve(float t)
 	if (velocidad.y < 0.3f && velocidad.y > -0.3f && sentido == 1 && salto == 0)
 		salto = 1;
 
-	//Añadido por Miguel (crea las paredes de choque)
+	//Añadido por Miguel (crea las paredes hitbox)
 	Vector2D e1, e2, e3, e4;
 	e1.x = posicion.x - 0.3f;	e1.y = posicion.y + 1.8f;
 	e2.x = posicion.x + 0.3f;	e2.y = posicion.y + 1.8f;

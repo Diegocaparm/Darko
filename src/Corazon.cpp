@@ -37,7 +37,7 @@ void Corazon::dibuja()
 {
 	
 		glPushMatrix();
-		glTranslatef(posicion.x, posicion.y, 0); //Que avance hacia la derecha con el personaje, pero no hacia arriba
+		glTranslatef(posicion.x, posicion.y, 0);
 		glColor3f(1.0f, 0.0f, 0.0f);
 		glutSolidSphere(radio, 20, 20);
 		glEnable(GL_TEXTURE_2D);

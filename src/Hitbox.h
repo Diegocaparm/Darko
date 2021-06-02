@@ -15,5 +15,16 @@ public:
 	Hitbox(float x, float y);
 	void setPared();
 	void setPos(Vector2D e1, Vector2D e2, Vector2D e3, Vector2D e4);
+	bool compareRight(Hitbox h);
+	bool compareLeft(Hitbox h);
+	bool compareUp(Hitbox h);
+	bool compareDown(Hitbox h);
 };
 
+//			(1)---Arriba---(2)
+//			 |				|
+//			 |				|
+//		 Izquierda		 Derecha
+//			 |				|
+//			 |				|
+//			(3)---Abajo ---(4)

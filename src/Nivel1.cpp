@@ -22,7 +22,12 @@ void Nivel1::dibuja()
 	vidasR.dibuja();		//Dibuja Vidas Recogidas
 
 	//Dibuja Monedas
-	dineros.dibuja();		//Dibuja monedas del entorno
+	dineros.dibuja();			//Dibuja monedas del entorno
+	dinerosR.dibuja();			//Dibuja Debajo de Vidas Recogidas, el simbolo de moneda
+
+	//Hay que desimplementar la union dibuja-logica todavia
+	Vector2D pos = hombre.getPos();
+	dinerosR.dibujaContador(pos.x);	//Dibuja Debajo de Vidas Recogidas, el numero de monedas
 
 	//Dibujamos lo animado
 	hombre.dibuja();
@@ -53,8 +58,8 @@ void Nivel1::mueve()
 
 	//Movimiento Monedas
 	dineros.mueve(0.025f);
-	/*Vector2D pos = hombre.getPos();
-	vidasR.mueve(0.025f, pos.x);*/
+	
+	dinerosR.mueve(0.025f, pos.x);
 
 	//Interacciones personaje con el entorno
 	Interaccion::rebote(hombre, caja);
@@ -88,6 +93,7 @@ void Nivel1::mueve()
 	Moneda* aux_m = dineros.colision(hombre);
 	if (aux_m != 0) {				//si alguna Moneda ha chocado
 		dineros.eliminar(aux_m);
+		dinerosR.aumentaDinero();
 	}
 }
 
@@ -167,10 +173,12 @@ void Nivel1::inicializa()
 	for (int i = 0; i < vidasR.getVidas(); i++) 
 		vidasR.agregar(new Corazon());
 	
-
 	//Creaccion de Monedas Recolectables
 	dineros.agregar(new Moneda(8.0f, 0.0f));		//Moneda (Posicion x, Posicion y)
 	dineros.agregar(new Moneda(14.0f, 0.0f));
+
+	//Creaccion de Monedas del Pj
+	dinerosR.agregar(new Moneda(8.0f,14.0f));
 }
 
 void Nivel1::teclaUp(unsigned char key)

@@ -15,25 +15,22 @@ Dinero::Dinero()
 
 bool Dinero::agregar(Moneda* d)
 {
-	//for (int i = 0; i < numero; i++) //Evitar que se añada una vida ya existente
-	//	if (lista[i] == c)
+	//for (int i = 0; i < numero; i++) //Evitar que se añada una moneda ya existente
+	//	if (lista[i] == d)
 	//		return false;
 
-	if (numero < MAX_VIDAS)
+	if (numero < MAX_MONEDAS)
 		lista[numero++] = d; // último puesto sin rellenar
 	else
 		return false; // capacidad máxima alcanzada
 	return true;
 }
 
-
 void Dinero::dibuja()
 {
 	for (int i = 0; i < numero; i++)
 		lista[i]->dibuja();
 }
-
-
 
 void Dinero::mueve(float t)
 {
@@ -80,7 +77,6 @@ void Dinero::eliminar(Moneda* e)
 			return;
 		}
 }
-
 
 Moneda* Dinero::colision(Hombre h)
 {
