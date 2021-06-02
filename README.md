@@ -1,6 +1,17 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@David
+
+Changes v1.6.
+
+- Se han añadido listas de tentáculo y babosa
+
+- Se ha añadido nuevo enemigo bomber y su lista
+
+- Se ha solucionado problema con tank y tentáculo
+
+
 @Miguel
 
 Changes v1.5.
