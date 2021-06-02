@@ -10,6 +10,7 @@ class Tank
 
 public:
 	Tank();
+	Tank(float px, float py);
 	float altura;
 	void dibuja();
 	void mueve(float);

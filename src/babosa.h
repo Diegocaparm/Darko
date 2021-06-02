@@ -9,6 +9,7 @@ class Babosa
 
 public:
 	Babosa();
+	Babosa(float px, float py);
 	void dibuja();
 	void mueve(float);
 	void setColor(Byte, Byte, Byte);
@@ -18,7 +19,7 @@ public:
 	friend class Mundo;
 	friend class Nivel1;
 
-	int px, py;			//posicion relativa al personaje principal
+	int prx, pry;			//posicion relativa al personaje principal
 	int cerca=0;		//=1 si esta a menos de 5m, cambia el movimiento
 };
 

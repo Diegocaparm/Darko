@@ -5,7 +5,12 @@
 
 Babosa::Babosa() {
 	setColor(50, 220, 50);
-	px = py = 1;		//px=1 derecha   py=1 arriba
+	prx = pry = 1;		//prx=1 derecha   pry=1 arriba
+}
+Babosa::Babosa(float px, float py) {
+	setColor(50, 220, 50);
+	setPos(px, py);
+	prx = pry = 1;		//px=1 derecha   py=1 arriba
 }
 
 void Babosa::dibuja() {
@@ -23,12 +28,12 @@ void Babosa::mueve(float t) {
 	velocidad = velocidad + aceleracion * t;
 	
 	if (cerca) {
-		if (px)
+		if (prx)
 			aceleracion.x = -1;
 		else
 			aceleracion.x = 1;
 
-		if (py)
+		if (pry)
 			aceleracion.y = -1;
 		else
 			aceleracion.y = 1;
@@ -39,12 +44,12 @@ void Babosa::mueve(float t) {
 			velocidad.y = 2;
 	}
 	else {
-		if (px)
+		if (prx)
 			aceleracion.x = -1;
 		else
 			aceleracion.x = 1;
 
-		if (py)
+		if (pry)
 			aceleracion.y = -1;
 		else
 			aceleracion.y = 1;

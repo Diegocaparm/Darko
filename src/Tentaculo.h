@@ -9,6 +9,7 @@ class Tentaculo
 
 public:
 	Tentaculo();
+	Tentaculo(float px, float py);
 	void dibuja();
 	void mueve(float);
 	void setColor(Byte, Byte, Byte);
@@ -18,5 +19,5 @@ public:
 	friend class Nivel1;
 
 	float a;		//angulo de giro
-	int px;			//posicion relativa al personaje principal
+	int prx, flag;			//posicion relativa al personaje principal, direccion de oscilacion
 };

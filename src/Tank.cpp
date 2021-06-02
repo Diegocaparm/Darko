@@ -19,6 +19,23 @@ Tank::Tank() {
 	dispTank5.setVel(dispTank1.vel, 0.0f);
 }
 
+Tank::Tank(float px, float py) {
+	altura = 7.0f;
+	aceleracion.x = 0.0f;
+	aceleracion.y = -9.8f;
+	setPos(px, py);
+	dispTank1.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank2.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank3.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank4.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank5.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank1.setVel(-dispTank1.vel, 0.0f);
+	dispTank2.setVel(-dispTank1.vel * 0.707, dispTank1.vel * 0.707);
+	dispTank3.setVel(0.0f, dispTank1.vel);
+	dispTank4.setVel(dispTank1.vel * 0.707, dispTank1.vel * 0.707);
+	dispTank5.setVel(dispTank1.vel, 0.0f);
+}
+
 void Tank::dibuja()
 {
 	glPushMatrix();

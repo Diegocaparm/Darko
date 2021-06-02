@@ -5,7 +5,16 @@
 
 Tentaculo::Tentaculo() {
 	setColor(150, 0, 150);
-	px = 1;						//px=1 derecha   py=1 arriba
+	prx = 1;						//prx=1 derecha   pry=1 arriba
+	flag = 0;
+	a = 0;
+}
+
+Tentaculo::Tentaculo(float px, float py) {
+	setColor(150, 0, 0);
+	setPos(px, py);
+	flag = 0;
+	a = 0;
 }
 
 void Tentaculo::dibuja() {
@@ -33,7 +42,7 @@ void Tentaculo::mueve(float t) {
 	posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
 	velocidad = velocidad + aceleracion * t;
 	velocidad.x = aceleracion.x = 0;
-	static int flag=0;
+	
 	int lim=15;
 	if (a > lim)
 		flag = 1;
