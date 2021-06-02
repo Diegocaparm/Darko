@@ -1,6 +1,16 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+
+@Miguel
+
+Changes v1.7.
+
+- Se han terminado la interaccion Hombre-EnemigoDisp
+
+- Se ha añadido el aumento de Monedas (Faltaria un sprite de numeros para mejor implementacion)
+
+
 @David
 
 Changes v1.6.
