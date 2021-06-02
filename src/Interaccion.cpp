@@ -171,6 +171,65 @@ void Interaccion::rebote(Tank& t, Pared p)
 	}
 }
 
+void Interaccion::rebote(bomber& b, Caja c)
+{
+	float xmin = c.techo.limite2.x;
+	float xmax = c.techo.limite1.x;
+	if (b.posicion.x > xmax) {
+		b.posicion.x = xmax;
+	}
+	if (b.posicion.x < xmin) {
+		b.posicion.x = xmin;
+	}
+
+
+	float ymin = c.pared_dcha.limite2.y;
+	float ymax = c.pared_dcha.limite1.y - b.radio;
+	if (b.posicion.y > ymax) {
+		b.posicion.y = ymax;
+		b.velocidad.y = 0.0f;
+		b.aceleracion.y = -9.8f;
+	}
+	if (b.posicion.y < ymin) {
+		b.posicion.y = ymin;
+	}
+}
+
+void Interaccion::rebote(bomber& b, Pared p)
+{
+	float xmin = p.limite2.x;//izq
+	float xmax = p.limite1.x;//dcha
+	float ymin = p.limite2.y;//ab
+	float ymax = p.limite1.y - b.radio;//arr
+	if (b.posicion.y > ymin - b.radio / 2)
+		b.zonaV = 1;
+	else
+		b.zonaV = 0;
+
+	if (b.posicion.x < xmax && b.posicion.x > xmin) {  //zona=0 abajo    zona=1 arriba
+		if (b.zonaV == 0) {
+			if (b.posicion.y > ymax) {
+				b.posicion.y = ymax;
+				b.velocidad.y = 0.0f;
+				b.aceleracion.y = -9.8f;
+			}
+		}
+		else
+			if (b.posicion.y < ymin) {
+				b.posicion.y = ymin;
+				b.velocidad.y = 0.0f;
+				//	ene.aceleracion.y = -9.8f;
+			}
+
+		if (b.posicion.x < xmin + 0.5f) {		//cambiar de direccion
+			b.sentido = 1;
+		}
+		if (b.posicion.x > xmax - 0.5f) {
+			b.sentido = 0;
+		}
+	}
+}
+
 void Interaccion::rebote(Hombre & h, EnemigoDisp e,VidasRec& v)
 {
 	//bool izq = 0;	//Posicion relativa del Pj con enemigo. En la izquierda=TRUE
@@ -233,13 +292,13 @@ void Interaccion::mov(Babosa& b, Hombre& h) {
 		b.cerca = 0;
 	
 	if (b.posicion.x < h.posicion.x)
-		b.px = 0;
+		b.prx = 0;
 	else
-		b.px = 1;
+		b.prx = 1;
 	if (b.posicion.y < h.posicion.y + h.altura / 2)
-		b.py = 0;
+		b.pry = 0;
 	else
-		b.py = 1;
+		b.pry = 1;
 
 
 }

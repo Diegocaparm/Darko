@@ -1,21 +1,24 @@
 #pragma once
 #include "Bonus.h"
 #include "Caja.h"
-#include "Disparo.h"
-#include "Esfera.h"
-#include "Hombre.h"
-#include "Estela.h"
-#include "Interaccion.h"
-#include "EnemigoDisp.h"			
-#include "Tank.h"
-#include "Interfaz.h"
-#include "Pincho.h"
-#include "babosa.h"				
-#include "Tentaculo.h"
-#include "listaEnemDisp.h"
 #include "listaPlat.h"
-#include "Bonus.h"
-#include"VidasRec.h"
+#include "Pincho.h"
+#include "Disparo.h"
+#include "Estela.h"
+#include "Hombre.h"
+#include "Interaccion.h"
+#include "EnemigoDisp.h"
+#include "listaEnemDisp.h"
+#include "Tank.h"
+#include "listaTank.h"
+#include "babosa.h"		
+#include "listaBabosas.h"
+#include "Tentaculo.h"
+#include "listaTent.h"
+#include "bomber.h"
+#include "listabomber.h"
+#include "Interfaz.h"
+#include "VidasRec.h"
 #include "DineroRec.h"
 
 class Nivel1
@@ -40,13 +43,17 @@ public:
 	Disparo disparo;
 
 	//Enemigos
-	EnemigoDisp eneDisp1, eneDisp2, eneDisp3, eneDisp4, eneDisp5, 
-		eneDisp6, eneDisp7, eneDisp8, eneDisp9; //Enemigos simples
-	Tank tank;									//Enemigos chetos
-	Babosa babosa;							
-	Tentaculo tentaculo;
+	/*EnemigoDisp eneDisp1, eneDisp2, eneDisp3, eneDisp4, eneDisp5, 
+		eneDisp6, eneDisp7, eneDisp8, eneDisp9;*/ //Enemigos simples
+	//Tank tank;									//Enemigos chetos
+	listaTank Tanks;
+	//Babosa babosa;		
+	listaBabosas babosas;
+	//Tentaculo tentaculo;
+	listaTentaculo tentaculos;
 	listaEnemDisp enemigosDisp;
-
+	//bomber bomber1;
+	listabomber bombers;
 
 	//Listas para vidas
 	Vidas vidas;							//Vidas del entorno (Recolectables)

@@ -12,5 +12,7 @@ public:
 
 	friend class Interaccion;
 	friend class listaEnemDisp;
+	friend class listaTank;
+	friend class listabomber;
 };
 

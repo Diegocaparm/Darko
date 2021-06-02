@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\babosa.cpp" />
+    <ClCompile Include="src\bomber.cpp" />
     <ClCompile Include="src\Bonus.cpp" />
     <ClCompile Include="src\Caja.cpp" />
     <ClCompile Include="src\Corazon.cpp" />
@@ -30,8 +31,12 @@
     <ClCompile Include="src\DispTank.cpp" />
     <ClCompile Include="src\Hitbox.cpp" />
     <ClCompile Include="src\Interfaz.cpp" />
+    <ClCompile Include="src\listaBabosas.cpp" />
+    <ClCompile Include="src\listabomber.cpp" />
     <ClCompile Include="src\listaEnemDisp.cpp" />
     <ClCompile Include="src\listaPlat.cpp" />
+    <ClCompile Include="src\listaTank.cpp" />
+    <ClCompile Include="src\listaTent.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Moneda.cpp" />
     <ClCompile Include="src\Nivel1.cpp" />
@@ -49,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\babosa.h" />
+    <ClInclude Include="src\bomber.h" />
     <ClInclude Include="src\Bonus.h" />
     <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\ColorRGB.h" />
@@ -60,8 +66,12 @@
     <ClInclude Include="src\DispTank.h" />
     <ClInclude Include="src\Hitbox.h" />
     <ClInclude Include="src\Interfaz.h" />
+    <ClInclude Include="src\listaBabosas.h" />
+    <ClInclude Include="src\listabomber.h" />
     <ClInclude Include="src\listaEnemDisp.h" />
     <ClInclude Include="src\listaPlat.h" />
+    <ClInclude Include="src\listaTank.h" />
+    <ClInclude Include="src\listaTent.h" />
     <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\Moneda.h" />
     <ClInclude Include="src\Nivel1.h" />

@@ -27,9 +27,10 @@ void Nivel1::dibuja()
 	//Dibujamos lo animado
 	hombre.dibuja();
 	enemigosDisp.dibuja();
-	tank.dibuja();
-	babosa.dibuja();			
-	tentaculo.dibuja();
+	Tanks.dibuja();
+	babosas.dibuja();			
+	tentaculos.dibuja();
+	bombers.dibuja();
 }
 
 void Nivel1::mueve()
@@ -40,9 +41,10 @@ void Nivel1::mueve()
 
 	//Movimiento de los enemigos
 	enemigosDisp.mueve(0.025f);
-	tank.mueve(0.025f);
-	babosa.mueve(0.025f);
-	tentaculo.mueve(0.025f);
+	Tanks.mueve(0.025f);
+	babosas.mueve(0.025f);
+	tentaculos.mueve(0.025f);
+	bombers.mueve(0.025f);
 
 	//Movimiento Vidas
 	vidas.mueve(0.025f);
@@ -61,14 +63,17 @@ void Nivel1::mueve()
 	//Interacciones enemigos con el entorno
 	enemigosDisp.rebote(caja);
 	enemigosDisp.rebote(plataformas);
-	Interaccion::rebote(tank, caja);	
-	Interaccion::rebote(tank, plataforma9);
+	Tanks.rebote(caja);	
+	Tanks.rebote(plataformas);
+	bombers.rebote(caja);
+	bombers.rebote(plataformas);
 	
 	//Interaccion Pj con enemigo
 	Interaccion::rebote(hombre, enemigosDisp,vidasR);
 	//Interaccion::rebote(hombre, eneDisp1);
 	//Interaccion::rebote(hombre, eneDisp2);
-	Interaccion::mov(babosa, hombre);
+	//Interaccion::mov(babosas, hombre);
+	babosas.mov(hombre);
 
 	//Interaccion Pj con Vida
 	 
@@ -122,9 +127,12 @@ void Nivel1::inicializa()
 
 
 	//Creacion de los enemigos
-	tank.setPos(193.0f, 15.0f);//Jefe en la plataforma final
-	babosa.setPos(10.0f, 13.0f);
-	tentaculo.setPos(10.0f, 0.0f);
+	//tank.setPos(193.0f, 15.0f);//Jefe en la plataforma final
+	Tank* Tank1 = new Tank(193.0f, 15.0f);
+	//babosa.setPos(10.0f, 13.0f);
+	Babosa* babosa1 = new Babosa(10.0f, 13.0f),
+		* babosa2 = new Babosa(-8.0f, 2.0f);
+	Tentaculo* tentaculo1 = new Tentaculo(10.0f, 0.0f);
 	EnemigoDisp* ped1 = new EnemigoDisp(0.0f, 9.0f), //Enemigo plat1
 		* ped2 = new EnemigoDisp(15.0f, 0.0f),
 		* ped3 = new EnemigoDisp(22.0f, 0.0f),
@@ -134,6 +142,7 @@ void Nivel1::inicializa()
 		* ped7 = new EnemigoDisp(174.0f, 0.0f),
 		* ped8 = new EnemigoDisp(140.0f, 11.0f), //Enemigo plat7
 		* ped9 = new EnemigoDisp(193.0f, 0.0f);
+	bomber* bomber1 = new bomber(10.0f, 10.0f);
 	//meter enemigos en sus listas
 	enemigosDisp.agregar(ped1);
 	enemigosDisp.agregar(ped2);
@@ -144,6 +153,11 @@ void Nivel1::inicializa()
 	enemigosDisp.agregar(ped7);
 	enemigosDisp.agregar(ped8);
 	enemigosDisp.agregar(ped9);
+	Tanks.agregar(Tank1);
+	babosas.agregar(babosa1);
+	babosas.agregar(babosa2);
+	tentaculos.agregar(tentaculo1);
+	bombers.agregar(bomber1);
 
 	//Creaccion de Vidas Recolectables
 	vidas.agregar(new Corazon(4.0f, 0.0f));		//Corazon (Posicion x, Posicion y)
@@ -164,7 +178,7 @@ void Nivel1::teclaUp(unsigned char key)
 	switch (key)
 	{
 	case 'a':
-		babosa.setVelx(0.0f);	//hombre.setVel(-5.0f,0.0f);
+		hombre.setVelx(0.0f);	//hombre.setVel(-5.0f,0.0f);
 		break;
 	case 'd':
 		hombre.setVelx(0.0f);
