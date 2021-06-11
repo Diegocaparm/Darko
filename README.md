@@ -5,7 +5,7 @@ Repositorio para el trabajo de Informática Industrial
 
 Changes v1.8
 
-- Se han unido DispEnem y DispTank en DispEnem por simplificacion
+- Se han unido DispEnem y DispTank en DisparosEnemigos por simplificacion
 
 - Se ha empezado la interaccion DispEnem-Entorno
 
