@@ -36,13 +36,15 @@ void Nivel1::dibuja()
 	babosas.dibuja();			
 	tentaculos.dibuja();
 	bombers.dibuja();
+	disparos.dibuja();
+	dispAmig.dibuja();
 }
 
 void Nivel1::mueve()
 {
 	//Movimientos personaje y disparo
 	hombre.mueve(0.025f);
-	disparo.mueve(0.025f);
+	dispAmig.mueve(0.025f);
 
 	//Movimiento de los enemigos
 	enemigosDisp.mueve(0.025f);
@@ -50,6 +52,7 @@ void Nivel1::mueve()
 	babosas.mueve(0.025f);
 	tentaculos.mueve(0.025f);
 	bombers.mueve(0.025f);
+	disparos.mueve(0.025f);
 
 	//Movimiento Vidas
 	vidas.mueve(0.025f);
@@ -73,6 +76,13 @@ void Nivel1::mueve()
 	bombers.rebote(caja);
 	bombers.rebote(plataformas);
 	
+	//Interacciones disparo con el entorno
+	disparos.rebote(caja);
+	disparos.rebote(plataformas);
+
+	dispAmig.rebote(caja);
+	dispAmig.rebote(plataformas);
+
 	//Interaccion Pj con enemigo
 	Interaccion::rebote(hombre, enemigosDisp,vidasR);
 	//Interaccion::rebote(hombre, eneDisp1);
@@ -105,7 +115,7 @@ void Nivel1::inicializa()
 
 	//Posicionamos todo el entorno
 	Pared* plat1 = new Pared(2.0f, 10.0f, -5.0f, 10.0f, 50, 150, 250),
-		* plat2 = new Pared(18.0f, 5.0f, 27.0f, 5.0f, 150, 150, 50),
+		* plat2 = new Pared(27.0f, 5.0f, 18.0f, 5.0f, 150, 150, 50),
 		* plat3 = new Pared(45.0f, 10.0f, 36.0f, 10.0f, 50, 150, 250),
 		* plat4 = new Pared(68.0f, 5.0f, 57.0f, 5.0f, 150, 150, 50),
 		* plat5 = new Pared(100.0f, 10.0f, 82.0f, 10.0f, 50, 150, 250),
@@ -134,11 +144,6 @@ void Nivel1::inicializa()
 
 	//Creacion de los enemigos
 	//tank.setPos(193.0f, 15.0f);//Jefe en la plataforma final
-	Tank* Tank1 = new Tank(193.0f, 15.0f);
-	//babosa.setPos(10.0f, 13.0f);
-	Babosa* babosa1 = new Babosa(10.0f, 13.0f),
-		* babosa2 = new Babosa(-8.0f, 2.0f);
-	Tentaculo* tentaculo1 = new Tentaculo(10.0f, 0.0f);
 	EnemigoDisp* ped1 = new EnemigoDisp(0.0f, 9.0f), //Enemigo plat1
 		* ped2 = new EnemigoDisp(15.0f, 0.0f),
 		* ped3 = new EnemigoDisp(22.0f, 0.0f),
@@ -148,6 +153,12 @@ void Nivel1::inicializa()
 		* ped7 = new EnemigoDisp(174.0f, 0.0f),
 		* ped8 = new EnemigoDisp(140.0f, 11.0f), //Enemigo plat7
 		* ped9 = new EnemigoDisp(193.0f, 0.0f);
+	Tank* Tank1 = new Tank(193.0f, 15.0f);
+	//babosa.setPos(10.0f, 13.0f);
+	Babosa* babosa1 = new Babosa(10.0f, 13.0f),
+		* babosa2 = new Babosa(-8.0f, 2.0f);
+	Tentaculo* tentaculo1 = new Tentaculo(10.0f, 0.0f);
+	
 	bomber* bomber1 = new bomber(10.0f, 10.0f);
 	//meter enemigos en sus listas
 	enemigosDisp.agregar(ped1);
@@ -164,6 +175,22 @@ void Nivel1::inicializa()
 	babosas.agregar(babosa2);
 	tentaculos.agregar(tentaculo1);
 	bombers.agregar(bomber1);
+	//meter disparos en lista
+	disparos.agregar(ped1->dispEnem1);
+	disparos.agregar(ped2->dispEnem1);
+	disparos.agregar(ped3->dispEnem1);
+	disparos.agregar(ped4->dispEnem1);
+	disparos.agregar(ped5->dispEnem1);
+	disparos.agregar(ped6->dispEnem1);
+	disparos.agregar(ped7->dispEnem1);
+	disparos.agregar(ped8->dispEnem1);
+	disparos.agregar(ped9->dispEnem1);
+
+	disparos.agregar(Tank1->dispTank1);
+	disparos.agregar(Tank1->dispTank2);
+	disparos.agregar(Tank1->dispTank3);
+	disparos.agregar(Tank1->dispTank4);
+	disparos.agregar(Tank1->dispTank5);
 
 	//Creaccion de Vidas Recolectables
 	vidas.agregar(new Corazon(4.0f, 0.0f));		//Corazon (Posicion x, Posicion y)
@@ -186,17 +213,20 @@ void Nivel1::teclaUp(unsigned char key)
 	switch (key)
 	{
 	case 'a':
-		hombre.setVelx(0.0f);	//hombre.setVel(-5.0f,0.0f);
+		//hombre.setVelx(0.0f);	//hombre.setVel(-5.0f,0.0f);
+		hombre.flagH = 0;
 		break;
 	case 'd':
-		hombre.setVelx(0.0f);
+		//hombre.setVelx(0.0f);
+		hombre.flagH = 0;
 		break;
 	case 'w':
 		hombre.flag = 0;
-
+		break;
+	case ' ':
 		break;
 	default:
-		hombre.setVelx(0.0f);
+		//hombre.setVelx(0.0f);
 		hombre.salto = 1;
 		break;
 	}
@@ -207,30 +237,27 @@ void Nivel1::teclaDown(unsigned char key)
 	switch (key)
 	{
 	case 'a':
-		hombre.setVelx(-7.50f);	//hombre.setVel(-5.0f,0.0f);
+		//hombre.setVelx(-7.50f);	//hombre.setVel(-5.0f,0.0f);
+		hombre.flagH = -1;
 		break;
 	case 'd':
-		hombre.setVelx(7.50f);
+		//hombre.setVelx(7.50f);
+		hombre.flagH = 1;
 		break;
 	case 'w':
 		hombre.flag = 1;
-		
 		break;
-	default:
+	case ' ':
+		disparosAmigos * dispam = new disparosAmigos(hombre.posicion.x, hombre.posicion.y + hombre.altura * 2 / 3, hombre.velocidad.x, 0);
+		if (dispAmig.agregar(dispam))
+			hombre.setVelx(0);
+		else delete dispam;
+		break;
+	/*default:
 		hombre.setVelx(0.0f);
 		hombre.salto = 1;
-		break;
-	}
-	/*
-	if (key == ' ') {
-		Interaccion::disparoInicializa(pdisparo, phombre);
-		//eneDisp1.velocidad.x = 2;
-	}
-	//if (key == 'w') { //???????????
-		//eneDisp1.posicion.y += 3;
-		//eneDisp1.velocidad.y = 0.0f;
-	//}
-	*/
+		break;*/
+	}	
 }
 
 void Nivel1::teclaEspecial(unsigned char key)

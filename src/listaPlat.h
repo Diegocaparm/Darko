@@ -14,5 +14,7 @@ public:
 	friend class listaEnemDisp;
 	friend class listaTank;
 	friend class listabomber;
+	friend class listaDispEnem;
+	friend class listaDispAmig;
 };
 

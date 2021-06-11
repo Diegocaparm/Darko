@@ -7,7 +7,7 @@ void Interaccion::rebote(Hombre& h, Caja c)
 {
 	//Generamos los límites de la caja en el eje x
 	float xmin = c.pared_izq.limite2.x;
-	float xmax = c.techo.limite1.x;
+	float xmax = c.techo.limite1.x-0.1f;
 	if (h.posicion.x > xmax) {
 		h.posicion.x = xmax;
 	}
@@ -21,6 +21,14 @@ void Interaccion::rebote(Hombre& h, Caja c)
 	rebote(h, c.suelo3);
 	rebote(h, c.suelo4);
 	rebote(h, c.suelo5);
+	/*rebote(h, c.pozo1_dcha);
+	rebote(h, c.pozo1_izq);
+	rebote(h, c.pozo2_dcha);
+	rebote(h, c.pozo2_izq);
+	rebote(h, c.pozo3_dcha);
+	rebote(h, c.pozo3_izq);
+	rebote(h, c.pozo4_dcha);
+	rebote(h, c.pozo4_izq);*/
 }
 
 void Interaccion::rebote(Hombre& h, Pared p)
@@ -29,14 +37,14 @@ void Interaccion::rebote(Hombre& h, Pared p)
 	float xmax = p.limite1.x;//dcha
 	float ymin = p.limite2.y;//ab
 	float ymax = p.limite1.y - h.altura;//arr
-
+	
 	if (h.posicion.y > ymin - h.altura / 2)
-		h.zona = 1;
+		h.zonaV = 1;
 	else
-		h.zona = 0;
+		h.zonaV = 0;
 
 	if (h.posicion.x < xmax && h.posicion.x > xmin) {  //zona=0 abajo    zona=1 arriba
-		if (h.zona == 0) {
+		if (h.zonaV == 0) {
 			if (h.posicion.y > ymax) {
 				h.posicion.y = ymax;
 				h.velocidad.y = 0.0f;
@@ -47,7 +55,7 @@ void Interaccion::rebote(Hombre& h, Pared p)
 			if (h.posicion.y < ymin) {
 				h.posicion.y = ymin;
 				h.velocidad.y = 0.0f;
-			//	h.aceleracion.y = -9.8f;
+				//	h.aceleracion.y = -9.8f;
 			}
 	}
 }
@@ -61,7 +69,7 @@ void Interaccion::disparoInicializa(Disparo* disparo, Hombre* hombre) {
 	disparo->radio = 0.2f;
 	disparo->posicion.x = hombre->posicion.x;
 	disparo->posicion.y = hombre->posicion.y;
-	disparo->ini = 0;
+	//disparo->ini = 0;
 }
 
 void Interaccion::rebote(EnemigoDisp& ene, Caja c)
@@ -74,6 +82,14 @@ void Interaccion::rebote(EnemigoDisp& ene, Caja c)
 	rebote(ene, c.suelo3);
 	rebote(ene, c.suelo4);
 	rebote(ene, c.suelo5);
+	/*rebote(ene, c.pozo1_dcha);
+	rebote(ene, c.pozo1_izq);
+	rebote(ene, c.pozo2_dcha);
+	rebote(ene, c.pozo2_izq);
+	rebote(ene, c.pozo3_dcha);
+	rebote(ene, c.pozo3_izq);
+	rebote(ene, c.pozo4_dcha);
+	rebote(ene, c.pozo4_izq);*/
 }
 
 void Interaccion::rebote(EnemigoDisp& ene, Pared p)
@@ -232,6 +248,119 @@ void Interaccion::rebote(bomber& b, Pared p)
 	}
 }
 
+void Interaccion::rebote(DisparosEnemigos& ene, Caja c)
+{
+	rebote(ene, c.techo);
+	rebote(ene, c.pared_dcha);
+	rebote(ene, c.pared_izq);
+	rebote(ene, c.suelo1);
+	rebote(ene, c.suelo2);
+	rebote(ene, c.suelo3);
+	rebote(ene, c.suelo4);
+	rebote(ene, c.suelo5);
+	/*rebote(ene, c.pozo1_dcha);
+	rebote(ene, c.pozo1_izq);
+	rebote(ene, c.pozo2_dcha);
+	rebote(ene, c.pozo2_izq);
+	rebote(ene, c.pozo3_dcha);
+	rebote(ene, c.pozo3_izq);
+	rebote(ene, c.pozo4_dcha);
+	rebote(ene, c.pozo4_izq);*/
+}
+
+void Interaccion::rebote(DisparosEnemigos& ene, Pared p)
+{
+	//Ponemos los limites de la plataforma
+	float xmin = p.limite2.x;//izq
+	float xmax = p.limite1.x;//dcha
+	float ymin = p.limite2.y;//ab
+	float ymax = p.limite1.y;//arr
+	//Decidimos si estamos arriba o abajo
+	if (ene.getPos().y > ymin - ene.getRadio() / 2)
+		ene.zonaV = 1; //Estamos arriba
+	else
+		ene.zonaV = 0; //Abajo
+	//Decidimos si estamos dentro y si estamos encima
+	if (ene.getPos().x < xmax && ene.getPos().x > xmin)
+	{
+		if (ene.zonaV == 0) { //Sigue igual si esta debajo
+			if (ene.getPos().y > ymax) {
+				ene.setPos(ene.getPos().x,ymax);
+				ene.setVel(ene.vel, 0.0f);
+				ene.setAc(0.0f, -9.8f);
+			}
+		}
+		else //Si está arriba
+		{
+			if (ene.getPos().y < ymin) {
+				/*ene.posicion.y = ymin;
+				ene.velocidad.y = 0.0f;*/
+				//ene.setColor(1, 1, 1);
+				ene.flagdibujar = 0;
+			}
+			/*if (ene.getPos().x < xmin + 0.5f) {		//cambiar de direccion
+				ene.sentido = 0;
+			}
+			if (ene.getPos().x > xmax - 0.5f) {
+				ene.sentido = 1;
+			}*/
+		}
+	}
+}
+
+void Interaccion::rebote(disparosAmigos& ene, Caja c)
+{
+	rebote(ene, c.techo);
+	rebote(ene, c.pared_dcha);
+	rebote(ene, c.pared_izq);
+	rebote(ene, c.suelo1);
+	rebote(ene, c.suelo2);
+	rebote(ene, c.suelo3);
+	rebote(ene, c.suelo4);
+	rebote(ene, c.suelo5);
+	/*rebote(ene, c.pozo1_dcha);
+	rebote(ene, c.pozo1_izq);
+	rebote(ene, c.pozo2_dcha);
+	rebote(ene, c.pozo2_izq);
+	rebote(ene, c.pozo3_dcha);
+	rebote(ene, c.pozo3_izq);
+	rebote(ene, c.pozo4_dcha);
+	rebote(ene, c.pozo4_izq);*/
+}
+
+void Interaccion::rebote(disparosAmigos& ene, Pared p)
+{
+	//Ponemos los limites de la plataforma
+	float xmin = p.limite2.x;//izq
+	float xmax = p.limite1.x;//dcha
+	float ymin = p.limite2.y;//ab
+	float ymax = p.limite1.y;//arr
+	//Decidimos si estamos arriba o abajo
+	if (ene.getPos().y > ymin - ene.getRadio() / 2)
+		ene.zonaV = 1; //Estamos arriba
+	else
+		ene.zonaV = 0; //Abajo
+	//Decidimos si estamos dentro y si estamos encima
+	if (ene.getPos().x < xmax && ene.getPos().x > xmin)
+	{
+		if (ene.zonaV == 0) { //Sigue igual si esta debajo
+			if (ene.getPos().y > ymax) {
+				ene.setPos(ene.getPos().x, ymax);
+				ene.setVel(ene.vel, 0.0f);
+				ene.setAc(0.0f, -9.8f);
+			}
+		}
+		else //Si está arriba
+		{
+			if (ene.getPos().y < ymin) {
+				
+				//ene.setColor(1, 1, 1);
+				ene.flagdibujar = 0;
+			}
+		}
+	}
+}
+
 void Interaccion::rebote(Hombre & h, EnemigoDisp e,VidasRec& v)
 {
 
@@ -315,6 +444,14 @@ void Interaccion::rebote(Corazon& v, Caja c)
 	rebote(v, c.suelo3);
 	rebote(v, c.suelo4);
 	rebote(v, c.suelo5);
+	/*rebote(v, c.pozo1_dcha);
+	rebote(v, c.pozo1_izq);
+	rebote(v, c.pozo2_dcha);
+	rebote(v, c.pozo2_izq);
+	rebote(v, c.pozo3_dcha);
+	rebote(v, c.pozo3_izq);
+	rebote(v, c.pozo4_dcha);
+	rebote(v, c.pozo4_izq);*/
 }
 
 bool Interaccion::recoleccion(Corazon& v, Hombre h)
@@ -352,6 +489,14 @@ void Interaccion::rebote(Moneda& m, Caja c)
 	rebote(m, c.suelo3);
 	rebote(m, c.suelo4);
 	rebote(m, c.suelo5);
+	/*rebote(m, c.pozo1_dcha);
+	rebote(m, c.pozo1_izq);
+	rebote(m, c.pozo2_dcha);
+	rebote(m, c.pozo2_izq);
+	rebote(m, c.pozo3_dcha);
+	rebote(m, c.pozo3_izq);
+	rebote(m, c.pozo4_dcha);
+	rebote(m, c.pozo4_izq);*/
 }
 
 bool Interaccion::recoleccion(Moneda& v, Hombre h)

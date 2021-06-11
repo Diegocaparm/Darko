@@ -2,6 +2,7 @@
 #include "Vector2D.h"
 #include "ColorRGB.h"
 #include "Hitbox.h"
+#include "disparosAmigos.h"
 
 class Hombre
 {
@@ -12,8 +13,8 @@ public:
 	Vector2D aceleracion;
 	Hitbox hitbox;
 	bool mov;
-	int salto = 1, sentido = 0, zona = 0, flag = 0;
-
+	int salto = 1, sentido = 0, zonaV = 0, zonaH = 0, flag = 0, flagH = 0;
+	//flagH=-1 izquierda	=0	quieto	   =1 derecha
 public:
 	Hombre();
 	float altura;

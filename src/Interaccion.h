@@ -1,19 +1,20 @@
 #pragma once
 #include "Hombre.h"
 #include "Caja.h"
+#include "listaPlat.h"
 #include "Esfera.h"
 #include "Disparo.h"
 #include "EnemigoDisp.h"
 #include "listaEnemDisp.h"
-#include "listaPlat.h"
 #include "Tank.h"
+#include "listaTank.h"
 #include "babosa.h"
 #include "listaBabosas.h"
+#include "bomber.h"
+#include "listabomber.h"
 #include "Vidas.h"
 #include "VidasRec.h"
 #include "Dinero.h"
-#include "bomber.h"
-#include "listabomber.h"
 
 class Interaccion
 {
@@ -41,6 +42,13 @@ public:
 	static void rebote(Tank& t, Pared p);
 	static void rebote(bomber& b, Caja c);
 	static void rebote(bomber& b, Pared p);
+
+	//Disparos con entorno
+	static void rebote(DisparosEnemigos& ene, Caja c);
+	static void rebote(DisparosEnemigos& ene, Pared p);
+
+	static void rebote(disparosAmigos& ene, Caja c);
+	static void rebote(disparosAmigos& ene, Pared p);
 
 	//Interacción entre Pj y enemigos
 	static void rebote(Hombre& h, EnemigoDisp e, VidasRec& v); 

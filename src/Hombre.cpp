@@ -58,6 +58,13 @@ void Hombre::mueve(float t)
 {
 	posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
 	velocidad = velocidad + aceleracion * t;
+	//velocidad horizontal
+	if (flagH == -1)
+		setVelx(-7.5f);
+	else if (flagH == 0)
+		setVelx(0.0f);
+	else if (flagH == 1)
+		setVelx(7.5f);
 
 	//Salto de David
 	if (velocidad.y > 0.3f)

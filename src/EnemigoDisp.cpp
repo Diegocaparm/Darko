@@ -1,14 +1,13 @@
 #include "EnemigoDisp.h"
 #include "Vector2D.h"
 #include "freeglut.h"
-#include "DispEnem.h"
 
 EnemigoDisp::EnemigoDisp() {
 	altura = 2.0f;
 	aceleracion.x = 0.0f;
 	aceleracion.y = -9.8f;
 	//setPos(px, py);
-	dispEnem1.setPos(posicion.x, posicion.y + altura * 2 / 3);	//esta aqui para que este bien la posicion del disparo inicial
+	dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);	//esta aqui para que este bien la posicion del disparo inicial
 
 }
 EnemigoDisp::EnemigoDisp(float px, float py) {
@@ -16,7 +15,7 @@ EnemigoDisp::EnemigoDisp(float px, float py) {
 	aceleracion.x = 0.0f;
 	aceleracion.y = -9.8f;
 	setPos(px, py);
-	dispEnem1.setPos(posicion.x, posicion.y + altura * 2 / 3);	//esta aqui para que este bien la posicion del disparo inicial
+	dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);	//esta aqui para que este bien la posicion del disparo inicial
 }
 
 void EnemigoDisp::dibuja()
@@ -63,7 +62,7 @@ void EnemigoDisp::dibuja()
 	glEnd();
 	glPopMatrix();
 
-	dispEnem1.dibuja();
+	//dispEnem1.dibuja();
 }
 
 void EnemigoDisp::mueve(float t)
@@ -71,15 +70,14 @@ void EnemigoDisp::mueve(float t)
 	posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
 	velocidad = velocidad + aceleracion * t;
 
-	//Disparo de los enemigos cada 2 segundos
-	if (temp < 80) {		//80 para 2 seg
+	//Disparo de los enemigos cada 3 segundos
+	if (temp < 120) {		//40 para 1 seg
 		temp++;
-		dispEnem1.mueve(t);
-		if (temp == 80) {
-			dispEnem1.setPos(posicion.x, posicion.y + altura * 2 / 3);
-			dispEnem1.velocidad.x = -3.0 + velocidad.x;	//-3 es la velocidad del disparo
-			dispEnem1.velocidad.y = 0.0;
-			dispEnem1.dibuja();
+		if (temp == 120) {		//volver a disparar
+			dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);
+			dispEnem1->setVel(-dispEnem1->vel + velocidad.x, 0.0f);
+			//dispEnem1->dibuja();
+			dispEnem1->flagdibujar = 1;
 		}
 	}
 	else {
