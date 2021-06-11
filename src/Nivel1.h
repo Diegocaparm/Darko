@@ -6,11 +6,13 @@
 #include "Disparo.h"
 #include "Estela.h"
 #include "Hombre.h"
+#include "listaDispAmig.h"
 #include "Interaccion.h"
 #include "EnemigoDisp.h"
 #include "listaEnemDisp.h"
 #include "Tank.h"
 #include "listaTank.h"
+#include "listaDispEnem.h"
 #include "babosa.h"		
 #include "listaBabosas.h"
 #include "Tentaculo.h"
@@ -40,18 +42,19 @@ public:
 
 	//Pj
 	Hombre hombre;
-	Disparo disparo;
-
+	//Disparo disparo;
+	listaDispAmig dispAmig;
 	//Enemigos
 	/*EnemigoDisp eneDisp1, eneDisp2, eneDisp3, eneDisp4, eneDisp5, 
 		eneDisp6, eneDisp7, eneDisp8, eneDisp9;*/ //Enemigos simples
+	listaEnemDisp enemigosDisp;
 	//Tank tank;									//Enemigos chetos
 	listaTank Tanks;
+	listaDispEnem disparos;
 	//Babosa babosa;		
 	listaBabosas babosas;
 	//Tentaculo tentaculo;
 	listaTentaculo tentaculos;
-	listaEnemDisp enemigosDisp;
 	//bomber bomber1;
 	listabomber bombers;
 

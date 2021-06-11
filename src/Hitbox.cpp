@@ -11,7 +11,7 @@ Hitbox::Hitbox()
 
 Hitbox::Hitbox(float x, float y)
 {
-	arriba.setPos(x-1.0, y+1.0, x+1.0, y+1.0);
+	arriba.setPos(x - 1.0, y + 1.0, x + 1.0, y + 1.0);
 	abajo.setPos(x - 1.0, y - 1.0, x + 1.0, y - 1.0);
 	izquierda.setPos(x - 1.0, y + 1.0, x - 1.0, y - 1.0);
 	derecha.setPos(x + 1.0, y + 1.0, x + 1.0, y - 1.0);

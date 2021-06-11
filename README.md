@@ -1,6 +1,18 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@David
+
+Changes v1.8
+
+- Se han unido DispEnem y DispTank en DispEnem por simplificacion
+
+- Se ha empezado la interaccion DispEnem-Entorno
+
+- Se han añadido disparosAmigo
+
+- Se ha solucionado la caida del mundo por el borde derecho
+
 
 @Miguel
 

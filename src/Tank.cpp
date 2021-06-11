@@ -1,22 +1,27 @@
 #include "Tank.h"
 #include "Vector2D.h"
 #include "freeglut.h"
-#include "DispTank.h"
+#include "disparosEnemigos.h"
 
 Tank::Tank() {
 	altura = 7.0f;
 	aceleracion.x = 0.0f;
 	aceleracion.y = -9.8f;
-	dispTank1.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank2.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank3.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank4.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank5.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank1.setVel(-dispTank1.vel, 0.0f);
-	dispTank2.setVel(-dispTank1.vel * 0.707, dispTank1.vel * 0.707);
-	dispTank3.setVel(0.0f, dispTank1.vel);
-	dispTank4.setVel(dispTank1.vel * 0.707, dispTank1.vel * 0.707);
-	dispTank5.setVel(dispTank1.vel, 0.0f);
+	dispTank1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank4->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank5->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank1->setVel(-dispTank1->vel, 0.0f);
+	dispTank2->setVel(-dispTank1->vel * 0.707, dispTank1->vel * 0.707);
+	dispTank3->setVel(0.0f, dispTank1->vel);
+	dispTank4->setVel(dispTank1->vel * 0.707, dispTank1->vel * 0.707);
+	dispTank5->setVel(dispTank1->vel, 0.0f);
+	dispTank1->setColor(10, 0, 0);
+	dispTank2->setColor(10, 0, 0);
+	dispTank3->setColor(10, 0, 0);
+	dispTank4->setColor(10, 0, 0);
+	dispTank5->setColor(10, 0, 0);
 }
 
 Tank::Tank(float px, float py) {
@@ -24,16 +29,21 @@ Tank::Tank(float px, float py) {
 	aceleracion.x = 0.0f;
 	aceleracion.y = -9.8f;
 	setPos(px, py);
-	dispTank1.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank2.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank3.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank4.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank5.setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank1.setVel(-dispTank1.vel, 0.0f);
-	dispTank2.setVel(-dispTank1.vel * 0.707, dispTank1.vel * 0.707);
-	dispTank3.setVel(0.0f, dispTank1.vel);
-	dispTank4.setVel(dispTank1.vel * 0.707, dispTank1.vel * 0.707);
-	dispTank5.setVel(dispTank1.vel, 0.0f);
+	dispTank1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank4->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank5->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank1->setVel(-dispTank1->vel, 0.0f);
+	dispTank2->setVel(-dispTank1->vel * 0.707, dispTank1->vel * 0.707);
+	dispTank3->setVel(0.0f, dispTank1->vel);
+	dispTank4->setVel(dispTank1->vel * 0.707, dispTank1->vel * 0.707);
+	dispTank5->setVel(dispTank1->vel, 0.0f);
+	dispTank1->setColor(10, 0, 0);
+	dispTank2->setColor(10, 0, 0);
+	dispTank3->setColor(10, 0, 0);
+	dispTank4->setColor(10, 0, 0);
+	dispTank5->setColor(10, 0, 0);
 }
 
 void Tank::dibuja()
@@ -50,12 +60,6 @@ void Tank::dibuja()
 
 	glPopMatrix();
 
-	dispTank1.dibuja();
-	dispTank2.dibuja();
-	dispTank3.dibuja();
-	dispTank4.dibuja();
-	dispTank5.dibuja();
-
 }
 
 void Tank::mueve(float t)
@@ -63,33 +67,29 @@ void Tank::mueve(float t)
 	posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
 	velocidad = velocidad + aceleracion * t;
 
-	if (temp < 80) {		//80 para 2 seg
+	if (temp < 120) {		//40 para 1 seg
 		temp++;
-		dispTank1.mueve(t);
-		dispTank2.mueve(t);
-		dispTank3.mueve(t);
-		dispTank4.mueve(t);
-		dispTank5.mueve(t);
+		//mueve?
 
-		if (temp == 80) {
-			dispTank1.setPos(posicion.x, posicion.y + altura / 2);
-			dispTank2.setPos(posicion.x, posicion.y + altura / 2);
-			dispTank3.setPos(posicion.x, posicion.y + altura / 2);
-			dispTank4.setPos(posicion.x, posicion.y + altura / 2);
-			dispTank5.setPos(posicion.x, posicion.y + altura / 2);
-
-			dispTank1.setVel(-dispTank1.vel + velocidad.x, 0.0f + velocidad.y);
-			dispTank2.setVel(-dispTank1.vel * 0.707 + velocidad.x, dispTank1.vel * 0.707 + velocidad.y);
-			dispTank3.setVel(0.0f + velocidad.x, dispTank1.vel + velocidad.y);
-			dispTank4.setVel(dispTank1.vel * 0.707 + velocidad.x, dispTank1.vel * 0.707 + velocidad.y);
-			dispTank5.setVel(dispTank1.vel + velocidad.x, 0.0f + velocidad.y);
-
-			dispTank1.dibuja();
-			dispTank2.dibuja();
-			dispTank3.dibuja();
-			dispTank4.dibuja();
-			dispTank5.dibuja();
+		if (temp == 120) {
+			dispTank1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+			dispTank2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+			dispTank3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+			dispTank4->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+			dispTank5->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+			dispTank1->setVel(-dispTank1->vel+velocidad.x, 0.0f);
+			dispTank2->setVel(-dispTank1->vel * 0.707 + velocidad.x, dispTank1->vel * 0.707);
+			dispTank3->setVel(0.0f + velocidad.x, dispTank1->vel);
+			dispTank4->setVel(dispTank1->vel * 0.707 + velocidad.x, dispTank1->vel * 0.707);
+			dispTank5->setVel(dispTank1->vel + velocidad.x, 0.0f);
+			dispTank1->flagdibujar = 1;
+			dispTank2->flagdibujar = 1;
+			dispTank3->flagdibujar = 1;
+			dispTank4->flagdibujar = 1;
+			dispTank5->flagdibujar = 1;
+			//dibuja?
 		}
+
 	}
 	else {
 		//~DispEnem();

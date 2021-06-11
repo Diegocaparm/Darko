@@ -1,7 +1,7 @@
 #pragma once
 #include "Vector2D.h"
 #include "ColorRGB.h"
-#include "DispEnem.h"
+#include "disparosEnemigos.h"
 #include "Hitbox.h"
 
 class EnemigoDisp
@@ -28,6 +28,6 @@ public:
 
 	int zonaV = 0, zonaH = 0;	//zonaV=0 abajo =1 arriba		zonaH =-1 izq = 0 dentro = 1 dcha
 	int temp = 0, sentido = 1;	//temp contador para disparar	sentido=0 izq =1 dcha
-	DispEnem dispEnem1;
+	DisparosEnemigos * dispEnem1=new DisparosEnemigos();
 };
 
