@@ -1,8 +1,14 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
-@MIca
-Cambios v1.9
-- Añadir plataformas  (sino el hombre no llegaba) y pinchos
+
+
+
+@mica
+
+Cambios  v1.9.1
+
+-Añadir plataformas (sino no llega el hombre) y pinchos
+
 @David
 
 Changes v1.9
