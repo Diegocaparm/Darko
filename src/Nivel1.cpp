@@ -127,40 +127,63 @@ void Nivel1::inicializa()
 	z_ojo = 30;
 
 	//Posicionamos todo el entorno
+	//Posicionamos todo el entorno
 	Pared* plat1 = new Pared(2.0f, 10.0f, -5.0f, 10.0f, 50, 150, 250),
+		* plat1_2 = new Pared(16.0f, 2.50f, 11.0f, 2.50f, 150, 150, 50), //plat añadida entre 1 y 2- sino no llega salto
 		* plat2 = new Pared(27.0f, 5.0f, 18.0f, 5.0f, 150, 150, 50),
+		* plat2_3 = new Pared(35.0f, 7.50f, 30.0f, 7.50f, 150, 150, 50), //plat añadida entre 2 y 3- sino no llega salto
 		* plat3 = new Pared(45.0f, 10.0f, 36.0f, 10.0f, 50, 150, 250),
 		* plat4 = new Pared(68.0f, 5.0f, 57.0f, 5.0f, 150, 150, 50),
-		* plat5 = new Pared(100.0f, 10.0f, 82.0f, 10.0f, 50, 150, 250),
-		* plat6 = new Pared(123.0f, 5.0f, 108.0f, 5.0f, 150, 150, 50),
+		* plat5 = new Pared(90.0f, 8.0f, 70.0f, 8.0f, 50, 150, 250), //movida a la izq
+		* plat5_6 = new Pared(102.0f, 7.50f, 98.0f, 7.50f, 150, 150, 50), //plat añadida entre 5 y 6- sino no llega salto
+		* plat6 = new Pared(118.0f, 5.0f, 104.0f, 5.0f, 150, 150, 50), //movida a la izq
+		* plat6_7 = new Pared(130.0f, 7.50f, 124.0f, 7.50f, 150, 150, 50), //plat añadida entre 6 y 7- sino no llega salto
 		* plat7 = new Pared(145.0f, 10.0f, 135.0f, 10.0f, 50, 150, 250),
+		* plat7_8 = new Pared(155.0f, 7.50f, 150.0f, 7.50f, 150, 150, 50), //plat añadida entre 7 y 8- sino no llega salto
 		* plat8 = new Pared(175.0f, 5.0f, 158.0f, 5.0f, 150, 150, 50),
-		* plat9 = new Pared(197.0f, 5.0f, 189.0f, 5.0f, 150, 150, 50);
+		* plat9 = new Pared(197.0f, 5.0f, 182.0f, 5.0f, 150, 150, 50); // alargamos para meterle una puerta y que pase de nivel?
+
 	plataformas.agregar(plat1);
+	plataformas.agregar(plat1_2);
 	plataformas.agregar(plat2);
+	plataformas.agregar(plat2_3);
 	plataformas.agregar(plat3);
 	plataformas.agregar(plat4);
 	plataformas.agregar(plat5);
+	plataformas.agregar(plat5_6);
 	plataformas.agregar(plat6);
+	plataformas.agregar(plat6_7);
 	plataformas.agregar(plat7);
+	plataformas.agregar(plat7_8);
 	plataformas.agregar(plat8);
 	plataformas.agregar(plat9);
-	
+
 	Pincho* pincho1 = new Pincho(25.0f, 0.0f),
-		* pincho2 = new Pincho(42.0f, 10.0f),	//pincho en plataforma3
-		* pincho3 = new Pincho(148.0f, 0.0f);
+		* pincho2 = new Pincho(40.0f, 10.0f),	//pincho en plataforma3
+		* pincho3 = new Pincho(69.0f, 0.0f),
+		* pincho4 = new Pincho(78.0f, 0.0f),	
+		* pincho5 = new Pincho(108.0f, 5.0f), //en plat 6
+		* pincho6 = new Pincho(115.0f, 5.0f), //en plat 6
+		* pincho7 = new Pincho(148.0f, 0.0f),
+		* pincho8 = new Pincho(165.0f, 5.0f); //pincho en plat 8
 	listPinchos.agregar(pincho1);
 	listPinchos.agregar(pincho2);
 	listPinchos.agregar(pincho3);
+	listPinchos.agregar(pincho4);
+	listPinchos.agregar(pincho5);
+	listPinchos.agregar(pincho6);
+	listPinchos.agregar(pincho7);
+	listPinchos.agregar(pincho8);
 
-	Bonus* bonus1 = new Bonus(15.0f, 7.0f),
-		* bonus2 = new Bonus(35.0f, 7.0f),
-		* bonus3 = new Bonus(75.0f, 7.0f),
-		* bonus4 = new Bonus(185.0f, 7.0f);
+	Bonus* bonus1 = new Bonus(7.0f, 7.0f),
+		* bonus2 = new Bonus(30.0f, 5.0f),
+		* bonus3 = new Bonus(73.0f, 5.0f),
+		* bonus4 = new Bonus(178.0f, 5.0f);
 	listBonus.agregar(bonus1);
 	listBonus.agregar(bonus2);
 	listBonus.agregar(bonus3);
 	listBonus.agregar(bonus4);
+
 
 	//Creacion de los enemigos
 	//tank.setPos(193.0f, 15.0f);//Jefe en la plataforma final
