@@ -2,11 +2,12 @@
 #include "Vector2D.h"
 #include "ColorRGB.h"
 #include "disparosEnemigos.h"
-
+#include "Hitbox.h"
 class Tank
 {
 	ColorRGB color;
 	Vector2D posicion, velocidad, aceleracion;
+	Hitbox hitbox;
 
 public:
 	Tank();

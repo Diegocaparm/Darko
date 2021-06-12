@@ -33,9 +33,11 @@
     <ClCompile Include="src\Interfaz.cpp" />
     <ClCompile Include="src\listaBabosas.cpp" />
     <ClCompile Include="src\listabomber.cpp" />
+    <ClCompile Include="src\listaBonus.cpp" />
     <ClCompile Include="src\listaDispAmig.cpp" />
     <ClCompile Include="src\listaDispEnem.cpp" />
     <ClCompile Include="src\listaEnemDisp.cpp" />
+    <ClCompile Include="src\listaPinchos.cpp" />
     <ClCompile Include="src\listaPlat.cpp" />
     <ClCompile Include="src\listaTank.cpp" />
     <ClCompile Include="src\listaTent.cpp" />
@@ -70,9 +72,11 @@
     <ClInclude Include="src\Interfaz.h" />
     <ClInclude Include="src\listaBabosas.h" />
     <ClInclude Include="src\listabomber.h" />
+    <ClInclude Include="src\listaBonus.h" />
     <ClInclude Include="src\listaDispAmig.h" />
     <ClInclude Include="src\listaDispEnem.h" />
     <ClInclude Include="src\listaEnemDisp.h" />
+    <ClInclude Include="src\listaPinchos.h" />
     <ClInclude Include="src\listaPlat.h" />
     <ClInclude Include="src\listaTank.h" />
     <ClInclude Include="src\listaTent.h" />

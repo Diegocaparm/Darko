@@ -37,8 +37,10 @@ void listaBabosas::mueve(float t)
 }
 
 void listaBabosas::mov(Hombre h) {
-	for (int i = 0; i < numero; i++)
+	for (int i = 0; i < numero; i++) {
 		Interaccion::mov(*(lista[i]), h);
+		Interaccion::colision(h, *(lista[i]));
+	}
 }
 
 /*void listaBabosas::rebote() {

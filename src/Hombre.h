@@ -12,12 +12,12 @@ public:
 	Vector2D velocidad;
 	Vector2D aceleracion;
 	Hitbox hitbox;
+	float altura = 1.8f;
 	bool mov;
 	int salto = 1, sentido = 0, zonaV = 0, zonaH = 0, flag = 0, flagH = 0;
 	//flagH=-1 izquierda	=0	quieto	   =1 derecha
 public:
 	Hombre();
-	float altura;
 	void dibuja();
 	void mueve(float);
 	void setColor(Byte, Byte, Byte);

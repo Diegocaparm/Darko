@@ -9,13 +9,8 @@ void Nivel1::dibuja()
 	//Dibuja la estructura del nivel
 	caja.dibuja();
 	plataformas.dibuja();
-	bonus1.dibuja();
-	bonus2.dibuja();
-	bonus3.dibuja();
-	bonus4.dibuja();
-	pincho1.dibuja();
-	pincho2.dibuja();
-	pincho3.dibuja();
+	listBonus.dibuja();
+	listPinchos.dibuja();
 
 	//Dibuja Vida
 	vidas.dibuja();			//Dibuja vidas del entorno
@@ -68,6 +63,14 @@ void Nivel1::mueve()
 	Interaccion::rebote(hombre, caja);
 	Interaccion::rebote(hombre, plataformas);
 
+	listBonus.rebote(hombre);
+	listPinchos.rebote(hombre);
+
+	//Interaccion::colision(hombre, listBonus);
+	//Interaccion::colision(hombre, listPinchos);
+
+
+
 	//Interacciones enemigos con el entorno
 	enemigosDisp.rebote(caja);
 	enemigosDisp.rebote(plataformas);
@@ -82,6 +85,16 @@ void Nivel1::mueve()
 
 	dispAmig.rebote(caja);
 	dispAmig.rebote(plataformas);
+
+	//Interacciones disparoEnemigo con hombre
+	disparos.rebote(hombre);
+
+	//Interacciones disparoAmigo con enemigos
+	Interaccion::colision(enemigosDisp, dispAmig);
+	Interaccion::colision(Tanks, dispAmig);
+	Interaccion::colision(babosas, dispAmig);
+	//Interaccion::colision(tentaculos, dispAmig);
+	Interaccion::colision(bombers, dispAmig);
 
 	//Interaccion Pj con enemigo
 	Interaccion::rebote(hombre, enemigosDisp,vidasR);
@@ -132,15 +145,22 @@ void Nivel1::inicializa()
 	plataformas.agregar(plat7);
 	plataformas.agregar(plat8);
 	plataformas.agregar(plat9);
+	
+	Pincho* pincho1 = new Pincho(25.0f, 0.0f),
+		* pincho2 = new Pincho(42.0f, 10.0f),	//pincho en plataforma3
+		* pincho3 = new Pincho(148.0f, 0.0f);
+	listPinchos.agregar(pincho1);
+	listPinchos.agregar(pincho2);
+	listPinchos.agregar(pincho3);
 
-	pincho1.setPos(25.0f, 0.0f);
-	pincho2.setPos(42.0f, 10.0f);//Pincho en plataforma3
-	pincho3.setPos(148.0f, 0.0f);
-	bonus1.setPos(15.0f, 7.0f);
-	bonus2.setPos(35.0f, 7.0f);
-	bonus3.setPos(75.0f, 7.0f);
-	bonus4.setPos(185.0f, 7.0f);
-
+	Bonus* bonus1 = new Bonus(15.0f, 7.0f),
+		* bonus2 = new Bonus(35.0f, 7.0f),
+		* bonus3 = new Bonus(75.0f, 7.0f),
+		* bonus4 = new Bonus(185.0f, 7.0f);
+	listBonus.agregar(bonus1);
+	listBonus.agregar(bonus2);
+	listBonus.agregar(bonus3);
+	listBonus.agregar(bonus4);
 
 	//Creacion de los enemigos
 	//tank.setPos(193.0f, 15.0f);//Jefe en la plataforma final
@@ -154,12 +174,11 @@ void Nivel1::inicializa()
 		* ped8 = new EnemigoDisp(140.0f, 11.0f), //Enemigo plat7
 		* ped9 = new EnemigoDisp(193.0f, 0.0f);
 	Tank* Tank1 = new Tank(193.0f, 15.0f);
-	//babosa.setPos(10.0f, 13.0f);
 	Babosa* babosa1 = new Babosa(10.0f, 13.0f),
 		* babosa2 = new Babosa(-8.0f, 2.0f);
 	Tentaculo* tentaculo1 = new Tentaculo(10.0f, 0.0f);
-	
 	bomber* bomber1 = new bomber(10.0f, 10.0f);
+
 	//meter enemigos en sus listas
 	enemigosDisp.agregar(ped1);
 	enemigosDisp.agregar(ped2);
@@ -175,6 +194,7 @@ void Nivel1::inicializa()
 	babosas.agregar(babosa2);
 	tentaculos.agregar(tentaculo1);
 	bombers.agregar(bomber1);
+
 	//meter disparos en lista
 	disparos.agregar(ped1->dispEnem1);
 	disparos.agregar(ped2->dispEnem1);

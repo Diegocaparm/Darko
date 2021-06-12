@@ -60,6 +60,28 @@ void Tank::dibuja()
 
 	glPopMatrix();
 
+	glPushMatrix();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.esquina1.x, hitbox.esquina1.y, 0);
+	glVertex3f(hitbox.esquina2.x, hitbox.esquina2.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.esquina2.x, hitbox.esquina2.y, 0);
+	glVertex3f(hitbox.esquina4.x, hitbox.esquina4.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.esquina4.x, hitbox.esquina4.y, 0);
+	glVertex3f(hitbox.esquina3.x, hitbox.esquina3.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.esquina3.x, hitbox.esquina3.y, 0);
+	glVertex3f(hitbox.esquina1.x, hitbox.esquina1.y, 0);
+	glEnd();
+	glPopMatrix();
 }
 
 void Tank::mueve(float t)
@@ -103,6 +125,13 @@ void Tank::mueve(float t)
 		else
 			velocidad.x = 1;
 	}
+
+	Vector2D e1, e2, e3, e4;
+	e1.x = posicion.x - altura / 3;		e1.y = posicion.y + altura * 2 / 3;
+	e2.x = posicion.x + altura / 3;		e2.y = posicion.y + altura * 2 / 3;
+	e3.x = posicion.x - altura / 3;		e3.y = posicion.y - 0;
+	e4.x = posicion.x + altura / 3;		e4.y = posicion.y - 0;
+	hitbox.setPos(e1, e2, e3, e4);
 }
 
 void Tank::setColor(Byte r, Byte g, Byte b) {

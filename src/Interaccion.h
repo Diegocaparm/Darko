@@ -1,13 +1,19 @@
 #pragma once
 #include "Hombre.h"
+#include "disparosAmigos.h"
+#include "listaDispAmig.h"
 #include "Caja.h"
 #include "listaPlat.h"
-#include "Esfera.h"
-#include "Disparo.h"
+#include "Bonus.h"
+#include "listaBonus.h"
+#include "Pincho.h"
+#include "listaPinchos.h"
 #include "EnemigoDisp.h"
 #include "listaEnemDisp.h"
 #include "Tank.h"
 #include "listaTank.h"
+#include "Tentaculo.h"
+#include "listaTent.h"
 #include "babosa.h"
 #include "listaBabosas.h"
 #include "bomber.h"
@@ -23,7 +29,6 @@ public:
 	static void rebote(Hombre& h, Caja c);
 	static void rebote(Hombre& h, Pared p);
 	static void rebote(Hombre& h, listaPlat lp); 
-	static void disparoInicializa(Disparo*, Hombre*);
 
 	//Pj con Corazones
 	static void rebote(Corazon& v, Pared p);
@@ -46,7 +51,6 @@ public:
 	//Disparos con entorno
 	static void rebote(DisparosEnemigos& ene, Caja c);
 	static void rebote(DisparosEnemigos& ene, Pared p);
-
 	static void rebote(disparosAmigos& ene, Caja c);
 	static void rebote(disparosAmigos& ene, Pared p);
 
@@ -56,5 +60,23 @@ public:
 	static void mov(Babosa& b, Hombre& h);
 	static void rebote(Hombre& h, listaEnemDisp l,VidasRec& v);
 
+	static void colision(Hombre& h, Bonus& b);	//:c
+	static void colision(Hombre& h, Pincho p);	//:c
+
+	static void colision(Hombre& h, DisparosEnemigos& de);
+	static void colision(Hombre& h, Babosa& ene);	//:c
+	static void colision(Hombre& h, bomber& ene);	//:c
+
+	static void colision(EnemigoDisp& ene, disparosAmigos& da);
+	static void colision(Tank& ene, disparosAmigos& da);
+	static void colision(Babosa& ene, disparosAmigos& da);
+	//static void colision(Tentaculo& ene, disparosAmigos& da);
+	static void colision(bomber& ene, disparosAmigos& da);
+
+	static void colision(listaEnemDisp ene, listaDispAmig da);
+	static void colision(listaTank ene, listaDispAmig da);
+	static void colision(listaBabosas ene, listaDispAmig da);
+	//static void colision(listaTentaculo ene, listaDispAmig da);
+	static void colision(listabomber ene, listaDispAmig da);
 };
 

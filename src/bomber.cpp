@@ -92,3 +92,8 @@ void bomber::setPos(float ix, float iy) {
 	posicion.x = ix;
 	posicion.y = iy;
 }
+
+Vector2D bomber::getPos() {
+	Vector2D pos = posicion;
+	return pos;
+}

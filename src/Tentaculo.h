@@ -1,12 +1,13 @@
 #pragma once
 #include "Vector2D.h"
 #include "ColorRGB.h"
+#include "Hitbox.h"
 class Tentaculo
 {
 	float longitud = 5.0f;
 	ColorRGB color;
 	Vector2D posicion, velocidad, aceleracion;
-
+	Hitbox hitbox[3];
 public:
 	Tentaculo();
 	Tentaculo(float px, float py);

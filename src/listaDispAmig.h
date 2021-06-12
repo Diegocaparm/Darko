@@ -19,6 +19,7 @@ public:
 	void rebote(Caja caja);
 	void rebote(Pared p);
 	void rebote(listaPlat lp);
+	
 	//void rebote();
 	void destruirContenido();
 	void eliminar(int index);

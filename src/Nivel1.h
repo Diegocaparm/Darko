@@ -1,8 +1,10 @@
 #pragma once
 #include "Bonus.h"
+#include "listaBonus.h"
 #include "Caja.h"
 #include "listaPlat.h"
 #include "Pincho.h"
+#include "listaPinchos.h"
 #include "Disparo.h"
 #include "Estela.h"
 #include "Hombre.h"
@@ -34,28 +36,26 @@ public:
 
 	//Estructura del nivel
 	Caja caja;
-	Pared plataforma1, plataforma2, plataforma3, plataforma4, 
-		plataforma5, plataforma6, plataforma7, plataforma8, plataforma9;
+	/*Pared plataforma1, plataforma2, plataforma3, plataforma4, 
+		plataforma5, plataforma6, plataforma7, plataforma8, plataforma9;*/
 	listaPlat plataformas;
-	Pincho pincho1, pincho2, pincho3;
-	Bonus bonus1, bonus2, bonus3, bonus4;
+	
+	listaPinchos listPinchos;
+	listaBonus listBonus;
 
 	//Pj
 	Hombre hombre;
-	//Disparo disparo;
 	listaDispAmig dispAmig;
+
 	//Enemigos
 	/*EnemigoDisp eneDisp1, eneDisp2, eneDisp3, eneDisp4, eneDisp5, 
 		eneDisp6, eneDisp7, eneDisp8, eneDisp9;*/ //Enemigos simples
 	listaEnemDisp enemigosDisp;
 	//Tank tank;									//Enemigos chetos
 	listaTank Tanks;
-	listaDispEnem disparos;
-	//Babosa babosa;		
+	listaDispEnem disparos;	
 	listaBabosas babosas;
-	//Tentaculo tentaculo;
 	listaTentaculo tentaculos;
-	//bomber bomber1;
 	listabomber bombers;
 
 	//Listas para vidas
