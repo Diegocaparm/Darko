@@ -3,6 +3,19 @@ Repositorio para el trabajo de Informática Industrial
 
 @David
 
+Changes v1.9
+
+- Se han hecho listas de pinchos y bonus
+
+- Se han hecho interacciones entre disparos amigos y casi todos los enemigos
+
+- Se han hecho interacciones entre personaje principal y disparos enemigos
+
+- Se han empezado las interacciones de personaje con bonus, pinchos, babosa y bomber
+
+
+@David
+
 Changes v1.8
 
 - Se han unido DispEnem y DispTank en DisparosEnemigos por simplificacion
