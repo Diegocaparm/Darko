@@ -5,7 +5,7 @@ Repositorio para el trabajo de Informática Industrial
 
 @mica
 
-Cambios  v1.9.1
+Changes v1.9.1 
 
 -Añadir plataformas (sino no llega el hombre) y pinchos
 
