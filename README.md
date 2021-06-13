@@ -1,13 +1,21 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@Diego
 
+Changes v1.9.2
 
-@mica
+- Terminado el diseño del nivel 1
+
+- Separados los suelos de la caja y tratados como plataformas del nivel
+
+- Quitados los bonus de manera temporal
+
+@Mica
 
 Changes v1.9.1 
 
--Añadir plataformas (sino no llega el hombre) y pinchos
+- Añadir plataformas (sino no llega el hombre) y pinchos
 
 @David
 
