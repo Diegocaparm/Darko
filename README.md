@@ -1,6 +1,16 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@David
+
+Changes v2.0
+
+- Añadida la espada
+
+- Comentados los pozos para luego tratarlos como paredes verticales
+
+- Interacciones entre espada y enemigos añadidas
+
 @Diego
 
 Changes v1.9.2
