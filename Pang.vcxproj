@@ -29,6 +29,7 @@
     <ClCompile Include="src\Disparo.cpp" />
     <ClCompile Include="src\disparosAmigos.cpp" />
     <ClCompile Include="src\disparosEnemigos.cpp" />
+    <ClCompile Include="src\espada.cpp" />
     <ClCompile Include="src\Hitbox.cpp" />
     <ClCompile Include="src\Interfaz.cpp" />
     <ClCompile Include="src\listaBabosas.cpp" />
@@ -68,6 +69,7 @@
     <ClInclude Include="src\Disparo.h" />
     <ClInclude Include="src\disparosAmigos.h" />
     <ClInclude Include="src\disparosEnemigos.h" />
+    <ClInclude Include="src\espada.h" />
     <ClInclude Include="src\Hitbox.h" />
     <ClInclude Include="src\Interfaz.h" />
     <ClInclude Include="src\listaBabosas.h" />
