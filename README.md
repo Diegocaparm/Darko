@@ -11,6 +11,8 @@ Changes v2.0
 
 - Interacciones entre espada y enemigos añadidas
 
+- Interacciones de tentaculo
+
 @Diego
 
 Changes v1.9.2
