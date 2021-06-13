@@ -9,7 +9,7 @@ float DistSeg(Hitbox h, Vector2D p);
 
 void Interaccion::rebote(Hombre& h, Caja c)
 {
-	//Generamos los lÌmites de la caja en el eje x
+	//Generamos los l√≠mites de la caja en el eje x
 	float xmin = c.pared_izq.limite2.x;
 	float xmax = c.techo.limite1.x-0.1f;
 	if (h.posicion.x > xmax) {
@@ -103,7 +103,7 @@ void Interaccion::rebote(EnemigoDisp& ene, Pared p)
 				ene.aceleracion.y = -9.8f;
 			}
 		}
-		else //Si est· arriba
+		else //Si est√° arriba
 		{
 			if (ene.posicion.y < ymin) {
 				ene.posicion.y = ymin;
@@ -275,7 +275,7 @@ void Interaccion::rebote(DisparosEnemigos& ene, Pared p)
 				ene.setAc(0.0f, -9.8f);
 			}
 		}
-		else //Si est· arriba
+		else //Si est√° arriba
 		{
 			if (ene.getPos().y < ymin) {
 				/*ene.posicion.y = ymin;
@@ -331,7 +331,7 @@ void Interaccion::rebote(disparosAmigos& ene, Pared p)
 				ene.setAc(0.0f, -9.8f);
 			}
 		}
-		else //Si est· arriba
+		else //Si est√° arriba
 		{
 			if (ene.getPos().y < ymin) {
 				
@@ -617,8 +617,8 @@ void Interaccion::colision(Tentaculo& h, disparosAmigos& de) {
 	}*/
 	for (int i = 0; i < 3; i++) {
 		float dist1 = DistSeg(h.hitbox[i], de.getPos());
-		/*if (dist1 < de.getRadio())
-			de.setColor(0, 1, 0);*/
+		if (dist1 < de.getRadio())
+			de.setColor(0, 1, 0);
 		/*else
 			de.setColor(1, 0, 0);*/
 	}
