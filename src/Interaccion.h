@@ -2,6 +2,7 @@
 #include "Hombre.h"
 #include "disparosAmigos.h"
 #include "listaDispAmig.h"
+#include "espada.h"
 #include "Caja.h"
 #include "listaPlat.h"
 #include "Bonus.h"
@@ -61,22 +62,37 @@ public:
 	static void rebote(Hombre& h, listaEnemDisp l,VidasRec& v);
 
 	static void colision(Hombre& h, Bonus& b);	//:c
-	static void colision(Hombre& h, Pincho p);	//:c
+	static void colision(Hombre& h, Pincho p);	
 
 	static void colision(Hombre& h, DisparosEnemigos& de);
-	static void colision(Hombre& h, Babosa& ene);	//:c
-	static void colision(Hombre& h, bomber& ene);	//:c
+	static void colision(Hombre& h, Babosa& ene);	
+	static void colision(Hombre& h, bomber& ene);	
+	static void colision(Hombre& h, Tentaculo& ene);
 
 	static void colision(EnemigoDisp& ene, disparosAmigos& da);
 	static void colision(Tank& ene, disparosAmigos& da);
 	static void colision(Babosa& ene, disparosAmigos& da);
-	//static void colision(Tentaculo& ene, disparosAmigos& da);
+	static void colision(Tentaculo& ene, disparosAmigos& da);	//:c
 	static void colision(bomber& ene, disparosAmigos& da);
 
 	static void colision(listaEnemDisp ene, listaDispAmig da);
 	static void colision(listaTank ene, listaDispAmig da);
 	static void colision(listaBabosas ene, listaDispAmig da);
-	//static void colision(listaTentaculo ene, listaDispAmig da);
+	static void colision(listaTentaculo ene, listaDispAmig da);
 	static void colision(listabomber ene, listaDispAmig da);
+
+	//espada
+	static void mov(espada& esp, Hombre& h);
+	static void colision(listaEnemDisp ene, espada esp);
+	static void colision(listaTank ene, espada esp);
+	static void colision(listaBabosas ene, espada esp);
+	static void colision(listaTentaculo ene, espada esp);
+	static void colision(listabomber ene, espada esp);
+
+	static void colision(EnemigoDisp& ene, espada& esp);
+	static void colision(Tank& ene, espada& esp);
+	static void colision(Babosa& ene, espada& esp);
+	static void colision(Tentaculo& ene, espada& esp);
+	static void colision(bomber& ene, espada& esp);
 };
 

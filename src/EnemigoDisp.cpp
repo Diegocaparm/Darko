@@ -8,7 +8,7 @@ EnemigoDisp::EnemigoDisp() {
 	aceleracion.y = -9.8f;
 	//setPos(px, py);
 	dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);	//esta aqui para que este bien la posicion del disparo inicial
-
+	setColor(1,0,0);
 }
 EnemigoDisp::EnemigoDisp(float px, float py) {
 	altura = 2.0f;
@@ -16,13 +16,14 @@ EnemigoDisp::EnemigoDisp(float px, float py) {
 	aceleracion.y = -9.8f;
 	setPos(px, py);
 	dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);	//esta aqui para que este bien la posicion del disparo inicial
+	setColor(1,0,0);
 }
 
 void EnemigoDisp::dibuja()
 {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
-	glColor3f(0.8f, 0.2f, 0.2f);
+	glColor3f(color.r, color.g, color.b);
 	glRotatef(-90, 1, 0, 0);		//dibujar persona
 	glTranslatef(-0.2, 0, 0);
 	glutSolidCylinder(0.1, altura / 3, 30, 30);

@@ -7,6 +7,7 @@ Tank::Tank() {
 	altura = 7.0f;
 	aceleracion.x = 0.0f;
 	aceleracion.y = -9.8f;
+	setColor(1, 1, 1);
 	dispTank1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 	dispTank2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 	dispTank3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
@@ -28,6 +29,7 @@ Tank::Tank(float px, float py) {
 	altura = 7.0f;
 	aceleracion.x = 0.0f;
 	aceleracion.y = -9.8f;
+	setColor(1,1,1);
 	setPos(px, py);
 	dispTank1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 	dispTank2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
@@ -50,7 +52,7 @@ void Tank::dibuja()
 {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
-	glColor3f(0.8f, 0.4f, 0.2f);
+	glColor3f(color.r, color.g, color.b);
 	glRotatef(-90, 1, 0, 0);		//dibujar persona
 	glutSolidCylinder(altura / 3, altura / 3, 30, 30);
 	glTranslatef(0, 0, altura / 3);

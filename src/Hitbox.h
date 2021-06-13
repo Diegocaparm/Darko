@@ -32,10 +32,10 @@ public:
 };
 			
 //			(1)---Arriba---(2)				(1)---Arriba---(2)		
-//			 |		s1		|				 |				|
+//			 |		s0		|				 |				|
 //			 |				|				 |				|
 //		 Izquierda		 Derecha		 Izquierda		 Derecha
-//		s4	 |				|	s2			 |				|
-//			 |		s3		|				 |				|
+//		s3	 |				|	s1			 |				|
+//			 |		s2		|				 |				|
 //			(3)---Abajo ---(4)				(3)---Abajo ---(4)
 	

@@ -52,6 +52,10 @@ void listabomber::rebote(listaPlat lp) {
 	for (int i = 0; i < lp.numero; i++)
 		rebote(*lp.lista[i]);
 }
+void listabomber::rebote(Hombre& h) {
+	for (int i = 0; i < numero; i++)
+		Interaccion::colision(h, *(lista[i]));
+}
 
 /*void listabomber::rebote() {
 	for (int i = 0; i < numero; i++) {

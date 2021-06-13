@@ -7,13 +7,14 @@ Hombre::Hombre() {
 	aceleracion.x =  0.0f;
 	aceleracion.y = -9.8f;
 	mov = 0;
+	setColor(1,1,0);
 }
 
 void Hombre::dibuja()
 {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
-	glColor3f(1.0f, 1.0f, 0.0f);
+	glColor3f(color.r, color.g, color.b);
 	//glutSolidSphere(altura, 20, 20);
 	glRotatef(-90, 1, 0, 0);		//dibujar persona
 	glTranslatef(-0.2, 0, 0);

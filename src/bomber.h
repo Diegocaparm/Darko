@@ -7,6 +7,8 @@ class bomber
 {
 private:
 	float radio;
+	int temp = 80;	//pasados 2 segundos explota temp=80
+	int flag = 0;	//1 para que empiece a contar
 	ColorRGB color;
 	Hitbox hitbox;
 
