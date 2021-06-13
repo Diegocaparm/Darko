@@ -6,8 +6,7 @@
 #include "Hombre.h"
 #include "Estela.h"
 #include "Interaccion.h"
-
-#include "DispEnem.h"			
+#include "disparosEnemigos.h"			
 #include "Tank.h"
 //#include "Pared.h"
 //#include "Vector2D.h"

@@ -9,20 +9,16 @@ void Nivel1::dibuja()
 	//Dibuja la estructura del nivel
 	caja.dibuja();
 	plataformas.dibuja();
-	//listBonus.dibuja();
 	listPinchos.dibuja();
-
-	//Dibuja Vida
-	vidas.dibuja();			//Dibuja vidas del entorno
-	vidasR.dibuja();		//Dibuja Vidas Recogidas
-
-	//Dibuja Monedas
-	dineros.dibuja();			//Dibuja monedas del entorno
-	dinerosR.dibuja();			//Dibuja Debajo de Vidas Recogidas, el simbolo de moneda
-
-	//Hay que desimplementar la union dibuja-logica todavia
-	Vector2D pos = hombre.getPos();
-	dinerosR.dibujaContador(pos.x);	//Dibuja Debajo de Vidas Recogidas, el numero de monedas
+	//listBonus.dibuja();
+	
+	//Dibuja Vida y Monedas
+	vidas.dibuja();			//Vidas del entorno
+	vidasR.dibuja();		//Vidas Recogidas
+	dineros.dibuja();		//Monedas del entorno
+	dinerosR.dibuja();		//Debajo de Vidas Recogidas, el simbolo de moneda
+	Vector2D pos = hombre.getPos(); //Hay que desimplementar la union dibuja-logica todavia
+	dinerosR.dibujaContador(pos.x);	//Debajo de Vidas Recogidas, el numero de monedas
 
 	//Dibujamos lo animado
 	hombre.dibuja();
@@ -31,8 +27,10 @@ void Nivel1::dibuja()
 	babosas.dibuja();			
 	//tentaculos.dibuja();
 	//bombers.dibuja();
+
 	disparos.dibuja();
 	dispAmig.dibuja();
+	espada.dibuja();
 }
 
 void Nivel1::mueve()
@@ -40,6 +38,8 @@ void Nivel1::mueve()
 	//Movimientos personaje y disparo
 	hombre.mueve(0.025f);
 	dispAmig.mueve(0.025f);
+	espada.mueve(0.025f);
+	Interaccion::mov(espada, hombre);
 
 	//Movimiento de los enemigos
 	enemigosDisp.mueve(0.025f);
@@ -49,27 +49,18 @@ void Nivel1::mueve()
 	//bombers.mueve(0.025f);
 	disparos.mueve(0.025f);
 
-	//Movimiento Vidas
+	//Movimiento vidas y monedas
 	vidas.mueve(0.025f);
 	Vector2D pos=hombre.getPos();
 	vidasR.mueve(0.025f,pos.x);
-
-	//Movimiento Monedas
 	dineros.mueve(0.025f);
-	
 	dinerosR.mueve(0.025f, pos.x);
 
 	//Interacciones personaje con el entorno
 	Interaccion::rebote(hombre, caja);
 	Interaccion::rebote(hombre, plataformas);
-
 	//listBonus.rebote(hombre);
 	listPinchos.rebote(hombre);
-
-	//Interaccion::colision(hombre, listBonus);
-	//Interaccion::colision(hombre, listPinchos);
-
-
 
 	//Interacciones enemigos con el entorno
 	enemigosDisp.rebote(caja);
@@ -82,7 +73,6 @@ void Nivel1::mueve()
 	//Interacciones disparo con el entorno
 	disparos.rebote(caja);
 	disparos.rebote(plataformas);
-
 	dispAmig.rebote(caja);
 	dispAmig.rebote(plataformas);
 
@@ -95,6 +85,13 @@ void Nivel1::mueve()
 	Interaccion::colision(babosas, dispAmig);
 	//Interaccion::colision(tentaculos, dispAmig);
 	//Interaccion::colision(bombers, dispAmig);
+	if (espada.getFlag()) {
+		Interaccion::colision(enemigosDisp, espada);
+		Interaccion::colision(Tanks, espada);
+		Interaccion::colision(babosas, espada);
+		//Interaccion::colision(tentaculos, espada);
+		//Interaccion::colision(bombers, espada);
+	}
 
 	//Interaccion Pj con enemigo
 	Interaccion::rebote(hombre, enemigosDisp,vidasR);
@@ -102,16 +99,15 @@ void Nivel1::mueve()
 	//Interaccion::rebote(hombre, eneDisp2);
 	//Interaccion::mov(babosas, hombre);
 	babosas.mov(hombre);
-
-	//Interaccion Pj con Vida
+	//bombers.rebote(hombre);
 	 
+	//Interaccion Pj con Vida y Monedas
 	//Elimina Vida recogida
 	Corazon* aux_c = vidas.colision(hombre);
 	if (aux_c != 0) {				//si alguna Vida ha chocado
 		vidas.eliminar(aux_c);
 		vidasR.agregar(new Corazon());
 	}
-
 	//Elimina Monedas recogidas
 	Moneda* aux_m = dineros.colision(hombre);
 	if (aux_m != 0) {				//si alguna Moneda ha chocado
@@ -126,13 +122,23 @@ void Nivel1::inicializa()
 	y_ojo = 7.5;
 	z_ojo = 30;
 
-	//Posicionamos todo el entorno
+	//Posicionamos el suelo y las paredes de los pozos
 	Pared* suelo1 = new Pared(50.0f, 0.0f, -30.0f, 0.0f, 0, 100, 0),
 		* suelo2 = new Pared(80.0f, 0.0f, 55.0f, 0.0f, 0, 100, 0),
 		* suelo3 = new Pared(132.0f, 0.0f, 87.0f, 0.0f, 0, 100, 0),
 		* suelo4 = new Pared(150.0f, 0.0f, 139.0f, 0.0f, 0, 100, 0),
 		* suelo5 = new Pared(200.0f, 0.0f, 156.0f, 0.0f, 0, 100, 0),
-
+		/*
+		* pozo1_i = new Pared(50.0f, 0.0f, 50.0f, -10.0f, 0, 250, 0),
+		* pozo1_d = new Pared(55.0f, 0.0f, 55.0f, -10.0f, 0, 250, 0),
+		* pozo2_i = new Pared(80.0f, 0.0f, 80.0f, -10.0f, 0, 250, 0),
+		* pozo2_d = new Pared(87.0f, 0.0f, 87.0f, -10.0f, 0, 250, 0), 
+		* pozo3_i = new Pared(132.0f, 0.0f, 132.0f, -10.0f, 0, 250, 0),
+		* pozo3_d = new Pared(139.0f, 0.0f, 139.0f, -10.0f, 0, 250, 0), 
+		* pozo4_i = new Pared(150.0f, 0.0f, 150.0f, -10.0f, 0, 250, 0),
+		* pozo4_d = new Pared(156.0f, 0.0f, 156.0f, -10.0f, 0, 250, 0), 
+		*/
+		//Posicionamos también las plataformas aéreas
 		* plat1 = new Pared(2.0f, 10.0f, -5.0f, 10.0f, 50, 150, 250),
 		* plat1_2 = new Pared(16.0f, 2.50f, 11.0f, 2.50f, 150, 150, 50), //plat añadida entre 1 y 2- sino no llega salto
 		* plat2 = new Pared(27.0f, 5.0f, 18.0f, 5.0f, 150, 150, 50),
@@ -336,6 +342,10 @@ void Nivel1::teclaDown(unsigned char key)
 		break;
 	case 'w':
 		hombre.flag = 1;
+		break;
+	case 'q':
+		//cosas de espada
+		espada.setFlag(1);
 		break;
 	case ' ':
 		disparosAmigos * dispam = new disparosAmigos(hombre.posicion.x, hombre.posicion.y + hombre.altura * 2 / 3, hombre.velocidad.x, 0);

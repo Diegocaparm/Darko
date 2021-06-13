@@ -24,6 +24,7 @@
 #include "Interfaz.h"
 #include "VidasRec.h"
 #include "DineroRec.h"
+#include "espada.h"
 
 class Nivel1
 {
@@ -44,6 +45,7 @@ public:
 	//Pj
 	Hombre hombre;
 	listaDispAmig dispAmig;
+	espada espada;
 
 	//Enemigos
 	listaEnemDisp enemigosDisp;
