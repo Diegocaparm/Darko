@@ -100,6 +100,7 @@ void Nivel1::mueve()
 	//Interaccion::mov(babosas, hombre);
 	babosas.mov(hombre);
 	//bombers.rebote(hombre);
+	//tentaculos.colision(hombre);
 	 
 	//Interaccion Pj con Vida y Monedas
 	//Elimina Vida recogida
@@ -217,7 +218,7 @@ void Nivel1::inicializa()
 	Tank* Tank1 = new Tank(193.0f, 15.0f);
 	Babosa* babosa1 = new Babosa(10.0f, 13.0f);
 		//* babosa2 = new Babosa(-8.0f, 2.0f);
-	//Tentaculo* tentaculo1 = new Tentaculo(10.0f, 0.0f);
+				Tentaculo* tentaculo1 = new Tentaculo(10.0f, 0.0f);
 	//bomber* bomber1 = new bomber(10.0f, 10.0f);
 
 	//meter enemigos en sus listas

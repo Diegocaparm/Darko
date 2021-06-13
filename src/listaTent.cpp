@@ -61,6 +61,11 @@ void listaTentaculo::rebote(listaPlat lp) {
 		}
 	}
 }*/
+void listaTentaculo::colision(Hombre& h) {
+	for (int i = 0; i < numero; i++) {
+		Interaccion::colision(h, *(lista[i]));
+	}
+}
 
 void listaTentaculo::destruirContenido()
 {

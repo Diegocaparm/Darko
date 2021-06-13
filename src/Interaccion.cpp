@@ -9,7 +9,7 @@ float DistSeg(Hitbox h, Vector2D p);
 
 void Interaccion::rebote(Hombre& h, Caja c)
 {
-	//Generamos los l√≠mites de la caja en el eje x
+	//Generamos los lÌmites de la caja en el eje x
 	float xmin = c.pared_izq.limite2.x;
 	float xmax = c.techo.limite1.x-0.1f;
 	if (h.posicion.x > xmax) {
@@ -103,7 +103,7 @@ void Interaccion::rebote(EnemigoDisp& ene, Pared p)
 				ene.aceleracion.y = -9.8f;
 			}
 		}
-		else //Si est√° arriba
+		else //Si est· arriba
 		{
 			if (ene.posicion.y < ymin) {
 				ene.posicion.y = ymin;
@@ -275,7 +275,7 @@ void Interaccion::rebote(DisparosEnemigos& ene, Pared p)
 				ene.setAc(0.0f, -9.8f);
 			}
 		}
-		else //Si est√° arriba
+		else //Si est· arriba
 		{
 			if (ene.getPos().y < ymin) {
 				/*ene.posicion.y = ymin;
@@ -331,7 +331,7 @@ void Interaccion::rebote(disparosAmigos& ene, Pared p)
 				ene.setAc(0.0f, -9.8f);
 			}
 		}
-		else //Si est√° arriba
+		else //Si est· arriba
 		{
 			if (ene.getPos().y < ymin) {
 				
@@ -585,6 +585,16 @@ void Interaccion::colision(Hombre& h, bomber& ene) {
 	if (ene.temp == 0)
 		ene.radio = 6;
 }
+void Interaccion::colision(Hombre& h, Tentaculo& ene) {
+	for (int i = 0; i < 3; i++) {
+		float dist1 = DistSeg(ene.hitbox[i], h.hitbox.esquina1),
+			dist2 = DistSeg(ene.hitbox[i], h.hitbox.esquina2),
+			dist3 = DistSeg(ene.hitbox[i], h.hitbox.esquina3),
+			dist4 = DistSeg(ene.hitbox[i], h.hitbox.esquina4);
+		if (dist1 < 0.2 || dist2 < 0.2 || dist3 < 0.2 || dist4 < 0.2)
+			h.setColor(0, 1, 0);
+	}
+}
 
 
 void Interaccion::colision(EnemigoDisp& h, disparosAmigos& de) {
@@ -702,33 +712,11 @@ void Interaccion::colision(Babosa& h, espada& esp) {
 			h.setColor(0, 1, 0);
 }
 void Interaccion::colision(Tentaculo& h, espada& esp) {
-	/*if (esp.getPos().y - esp.getLong() < h.hitbox.esquina1.y && esp.getPos().y + esp.getLong() > h.hitbox.esquina3.y)
-		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
-			esp.setColor(0, 1, 0);*/
-
-			/*for (int i = 0; i < 3; i++) {
-				for (int j = 0; j < 4; j++) {
-					float dist = DistSegmento(h.hitbox[i].segmento[j], de.getPos());
-
-					if (dist < de.getRadio())
-						de.setColor(0, 1, 0);
-				}
-
-			}*/
-	/*for (int i = 0; i < 3; i++) {
-		float dist1 = DistSeg(h.hitbox[i], de.getPos());
-		if (dist1 < de.getRadio())
-			de.setColor(0, 1, 0);
-		else
-			de.setColor(1, 0, 0);
-	}*/
-	/*bool b1;
 	for (int i = 0; i < 3; i++) {
-		b1 = DistHitbox(h.hitbox[i], de.getPos());
-
-		if (b1)
-			de.setColor(0, 1, 0);
-	}*/
+		float dist1 = DistSeg(h.hitbox[i], esp.getPos());
+		if (dist1 < esp.getLong())
+			h.setColor(0, 1, 0);
+	}
 }
 void Interaccion::colision(bomber& h, espada& esp) {
 	if ((h.getPos() - esp.getPos()).modulo() < (h.radio + esp.getLong()))

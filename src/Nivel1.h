@@ -51,7 +51,7 @@ public:
 	listaEnemDisp enemigosDisp;
 	listaTank Tanks;
 	listaBabosas babosas;
-	//listaTentaculo tentaculos;
+				listaTentaculo tentaculos;
 	//listabomber bombers;
 	listaDispEnem disparos;
 
