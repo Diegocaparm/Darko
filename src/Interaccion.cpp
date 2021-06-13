@@ -16,19 +16,7 @@ void Interaccion::rebote(Hombre& h, Caja c)
 	}
 	//Tratamos los rebotes del techo y los suelos como plataformas standar
 	rebote(h, c.techo);
-	rebote(h, c.suelo1);
-	rebote(h, c.suelo2);
-	rebote(h, c.suelo3);
-	rebote(h, c.suelo4);
-	rebote(h, c.suelo5);
-	/*rebote(h, c.pozo1_dcha);
-	rebote(h, c.pozo1_izq);
-	rebote(h, c.pozo2_dcha);
-	rebote(h, c.pozo2_izq);
-	rebote(h, c.pozo3_dcha);
-	rebote(h, c.pozo3_izq);
-	rebote(h, c.pozo4_dcha);
-	rebote(h, c.pozo4_izq);*/
+	rebote(h, c.suelo);
 }
 
 void Interaccion::rebote(Hombre& h, Pared p)
@@ -70,19 +58,7 @@ void Interaccion::rebote(EnemigoDisp& ene, Caja c)
 	rebote(ene, c.techo);
 	rebote(ene, c.pared_dcha);
 	rebote(ene, c.pared_izq);
-	rebote(ene, c.suelo1);
-	rebote(ene, c.suelo2);
-	rebote(ene, c.suelo3);
-	rebote(ene, c.suelo4);
-	rebote(ene, c.suelo5);
-	/*rebote(ene, c.pozo1_dcha);
-	rebote(ene, c.pozo1_izq);
-	rebote(ene, c.pozo2_dcha);
-	rebote(ene, c.pozo2_izq);
-	rebote(ene, c.pozo3_dcha);
-	rebote(ene, c.pozo3_izq);
-	rebote(ene, c.pozo4_dcha);
-	rebote(ene, c.pozo4_izq);*/
+	rebote(ene, c.suelo);
 }
 
 void Interaccion::rebote(EnemigoDisp& ene, Pared p)
@@ -246,19 +222,7 @@ void Interaccion::rebote(DisparosEnemigos& ene, Caja c)
 	rebote(ene, c.techo);
 	rebote(ene, c.pared_dcha);
 	rebote(ene, c.pared_izq);
-	rebote(ene, c.suelo1);
-	rebote(ene, c.suelo2);
-	rebote(ene, c.suelo3);
-	rebote(ene, c.suelo4);
-	rebote(ene, c.suelo5);
-	/*rebote(ene, c.pozo1_dcha);
-	rebote(ene, c.pozo1_izq);
-	rebote(ene, c.pozo2_dcha);
-	rebote(ene, c.pozo2_izq);
-	rebote(ene, c.pozo3_dcha);
-	rebote(ene, c.pozo3_izq);
-	rebote(ene, c.pozo4_dcha);
-	rebote(ene, c.pozo4_izq);*/
+	rebote(ene, c.suelo);
 }
 
 void Interaccion::rebote(DisparosEnemigos& ene, Pared p)
@@ -306,19 +270,7 @@ void Interaccion::rebote(disparosAmigos& ene, Caja c)
 	rebote(ene, c.techo);
 	rebote(ene, c.pared_dcha);
 	rebote(ene, c.pared_izq);
-	rebote(ene, c.suelo1);
-	rebote(ene, c.suelo2);
-	rebote(ene, c.suelo3);
-	rebote(ene, c.suelo4);
-	rebote(ene, c.suelo5);
-	/*rebote(ene, c.pozo1_dcha);
-	rebote(ene, c.pozo1_izq);
-	rebote(ene, c.pozo2_dcha);
-	rebote(ene, c.pozo2_izq);
-	rebote(ene, c.pozo3_dcha);
-	rebote(ene, c.pozo3_izq);
-	rebote(ene, c.pozo4_dcha);
-	rebote(ene, c.pozo4_izq);*/
+	rebote(ene, c.suelo);
 }
 
 void Interaccion::rebote(disparosAmigos& ene, Pared p)
@@ -428,11 +380,7 @@ void Interaccion::rebote(Corazon& v, Caja c)
 	rebote(v, c.techo);
 	rebote(v, c.pared_izq);
 	rebote(v, c.pared_dcha);
-	rebote(v, c.suelo1);
-	rebote(v, c.suelo2);
-	rebote(v, c.suelo3);
-	rebote(v, c.suelo4);
-	rebote(v, c.suelo5);
+	rebote(v, c.suelo);
 	/*rebote(v, c.pozo1_dcha);
 	rebote(v, c.pozo1_izq);
 	rebote(v, c.pozo2_dcha);
@@ -470,11 +418,7 @@ void Interaccion::rebote(Moneda& m, Caja c)
 	rebote(m, c.techo);
 	rebote(m, c.pared_izq);
 	rebote(m, c.pared_dcha);
-	rebote(m, c.suelo1);
-	rebote(m, c.suelo2);
-	rebote(m, c.suelo3);
-	rebote(m, c.suelo4);
-	rebote(m, c.suelo5);
+	rebote(m, c.suelo);
 	/*rebote(m, c.pozo1_dcha);
 	rebote(m, c.pozo1_izq);
 	rebote(m, c.pozo2_dcha);
