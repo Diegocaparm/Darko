@@ -27,7 +27,6 @@ void Nivel1::dibuja()
 	babosas.dibuja();			
 	//tentaculos.dibuja();
 	//bombers.dibuja();
-
 	disparos.dibuja();
 	dispAmig.dibuja();
 	espada.dibuja();
