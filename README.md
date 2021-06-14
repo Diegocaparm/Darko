@@ -1,6 +1,12 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@Mica
+Changes v2.1
+- Añadida la clase bola de fuego
+
+- Intento de interaccion de la misma con el pj
+
 @David
 
 Changes v2.0
