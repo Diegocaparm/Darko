@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\babosa.cpp" />
+    <ClCompile Include="src\BolaFuego.cpp" />
     <ClCompile Include="src\bomber.cpp" />
     <ClCompile Include="src\Bonus.cpp" />
     <ClCompile Include="src\Caja.cpp" />
@@ -59,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\babosa.h" />
+    <ClInclude Include="src\BolaFuego.h" />
     <ClInclude Include="src\bomber.h" />
     <ClInclude Include="src\Bonus.h" />
     <ClInclude Include="src\Caja.h" />
