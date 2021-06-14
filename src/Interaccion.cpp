@@ -9,7 +9,7 @@ float DistSeg(Hitbox h, Vector2D p);
 
 void Interaccion::rebote(Hombre& h, Caja c)
 {
-	//Generamos los límites de la caja en el eje x
+	//Generamos los lÃ­mites de la caja en el eje x
 	float xmin = c.pared_izq.limite2.x;
 	float xmax = c.techo.limite1.x-0.1f;
 	if (h.posicion.x > xmax) {
@@ -38,25 +38,48 @@ void Interaccion::rebote(Hombre& h, Pared p)
 	float ymin = p.limite2.y;//ab
 	float ymax = p.limite1.y - h.altura;//arr
 	
-	if (h.posicion.y > ymin - h.altura / 2)
-		h.zonaV = 1;
-	else
-		h.zonaV = 0;
-
-	if (h.posicion.x < xmax && h.posicion.x > xmin) {  //zona=0 abajo    zona=1 arriba
-		if (h.zonaV == 0) {
-			if (h.posicion.y > ymax) {
-				h.posicion.y = ymax;
-				h.velocidad.y = 0.0f;
-				h.aceleracion.y = -9.8f;
-			}
-		}
+	if (p.limite1.y==p.limite2.y) {
+		if (h.posicion.y > ymin - h.altura / 2)
+			h.zonaV = 1;
 		else
-			if (h.posicion.y < ymin) {
-				h.posicion.y = ymin;
-				h.velocidad.y = 0.0f;
-				//	h.aceleracion.y = -9.8f;
+			h.zonaV = 0;
+
+		if (h.posicion.x < xmax && h.posicion.x > xmin) {  //zona=0 abajo    zona=1 arriba
+			if (h.zonaV == 0) {
+				if (h.posicion.y > ymax) {
+					h.posicion.y = ymax;
+					h.velocidad.y = 0.0f;
+					h.aceleracion.y = -9.8f;
+				}
 			}
+			else
+				if (h.posicion.y < ymin) {
+					h.posicion.y = ymin;
+					h.velocidad.y = 0.0f;
+					//	h.aceleracion.y = -9.8f;
+				}
+		}
+	}
+	else if (sqrt((h.posicion.x - xmin) * (h.posicion.x - xmin)) < 0.7) {	
+		if (h.hitbox.esquina1.x > xmin + 0.2)
+			h.zonaH = 1;	//dcha
+		else if(h.hitbox.esquina2.x < xmin - 0.2)
+			h.zonaH = 0;	//izq
+		if (h.hitbox.esquina1.y < p.limite1.y && h.hitbox.esquina3.y > p.limite2.y) {  //zona=0 izq    zona=1 dcha
+			if (h.zonaH == 0) {
+				if (h.hitbox.esquina2.x > xmax) {
+					h.posicion.x = xmin - 0.4;
+					h.velocidad.x = 0.0f;
+					h.aceleracion.y = -9.8f;
+				}
+			}
+			else
+				if (h.hitbox.esquina1.x < xmin) {
+					h.posicion.x = xmax + 0.4;
+					h.velocidad.x = 0.0f;
+					h.aceleracion.y = -9.8f;
+				}
+		}
 	}
 }
 
@@ -103,7 +126,7 @@ void Interaccion::rebote(EnemigoDisp& ene, Pared p)
 				ene.aceleracion.y = -9.8f;
 			}
 		}
-		else //Si está arriba
+		else //Si estÃ¡ arriba
 		{
 			if (ene.posicion.y < ymin) {
 				ene.posicion.y = ymin;
@@ -275,7 +298,7 @@ void Interaccion::rebote(DisparosEnemigos& ene, Pared p)
 				ene.setAc(0.0f, -9.8f);
 			}
 		}
-		else //Si está arriba
+		else //Si estÃ¡ arriba
 		{
 			if (ene.getPos().y < ymin) {
 				/*ene.posicion.y = ymin;
@@ -331,7 +354,7 @@ void Interaccion::rebote(disparosAmigos& ene, Pared p)
 				ene.setAc(0.0f, -9.8f);
 			}
 		}
-		else //Si está arriba
+		else //Si estÃ¡ arriba
 		{
 			if (ene.getPos().y < ymin) {
 				
