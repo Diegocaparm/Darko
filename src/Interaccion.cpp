@@ -65,7 +65,7 @@ void Interaccion::rebote(Hombre& h, Pared p)
 			h.zonaH = 1;	//dcha
 		else if(h.hitbox.esquina2.x < xmin - 0.2)
 			h.zonaH = 0;	//izq
-		if (h.hitbox.esquina1.y < p.limite1.y && h.hitbox.esquina3.y > p.limite2.y) {  //zona=0 izq    zona=1 dcha
+		if (h.hitbox.esquina3.y < p.limite1.y - 0.5 && h.hitbox.esquina3.y > p.limite2.y) {  //zona=0 izq    zona=1 dcha
 			if (h.zonaH == 0) {
 				if (h.hitbox.esquina2.x > xmax) {
 					h.posicion.x = xmin - 0.4;
