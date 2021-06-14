@@ -1,8 +1,16 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@David
+
+Changes v2.2
+
+- Solucionada interaccion con paredes verticales
+
 @Mica
+
 Changes v2.1
+
 - Añadida la clase bola de fuego
 
 - Intento de interaccion de la misma con el pj
