@@ -22,6 +22,7 @@
 #include "Vidas.h"
 #include "VidasRec.h"
 #include "Dinero.h"
+#include "BolaFuego.h"
 
 class Interaccion
 {
@@ -81,6 +82,9 @@ public:
 	static void colision(listaTentaculo ene, listaDispAmig da);
 	static void colision(listabomber ene, listaDispAmig da);
 
+	//colision con bola fuego
+	//static void colision(Hombre& h, BolaFuego bola);???
+	static void colision(Hombre& h, BolaFuego& b);
 	//espada
 	static void mov(espada& esp, Hombre& h);
 	static void colision(listaEnemDisp ene, espada esp);

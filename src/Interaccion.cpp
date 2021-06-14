@@ -795,3 +795,14 @@ bool DistHitbox(Hitbox h1, Vector2D e) {
 	else return false;
 
 }
+
+//bola fuego
+void Interaccion::colision(Hombre& h, BolaFuego& bola) {
+	bool b1, b2, b3, b4;
+	b1 = DistHitbox(h.hitbox, bola.hitbox.esquina1);
+	b2 = DistHitbox(h.hitbox, bola.hitbox.esquina2);
+	b3 = DistHitbox(h.hitbox, bola.hitbox.esquina3);
+	b4 = DistHitbox(h.hitbox, bola.hitbox.esquina4);
+	if (b1 || b2 || b3 || b4)
+		bola.setColor(0, 1, 0);
+}
