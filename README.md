@@ -3,6 +3,14 @@ Repositorio para el trabajo de Informática Industrial
 
 @ Diego y Mica
 
+Changes v2.4
+
+- Añadidas las plataformas móviles (***)
+
+- Terminados los niveles 2 y 3 (***)
+
+@ Diego y Mica
+
 Changes v2.3
 
 - Añadido el método cargarnivel()
