@@ -122,7 +122,7 @@ void Nivel1::inicializa()
 	y_ojo = 7.5;
 	z_ojo = 30;
 
-	nivel = 3;			//eeeeeeeeeeeeeeeeeeeeeeeee
+	nivel = 1;			//eeeeeeeeeeeeeeeeeeeeeeeee
 	cargarnivel();
 }
 

@@ -4,7 +4,7 @@ Pincho::Pincho() {
 	altura = 2.5f;
 }
 Pincho::Pincho(float px, float py) {
-	altura = 2.5f;
+	altura = 2;
 	setPos(px, py);
 
 	Vector2D e1, e2, e3, e4;

@@ -29,7 +29,7 @@ Tank::Tank(float px, float py) {
 	altura = 7.0f;
 	aceleracion.x = 0.0f;
 	aceleracion.y = -9.8f;
-	setColor(1,1,1);
+	setColor(1,0,0);
 	setPos(px, py);
 	dispTank1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 	dispTank2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
@@ -134,6 +134,19 @@ void Tank::mueve(float t)
 	e3.x = posicion.x - altura / 3;		e3.y = posicion.y - 0;
 	e4.x = posicion.x + altura / 3;		e4.y = posicion.y - 0;
 	hitbox.setPos(e1, e2, e3, e4);
+
+	if (tempdmg) {
+		tempdmg--;
+		if (vida <= 0) {	//muerto
+			setColor(1, 1, 1);
+		}
+	}
+	else if (flagdmg) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
 }
 
 void Tank::setColor(Byte r, Byte g, Byte b) {

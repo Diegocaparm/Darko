@@ -1,11 +1,11 @@
 #include "espada.h"
 
 espada::espada() {
-	setColor(0, 1, 1);
+	setColor(1, 0, 0);
 }
 espada::espada(float px, float py) {
 	setPos(px, py);
-	setColor(0, 1, 1);
+	setColor(1, 0, 0);
 }
 
 void espada::dibuja() {

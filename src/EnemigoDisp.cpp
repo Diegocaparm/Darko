@@ -102,6 +102,19 @@ void EnemigoDisp::mueve(float t)
 	e4.x = posicion.x + 0.3f;	e4.y = posicion.y - 0.0f;
 	hitbox.setPos(e1,e2,e3,e4);
 
+	/////////////////////////////////////////
+	if (tempdmg) {
+		tempdmg--;
+		if (vida <= 0) {	//muerto
+			setColor(1, 1, 1);
+		}
+	}
+	else if (flagdmg) {
+		vida -= 1 + flagesp;
+		flagdmg = 0;
+		flagesp = 0;
+	}
+	
 }
 
 void EnemigoDisp::setColor(Byte r, Byte g, Byte b) {

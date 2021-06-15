@@ -137,10 +137,6 @@ void Tentaculo::mueve(float t) {
 	e3.x = -(longitud / 6) * cos(-a * pi / 180) + posicion.x;				e3.y = -(longitud / 6) * (sin(-a * pi / 180));
 	e4.x = (longitud / 6) * cos(-a * pi / 180) + posicion.x;					e4.y = (longitud / 6) * (sin(-a * pi / 180));
 	hitbox[0].setPos(e1, e2, e3, e4);
-	hitbox[0].segmento[0] = { e1.x, e1.y, e2.x, e2.y };
-	hitbox[0].segmento[1] = { e2.x, e2.y, e4.x, e4.y };
-	hitbox[0].segmento[2] = { e3.x, e3.y, e4.x, e4.y };
-	hitbox[0].segmento[3] = { e1.x, e1.y, e3.x, e3.y };
 
 
 	Vector2D e11, e21, e31, e41;
@@ -150,10 +146,6 @@ void Tentaculo::mueve(float t) {
 	e41.x = (longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;			e41.y = (longitud) * (cos(-a * pi / 180));
 	Vector2D e111 = { e11.x + posicion.x, e1.y + e11.y }, e211 = { e21.x + posicion.x, e2.y + e21.y };
 	hitbox[1].setPos(e111, e211, e31, e41);
-	hitbox[1].segmento[0] = { e111.x, e111.y, e211.x, e211.y };
-	hitbox[1].segmento[1] = { e211.x, e211.y, e41.x, e41.y };
-	hitbox[1].segmento[2] = { e31.x, e31.y, e41.x, e41.y };
-	hitbox[1].segmento[3] = { e111.x, e111.y, e31.x, e31.y };
 
 	Vector2D e12, e22, e32, e42;
 	e12.x = -(longitud / 6) + longitud * 2 * sin(3.2 * a * pi / 180);		e12.y = (longitud) * (cos(a * pi / 180)) - 0.5 * (cos(a * pi / 180));
@@ -162,11 +154,19 @@ void Tentaculo::mueve(float t) {
 	e42.x = (longitud / 6) + longitud * sin(3 * a * pi / 180);			e42.y = (longitud) * (cos(3 * a * pi / 180)) + 2 * sin(a * pi / 180) * sin(a * pi / 180);
 	Vector2D e121 = { e12.x + posicion.x, e111.y + e12.y }, e221 = { e22.x + posicion.x, e211.y + e22.y };
 	hitbox[2].setPos(e121, e221, e111, e211);
-	hitbox[2].segmento[0] = { e121.x, e121.y, e221.x, e221.y };
-	hitbox[2].segmento[1] = { e221.x, e221.y, e211.x, e211.y };
-	hitbox[2].segmento[2] = { e111.x, e111.y, e211.x, e211.y };
-	hitbox[2].segmento[3] = { e121.x, e121.y, e111.x, e111.y };
 
+	if (tempdmg) {
+		tempdmg--;
+		if (vida <= 0) {	//muerto
+			setColor(1, 1, 1);
+		}
+	}
+	else if (flagdmg) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
 }
 
 void Tentaculo::setColor(Byte r, Byte g, Byte b) {

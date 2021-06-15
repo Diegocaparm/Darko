@@ -8,6 +8,8 @@ class Tentaculo
 	ColorRGB color;
 	Vector2D posicion, velocidad, aceleracion;
 	Hitbox hitbox[3];
+	int tempdmg = 0, flagdmg = 0, flagesp = 0, vida = 19;	////////////////////////////////////
+
 public:
 	Tentaculo();
 	Tentaculo(float px, float py);
