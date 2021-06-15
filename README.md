@@ -7,6 +7,8 @@ Changes v2.2
 
 - Solucionada interaccion con paredes verticales
 
+- Añadido bossFinal y sus interacciones
+
 @Mica
 
 Changes v2.1
