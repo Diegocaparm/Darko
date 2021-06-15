@@ -3,6 +3,13 @@ Repositorio para el trabajo de Informática Industrial
 
 @David
 
+Changes v2.6
+
+- Sistema de vida y daño contra enemigos 
+
+
+@David
+
 Changes v2.5
 
 - Solución de errores
