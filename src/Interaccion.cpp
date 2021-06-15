@@ -262,9 +262,9 @@ void Interaccion::rebote(bomber& b, Caja c)
 	}
 }
 
-void Interaccion::rebote(bomber& b, Pared p)
+void Interaccion::rebote(bomber& ene, Pared p)
 {
-	float xmin = p.limite2.x;//izq
+	/*float xmin = p.limite2.x;//izq
 	float xmax = p.limite1.x;//dcha
 	float ymin = p.limite2.y;//ab
 	float ymax = p.limite1.y - b.radio;//arr
@@ -273,7 +273,7 @@ void Interaccion::rebote(bomber& b, Pared p)
 	else
 		b.zonaV = 0;
 
-	if (b.posicion.x < xmax && b.posicion.x > xmin) {  //zona=0 abajo    zona=1 arriba
+	if (b.posicion.x+b.radio < xmax && b.posicion.x-b.radio > xmin) {  //zona=0 abajo    zona=1 arriba
 		if (b.zonaV == 0) {
 			if (b.posicion.y > ymax) {
 				b.posicion.y = ymax;
@@ -288,11 +288,47 @@ void Interaccion::rebote(bomber& b, Pared p)
 				//	ene.aceleracion.y = -9.8f;
 			}
 
-		if (b.posicion.x < xmin + 0.5f) {		//cambiar de direccion
+		if (b.posicion.x-b.radio < xmin + 0.5f) {		//cambiar de direccion
 			b.sentido = 1;
 		}
-		if (b.posicion.x > xmax - 0.5f) {
+		if (b.posicion.x+b.radio > xmax - 0.5f) {
 			b.sentido = 0;
+		}
+	}*/
+	//Ponemos los limites de la plataforma
+	float xmin = p.limite2.x;//izq
+	float xmax = p.limite1.x;//dcha
+	float ymin = p.limite2.y;//ab
+	float ymax = p.limite1.y;//arr
+	if (sqrt((ene.hitbox.esquina3.y * ene.hitbox.esquina3.y) + (ymin * ymin)) < 0.5) {
+		//Decidimos si estamos arriba o abajo
+		if (ene.hitbox.esquina2.y > ymin)
+			ene.zonaV = 1; //Estamos arriba
+		else
+			ene.zonaV = 0; //Abajo
+		//Decidimos si estamos dentro y si estamos encima
+		if (ene.hitbox.esquina2.x < xmax && ene.hitbox.esquina1.x > xmin)
+		{
+			if (ene.zonaV == 0) { //Sigue igual si esta debajo
+				if (ene.hitbox.esquina1.y > ymax) {
+					ene.posicion.y = ymax - ene.radio;
+					ene.velocidad.y = 0.0f;
+					ene.aceleracion.y = -9.8f;
+				}
+			}
+			else //Si está arriba
+			{
+				if (ene.hitbox.esquina3.y < ymin) {
+					ene.posicion.y = ymin + ene.radio;
+					ene.velocidad.y = 0.0f;
+				}
+				if (ene.hitbox.esquina1.x < xmin+0.5) {		//cambiar de direccion
+					ene.sentido = 0;
+				}
+				if (ene.hitbox.esquina2.x > xmax-0.5) {
+					ene.sentido = 1;
+				}
+			}
 		}
 	}
 }

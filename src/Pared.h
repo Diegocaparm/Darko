@@ -4,6 +4,7 @@
 
 class Pared
 {
+protected:
 	ColorRGB color;
 	Vector2D limite1, limite2;
 public:

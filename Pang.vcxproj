@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PlatMovil.cpp" />
     <ClCompile Include="src\babosa.cpp" />
     <ClCompile Include="src\BolaFuego.cpp" />
     <ClCompile Include="src\bomber.cpp" />
@@ -52,6 +51,7 @@
     <ClCompile Include="src\Moneda.cpp" />
     <ClCompile Include="src\Nivel1.cpp" />
     <ClCompile Include="src\Pincho.cpp" />
+    <ClCompile Include="src\PlatMovil.cpp" />
     <ClCompile Include="src\Tank.cpp" />
     <ClCompile Include="src\EnemigoDisp.cpp" />
     <ClCompile Include="src\Hombre.cpp" />

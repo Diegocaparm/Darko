@@ -15,12 +15,14 @@ BolaFuego::BolaFuego(float posx, float posy, float limtop, float limbot) {
 	velocidad.y = 10.0f;
 	setPos(posx, posy);
 	limitesy = { limbot,limtop };
+	setColor(1, 0, 0);
 }
 
 void BolaFuego::dibuja() {
 
 	//Dibujo
 	glPushMatrix();
+	glColor3f(color.r, color.g, color.b);
 	glTranslatef(posicion.x, posicion.y, 0.5);
 	glutWireSphere(radio, 15, 15);
 	glPopMatrix();
@@ -81,4 +83,10 @@ float BolaFuego::getRadio() {
 
 Vector2D BolaFuego::getPos() {
 	return posicion;
+}
+
+void BolaFuego::setColor(Byte r, Byte g, Byte b) {
+	color.r = r;
+	color.g = g;
+	color.b = b;
 }

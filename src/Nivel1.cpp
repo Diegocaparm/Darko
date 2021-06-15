@@ -62,6 +62,7 @@ void Nivel1::mueve()
 	Interaccion::rebote(hombre, plataformas);
 
 	listPinchos.rebote(hombre);
+	listaFuego.rebote(hombre);
 
 	//Interacciones enemigos con el entorno
 	enemigosDisp.rebote(caja);
@@ -121,7 +122,7 @@ void Nivel1::inicializa()
 	y_ojo = 7.5;
 	z_ojo = 30;
 
-	nivel = 3;
+	nivel = 3;			//eeeeeeeeeeeeeeeeeeeeeeeee
 	cargarnivel();
 }
 
@@ -462,8 +463,8 @@ bool Nivel1::cargarnivel()
 		listaFuego.agregar(new BolaFuego(32.0f, -2.0f, 5.0f, -15.0f));
 		listaFuego.agregar(new BolaFuego(40.5f, -15.0f, 5.0f, -15.0f));
 		//Creacion de los enemigos
-		bombers.agregar(new bomber(57.0f, 2.0f));
-		bombers.agregar(new bomber(156.0f, 15.5f));
+		bombers.agregar(new bomber(57.0f, 2.5f));
+		bombers.agregar(new bomber(156.0f, 15.7f));
 		EnemigoDisp* ped1 = new EnemigoDisp(97.0f, 0.0f), //suelo6
 			* ped2 = new EnemigoDisp(137.0f, 2.50f), //suelo7
 			* ped3 = new EnemigoDisp(145.0f, 0.0f), //suelo7

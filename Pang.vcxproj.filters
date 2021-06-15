@@ -138,10 +138,10 @@
     <ClCompile Include="src\listamisiles.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="PlatMovil.cpp">
+    <ClCompile Include="src\ListaBolasFuego.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\ListaBolasFuego.cpp">
+    <ClCompile Include="src\PlatMovil.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

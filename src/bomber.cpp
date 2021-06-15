@@ -58,20 +58,20 @@ void bomber::mueve(float t)
 	velocidad = velocidad + aceleracion * t;
 
 
-	if (zonaH == 0) {
+	//if (zonaH == 0) {
 		if (sentido == 0) {
 			velocidad.x = 1;
 		}
 		else
 			velocidad.x = -1;
-	}
+	//}
 
 	//Añadido por Miguel (crea las paredes de choque)
 	Vector2D e1, e2, e3, e4;
-	e1.x = posicion.x - 0.3f;	e1.y = posicion.y + 2.0f;
-	e2.x = posicion.x + 0.3f;	e2.y = posicion.y + 2.0f;
-	e3.x = posicion.x - 0.3f;	e3.y = posicion.y - 0.0f;
-	e4.x = posicion.x + 0.3f;	e4.y = posicion.y - 0.0f;
+	e1.x = posicion.x - radio;	e1.y = posicion.y + radio;
+	e2.x = posicion.x + radio;	e2.y = posicion.y + radio;
+	e3.x = posicion.x - radio;	e3.y = posicion.y - radio;
+	e4.x = posicion.x + radio;	e4.y = posicion.y - radio;
 	hitbox.setPos(e1, e2, e3, e4);
 
 }
