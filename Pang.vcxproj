@@ -23,6 +23,7 @@
     <ClCompile Include="src\BolaFuego.cpp" />
     <ClCompile Include="src\bomber.cpp" />
     <ClCompile Include="src\Bonus.cpp" />
+    <ClCompile Include="src\bossFinal.cpp" />
     <ClCompile Include="src\Caja.cpp" />
     <ClCompile Include="src\Corazon.cpp" />
     <ClCompile Include="src\Dinero.cpp" />
@@ -39,11 +40,13 @@
     <ClCompile Include="src\listaDispAmig.cpp" />
     <ClCompile Include="src\listaDispEnem.cpp" />
     <ClCompile Include="src\listaEnemDisp.cpp" />
+    <ClCompile Include="src\listamisiles.cpp" />
     <ClCompile Include="src\listaPinchos.cpp" />
     <ClCompile Include="src\listaPlat.cpp" />
     <ClCompile Include="src\listaTank.cpp" />
     <ClCompile Include="src\listaTent.cpp" />
     <ClCompile Include="src\Menu.cpp" />
+    <ClCompile Include="src\misil.cpp" />
     <ClCompile Include="src\Moneda.cpp" />
     <ClCompile Include="src\Nivel1.cpp" />
     <ClCompile Include="src\Pincho.cpp" />
@@ -63,6 +66,7 @@
     <ClInclude Include="src\BolaFuego.h" />
     <ClInclude Include="src\bomber.h" />
     <ClInclude Include="src\Bonus.h" />
+    <ClInclude Include="src\bossFinal.h" />
     <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\ColorRGB.h" />
     <ClInclude Include="src\Corazon.h" />
@@ -80,11 +84,13 @@
     <ClInclude Include="src\listaDispAmig.h" />
     <ClInclude Include="src\listaDispEnem.h" />
     <ClInclude Include="src\listaEnemDisp.h" />
+    <ClInclude Include="src\listamisiles.h" />
     <ClInclude Include="src\listaPinchos.h" />
     <ClInclude Include="src\listaPlat.h" />
     <ClInclude Include="src\listaTank.h" />
     <ClInclude Include="src\listaTent.h" />
     <ClInclude Include="src\Menu.h" />
+    <ClInclude Include="src\misil.h" />
     <ClInclude Include="src\Moneda.h" />
     <ClInclude Include="src\Nivel1.h" />
     <ClInclude Include="src\Pincho.h" />
