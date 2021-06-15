@@ -26,6 +26,7 @@
 #include "VidasRec.h"
 #include "Dinero.h"
 #include "BolaFuego.h"
+#include "PlatMovil.h"
 
 class Interaccion
 {
@@ -33,6 +34,7 @@ public:
 	//PJ con entorno
 	static void rebote(Hombre& h, Caja c);
 	static void rebote(Hombre& h, Pared p);
+	static void rebote(Hombre& h, PlatMovil pm);
 	static void rebote(Hombre& h, listaPlat lp); 
 
 	//Pj con Corazones

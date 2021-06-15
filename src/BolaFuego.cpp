@@ -5,19 +5,17 @@
 
 BolaFuego::BolaFuego(){
 	radio = 0.75f;
-	aceleracion.x = aceleracion.y = 0.0f;
 	velocidad.x = 0.0f;
 	velocidad.y = 2.0f;
 }
 
-BolaFuego::BolaFuego(float x, float y) {
+BolaFuego::BolaFuego(float posx, float posy, float limtop, float limbot) {
 	radio = 0.75f;
-	aceleracion.x = aceleracion.y = 0.0f;
 	velocidad.x = 0.0f;
-	velocidad.y = 2.0f;
-	setPos(x, y);
+	velocidad.y = 10.0f;
+	setPos(posx, posy);
+	limitesy = { limbot,limtop };
 }
-
 
 void BolaFuego::dibuja() {
 
@@ -54,16 +52,15 @@ void BolaFuego::dibuja() {
 }
 
 void BolaFuego::mueve(float t) {
-	if (posicion.y > 16.0f)
+	if (posicion.y > limitesy.y)
 	{
 		velocidad.y = -velocidad.y;
 	}
-	else if (posicion.y < -5.0f)
+	else if (posicion.y < limitesy.x)
 	{
 		velocidad.y = -(velocidad.y);
 	}
-	posicion.y = posicion.y + velocidad.y * t + 0.5f * aceleracion.y * t * t;
-	velocidad.y = velocidad.y + aceleracion.y * t;
+	posicion.y = posicion.y + velocidad.y * t;
 	//posicion hitbox
 	Vector2D e1, e2, e3, e4;
 	e1.x = posicion.x - radio;			e1.y = posicion.y + radio;
@@ -77,9 +74,11 @@ void BolaFuego::setPos(float ix, float iy) {
 	posicion.x = ix;
 	posicion.y = iy;
 }
+
 float BolaFuego::getRadio() {
 	return radio;
 }
+
 Vector2D BolaFuego::getPos() {
 	return posicion;
 }

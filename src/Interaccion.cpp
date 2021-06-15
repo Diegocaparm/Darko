@@ -4,7 +4,6 @@
 #define pi 3.14159265
 float DistSegmento(segmento s1, Vector2D p);
 bool DistHitbox(Hitbox h1, Vector2D e);		//hitbox y esquina de otra hitbox
-
 float DistSeg(Hitbox h, Vector2D p);
 
 void Interaccion::rebote(Hombre& h, Caja c)
@@ -21,14 +20,6 @@ void Interaccion::rebote(Hombre& h, Caja c)
 	//Tratamos los rebotes del techo y los suelos como plataformas standar
 	rebote(h, c.techo);
 	rebote(h, c.suelo);
-	/*rebote(h, c.pozo1_dcha);
-	rebote(h, c.pozo1_izq);
-	rebote(h, c.pozo2_dcha);
-	rebote(h, c.pozo2_izq);
-	rebote(h, c.pozo3_dcha);
-	rebote(h, c.pozo3_izq);
-	rebote(h, c.pozo4_dcha);
-	rebote(h, c.pozo4_izq);*/
 }
 
 void Interaccion::rebote(Hombre& h, Pared p)
@@ -83,9 +74,63 @@ void Interaccion::rebote(Hombre& h, Pared p)
 	}
 }
 
+void Interaccion::rebote(Hombre& h, PlatMovil pm)
+{
+	float xmin = pm.limite2.x;//izq
+	float xmax = pm.limite1.x;//dcha
+	float ymin = pm.limite2.y;//ab
+	float ymax = pm.limite1.y - h.altura;//arr
+
+	if (pm.limite1.y == pm.limite2.y) {
+		if (h.posicion.y > ymin - h.altura / 2)
+			h.zonaV = 1;
+		else
+			h.zonaV = 0;
+
+		if (h.posicion.x < xmax && h.posicion.x > xmin) {  //zona=0 abajo    zona=1 arriba
+			if (h.zonaV == 0) {
+				if (h.posicion.y > ymax) {
+					h.posicion.y = ymax;
+					h.velocidad.y = 0.0f;
+					h.aceleracion.y = -9.8f;
+				}
+			}
+			else
+				if (h.posicion.y < ymin) {
+					h.posicion.y = ymin;
+					h.velocidad.y = 0.0f;
+					//	h.aceleracion.y = -9.8f;
+				}
+		}
+	}
+	else if (sqrt((h.posicion.x - xmin) * (h.posicion.x - xmin)) < 0.7) {
+		if (h.hitbox.esquina1.x > xmin + 0.2)
+			h.zonaH = 1;	//dcha
+		else if (h.hitbox.esquina2.x < xmin - 0.2)
+			h.zonaH = 0;	//izq
+		if (h.hitbox.esquina3.y < pm.limite1.y - 0.5 && h.hitbox.esquina3.y > pm.limite2.y) {  //zona=0 izq    zona=1 dcha
+			if (h.zonaH == 0) {
+				if (h.hitbox.esquina2.x > xmax) {
+					h.posicion.x = xmin - 0.4;
+					h.velocidad.x = 0.0f;
+					h.aceleracion.y = -9.8f;
+				}
+			}
+			else
+				if (h.hitbox.esquina1.x < xmin) {
+					h.posicion.x = xmax + 0.4;
+					h.velocidad.x = 0.0f;
+					h.aceleracion.y = -9.8f;
+				}
+		}
+	}
+}
+
 void Interaccion::rebote(Hombre& h, listaPlat p) {
 	for (int i = 0; i < p.numero; i++)
 		rebote(h, *p.lista[i]);
+	for (int i = 0; i < p.numv; i++)
+		rebote(h, *p.listamov[i]);
 }
 
 void Interaccion::rebote(EnemigoDisp& ene, Caja c)
@@ -94,14 +139,6 @@ void Interaccion::rebote(EnemigoDisp& ene, Caja c)
 	rebote(ene, c.pared_dcha);
 	rebote(ene, c.pared_izq);
 	rebote(ene, c.suelo);
-	/*rebote(ene, c.pozo1_dcha);
-	rebote(ene, c.pozo1_izq);
-	rebote(ene, c.pozo2_dcha);
-	rebote(ene, c.pozo2_izq);
-	rebote(ene, c.pozo3_dcha);
-	rebote(ene, c.pozo3_izq);
-	rebote(ene, c.pozo4_dcha);
-	rebote(ene, c.pozo4_izq);*/
 }
 
 void Interaccion::rebote(EnemigoDisp& ene, Pared p)
@@ -264,6 +301,7 @@ void Interaccion::rebote(bossFinal& h, listaPlat p) {
 	for (int i = 0; i < p.numero; i++)
 		rebote(h, *p.lista[i]);
 }
+
 void Interaccion::rebote(bossFinal& b, Caja c)
 {
 	float xmin = c.techo.limite2.x;
@@ -329,14 +367,6 @@ void Interaccion::rebote(DisparosEnemigos& ene, Caja c)
 	rebote(ene, c.pared_dcha);
 	rebote(ene, c.pared_izq);
 	rebote(ene, c.suelo);
-	/*rebote(ene, c.pozo1_dcha);
-	rebote(ene, c.pozo1_izq);
-	rebote(ene, c.pozo2_dcha);
-	rebote(ene, c.pozo2_izq);
-	rebote(ene, c.pozo3_dcha);
-	rebote(ene, c.pozo3_izq);
-	rebote(ene, c.pozo4_dcha);
-	rebote(ene, c.pozo4_izq);*/
 }
 
 void Interaccion::rebote(DisparosEnemigos& ene, Pared p)
@@ -385,14 +415,6 @@ void Interaccion::rebote(disparosAmigos& ene, Caja c)
 	rebote(ene, c.pared_dcha);
 	rebote(ene, c.pared_izq);
 	rebote(ene, c.suelo);
-	/*rebote(ene, c.pozo1_dcha);
-	rebote(ene, c.pozo1_izq);
-	rebote(ene, c.pozo2_dcha);
-	rebote(ene, c.pozo2_izq);
-	rebote(ene, c.pozo3_dcha);
-	rebote(ene, c.pozo3_izq);
-	rebote(ene, c.pozo4_dcha);
-	rebote(ene, c.pozo4_izq);*/
 }
 
 void Interaccion::rebote(disparosAmigos& ene, Pared p)
@@ -434,14 +456,6 @@ void Interaccion::rebote(misil& ene, Caja c)
 	rebote(ene, c.pared_dcha);
 	rebote(ene, c.pared_izq);
 	rebote(ene, c.suelo);
-	/*rebote(ene, c.pozo1_dcha);
-	rebote(ene, c.pozo1_izq);
-	rebote(ene, c.pozo2_dcha);
-	rebote(ene, c.pozo2_izq);
-	rebote(ene, c.pozo3_dcha);
-	rebote(ene, c.pozo3_izq);
-	rebote(ene, c.pozo4_dcha);
-	rebote(ene, c.pozo4_izq);*/
 }
 
 void Interaccion::rebote(misil& ene, Pared p)
@@ -499,6 +513,7 @@ void Interaccion::rebote(Hombre & h, EnemigoDisp e,VidasRec& v)
 		h.aceleracion.y = -9.8f;
 	}
 }
+
 void Interaccion::rebote(EnemigoDisp& ed1, EnemigoDisp& ed2) {
 	float xmin = ed1.posicion.x - 0.1;
 	float xmax = ed1.posicion.x + 0.1;
@@ -514,6 +529,7 @@ void Interaccion::rebote(EnemigoDisp& ed1, EnemigoDisp& ed2) {
 		ed2.aceleracion.x = -200.0f;
 	}
 }
+
 void Interaccion::mov(Babosa& b, Hombre& h) {
 	Vector2D dist = b.posicion - h.posicion;
 	if (dist.modulo() < 5)
@@ -532,6 +548,7 @@ void Interaccion::mov(Babosa& b, Hombre& h) {
 
 
 }
+
 void Interaccion::mov(Hombre& h, misil& m) {
 	Vector2D dist = m.getPos() - h.posicion;
 	if (dist.modulo() < 5)
@@ -550,6 +567,7 @@ void Interaccion::mov(Hombre& h, misil& m) {
 
 
 }
+
 void Interaccion::rebote(Corazon& v, Pared p)
 {
 	float xmin = p.limite1.x;//izq
@@ -564,21 +582,15 @@ void Interaccion::rebote(Corazon& v, Pared p)
 		v.velocidad.x = 0;
 	}
 }
+
 void Interaccion::rebote(Corazon& v, Caja c)
 {
 	rebote(v, c.techo);
 	rebote(v, c.pared_izq);
 	rebote(v, c.pared_dcha);
 	rebote(v, c.suelo);
-	/*rebote(v, c.pozo1_dcha);
-	rebote(v, c.pozo1_izq);
-	rebote(v, c.pozo2_dcha);
-	rebote(v, c.pozo2_izq);
-	rebote(v, c.pozo3_dcha);
-	rebote(v, c.pozo3_izq);
-	rebote(v, c.pozo4_dcha);
-	rebote(v, c.pozo4_izq);*/
 }
+
 bool Interaccion::recoleccion(Corazon& v, Hombre h)
 {
 	Vector2D pos = h.getPos(); //la posicion de la base del hombre
@@ -588,6 +600,7 @@ bool Interaccion::recoleccion(Corazon& v, Hombre h)
 		return true;
 	return false;
 }
+
 void Interaccion::rebote(Moneda& m, Pared p)
 {
 	float xmin = p.limite1.x;//izq
@@ -602,21 +615,15 @@ void Interaccion::rebote(Moneda& m, Pared p)
 		m.velocidad.x = 0;
 	}
 }
+
 void Interaccion::rebote(Moneda& m, Caja c)
 {
 	rebote(m, c.techo);
 	rebote(m, c.pared_izq);
 	rebote(m, c.pared_dcha);
 	rebote(m, c.suelo);
-	/*rebote(m, c.pozo1_dcha);
-	rebote(m, c.pozo1_izq);
-	rebote(m, c.pozo2_dcha);
-	rebote(m, c.pozo2_izq);
-	rebote(m, c.pozo3_dcha);
-	rebote(m, c.pozo3_izq);
-	rebote(m, c.pozo4_dcha);
-	rebote(m, c.pozo4_izq);*/
 }
+
 bool Interaccion::recoleccion(Moneda& v, Hombre h)
 {
 	Vector2D pos = h.getPos(); //la posicion de la base del hombre
@@ -626,11 +633,13 @@ bool Interaccion::recoleccion(Moneda& v, Hombre h)
 		return true;
 	return false;
 }
+
 void Interaccion::rebote(Hombre& h, listaEnemDisp l,VidasRec& v) 
 {
 	for (int i = 0; i < l.numero; i++)
 		rebote(h, *l.lista[i],v);
 }
+
 void Interaccion::colision(Hombre& h, Bonus& b) {
 	//gestion de comportamiento
 	if (h.hitbox.zonaH == 0 && h.hitbox.zonaV == -1) {//entrando por abajo
@@ -696,6 +705,7 @@ void Interaccion::colision(Hombre& h, Bonus& b) {
 	if (b1 || b2 || b3 || b4)
 		b.setColor(0, 1, 0);*/
 }
+
 void Interaccion::colision(Hombre& h, Pincho b) {
 
 	bool b1, b2, b3, b4;
@@ -712,6 +722,7 @@ void Interaccion::colision(Hombre& h, DisparosEnemigos& de) {
 		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
 			de.setColor(0, 1, 0);
 }
+
 void Interaccion::colision(Hombre& h, misil& m) {
 	if (m.getPos().y - m.getRadio() < h.hitbox.esquina1.y && m.getPos().y + m.getRadio() > h.hitbox.esquina3.y)
 		if (m.getPos().x - m.getRadio() < h.hitbox.esquina2.x && m.getPos().x + m.getRadio() > h.hitbox.esquina1.x)
@@ -732,6 +743,7 @@ void Interaccion::colision(Hombre& h, Babosa& ene) {
 	if (b1 || b2 || b3 || b4 || b5 || b6 || b7 || b8)
 		ene.setColor(0, 1, 0);
 }
+
 void Interaccion::colision(Hombre& h, bomber& ene) {
 	if ((h.getPos() - ene.getPos()).modulo() < 4) {
 		ene.flag=1;
@@ -743,6 +755,7 @@ void Interaccion::colision(Hombre& h, bomber& ene) {
 	if (ene.temp == 0)
 		ene.radio = 6;
 }
+
 void Interaccion::colision(Hombre& h, Tentaculo& ene) {
 	for (int i = 0; i < 3; i++) {
 		float dist1 = DistSeg(ene.hitbox[i], h.hitbox.esquina1),
@@ -754,22 +767,24 @@ void Interaccion::colision(Hombre& h, Tentaculo& ene) {
 	}
 }
 
-
 void Interaccion::colision(EnemigoDisp& h, disparosAmigos& de) {
 	if (de.getPos().y - de.getRadio() < h.hitbox.esquina1.y && de.getPos().y + de.getRadio() > h.hitbox.esquina3.y)
 		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
 			de.setColor(0, 1, 0);
 }
+
 void Interaccion::colision(Tank& h, disparosAmigos& de) {
 	if (de.getPos().y - de.getRadio() < h.hitbox.esquina1.y && de.getPos().y + de.getRadio() > h.hitbox.esquina3.y)
 		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
 			de.setColor(0, 1, 0);
 }
+
 void Interaccion::colision(Babosa& h, disparosAmigos& de) {
 	if (de.getPos().y - de.getRadio() < h.hitbox.esquina1.y && de.getPos().y + de.getRadio() > h.hitbox.esquina3.y)
 		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
 			de.setColor(0, 1, 0);
 }
+
 void Interaccion::colision(Tentaculo& h, disparosAmigos& de) {
 	/*if (de.getPos().y - de.getRadio() < h.hitbox.esquina1.y && de.getPos().y + de.getRadio() > h.hitbox.esquina3.y)
 		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
@@ -798,10 +813,12 @@ void Interaccion::colision(Tentaculo& h, disparosAmigos& de) {
 			de.setColor(0, 1, 0);
 	}*/
 }
+
 void Interaccion::colision(bomber& h, disparosAmigos& de) {
 	if ((h.getPos() - de.getPos()).modulo() < (h.radio + de.getRadio()))
 		de.setColor(0, 1, 0);
 }
+
 void Interaccion::colision(bossFinal& h, disparosAmigos& de) {
 	if (de.getPos().y - de.getRadio() < h.hitbox.esquina1.y && de.getPos().y + de.getRadio() > h.hitbox.esquina3.y)
 		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
@@ -813,26 +830,31 @@ void Interaccion::colision(listaEnemDisp ene, listaDispAmig da) {
 		for (int j = 0; j < ene.numero; j++)
 			colision(*ene.lista[j], *da.lista[i]);
 }
+
 void Interaccion::colision(listaTank ene, listaDispAmig da) {
 	for (int i = 0; i < da.numero; i++)
 		for (int j = 0; j < ene.numero; j++)
 			colision(*ene.lista[j], *da.lista[i]);
 }
+
 void Interaccion::colision(listaBabosas ene, listaDispAmig da) {
 	for (int i = 0; i < da.numero; i++)
 		for (int j = 0; j < ene.numero; j++)
 			colision(*ene.lista[j], *da.lista[i]);
 }
+
 void Interaccion::colision(listaTentaculo ene, listaDispAmig da) {
 	for (int i = 0; i < da.numero; i++)
 		for (int j = 0; j < ene.numero; j++)
 			Interaccion::colision(*ene.lista[j], *da.lista[i]);
 }
+
 void Interaccion::colision(listabomber ene, listaDispAmig da) {
 	for (int i = 0; i < da.numero; i++)
 		for (int j = 0; j < ene.numero; j++)
 			colision(*ene.lista[j], *da.lista[i]);
 }
+
 void Interaccion::colision(bossFinal ene, listaDispAmig da) {
 	for (int i = 0; i < da.numero; i++)
 		colision(ene, *da.lista[i]);
@@ -846,18 +868,22 @@ void Interaccion::colision(listaEnemDisp ene, espada esp) {
 	for (int j = 0; j < ene.numero; j++)
 		colision(*ene.lista[j], esp);
 }
+
 void Interaccion::colision(listaTank ene, espada esp) {
 	for (int j = 0; j < ene.numero; j++)
 		colision(*ene.lista[j], esp);
 }
+
 void Interaccion::colision(listaBabosas ene, espada esp) {
 	for (int j = 0; j < ene.numero; j++)
 		colision(*ene.lista[j], esp);
 }
+
 void Interaccion::colision(listaTentaculo ene, espada esp) {
 	for (int j = 0; j < ene.numero; j++)
 		colision(*ene.lista[j], esp);
 }
+
 void Interaccion::colision(listabomber ene, espada esp) {
 	for (int j = 0; j < ene.numero; j++)
 		colision(*ene.lista[j], esp);
@@ -868,16 +894,19 @@ void Interaccion::colision(EnemigoDisp& h, espada& esp) {
 		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
 			h.setColor(0, 1, 0);
 }
+
 void Interaccion::colision(Tank& h, espada& esp) {
 	if (esp.getPos().y - esp.getLong() < h.hitbox.esquina1.y && esp.getPos().y + esp.getLong() > h.hitbox.esquina3.y)
 		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
 			h.setColor(0, 1, 0);
 }
+
 void Interaccion::colision(Babosa& h, espada& esp) {
 	if (esp.getPos().y - esp.getLong() < h.hitbox.esquina1.y && esp.getPos().y + esp.getLong() > h.hitbox.esquina3.y)
 		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
 			h.setColor(0, 1, 0);
 }
+
 void Interaccion::colision(Tentaculo& h, espada& esp) {
 	for (int i = 0; i < 3; i++) {
 		float dist1 = DistSeg(h.hitbox[i], esp.getPos());
@@ -885,18 +914,18 @@ void Interaccion::colision(Tentaculo& h, espada& esp) {
 			h.setColor(0, 1, 0);
 	}
 }
+
 void Interaccion::colision(bomber& h, espada& esp) {
 	if ((h.getPos() - esp.getPos()).modulo() < (h.radio + esp.getLong()))
 		h.setColor(0, 1, 0);
 
 }
+
 void Interaccion::colision(bossFinal& h, espada& esp) {
 	if (esp.getPos().y - esp.getLong() < h.hitbox.esquina1.y && esp.getPos().y + esp.getLong() > h.hitbox.esquina3.y)
 		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
 			h.setColor(0, 1, 0);
 }
-
-
 
 float DistSegmento(segmento s1, Vector2D p1) {
 	float delta_x = s1.x1 - s1.x2;
@@ -933,6 +962,7 @@ float DistSegmento(segmento s1, Vector2D p1) {
 	}
 
 }
+
 float DistSeg(Hitbox h, Vector2D p) {
 	float //m1 = (h.esquina1 - h.esquina2).modulo(),
 		m2 = (h.esquina2 - h.esquina4).modulo(),
@@ -968,7 +998,6 @@ bool DistHitbox(Hitbox h1, Vector2D e) {
 
 }
 
-//bola fuego
 void Interaccion::colision(Hombre& h, BolaFuego& bola) {
 	bool b1, b2, b3, b4;
 	b1 = DistHitbox(h.hitbox, bola.hitbox.esquina1);

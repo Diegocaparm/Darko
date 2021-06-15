@@ -11,11 +11,11 @@ protected:
 	Vector2D posicion;
 	Vector2D origen;
 	Vector2D velocidad;
-	Vector2D aceleracion;
+	Vector2D limitesy;
 	Hitbox hitbox;
 public:
 	BolaFuego();
-	BolaFuego(float, float);
+	BolaFuego(float posx, float posy, float limtop, float limbot);
 	void setPos(float, float);
 	void dibuja();
 	void mueve(float t);
