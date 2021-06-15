@@ -1,34 +1,24 @@
 #pragma once
-#include "Bonus.h"
-#include "listaBonus.h"
 #include "Caja.h"
 #include "listaPlat.h"
-#include "Pincho.h"
 #include "listaPinchos.h"
-#include "BolaFuego.h"
 #include "Disparo.h"
-#include "Estela.h"
 #include "Hombre.h"
 #include "listaDispAmig.h"
 #include "Interaccion.h"
-#include "EnemigoDisp.h"
 #include "listaEnemDisp.h"
-#include "Tank.h"
 #include "listaTank.h"
 #include "listaDispEnem.h"
 #include "babosa.h"		
 #include "listaBabosas.h"
 #include "Tentaculo.h"
 #include "listaTent.h"
-#include "bomber.h"
 #include "listabomber.h"
-#include "bossFinal.h"
-#include "misil.h"
-#include "listamisiles.h"
 #include "Interfaz.h"
 #include "VidasRec.h"
 #include "DineroRec.h"
 #include "espada.h"
+#include "ListaBolasFuego.h"
 
 class Nivel1
 {
@@ -39,12 +29,12 @@ public:
 	float y_ojo;
 	float z_ojo;
 
+	int nivel; //Será lo que usemos para identificar en que nivel estamos
 	//Estructura del nivel
 	Caja caja;
 	listaPlat plataformas;
-	
 	listaPinchos listPinchos;
-	//listaBonus listBonus;
+	ListaBolasFuego listaFuego;
 
 	//Pj
 	Hombre hombre;
@@ -55,12 +45,9 @@ public:
 	listaEnemDisp enemigosDisp;
 	listaTank Tanks;
 	listaBabosas babosas;
-				listaTentaculo tentaculos;
-	//listabomber bombers;
+	listaTentaculo tentaculos;
+	listabomber bombers;
 	listaDispEnem disparos;
-	//BolaFuego bola;
-	//listamisiles misiles;
-	//bossFinal boss;
 
 	//Listas para vidas
 	Vidas vidas;							//Vidas del entorno (Recolectables)
@@ -78,6 +65,7 @@ public://Métodos
 	void mueve();
 	void dibuja();
 	void inicializa();
+	bool cargarnivel();
 	//void teclaEspecialUp(unsigned char key);
 };
 
