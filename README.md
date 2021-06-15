@@ -1,6 +1,13 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@David
+
+Changes v2.5
+
+- Solución de errores
+
+
 @ Diego y Mica
 
 Changes v2.4
