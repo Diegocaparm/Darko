@@ -8,16 +8,21 @@ BolaFuego::BolaFuego(){
 	aceleracion.x = aceleracion.y = 0.0f;
 	velocidad.x = 0.0f;
 	velocidad.y = 2.0f;
-	setColor(1, 0, 0);
 }
 
+BolaFuego::BolaFuego(float x, float y) {
+	radio = 0.75f;
+	aceleracion.x = aceleracion.y = 0.0f;
+	velocidad.x = 0.0f;
+	velocidad.y = 2.0f;
+	setPos(x, y);
+}
 
 
 void BolaFuego::dibuja() {
 
 	//Dibujo
 	glPushMatrix();
-	glColor3f(color.r, color.g, color.b);
 	glTranslatef(posicion.x, posicion.y, 0.5);
 	glutWireSphere(radio, 15, 15);
 	glPopMatrix();
@@ -77,9 +82,4 @@ float BolaFuego::getRadio() {
 }
 Vector2D BolaFuego::getPos() {
 	return posicion;
-}
-void BolaFuego::setColor(Byte r, Byte g, Byte b) {
-	color.r = r;
-	color.g = g;
-	color.b = b;
 }
