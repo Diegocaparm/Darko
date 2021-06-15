@@ -30,6 +30,10 @@ void Nivel1::dibuja()
 	disparos.dibuja();
 	dispAmig.dibuja();
 	espada.dibuja();
+
+	//bola.dibuja();
+	//boss.dibuja();
+	//misiles.dibuja();
 }
 
 void Nivel1::mueve()
@@ -47,6 +51,10 @@ void Nivel1::mueve()
 	//tentaculos.mueve(0.025f);
 	//bombers.mueve(0.025f);
 	disparos.mueve(0.025f);
+	//boss.mueve(0.025f);
+	//misiles.mueve(0.025f);
+
+	//bola.mueve(0.025f);
 
 	//Movimiento vidas y monedas
 	vidas.mueve(0.025f);
@@ -61,6 +69,8 @@ void Nivel1::mueve()
 	//listBonus.rebote(hombre);
 	listPinchos.rebote(hombre);
 
+	//Interaccion::colision(hombre, bola);
+
 	//Interacciones enemigos con el entorno
 	enemigosDisp.rebote(caja);
 	enemigosDisp.rebote(plataformas);
@@ -68,15 +78,19 @@ void Nivel1::mueve()
 	Tanks.rebote(plataformas);
 	//bombers.rebote(caja);
 	//bombers.rebote(plataformas);
+	//Interaccion::rebote(boss, plataformas);
 	
 	//Interacciones disparo con el entorno
 	disparos.rebote(caja);
 	disparos.rebote(plataformas);
 	dispAmig.rebote(caja);
 	dispAmig.rebote(plataformas);
+	//misiles.rebote(plataformas);
+	//misiles.rebote(caja);
 
 	//Interacciones disparoEnemigo con hombre
 	disparos.rebote(hombre);
+	//misiles.rebote(hombre);
 
 	//Interacciones disparoAmigo con enemigos
 	Interaccion::colision(enemigosDisp, dispAmig);
@@ -84,12 +98,15 @@ void Nivel1::mueve()
 	Interaccion::colision(babosas, dispAmig);
 	//Interaccion::colision(tentaculos, dispAmig);
 	//Interaccion::colision(bombers, dispAmig);
+	//Interaccion::colision(boss, dispAmig);
 	if (espada.getFlag()) {
 		Interaccion::colision(enemigosDisp, espada);
 		Interaccion::colision(Tanks, espada);
 		Interaccion::colision(babosas, espada);
 		//Interaccion::colision(tentaculos, espada);
 		//Interaccion::colision(bombers, espada);
+		//Interaccion::colision(boss, espada);
+
 	}
 
 	//Interaccion Pj con enemigo
@@ -210,6 +227,16 @@ void Nivel1::inicializa()
 	listBonus.agregar(bonus3);
 	listBonus.agregar(bonus4);*/
 
+	/*misiles.agregar(boss.misil1);
+	misiles.agregar(boss.misil2);
+	misiles.agregar(boss.misil3);
+	misiles.agregar(boss.misil4);
+	misiles.agregar(boss.misil5);
+	misiles.agregar(boss.misil6);
+	misiles.agregar(boss.misil7);
+	misiles.agregar(boss.misil8);
+	misiles.agregar(boss.misil9);
+	misiles.agregar(boss.misil10);*/
 
 	//Creacion de los enemigos
 	EnemigoDisp* ped1 = new EnemigoDisp(0.0f, 0.0f), //Enemigo plat1

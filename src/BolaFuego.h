@@ -2,7 +2,7 @@
 #include <ETSIDI.h>
 #include "EnemigoDisp.h"
 #include "Hitbox.h"
-
+#include "ColorRGB.h"
 
 class BolaFuego: public EnemigoDisp
 {
@@ -13,6 +13,8 @@ protected:
 	Vector2D velocidad;
 	Vector2D aceleracion;
 	Hitbox hitbox;
+
+	ColorRGB color;
 public:
 
 	BolaFuego();
@@ -21,6 +23,7 @@ public:
 	void mueve(float t);
 	float getRadio();//
 	Vector2D getPos();//
+	void setColor(Byte, Byte, Byte);
 
 	friend class Interaccion;
 

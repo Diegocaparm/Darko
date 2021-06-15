@@ -5,6 +5,7 @@
 #include "listaPlat.h"
 #include "Pincho.h"
 #include "listaPinchos.h"
+#include "BolaFuego.h"
 #include "Disparo.h"
 #include "Estela.h"
 #include "Hombre.h"
@@ -21,6 +22,9 @@
 #include "listaTent.h"
 #include "bomber.h"
 #include "listabomber.h"
+#include "bossFinal.h"
+#include "misil.h"
+#include "listamisiles.h"
 #include "Interfaz.h"
 #include "VidasRec.h"
 #include "DineroRec.h"
@@ -54,6 +58,9 @@ public:
 				listaTentaculo tentaculos;
 	//listabomber bombers;
 	listaDispEnem disparos;
+	//BolaFuego bola;
+	//listamisiles misiles;
+	//bossFinal boss;
 
 	//Listas para vidas
 	Vidas vidas;							//Vidas del entorno (Recolectables)
