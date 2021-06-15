@@ -1,6 +1,16 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@ Diego y Mica
+
+Changes v2.3
+
+- Añadido el método cargarnivel()
+
+- Añadidos el nivel 2 y las bolas de fuego como lista
+
+- Pulidas las llamadas a plataformas y otros elementos
+
 @David
 
 Changes v2.2
