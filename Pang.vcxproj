@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PlatMovil.cpp" />
     <ClCompile Include="src\babosa.cpp" />
     <ClCompile Include="src\BolaFuego.cpp" />
     <ClCompile Include="src\bomber.cpp" />
@@ -35,6 +36,7 @@
     <ClCompile Include="src\Hitbox.cpp" />
     <ClCompile Include="src\Interfaz.cpp" />
     <ClCompile Include="src\listaBabosas.cpp" />
+    <ClCompile Include="src\ListaBolasFuego.cpp" />
     <ClCompile Include="src\listabomber.cpp" />
     <ClCompile Include="src\listaBonus.cpp" />
     <ClCompile Include="src\listaDispAmig.cpp" />
@@ -79,6 +81,7 @@
     <ClInclude Include="src\Hitbox.h" />
     <ClInclude Include="src\Interfaz.h" />
     <ClInclude Include="src\listaBabosas.h" />
+    <ClInclude Include="src\ListaBolasFuego.h" />
     <ClInclude Include="src\listabomber.h" />
     <ClInclude Include="src\listaBonus.h" />
     <ClInclude Include="src\listaDispAmig.h" />
@@ -94,6 +97,7 @@
     <ClInclude Include="src\Moneda.h" />
     <ClInclude Include="src\Nivel1.h" />
     <ClInclude Include="src\Pincho.h" />
+    <ClInclude Include="src\PlatMovil.h" />
     <ClInclude Include="src\Tank.h" />
     <ClInclude Include="src\EnemigoDisp.h" />
     <ClInclude Include="src\Hombre.h" />
