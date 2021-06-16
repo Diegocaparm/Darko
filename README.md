@@ -1,6 +1,14 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+
+@Miguel
+
+Changes v2.8
+
+- Contadores de vida y dinero solucionado. (Pendiente crear función reduceVida() para más fácil implementación en el resto de codigo)
+
+
 @Diego y Mica
 
 Changes v2.7
