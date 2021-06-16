@@ -132,18 +132,18 @@ void Tentaculo::mueve(float t) {
 	e3.x = -(longitud / 6) * cos(a * pi / 180);		e3.y = (longitud / 6) * (sin(a * pi / 180));
 	e4.x = (longitud / 6) * cos(a * pi / 180);		e4.y = -(longitud / 6) * (sin(a * pi / 180));*/
 
-	e1.x = -(longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;		e1.y = (longitud) * (cos(-a * pi / 180));
-	e2.x = (longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;			e2.y = (longitud) * (cos(-a * pi / 180));
-	e3.x = -(longitud / 6) * cos(-a * pi / 180) + posicion.x;				e3.y = -(longitud / 6) * (sin(-a * pi / 180));
-	e4.x = (longitud / 6) * cos(-a * pi / 180) + posicion.x;					e4.y = (longitud / 6) * (sin(-a * pi / 180));
+	e1.x = -(longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;		e1.y = (longitud) * (cos(-a * pi / 180))+ posicion.y;
+	e2.x = (longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;			e2.y = (longitud) * (cos(-a * pi / 180))+posicion.y;
+	e3.x = -(longitud / 6) * cos(-a * pi / 180) + posicion.x;				e3.y = -(longitud / 6) * (sin(-a * pi / 180))+posicion.y;
+	e4.x = (longitud / 6) * cos(-a * pi / 180) + posicion.x;					e4.y = (longitud / 6) * (sin(-a * pi / 180))+posicion.y;
 	hitbox[0].setPos(e1, e2, e3, e4);
 
 
 	Vector2D e11, e21, e31, e41;
 	e11.x = -(longitud / 6) + longitud * sin(3 * a * pi / 180);		e11.y = (longitud) * (cos(3 * a * pi / 180)) + 2 * sin(a * pi / 180) * sin(a * pi / 180);
 	e21.x = (longitud / 6) + longitud * sin(3 * a * pi / 180);		e21.y = (longitud) * (cos(3 * a * pi / 180)) + 2 * sin(a * pi / 180) * sin(a * pi / 180);
-	e31.x = -(longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;			e31.y = (longitud) * (cos(-a * pi / 180));
-	e41.x = (longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;			e41.y = (longitud) * (cos(-a * pi / 180));
+	e31.x = -(longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;			e31.y = (longitud) * (cos(-a * pi / 180))+posicion.y;
+	e41.x = (longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;			e41.y = (longitud) * (cos(-a * pi / 180))+posicion.y;
 	Vector2D e111 = { e11.x + posicion.x, e1.y + e11.y }, e211 = { e21.x + posicion.x, e2.y + e21.y };
 	hitbox[1].setPos(e111, e211, e31, e41);
 
