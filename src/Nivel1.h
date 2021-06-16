@@ -16,7 +16,6 @@
 #include "listabomber.h"
 #include "bossFinal.h"
 #include "listamisiles.h"
-#include "Interfaz.h"
 #include "VidasRec.h"
 #include "DineroRec.h"
 #include "espada.h"
