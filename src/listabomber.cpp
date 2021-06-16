@@ -52,9 +52,9 @@ void listabomber::rebote(listaPlat lp) {
 	for (int i = 0; i < lp.numero; i++)
 		rebote(*lp.lista[i]);
 }
-void listabomber::rebote(Hombre& h) {
+void listabomber::rebote(Hombre& h, VidasRec& v) {
 	for (int i = 0; i < numero; i++)
-		Interaccion::colision(h, *(lista[i]));
+		Interaccion::colision(h, *(lista[i]),v);
 }
 
 /*void listabomber::rebote() {

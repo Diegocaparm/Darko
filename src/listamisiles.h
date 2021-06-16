@@ -3,6 +3,7 @@
 #include "misil.h"
 #include "listaPlat.h"
 #include "Hombre.h"
+#include "VidasRec.h"
 
 #define MAX_MISIL 100
 class listamisiles
@@ -19,7 +20,7 @@ public:
 	void rebote(Caja caja);
 	void rebote(Pared p);
 	void rebote(listaPlat lp);
-	void rebote(Hombre h);
+	void rebote(Hombre h, VidasRec& v);
 	//void rebote();
 	void destruirContenido();
 	void eliminar(int index);

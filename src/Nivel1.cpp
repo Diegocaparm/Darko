@@ -64,7 +64,7 @@ void Nivel1::mueve()
 	Interaccion::rebote(hombre, caja);
 	Interaccion::rebote(hombre, plataformas);
 
-	listPinchos.rebote(hombre);
+	listPinchos.rebote(hombre,vidasR);
 	listaFuego.rebote(hombre);
 
 	//Interacciones enemigos con el entorno
@@ -83,8 +83,8 @@ void Nivel1::mueve()
 	dispAmig.rebote(plataformas);
 
 	//Interacciones disparoEnemigo con hombre
-	disparos.rebote(hombre);
-	misiles.rebote(hombre);
+	disparos.rebote(hombre,vidasR);
+	misiles.rebote(hombre,vidasR);
 
 	//Interacciones disparoAmigo con enemigos
 	Interaccion::colision(enemigosDisp, dispAmig);
@@ -104,9 +104,9 @@ void Nivel1::mueve()
 
 	//Interaccion Pj con enemigo
 	Interaccion::rebote(hombre, enemigosDisp,vidasR);
-	babosas.mov(hombre);
-	bombers.rebote(hombre);
-	tentaculos.colision(hombre);
+	babosas.mov(hombre,vidasR);
+	bombers.rebote(hombre,vidasR);
+	tentaculos.colision(hombre,vidasR);
 	 
 	//Interaccion Pj con Vida y Monedas
 	//Elimina Vida recogida
@@ -129,7 +129,7 @@ void Nivel1::inicializa()
 	y_ojo = 7.5;
 	z_ojo = 30;
 
-	nivel = 5;
+	nivel = 1;
 	cargarnivel();
 }
 
@@ -228,7 +228,7 @@ bool Nivel1::cargarnivel()
 		vidas.agregar(new Corazon(178.0f, 5.0f)); //Vida antes del jefe final
 
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 
 		//Creaccion de Monedas Recolectables
@@ -371,7 +371,7 @@ bool Nivel1::cargarnivel()
 		vidas.agregar(new Corazon(170.0f, 2.5f)); //plat 8
 
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 
 		//Creaccion de Monedas Recolectables
@@ -505,7 +505,7 @@ bool Nivel1::cargarnivel()
 		vidas.agregar(new Corazon(135.0f, 3.0f)); //suelo7
 		vidas.agregar(new Corazon(163.0f, 9.5f)); //plat12
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 
 		//Creaccion de Monedas Recolectables
@@ -637,7 +637,7 @@ bool Nivel1::cargarnivel()
 		vidas.agregar(new Corazon(133.0f, 10.5f)); //suelo7
 		vidas.agregar(new Corazon(160.0f, 6.0f)); //plat12
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(17.0f, 7.5f));  //suelo2
@@ -765,7 +765,7 @@ bool Nivel1::cargarnivel()
 		vidas.agregar(new Corazon(160.0f, 2.5f));
 		vidas.agregar(new Corazon(170.0f, 2.5f));
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(66.0f, 0.0f));

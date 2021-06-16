@@ -69,25 +69,25 @@ public:
 	//Interacción entre Pj y enemigos
 	static void rebote(Hombre& h, EnemigoDisp e, VidasRec& v); 
 	static void rebote(EnemigoDisp&, EnemigoDisp&);
-	static void mov(Babosa& b, Hombre& h);
-	static void mov(Hombre& h, misil& m);
+	static void mov(Babosa& b, Hombre& h, VidasRec &v);
+	static void mov(Hombre& h, misil& m, VidasRec& v);
 	static void rebote(Hombre& h, listaEnemDisp l,VidasRec& v);
 
 	static void colision(Hombre& h, Bonus& b);	//:c
-	static void colision(Hombre& h, Pincho p);	
+	static void colision(Hombre& h, Pincho p, VidasRec& v);
 
-	static void colision(Hombre& h, DisparosEnemigos& de);
-	static void colision(Hombre& h, misil& m);
-	static void colision(Hombre& h, Babosa& ene);	
-	static void colision(Hombre& h, bomber& ene);	
-	static void colision(Hombre& h, Tentaculo& ene);
+	static void colision(Hombre& h, DisparosEnemigos& de, VidasRec& v);
+	static void colision(Hombre& h, misil& m, VidasRec& v);
+	static void colision(Hombre& h, Babosa& ene, VidasRec& v);
+	static void colision(Hombre& h, bomber& ene, VidasRec& v);
+	static void colision(Hombre& h, Tentaculo& ene, VidasRec& v);
 
-	static void colision(EnemigoDisp& ene, disparosAmigos& da);
-	static void colision(Tank& ene, disparosAmigos& da);
-	static void colision(Babosa& ene, disparosAmigos& da);
-	static void colision(Tentaculo& ene, disparosAmigos& da);	//:c
-	static void colision(bomber& ene, disparosAmigos& da);
-	static void colision(bossFinal& ene, disparosAmigos& da);
+	static bool colision(EnemigoDisp& ene, disparosAmigos& da);
+	static bool colision(Tank& ene, disparosAmigos& da);
+	static bool colision(Babosa& ene, disparosAmigos& da);
+	static bool colision(Tentaculo& ene, disparosAmigos& da);	
+	static bool colision(bomber& ene, disparosAmigos& da);
+	static bool colision(bossFinal& ene, disparosAmigos& da);
 
 	static void colision(listaEnemDisp ene, listaDispAmig da);
 	static void colision(listaTank ene, listaDispAmig da);

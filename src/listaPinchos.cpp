@@ -29,7 +29,7 @@ bool listaPinchos::agregar(Pincho* p)
 	}
 }
 
-void listaPinchos::rebote(Hombre& h) {
+void listaPinchos::rebote(Hombre& h, VidasRec& v) {
 	for (int i = 0; i < numero; i++)
-		Interaccion::colision(h, *(lista[i]));
+		Interaccion::colision(h, *(lista[i]),v);
 }

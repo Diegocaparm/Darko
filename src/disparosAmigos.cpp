@@ -71,3 +71,4 @@ float disparosAmigos::getRadio() {
 Vector2D disparosAmigos::getPos() {
 	return posicion;
 }
+

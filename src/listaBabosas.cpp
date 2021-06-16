@@ -36,10 +36,10 @@ void listaBabosas::mueve(float t)
 		lista[i]->mueve(t);
 }
 
-void listaBabosas::mov(Hombre h) {
+void listaBabosas::mov(Hombre h, VidasRec &v) {
 	for (int i = 0; i < numero; i++) {
-		Interaccion::mov(*(lista[i]), h);
-		Interaccion::colision(h, *(lista[i]));
+		Interaccion::mov(*(lista[i]), h,v);
+		Interaccion::colision(h, *(lista[i]),v);
 	}
 }
 

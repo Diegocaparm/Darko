@@ -61,9 +61,9 @@ void listaTentaculo::rebote(listaPlat lp) {
 		}
 	}
 }*/
-void listaTentaculo::colision(Hombre& h) {
+void listaTentaculo::colision(Hombre& h, VidasRec& v) {
 	for (int i = 0; i < numero; i++) {
-		Interaccion::colision(h, *(lista[i]));
+		Interaccion::colision(h, *(lista[i]),v);
 	}
 }
 

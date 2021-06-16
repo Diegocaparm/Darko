@@ -65,9 +65,9 @@ void listaDispEnem::rebote(listaPlat lp) {
 		rebote(*lp.lista[i]);
 }
 
-void listaDispEnem::rebote(Hombre h) {
+void listaDispEnem::rebote(Hombre h, VidasRec& v) {
 	for (int i = 0; i < numero; i++)
-		Interaccion::colision(h, *(lista[i]));
+		Interaccion::colision(h, *(lista[i]),v);
 }
 /*void listaDispEnem::rebote() {
 	for (int i = 0; i < numero; i++) {

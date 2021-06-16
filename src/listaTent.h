@@ -3,6 +3,7 @@
 #include "Caja.h"
 #include "listaPlat.h"
 #include "Hombre.h"
+#include "VidasRec.h"
 
 #define MAX_TENTACULO 100
 class listaTentaculo
@@ -18,7 +19,7 @@ public:
 	void rebote(Pared p);
 	void rebote(listaPlat lp);*/
 	//void rebote();
-	void colision(Hombre& h);
+	void colision(Hombre& h, VidasRec& v);
 	void destruirContenido();
 	void eliminar(int index);
 	//void eliminar(bomber* ene);

@@ -38,12 +38,12 @@ void DineroRec::dibujaContador()
 		else {
 			for (int j = 0; j < 10; j++) {
 				int unidad;
-				if (dinero_actual > j * 10) {
+				if (dinero_actual >= j * 10) {
 					unidad = dinero_actual - j * 10;
 					nUnidad.setState(unidad, true);
 					nDecena.setState(j,true);
 					if (unidad==0) {
-						nDecena.setState(j + 1, true);
+						nDecena.setState(j, true);
 					}
 				}
 
@@ -56,23 +56,6 @@ void DineroRec::dibujaContador()
 
 	glPushMatrix();
 	glTranslatef(pos.x + 8, 12, 1);
-	
-	//for (int i = 0; i < 10; i++) {
-	//	if (i == dinero_actual) {
-	//		nDecena.setState(i, true);
-	//	}
-	//	else {
-	//		for (int j = 0; j < 10; j++) {
-	//			int unidad;
-	//			if (dinero_actual > j * 10) {
-	//				unidad = dinero_actual - j * 10;
-	//				nDecena.setState(unidad, true);
-	//			}
-
-	//		}
-	//	}
-
-	//}
 	nDecena.draw();
 	glPopMatrix();
 }

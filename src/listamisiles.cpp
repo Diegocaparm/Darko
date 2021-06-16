@@ -65,10 +65,10 @@ void listamisiles::rebote(listaPlat lp) {
 		rebote(*lp.lista[i]);
 }
 
-void listamisiles::rebote(Hombre h) {
+void listamisiles::rebote(Hombre h, VidasRec& v) {
 	for (int i = 0; i < numero; i++) {
-		Interaccion::colision(h, *(lista[i]));
-		Interaccion::mov(h, *(lista[i]));
+		Interaccion::colision(h, *(lista[i]),v);
+		Interaccion::mov(h, *(lista[i]),v);
 	}
 }
 /*void listamisiles::rebote() {

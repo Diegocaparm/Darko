@@ -45,6 +45,11 @@ int VidasRec::getVidasInicial()
 	return vida_inicial;
 }
 
+void VidasRec::reduceVida()
+{
+	eliminar(contador_vidas);
+}
+
 //Corazon* VidasRec::colisionEnemigoDisp(EnemigoDisp e)
 //{
 //	for (int i = 0; i < numero; i++)

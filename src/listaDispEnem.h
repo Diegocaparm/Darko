@@ -3,6 +3,7 @@
 #include "DisparosEnemigos.h"
 #include "listaPlat.h"
 #include "Hombre.h"
+#include "VidasRec.h"
 
 #define MAX_DISPENEM 100
 class listaDispEnem
@@ -19,7 +20,7 @@ public:
 	void rebote(Caja caja);
 	void rebote(Pared p);
 	void rebote(listaPlat lp);
-	void rebote(Hombre h);
+	void rebote(Hombre h, VidasRec& v);
 	//void rebote();
 	void destruirContenido();
 	void eliminar(int index);

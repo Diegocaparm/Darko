@@ -3,6 +3,7 @@
 #include "babosa.h"
 #include "listaPlat.h"
 #include "Hombre.h"
+#include "VidasRec.h"
 
 #define MAX_BABOSAS 100
 class listaBabosas
@@ -14,7 +15,7 @@ public:
 	void dibuja();
 	void mueve(float t);
 	bool agregar(Babosa* ene);
-	void mov(Hombre);
+	void mov(Hombre, VidasRec& v);
 	//void rebote();
 	void destruirContenido();
 	void eliminar(int index);
