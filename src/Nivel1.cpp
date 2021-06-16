@@ -122,7 +122,7 @@ void Nivel1::inicializa()
 	y_ojo = 7.5;
 	z_ojo = 30;
 
-	nivel = 1;			//eeeeeeeeeeeeeeeeeeeeeeeee
+	nivel = 5;
 	cargarnivel();
 }
 
@@ -463,11 +463,13 @@ bool Nivel1::cargarnivel()
 		listaFuego.agregar(new BolaFuego(32.0f, -2.0f, 5.0f, -15.0f));
 		listaFuego.agregar(new BolaFuego(40.5f, -15.0f, 5.0f, -15.0f));
 		//Creacion de los enemigos
+		babosas.agregar(new Babosa(36.0f, 13.0f));
+		babosas.agregar(new Babosa(56.0f, 12.0f));
 		bombers.agregar(new bomber(57.0f, 2.5f));
-		bombers.agregar(new bomber(156.0f, 15.7f));
+		bombers.agregar(new bomber(156.0f, 7.0f));
+		
 		EnemigoDisp* ped1 = new EnemigoDisp(97.0f, 0.0f), //suelo6
-			* ped2 = new EnemigoDisp(137.0f, 2.50f), //suelo7
-			* ped3 = new EnemigoDisp(145.0f, 0.0f), //suelo7
+			* ped2 = new EnemigoDisp(137.0f, 7.50f), //suelo7
 			* ped4 = new EnemigoDisp(150.0f, 0.0f), //suelo7
 			* ped5 = new EnemigoDisp(168.0f, 0.75f), //plat7
 			* ped6 = new EnemigoDisp(176.0f, 2.5f), //plat8
@@ -476,7 +478,6 @@ bool Nivel1::cargarnivel()
 		//meter enemigos en sus listas
 		enemigosDisp.agregar(ped1);
 		enemigosDisp.agregar(ped2);
-		enemigosDisp.agregar(ped3);
 		enemigosDisp.agregar(ped4);
 		enemigosDisp.agregar(ped5);
 		enemigosDisp.agregar(ped6);
@@ -485,7 +486,6 @@ bool Nivel1::cargarnivel()
 		//meter disparos en lista
 		disparos.agregar(ped1->dispEnem1);
 		disparos.agregar(ped2->dispEnem1);
-		disparos.agregar(ped3->dispEnem1);
 		disparos.agregar(ped4->dispEnem1);
 		disparos.agregar(ped5->dispEnem1);
 		disparos.agregar(ped6->dispEnem1);
@@ -496,7 +496,7 @@ bool Nivel1::cargarnivel()
 		vidas.agregar(new Corazon(60.0f, 0.5f)); //suelo5
 		vidas.agregar(new Corazon(107.5f, 5.5f)); //plat 5
 		vidas.agregar(new Corazon(135.0f, 3.0f)); //suelo7
-		vidas.agregar(new Corazon(162.0f, 9.5f)); //plat12
+		vidas.agregar(new Corazon(163.0f, 9.5f)); //plat12
 		//Creaccion de las Vidas del Pj
 		for (int i = 0; i < vidasR.getVidas(); i++)
 			vidasR.agregar(new Corazon());
@@ -514,14 +514,15 @@ bool Nivel1::cargarnivel()
 		dineros.agregar(new Moneda(44.0f, 0.0f));//suelo5
 		dineros.agregar(new Moneda(46.0f, 0.0f));
 		dineros.agregar(new Moneda(38.0f, 0.0f));
-		dineros.agregar(new Moneda(70.0f, 2.5f));//plat2
-		dineros.agregar(new Moneda(72.0f, 2.5f));
-		dineros.agregar(new Moneda(84.0f, 2.5f)); //plat3
-		dineros.agregar(new Moneda(85.0f, 2.5f));
-		dineros.agregar(new Moneda(86.0f, 2.5f));
-		dineros.agregar(new Moneda(87.0f, 2.5f));
-		dineros.agregar(new Moneda(88.0f, 2.5f));
-		dineros.agregar(new Moneda(106.5f, 5.0f));//plat5
+		dineros.agregar(new Moneda(66.0f, 3.0f));//plat2
+		dineros.agregar(new Moneda(68.0f, 3.0f));
+		dineros.agregar(new Moneda(70.0f, 3.0f));
+		dineros.agregar(new Moneda(72.0f, 3.0f));
+		dineros.agregar(new Moneda(74.0f, 3.0f));
+		dineros.agregar(new Moneda(76.0f, 3.0f));
+		dineros.agregar(new Moneda(84.0f, 3.0f)); //plat3
+		dineros.agregar(new Moneda(86.0f, 3.0f));
+		dineros.agregar(new Moneda(88.0f, 3.0f));
 		dineros.agregar(new Moneda(117.0f, 7.50f));//plat6
 		dineros.agregar(new Moneda(125.0f, 5.0f));//plat7
 		dineros.agregar(new Moneda(127.5f, 5.0f));
@@ -531,8 +532,6 @@ bool Nivel1::cargarnivel()
 		dineros.agregar(new Moneda(146.5f, 4.0f));
 		dineros.agregar(new Moneda(148.5f, 4.0f));
 		dineros.agregar(new Moneda(150.5f, 4.0f));
-		dineros.agregar(new Moneda(178.0f, 6.0f));//plat10
-		dineros.agregar(new Moneda(169.0f, 10.50f));//plat13
 
 		//Creaccion de Monedas del Pj
 		dinerosR.agregar(new Moneda(8.0f, 14.0f));
@@ -540,7 +539,237 @@ bool Nivel1::cargarnivel()
 	}
 	else if (nivel == 4)
 	{
+		//Agregamos los suelos
+		plataformas.agregar(new Pared(15.0f, 10.5f, -10.0f, 10.5f, 50, 150, 250)); //suelo1
+		plataformas.agregar(new Pared(30.0f, 7.5f, 15.0f, 7.5f, 50, 150, 250));  //suelo2
+		plataformas.agregar(new Pared(42.0f, 5.0f, 30.0f, 5.0f, 50, 150, 250));  //suelo3
+		plataformas.agregar(new Pared(55.0f, 5.0f, 45.0f, 5.0f, 50, 150, 250));  //suelo3.5
+		plataformas.agregar(new Pared(65.0f, 2.5f, 55.0f, 2.5f, 50, 150, 250));  //suelo4
+		plataformas.agregar(new Pared(95.0f, 0.0f, 65.0f, 0.0f, 50, 150, 250));  //suelo5
+		plataformas.agregar(new Pared(120.0f, 0.0f, 102.0f, 0.0f, 50, 150, 250));  //suelo6
+		plataformas.agregar(new Pared(145.0f, 0.0f, 132.0f, 0.0f, 50, 150, 250));  //suelo7
+		plataformas.agregar(new Pared(150.0f, 2.5f, 145.0f, 2.5f, 50, 150, 250)); //suelo8 
+		plataformas.agregar(new Pared(170.0f, 5.0f, 150.0f, 5.0f, 50, 150, 250));  //suelo9
+		plataformas.agregar(new Pared(180.0f, 2.5f, 170.0f, 2.5f, 50, 150, 250));  //suelo10
+		plataformas.agregar(new Pared(187.0f, 0.0f, 180.0f, 0.0f, 50, 150, 250));  //suelo11
+		plataformas.agregar(new Pared(200.0f, 0.0f, 190.0f, 0.0f, 150, 150, 250)); //suelo12 
+		//Agregamos las paredes de los pozos
+		plataformas.agregar(new Pared(15.0f, 10.5f, 15.0f, -10.0f, 5, 150, 25)); //PARED1
+		plataformas.agregar(new Pared(30.0f, 7.5f, 30.0f, -10.0f, 5, 150, 25));  //PARED2
+		plataformas.agregar(new Pared(42.0f, 5.0f, 42.0f, -10.0f, 5, 150, 25)); //PARED1*
+		plataformas.agregar(new Pared(45.0f, 5.0f, 45.0f, -10.0f, 5, 150, 25));  //PARED2*
+		plataformas.agregar(new Pared(55.0f, 5.0f, 55.0f, -10.0f, 5, 150, 25));  //PARED3
+		plataformas.agregar(new Pared(65.0f, 2.5f, 65.0f, -10.0f, 5, 150, 25));  //PARED4
+		plataformas.agregar(new Pared(145.0f, 2.5f, 145.0f, -10.0f, 5, 150, 25));  //PARED7
+		plataformas.agregar(new Pared(150.0f, 5.0f, 150.0f, -10.0f, 5, 150, 25)); //PARED8 
+		plataformas.agregar(new Pared(170.0f, 5.0f, 170.0f, -10.0f, 5, 150, 25));  //PARED9
+		plataformas.agregar(new Pared(180.0f, 2.5f, 180.0f, -10.0f, 5, 150, 25));  //PARED10
+		plataformas.agregar(new Pared(95.0f, 0.0f, 95.0f, -10.0f, 5, 150, 25));  //pozo 5_d
+		plataformas.agregar(new Pared(102.0f, 0.0f, 102.0f, -10.0f, 5, 150, 25));  //pozo6_i
+		plataformas.agregar(new Pared(120.0f, 0.0f, 120.0f, -10.0f, 5, 150, 25));  //pozo6_d
+		plataformas.agregar(new Pared(132.0f, 0.0f, 132.0f, -10.0f, 5, 150, 25));  //pozo7_i
+		plataformas.agregar(new Pared(187.0f, 0.0f, 187.0f, -10.0f, 5, 150, 25));  //pozo11_d
+		plataformas.agregar(new Pared(190.0f, 0.0f, 190.0f, -10.0f, 5, 150, 25)); //pozo12_i 
+		//Agregamos las plataformas aéreas
+		plataformas.agregar(new Pared(101.0f, 2.25f, 96.0f, 2.25f, 50, 150, 250)); //plat1
+		plataformas.agregar(new Pared(106.0f, 5.0f, 102.5f, 5.0f, 50, 150, 250));   //plat2
+		plataformas.agregar(new Pared(112.0f, 6.25f, 108.0f, 6.25f, 50, 150, 250));   //plat3
+		plataformas.agregar(new Pared(116.0f, 7.5f, 113.0f, 7.5f, 50, 150, 250));  //plat4
+		plataformas.agregar(new Pared(123.0f, 5.0f, 117.0f, 5.0f, 50, 150, 250));  //plat5
+		plataformas.agregar(new Pared(140.0f, 7.5f, 136.0f, 7.5f, 50, 150, 250)); //plat7
+		plataformas.agregar(new Pared(130.0f, 2.5f, 122.0f, 2.5f, 50, 150, 250)); //plat6
+		plataformas.agregar(new Pared(136.0f, 10.0f, 130.0f, 10.0f, 150, 150, 250));  //plat8
+		plataformas.agregar(new Pared(145.0f, 5.0f, 138.0f, 5.0f, 50, 150, 250));  //plat9
+		//Agregamos el resto de elementos
+		listPinchos.agregar(new Pincho(140.0f, 5.0f));
+		listPinchos.agregar(new Pincho(157.0f, 5.0f));
+		listPinchos.agregar(new Pincho(163.0f, 5.0f));
+		listaFuego.agregar(new BolaFuego(43.5f, 0.0f, 8.0f, -5.0f));
+		listaFuego.agregar(new BolaFuego(188.5f, 0.0f, 5.0f, -5.0f));
 
+		//Agregamos los enemigos
+		tentaculos.agregar(new Tentaculo(191.0f, 0.0f));
+		bombers.agregar(new bomber(75.0f, 10.0f));
+		bombers.agregar(new bomber(85.0f, 10.0f));
+		EnemigoDisp* ped1 = new EnemigoDisp(40.0f, 5.0f), //suelo3
+			* ped2 = new EnemigoDisp(150.0f, 2.50f), //suelo4
+			* ped3 = new EnemigoDisp(170.0f, 0.0f), //suelo5 y AÑADIR BABOSA
+			* ped4 = new EnemigoDisp(110.0f, 6.25f), //plat3
+			* ped5 = new EnemigoDisp(132.0f, 10.5f), //plat8
+			* ped6 = new EnemigoDisp(124.0f, 2.5f), //plat6
+			* ped7 = new EnemigoDisp(160.0f, 5.0f),  //suelo9
+			* ped8 = new EnemigoDisp(185.0f, 0.0f); //suelo11
+		Tank* tank1 = new Tank(175.0f, 2.5f);
+		//meter enemigos en sus listas
+		enemigosDisp.agregar(ped1);
+		enemigosDisp.agregar(ped2);
+		enemigosDisp.agregar(ped3);
+		enemigosDisp.agregar(ped4);
+		enemigosDisp.agregar(ped5);
+		enemigosDisp.agregar(ped6);
+		enemigosDisp.agregar(ped7);
+		enemigosDisp.agregar(ped8);
+		Tanks.agregar(tank1);
+		disparos.agregar(ped1->dispEnem1);
+		disparos.agregar(ped2->dispEnem1);
+		disparos.agregar(ped3->dispEnem1);
+		disparos.agregar(ped4->dispEnem1);
+		disparos.agregar(ped5->dispEnem1);
+		disparos.agregar(ped6->dispEnem1);
+		disparos.agregar(ped7->dispEnem1);
+		disparos.agregar(ped8->dispEnem1);
+		disparos.agregar(tank1->dispTank1);
+		disparos.agregar(tank1->dispTank2);
+		disparos.agregar(tank1->dispTank3);
+		disparos.agregar(tank1->dispTank4);
+		disparos.agregar(tank1->dispTank5);
+
+		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
+		vidas.agregar(new Corazon(60.0f, 0.5f)); //suelo5
+		vidas.agregar(new Corazon(114.5f, 8.5f)); //plat 4
+		vidas.agregar(new Corazon(133.0f, 10.5f)); //suelo7
+		vidas.agregar(new Corazon(160.0f, 6.0f)); //plat12
+		//Creaccion de las Vidas del Pj
+		for (int i = 0; i < vidasR.getVidas(); i++)
+			vidasR.agregar(new Corazon());
+		//Creaccion de Monedas Recolectables
+		dineros.agregar(new Moneda(17.0f, 7.5f));  //suelo2
+		dineros.agregar(new Moneda(19.0f, 7.5f));
+		dineros.agregar(new Moneda(21.0f, 7.5f));
+		dineros.agregar(new Moneda(23.0f, 7.5f));  //suelo2
+		dineros.agregar(new Moneda(25.0f, 7.5f));
+		dineros.agregar(new Moneda(27.0f, 7.5f));
+		dineros.agregar(new Moneda(58.0f, 2.5f));  //suelo4
+		dineros.agregar(new Moneda(63.0f, 2.5f));
+		dineros.agregar(new Moneda(69.0f, 0.0f));  //suelo5
+		dineros.agregar(new Moneda(73.0f, 0.0f));
+		dineros.agregar(new Moneda(78.0f, 0.0f));
+		dineros.agregar(new Moneda(82.0f, 0.0f));
+		dineros.agregar(new Moneda(86.0f, 0.0f));
+		dineros.agregar(new Moneda(91.0f, 0.0f));
+		dineros.agregar(new Moneda(98.0f, 2.50f));  //plat1
+		dineros.agregar(new Moneda(135.0f, 0.0f));  //suelo7
+		dineros.agregar(new Moneda(137.0f, 0.0f));
+		dineros.agregar(new Moneda(139.0f, 0.0f));
+		dineros.agregar(new Moneda(141.0f, 0.0f));
+		//Creaccion de Monedas del Pj
+		dinerosR.agregar(new Moneda(8.0f, 14.0f));
+	}
+	else if (nivel == 5)
+	{
+		//Agregamos las plataformas del inicio
+		plataformas.agregar(new Pared(20.0f, 5.0f, -30.0f, 5.0f, 0, 100, 0)); //Plat1
+		plataformas.agregar(new Pared(30.0f, 7.5f, 25.0f, 7.5f, 0, 100, 0)); //Plat2
+		plataformas.agregar(new Pared(38.0f, 2.5f, 30.0f, 2.5f, 0, 100, 0)); //Plat3
+		//Agregamos los suelos
+		plataformas.agregar(new Pared(60.0f, 0.0f, 40.0f, 0.0f, 0, 100, 0)); //Suelo1
+		plataformas.agregar(new Pared(80.0f, 0.0f, 65.0f, 0.0f, 0, 100, 0)); //suelo 2
+		plataformas.agregar(new Pared(132.0f, 8.0f, 110.0f, 8.0f, 0, 100, 0)); //Suelo 3 (elige)
+		plataformas.agregar(new Pared(180.0f, 18.0f, 150.0f, 18.0f, 0, 100, 0)); //Techo malo
+		plataformas.agregar(new Pared(180.0f, 12.0f, 150.0f, 12.0f, 0, 100, 0)); //Suelo malo
+		plataformas.agregar(new Pared(180.0f, 8.0f, 150.0f, 8.0f, 0, 100, 0)); //Techo bueno
+		plataformas.agregar(new Pared(180.0f, 2.0f, 150.0f, 2.0f, 0, 100, 0)); //Suelo bueno
+		plataformas.agregar(new Pared(200.0f, 2.0f, 195.0f, 2.0f, 0, 100, 0)); //Suelo fin
+		//Agregamos las paredes de los pozos
+		plataformas.agregar(new Pared(40.0f, 0.0f, 40.0f, -10.0f, 0, 250, 0));
+		plataformas.agregar(new Pared(60.0f, 0.0f, 60.0f, -10.0f, 0, 250, 0));
+		plataformas.agregar(new Pared(65.0f, 0.0f, 65.0f, -10.0f, 0, 250, 0));
+		plataformas.agregar(new Pared(80.0f, 0.0f, 80.0f, -10.0f, 0, 250, 0));
+		plataformas.agregar(new Pared(110.0f, 8.0f, 110.0f, -10.0f, 0, 250, 0));
+		plataformas.agregar(new Pared(132.0f, 8.0f, 132.0f, -10.0f, 0, 250, 0));
+		plataformas.agregar(new Pared(150.0f, 20.0f, 150.0f, 18.0f, 0, 250, 0)); //Pared vertical alto
+		plataformas.agregar(new Pared(150.0f, 12.0f, 150.0f, 8.0f, 0, 250, 0)); //Pared vertical medio
+		plataformas.agregar(new Pared(150.0f, 2.0f, 150.0f, -10.0f, 0, 250, 0)); //Pared vertical bajo
+		plataformas.agregar(new Pared(180.0f, 20.0f, 180.0f, 18.0f, 0, 250, 0)); //Pared vertical alto
+		plataformas.agregar(new Pared(180.0f, 12.0f, 180.0f, 8.0f, 0, 250, 0)); //Pared vertical medio
+		plataformas.agregar(new Pared(180.0f, 2.0f, 180.0f, -10.0f, 0, 250, 0)); //Pared vertical bajo
+		plataformas.agregar(new Pared(195.0f, 2.0f, 195.0f, -10.0f, 0, 250, 0));
+		//Agregamos el resto de plataformas aéreas
+		plataformas.agregar(new Pared(90.0f, 2.5f, 85.0f, 2.5f, 0, 100, 0)); //Plat4
+		plataformas.agregar(new Pared(97.0f, 5.0f, 92.0f, 5.0f, 0, 100, 0)); //Plat5
+		plataformas.agregar(new Pared(105.0f, 7.5f, 100.0f, 7.5f, 0, 100, 0)); //Plat6
+		plataformas.agregar(new PlatMovil(142.0f, 11.0f, 148.0f, 11.0f, 5.0f, 1.0f, 135.0f, 9.0f, 150.0f, 12.0f, 50, 150, 250));//Arriba MAL
+		plataformas.agregar(new PlatMovil(142.0f, 3.0f, 148.0f, 3.0f, 5.0f, -1.0f, 135.0f, 5.0f, 150.0f, 2.0f, 50, 150, 250));//Abajo BIEN
+		plataformas.agregar(new PlatMovil(184.0f, 2.0f, 189.0f, 2.0f, 3.0f, 0.0f, 182.0f, 2.0f, 192.0f, 2.0f, 50, 150, 250));//Movil fin
+
+		//Agregamos el resto de elementos
+		listPinchos.agregar(new Pincho(27.5f, 7.5f));
+		listPinchos.agregar(new Pincho(152.0f, 12.0f));
+		listPinchos.agregar(new Pincho(154.0f, 12.0f));
+		listPinchos.agregar(new Pincho(156.0f, 12.0f));
+		listPinchos.agregar(new Pincho(158.0f, 12.0f));
+		listPinchos.agregar(new Pincho(160.0f, 12.0f));
+		listPinchos.agregar(new Pincho(162.0f, 12.0f));
+		listPinchos.agregar(new Pincho(164.0f, 12.0f));
+		listPinchos.agregar(new Pincho(166.0f, 12.0f));
+		listPinchos.agregar(new Pincho(168.0f, 12.0f));
+		listPinchos.agregar(new Pincho(170.0f, 12.0f));
+		listPinchos.agregar(new Pincho(172.0f, 12.0f));
+		listPinchos.agregar(new Pincho(174.0f, 12.0f));
+		listPinchos.agregar(new Pincho(176.0f, 12.0f));
+		listPinchos.agregar(new Pincho(178.0f, 12.0f));
+		listaFuego.agregar(new BolaFuego(62.5f, 0.0f, 3.0f, -5.0f));
+		listaFuego.agregar(new BolaFuego(82.5f, 0.0f, 7.0f, -5.0f));
+		listaFuego.agregar(new BolaFuego(107.5f, 0.0f, 10.0f, -5.0f));
+
+		//Agregamos enemigos
+		tentaculos.agregar(new Tentaculo(10.0f, 5.0f));
+		tentaculos.agregar(new Tentaculo(15.0f, 5.0f));
+		bombers.agregar(new bomber(50.0f, 2.0f));
+
+		EnemigoDisp* ped1 = new EnemigoDisp(70.0f, 1.0f),
+			* ped2 = new EnemigoDisp(155.0f, 12.5f),
+			* ped3 = new EnemigoDisp(160.0f, 12.5f),
+			* ped4 = new EnemigoDisp(170.0f, 12.5f),
+			* ped5 = new EnemigoDisp(175.0f, 12.5f);
+		Tank* tank1 = new Tank(120.0f, 8.5f);
+
+		enemigosDisp.agregar(ped1);
+		enemigosDisp.agregar(ped2);
+		enemigosDisp.agregar(ped3);
+		enemigosDisp.agregar(ped4);
+		enemigosDisp.agregar(ped5);
+		Tanks.agregar(tank1);
+
+		disparos.agregar(ped1->dispEnem1);
+		disparos.agregar(ped2->dispEnem1);
+		disparos.agregar(ped3->dispEnem1);
+		disparos.agregar(ped4->dispEnem1);
+		disparos.agregar(ped5->dispEnem1);
+		disparos.agregar(tank1->dispTank1);
+		disparos.agregar(tank1->dispTank2);
+		disparos.agregar(tank1->dispTank3);
+		disparos.agregar(tank1->dispTank4);
+		disparos.agregar(tank1->dispTank5);
+
+		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
+		vidas.agregar(new Corazon(160.0f, 2.5f));
+		vidas.agregar(new Corazon(170.0f, 2.5f));
+		//Creaccion de las Vidas del Pj
+		for (int i = 0; i < vidasR.getVidas(); i++)
+			vidasR.agregar(new Corazon());
+		//Creaccion de Monedas Recolectables
+		dineros.agregar(new Moneda(66.0f, 0.0f));
+		dineros.agregar(new Moneda(68.0f, 0.0f));
+		dineros.agregar(new Moneda(70.0f, 0.0f));
+		dineros.agregar(new Moneda(72.0f, 0.0f));
+		dineros.agregar(new Moneda(74.0f, 0.0f));
+		dineros.agregar(new Moneda(76.0f, 0.0f));
+		dineros.agregar(new Moneda(78.0f, 0.0f));
+		dineros.agregar(new Moneda(152.0f, 2.5f));
+		dineros.agregar(new Moneda(154.0f, 2.5f));
+		dineros.agregar(new Moneda(156.0f, 2.5f));
+		dineros.agregar(new Moneda(158.0f, 2.5f));
+		dineros.agregar(new Moneda(162.0f, 2.5f));
+		dineros.agregar(new Moneda(164.0f, 2.5f));
+		dineros.agregar(new Moneda(166.0f, 2.5f));
+		dineros.agregar(new Moneda(168.0f, 2.5f));
+		dineros.agregar(new Moneda(172.0f, 2.5f));
+		dineros.agregar(new Moneda(174.0f, 2.5f));
+		dineros.agregar(new Moneda(176.0f, 2.5f));
+		dineros.agregar(new Moneda(178.0f, 2.5f));
+		//Creaccion de Monedas del Pj
+		dinerosR.agregar(new Moneda(8.0f, 14.0f));
 	}
 }
 
