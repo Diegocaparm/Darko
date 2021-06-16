@@ -17,8 +17,7 @@ void Nivel1::dibuja()
 	vidasR.dibuja();		//Vidas Recogidas
 	dineros.dibuja();		//Monedas del entorno
 	dinerosR.dibuja();		//Debajo de Vidas Recogidas, el simbolo de moneda
-	Vector2D pos = hombre.getPos(); //Hay que desimplementar la union dibuja-logica todavia
-	dinerosR.dibujaContador(pos.x);	//Debajo de Vidas Recogidas, el numero de monedas
+	dinerosR.dibujaContador();	//Debajo de Vidas Recogidas, el numero de monedas
 
 	//Dibujamos lo animado
 	hombre.dibuja();
@@ -58,7 +57,7 @@ void Nivel1::mueve()
 	Vector2D pos=hombre.getPos();
 	vidasR.mueve(0.025f,pos.x);
 	dineros.mueve(0.025f);
-	dinerosR.mueve(0.025f, pos.x);
+	dinerosR.mueve(0.025f, pos);
 	plataformas.mueve(0.025);
 
 	//Interacciones personaje con el entorno
