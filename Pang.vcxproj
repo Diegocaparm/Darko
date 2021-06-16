@@ -33,7 +33,6 @@
     <ClCompile Include="src\disparosEnemigos.cpp" />
     <ClCompile Include="src\espada.cpp" />
     <ClCompile Include="src\Hitbox.cpp" />
-    <ClCompile Include="src\Interfaz.cpp" />
     <ClCompile Include="src\listaBabosas.cpp" />
     <ClCompile Include="src\ListaBolasFuego.cpp" />
     <ClCompile Include="src\listabomber.cpp" />
@@ -79,7 +78,6 @@
     <ClInclude Include="src\disparosEnemigos.h" />
     <ClInclude Include="src\espada.h" />
     <ClInclude Include="src\Hitbox.h" />
-    <ClInclude Include="src\Interfaz.h" />
     <ClInclude Include="src\listaBabosas.h" />
     <ClInclude Include="src\ListaBolasFuego.h" />
     <ClInclude Include="src\listabomber.h" />
