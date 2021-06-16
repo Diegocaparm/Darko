@@ -14,6 +14,8 @@
 #include "Tentaculo.h"
 #include "listaTent.h"
 #include "listabomber.h"
+#include "bossFinal.h"
+#include "listamisiles.h"
 #include "Interfaz.h"
 #include "VidasRec.h"
 #include "DineroRec.h"
@@ -29,7 +31,7 @@ public:
 	float y_ojo;
 	float z_ojo;
 
-	int nivel; //Ser· lo que usemos para identificar en que nivel estamos
+	int nivel; //Ser√° lo que usemos para identificar en que nivel estamos
 	//Estructura del nivel
 	Caja caja;
 	listaPlat plataformas;
@@ -48,6 +50,8 @@ public:
 	listaTentaculo tentaculos;
 	listabomber bombers;
 	listaDispEnem disparos;
+	bossFinal boss;
+	listamisiles misiles;
 
 	//Listas para vidas
 	Vidas vidas;							//Vidas del entorno (Recolectables)
@@ -57,7 +61,7 @@ public:
 	Dinero dineros;							//Monedas del entorno (Recolectables)
 	DineroRec dinerosR;						//Dinero del Pj (Recogidas)
 
-public://MÈtodos
+public://M√©todos
 	void teclaUp(unsigned char key);
 	void teclaDown(unsigned char key);
 
