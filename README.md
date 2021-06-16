@@ -1,6 +1,13 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@Diego y Mica
+
+Changes v2.7
+
+- Terminados los niveles 4 y 5 (***)
+
+
 @David
 
 Changes v2.6
