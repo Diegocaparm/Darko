@@ -6,7 +6,7 @@ Hombre::Hombre() {
 	altura = 1.8f;
 	aceleracion.x =  0.0f;
 	aceleracion.y = -9.8f;
-	//mov = 0;
+	mov = 0;
 	setColor(1,1,0);
 }
 
@@ -94,20 +94,6 @@ void Hombre::mueve(float t)
 	e3.x = posicion.x - 0.3f;	e3.y = posicion.y - 0.0f;
 	e4.x = posicion.x + 0.3f;	e4.y = posicion.y - 0.0f;
 	hitbox.setPos(e1, e2, e3, e4);
-
-	/////////////////////////////////////////
-	if (tempdmg) {
-		tempdmg--;
-		if (vida == 0) {	//muerto
-			setColor(1, 1, 1);
-		}
-	}
-	else if (flagdmg) {
-		vida--;
-		//destruir la vida de la interfaz
-		flagdmg = 0;
-	}
-
 }
 
 void Hombre::setColor(Byte r, Byte g, Byte b) {

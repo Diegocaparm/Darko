@@ -8,8 +8,6 @@ class Babosa
 	ColorRGB color;
 	Vector2D posicion, velocidad, aceleracion;
 	Hitbox hitbox;
-	int tempdmg = 0, flagdmg = 0, flagesp = 0, vida = 5;	////////////////////////////////////
-
 public:
 	Babosa();
 	Babosa(float px, float py);

@@ -13,10 +13,9 @@ public:
 	Vector2D aceleracion;
 	Hitbox hitbox;
 	float altura = 1.8f;
-	int tempdmg=0, flagdmg=0;	////////////////////////////////////
+	bool mov;
 	int salto = 1, sentido = 0, zonaV = 0, zonaH = 0, flag = 0, flagH = 0;
 	//flagH=-1 izquierda	=0	quieto	   =1 derecha
-	int vida = 5;/////////////////////////////esto seria el numero de vidas que tienes
 public:
 	Hombre();
 	void dibuja();

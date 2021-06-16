@@ -1,13 +1,22 @@
 #pragma once
 #include "Dinero.h"
+#include "ETSIDI.h"
+
+using ETSIDI::SpriteSequence;
+
 class DineroRec :
     public Dinero
 {
 private:
     int dinero_actual=0;
+    SpriteSequence nUnidad{ "imagenes/numero.png",10 };
+    SpriteSequence nDecena{ "imagenes/numero.png",10 };
+    Vector2D pos;
 public:
-    void mueve(float t, float posx);
+    DineroRec();
+    void mueve(float t,Vector2D v);
     void aumentaDinero();
-    void dibujaContador(float posx);
+    void dibujaContador();
+    
 };
 

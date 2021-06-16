@@ -2,6 +2,7 @@
 #include <math.h>
 #include "stdio.h"
 #define pi 3.14159265
+
 float DistSegmento(segmento s1, Vector2D p);
 bool DistHitbox(Hitbox h1, Vector2D e);		//hitbox y esquina de otra hitbox
 float DistSeg(Hitbox h, Vector2D p);
@@ -527,27 +528,30 @@ void Interaccion::rebote(misil& ene, Pared p)
 	}
 }
 
-void Interaccion::rebote(Hombre & h, EnemigoDisp e,VidasRec& v)
+void Interaccion::rebote(Hombre & h, EnemigoDisp e, VidasRec &v)
 {
-
+	int v_aux = v.getVidas();
 	if (h.hitbox.compareRight(e.hitbox)) {
 		h.posicion.x -= 2;
-
+		v.eliminar(v_aux);
 	}
 	if (h.hitbox.compareLeft(e.hitbox)) {
 		h.posicion.x += 2;
-
+		v.eliminar(v_aux);
 	}
 	if (h.hitbox.compareUp(e.hitbox)) {
 		h.posicion.y -= 2;
 		h.velocidad.y = 0.0f;
 		h.aceleracion.y = -9.8f;
+		v.eliminar(v_aux);
 	}
 	if (h.hitbox.compareDown(e.hitbox)) {
 		h.posicion.y += 2;
 		h.velocidad.y = 0.0f;
 		h.aceleracion.y = -9.8f;
+		v.eliminar(v_aux);
 	}
+
 }
 
 void Interaccion::rebote(EnemigoDisp& ed1, EnemigoDisp& ed2) {
@@ -749,14 +753,8 @@ void Interaccion::colision(Hombre& h, Pincho b) {
 	b2 = DistHitbox(h.hitbox, b.hitbox.esquina2);
 	b3 = DistHitbox(h.hitbox, b.hitbox.esquina3);
 	b4 = DistHitbox(h.hitbox, b.hitbox.esquina4);
-	if (b1 || b2 || b3 || b4) {
+	if (b1 || b2 || b3 || b4)
 		h.setColor(0, 1, 0);
-		h.flagdmg = 1;
-		if(h.tempdmg==0)
-			h.tempdmg = 40;
-	}
-	
-
 }
 
 void Interaccion::colision(Hombre& h, DisparosEnemigos& de) {
@@ -811,66 +809,60 @@ void Interaccion::colision(Hombre& h, Tentaculo& ene) {
 
 void Interaccion::colision(EnemigoDisp& h, disparosAmigos& de) {
 	if (de.getPos().y - de.getRadio() < h.hitbox.esquina1.y && de.getPos().y + de.getRadio() > h.hitbox.esquina3.y)
-		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x) {
+		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
 			de.setColor(0, 1, 0);
-			h.flagdmg = 1;
-			if (h.tempdmg == 0)
-				h.tempdmg = 40;
-		}
-	
 }
 
 void Interaccion::colision(Tank& h, disparosAmigos& de) {
 	if (de.getPos().y - de.getRadio() < h.hitbox.esquina1.y && de.getPos().y + de.getRadio() > h.hitbox.esquina3.y)
-		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x) {
+		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
 			de.setColor(0, 1, 0);
-			h.flagdmg = 1;
-			if (h.tempdmg == 0)
-				h.tempdmg = 40;
-		}
-	
 }
 
 void Interaccion::colision(Babosa& h, disparosAmigos& de) {
 	if (de.getPos().y - de.getRadio() < h.hitbox.esquina1.y && de.getPos().y + de.getRadio() > h.hitbox.esquina3.y)
-		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x) {
+		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
 			de.setColor(0, 1, 0);
-			h.flagdmg = 1;
-			if (h.tempdmg == 0)
-				h.tempdmg = 40;
-		}
 }
 
 void Interaccion::colision(Tentaculo& h, disparosAmigos& de) {
+	/*if (de.getPos().y - de.getRadio() < h.hitbox.esquina1.y && de.getPos().y + de.getRadio() > h.hitbox.esquina3.y)
+		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
+			de.setColor(0, 1, 0);*/
+	/*for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 4; j++) {
+			float dist = DistSegmento(h.hitbox[i].segmento[j], de.getPos());
+			
+			if (dist < de.getRadio())
+				de.setColor(0, 1, 0);
+		}
 
+	}*/
 	for (int i = 0; i < 3; i++) {
 		float dist1 = DistSeg(h.hitbox[i], de.getPos());
-		if (dist1 < de.getRadio()){
+		if (dist1 < de.getRadio())
 			de.setColor(0, 1, 0);
-			h.flagdmg = 1;
-			if (h.tempdmg == 0)
-				h.tempdmg = 40;
-		}
+		/*else
+			de.setColor(1, 0, 0);*/
 	}
+	/*bool b1;
+	for (int i = 0; i < 3; i++) {
+		b1 = DistHitbox(h.hitbox[i], de.getPos());
+
+		if (b1)
+			de.setColor(0, 1, 0);
+	}*/
 }
 
 void Interaccion::colision(bomber& h, disparosAmigos& de) {
-	if ((h.getPos() - de.getPos()).modulo() < (h.radio + de.getRadio())) {
+	if ((h.getPos() - de.getPos()).modulo() < (h.radio + de.getRadio()))
 		de.setColor(0, 1, 0);
-		h.flagdmg = 1;
-		if (h.tempdmg == 0)
-			h.tempdmg = 40;
-	}
 }
 
 void Interaccion::colision(bossFinal& h, disparosAmigos& de) {
 	if (de.getPos().y - de.getRadio() < h.hitbox.esquina1.y && de.getPos().y + de.getRadio() > h.hitbox.esquina3.y)
-		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x) {
+		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
 			de.setColor(0, 1, 0);
-			h.flagdmg = 1;
-			if (h.tempdmg == 0)
-				h.tempdmg = 40;
-		}
 }
 
 void Interaccion::colision(listaEnemDisp ene, listaDispAmig da) {
@@ -939,70 +931,40 @@ void Interaccion::colision(listabomber ene, espada esp) {
 
 void Interaccion::colision(EnemigoDisp& h, espada& esp) {
 	if (esp.getPos().y - esp.getLong() < h.hitbox.esquina1.y && esp.getPos().y + esp.getLong() > h.hitbox.esquina3.y)
-		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x) {
-			esp.setColor(0, 1, 0);
-			h.flagdmg = 1;
-			h.flagesp = 1;
-			if (h.tempdmg == 0)
-				h.tempdmg = 40;
-		}
+		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
+			h.setColor(0, 1, 0);
 }
 
 void Interaccion::colision(Tank& h, espada& esp) {
 	if (esp.getPos().y - esp.getLong() < h.hitbox.esquina1.y && esp.getPos().y + esp.getLong() > h.hitbox.esquina3.y)
-		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x) {
-			esp.setColor(0, 1, 0);
-			h.flagdmg = 1;
-			h.flagesp = 1;
-			if (h.tempdmg == 0)
-				h.tempdmg = 40;
-		}
+		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
+			h.setColor(0, 1, 0);
 }
 
 void Interaccion::colision(Babosa& h, espada& esp) {
 	if (esp.getPos().y - esp.getLong() < h.hitbox.esquina1.y && esp.getPos().y + esp.getLong() > h.hitbox.esquina3.y)
-		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x) {
-			esp.setColor(0, 1, 0);
-			h.flagdmg = 1;
-			h.flagesp = 1;
-			if (h.tempdmg == 0)
-				h.tempdmg = 40;
-		}
+		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
+			h.setColor(0, 1, 0);
 }
 
 void Interaccion::colision(Tentaculo& h, espada& esp) {
 	for (int i = 0; i < 3; i++) {
 		float dist1 = DistSeg(h.hitbox[i], esp.getPos());
-		if (dist1 < esp.getLong()) {
-			esp.setColor(0, 1, 0);
-			h.flagdmg = 1;
-			h.flagesp = 1;
-			if (h.tempdmg == 0)
-				h.tempdmg = 40;
-		}
+		if (dist1 < esp.getLong())
+			h.setColor(0, 1, 0);
 	}
 }
 
 void Interaccion::colision(bomber& h, espada& esp) {
-	if ((h.getPos() - esp.getPos()).modulo() < (h.radio + esp.getLong())) {
-		esp.setColor(0, 1, 0);
-		h.flagdmg = 1;
-		h.flagesp = 1;
-		if (h.tempdmg == 0)
-			h.tempdmg = 40;
-	}
+	if ((h.getPos() - esp.getPos()).modulo() < (h.radio + esp.getLong()))
+		h.setColor(0, 1, 0);
 
 }
 
 void Interaccion::colision(bossFinal& h, espada& esp) {
 	if (esp.getPos().y - esp.getLong() < h.hitbox.esquina1.y && esp.getPos().y + esp.getLong() > h.hitbox.esquina3.y)
-		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x) {
-			esp.setColor(0, 1, 0);
-			h.flagdmg = 1;
-			h.flagesp = 1;
-			if (h.tempdmg == 0)
-				h.tempdmg = 40;
-		}
+		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
+			h.setColor(0, 1, 0);
 }
 
 float DistSegmento(segmento s1, Vector2D p1) {

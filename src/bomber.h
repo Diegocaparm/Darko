@@ -15,7 +15,6 @@ private:
 	Vector2D posicion;
 	Vector2D velocidad;
 	Vector2D aceleracion;
-	int tempdmg = 0, flagdmg = 0, flagesp = 0, vida = 2;	////////////////////////////////////
 
 public:
 	bomber();									//Constructor

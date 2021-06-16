@@ -1,10 +1,10 @@
 #include "Pincho.h"
 
 Pincho::Pincho() {
-	altura = 1.5f;
+	altura = 2.5f;
 }
 Pincho::Pincho(float px, float py) {
-	altura = 1.5f;
+	altura = 2.5f;
 	setPos(px, py);
 
 	Vector2D e1, e2, e3, e4;

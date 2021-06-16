@@ -21,5 +21,7 @@ void Caja::dibuja()
 	pared_dcha.dibuja();
 }
 
-void Caja::Inicializa() {
+void Caja::Inicializa() 
+{
+
 }
