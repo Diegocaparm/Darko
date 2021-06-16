@@ -155,6 +155,19 @@ void Tentaculo::mueve(float t) {
 	Vector2D e121 = { e12.x + posicion.x, e111.y + e12.y }, e221 = { e22.x + posicion.x, e211.y + e22.y };
 	hitbox[2].setPos(e121, e221, e111, e211);
 
+	if (tempdmg) {
+		tempdmg--;
+		if (vida <= 0) {	//muerto
+			setColor(1, 1, 1);
+		}
+	}
+	else if (flagdmg) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
+
 }
 
 void Tentaculo::setColor(Byte r, Byte g, Byte b) {

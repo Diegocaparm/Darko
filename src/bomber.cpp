@@ -74,6 +74,19 @@ void bomber::mueve(float t)
 	e4.x = posicion.x + radio;	e4.y = posicion.y - radio;
 	hitbox.setPos(e1, e2, e3, e4);
 
+	if (tempdmg) {
+		tempdmg--;
+		if (vida <= 0) {	//muerto
+			setColor(1, 1, 1);
+		}
+	}
+	else if (flagdmg) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
+
 }
 
 void bomber::setColor(Byte r, Byte g, Byte b) {

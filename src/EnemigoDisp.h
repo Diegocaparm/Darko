@@ -11,6 +11,8 @@ class EnemigoDisp
 	Vector2D velocidad;
 	Vector2D aceleracion;
 	Hitbox hitbox;
+	int tempdmg = 0, flagdmg = 0, flagesp = 0, vida = 4;	////////////////////////////////////
+
 
 public:
 	EnemigoDisp();

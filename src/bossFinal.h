@@ -8,6 +8,8 @@ class bossFinal
 	ColorRGB color;
 	Vector2D posicion, velocidad, aceleracion;
 	Hitbox hitbox;
+	int tempdmg = 0, flagdmg = 0, flagesp = 0, vida = 49;	////////////////////////////////////
+
 
 public:
 	bossFinal();

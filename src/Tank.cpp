@@ -134,6 +134,19 @@ void Tank::mueve(float t)
 	e3.x = posicion.x - altura / 3;		e3.y = posicion.y - 0;
 	e4.x = posicion.x + altura / 3;		e4.y = posicion.y - 0;
 	hitbox.setPos(e1, e2, e3, e4);
+
+	if (tempdmg) {
+		tempdmg--;
+		if (vida <= 0) {	//muerto
+			setColor(1, 1, 1);
+		}
+	}
+	else if (flagdmg) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
 }
 
 void Tank::setColor(Byte r, Byte g, Byte b) {

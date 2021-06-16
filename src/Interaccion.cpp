@@ -846,6 +846,9 @@ bool Interaccion::colision(EnemigoDisp& h, disparosAmigos& de) {
 	if (de.getPos().y - de.getRadio() < h.hitbox.esquina1.y && de.getPos().y + de.getRadio() > h.hitbox.esquina3.y)
 		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x) {
 			de.setColor(0, 1, 0);
+			h.flagdmg = 1;
+			if (h.tempdmg == 0)
+				h.tempdmg = 40;
 			return true;
 		}
 	return false;
@@ -855,6 +858,9 @@ bool Interaccion::colision(Tank& h, disparosAmigos& de) {
 	if (de.getPos().y - de.getRadio() < h.hitbox.esquina1.y && de.getPos().y + de.getRadio() > h.hitbox.esquina3.y)
 		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x) {
 			de.setColor(0, 1, 0);
+			h.flagdmg = 1;
+			if (h.tempdmg == 0)
+				h.tempdmg = 40;
 			return true;
 		}
 	return false;
@@ -865,6 +871,9 @@ bool Interaccion::colision(Babosa& h, disparosAmigos& de) {
 		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
 		{
 			de.setColor(0, 1, 0);
+			h.flagdmg = 1;
+			if (h.tempdmg == 0)
+				h.tempdmg = 40;
 			return true;
 		}
 	return false;
@@ -888,6 +897,9 @@ bool Interaccion::colision(Tentaculo& h, disparosAmigos& de) {
 		if (dist1 < de.getRadio())
 		{
 			de.setColor(0, 1, 0);
+			h.flagdmg = 1;
+			if (h.tempdmg == 0)
+				h.tempdmg = 40;
 			return true;
 		}
 		return false;
@@ -907,6 +919,9 @@ bool Interaccion::colision(bomber& h, disparosAmigos& de) {
 	if ((h.getPos() - de.getPos()).modulo() < (h.radio + de.getRadio())) 
 		{
 			de.setColor(0, 1, 0);
+			h.flagdmg = 1;
+			if (h.tempdmg == 0)
+				h.tempdmg = 40;
 			return true;
 		}
 		return false;
@@ -917,6 +932,9 @@ bool Interaccion::colision(bossFinal& h, disparosAmigos& de) {
 		if (de.getPos().x - de.getRadio() < h.hitbox.esquina2.x && de.getPos().x + de.getRadio() > h.hitbox.esquina1.x)
 		{
 			de.setColor(0, 1, 0);
+			h.flagdmg = 1;
+			if (h.tempdmg == 0)
+				h.tempdmg = 40;
 			return true;
 		}
 	return false;
@@ -994,39 +1012,75 @@ void Interaccion::colision(listabomber ene, espada esp) {
 void Interaccion::colision(EnemigoDisp& h, espada& esp) {
 	if (esp.getPos().y - esp.getLong() < h.hitbox.esquina1.y && esp.getPos().y + esp.getLong() > h.hitbox.esquina3.y)
 		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
-			h.setColor(0, 1, 0);
+		{
+			esp.setColor(0, 1, 0);
+			h.flagdmg = 1;
+			h.flagesp = 1;
+			if (h.tempdmg == 0)
+				h.tempdmg = 40;
+		}
 }
 
 void Interaccion::colision(Tank& h, espada& esp) {
 	if (esp.getPos().y - esp.getLong() < h.hitbox.esquina1.y && esp.getPos().y + esp.getLong() > h.hitbox.esquina3.y)
 		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
-			h.setColor(0, 1, 0);
+		{
+			esp.setColor(0, 1, 0);
+			h.flagdmg = 1;
+			h.flagesp = 1;
+			if (h.tempdmg == 0)
+				h.tempdmg = 40;
+		}
 }
 
 void Interaccion::colision(Babosa& h, espada& esp) {
 	if (esp.getPos().y - esp.getLong() < h.hitbox.esquina1.y && esp.getPos().y + esp.getLong() > h.hitbox.esquina3.y)
 		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
-			h.setColor(0, 1, 0);
+		{
+			esp.setColor(0, 1, 0);
+			h.flagdmg = 1;
+			h.flagesp = 1;
+			if (h.tempdmg == 0)
+				h.tempdmg = 40;
+		}
 }
 
 void Interaccion::colision(Tentaculo& h, espada& esp) {
 	for (int i = 0; i < 3; i++) {
 		float dist1 = DistSeg(h.hitbox[i], esp.getPos());
 		if (dist1 < esp.getLong())
-			h.setColor(0, 1, 0);
+		{
+			esp.setColor(0, 1, 0);
+			h.flagdmg = 1;
+			h.flagesp = 1;
+			if (h.tempdmg == 0)
+				h.tempdmg = 40;
+		}
 	}
 }
 
 void Interaccion::colision(bomber& h, espada& esp) {
 	if ((h.getPos() - esp.getPos()).modulo() < (h.radio + esp.getLong()))
-		h.setColor(0, 1, 0);
+	{
+		esp.setColor(0, 1, 0);
+		h.flagdmg = 1;
+		h.flagesp = 1;
+		if (h.tempdmg == 0)
+			h.tempdmg = 40;
+	}
 
 }
 
 void Interaccion::colision(bossFinal& h, espada& esp) {
 	if (esp.getPos().y - esp.getLong() < h.hitbox.esquina1.y && esp.getPos().y + esp.getLong() > h.hitbox.esquina3.y)
 		if (esp.getPos().x - esp.getLong() < h.hitbox.esquina2.x && esp.getPos().x + esp.getLong() > h.hitbox.esquina1.x)
-			h.setColor(0, 1, 0);
+		{
+			esp.setColor(0, 1, 0);
+			h.flagdmg = 1;
+			h.flagesp = 1;
+			if (h.tempdmg == 0)
+				h.tempdmg = 40;
+		}
 }
 
 float DistSegmento(segmento s1, Vector2D p1) {
