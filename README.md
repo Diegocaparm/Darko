@@ -6,7 +6,7 @@ Repositorio para el trabajo de Informática Industrial
 
 Changes v2.9
 
-- Creados los niveles 6,7,8 y acabado el nivel 9 (boss)
+- Creados los niveles 6,7,8 y acabado el nivel 9 (solo falta añadir el boss)
 
 - Revisados el resto de niveles (cambio de las posiciones de las monedas)
 
