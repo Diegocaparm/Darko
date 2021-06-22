@@ -8,7 +8,7 @@ class Hombre
 {
 public:
 	ColorRGB color;
-	Vector2D posicion{ -4,11 };
+	Vector2D posicion{ -4,16 };
 	Vector2D velocidad;
 	Vector2D aceleracion;
 	Hitbox hitbox;
