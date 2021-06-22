@@ -2,6 +2,17 @@
 Repositorio para el trabajo de Informática Industrial
 
 
+@Mica 
+
+Changes v2.9
+
+- Creados los niveles 6,7,8 y acabado el nivel 9 (boss)
+
+- Revisados el resto de niveles (cambio de las posiciones de las monedas)
+
+- Cambios en los parametros de pincho (mas pequeño) y hombre (cae desde más altura)
+
+
 @Miguel
 
 Changes v2.8
