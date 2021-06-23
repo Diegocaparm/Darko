@@ -1,6 +1,16 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@Diego
+
+Changes v3.0
+
+- Comenzadas las herencias de las clases para pulir código
+
+- Subidos los ficheros Solidos.h y Solidos.cpp con las clases Pincho, Pared, PlatMovil y Suelo como herencias suyas tamboén includias en estos ficheros
+
+- Borradas por tanto las clases Pared, Pincho y PlatMovil de /src 
+
 
 @Mica 
 
