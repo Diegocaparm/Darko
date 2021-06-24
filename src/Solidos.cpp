@@ -10,7 +10,7 @@ Pared::Pared()
 {
 	//Necesario para las herencias y que se llame desde caja sin tener que especificar posiciones
 }
-Pared::Pared(float x1, float y1, float x2, float y2, Byte r, Byte g, Byte b)
+Pared::Pared(float x1, float y1, float x2, float y2, Byte r, Byte g, Byte b) 
 {
 	setLims(x1, y1, x2, y2);
 	setColor(r, g, b);
@@ -53,6 +53,9 @@ void Solidos::setPos(float px, float py)
 	posicion.x = px;
 	posicion.y = py;
 }
+void Solidos::dibuja() {} //Vacios para entrar en lista
+void Solidos::mueve(float t) {} //El de arriba y este
+
 //Métodos virtuales de Pared
 void Pared::setLims(float x1, float y1, float x2, float y2)
 {
@@ -122,7 +125,7 @@ void PlatMovil::mueve(float t)
 void Suelo::dibuja()
 {
 	//Pintamos aquí el sprite que sea
-}//
+}
 //Métodos propios de Pinchos
 void Pincho::dibuja()
 {

@@ -1,6 +1,5 @@
 #pragma once
 #include "Hitbox.h"
-#include "Vector2D.h"
 #include "ColorRGB.h"
 
 class Solidos
@@ -13,7 +12,9 @@ public:
 	//~Solidos();
 	virtual void setPos(float px, float py);
 	virtual void setColor(Byte r, Byte g, Byte b);
-
+	virtual void dibuja();
+	virtual void mueve(float t);
+	friend class Interaccion;
 };
 //Pared herencia de SOLIDO
 class Pared : public Solidos
@@ -29,7 +30,7 @@ public:
 	bool operator ==(Pared);
 };
 //Plataforma móvil herencia de PARED
-class PlatMovil : public Pared
+class PlatMovil : public Pared 
 {
 private:
 	Vector2D vel;
@@ -41,7 +42,7 @@ public:
 	friend class Interaccion;
 };
 //Suelo herencia de PARED
-class Suelo : public Pared
+class Suelo : public Pared 
 {
 private:
 	Vector2D bajo1, bajo2;
@@ -59,3 +60,5 @@ public:
 	Pincho(float px, float py);
 	void dibuja();
 };
+
+
