@@ -10,7 +10,7 @@ Pared::Pared()
 {
 	//Necesario para las herencias y que se llame desde caja sin tener que especificar posiciones
 }
-Pared::Pared(float x1, float y1, float x2, float y2, Byte r, Byte g, Byte b) 
+Pared::Pared(float x1, float y1, float x2, float y2, Byte r, Byte g, Byte b)
 {
 	setLims(x1, y1, x2, y2);
 	setColor(r, g, b);

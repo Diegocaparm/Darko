@@ -15,7 +15,7 @@ Menu::~Menu() //Destructor
 void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 {
 	/*if (estado != FIN)						 //Posición del menú si no estamos en el estado FIN
-		gluLookAt(0.0, 4.5, 13,              
+		gluLookAt(0.0, 4.5, 13,
 			0.0, 4.5, 0.0,
 			0.0, 1.0, 0.0);
 	switch (estado)
@@ -31,11 +31,9 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glTexCoord2d(1, 0);		glVertex3f(9.7, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-9.7, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;
-
 	case MENU: //Menu princupal (comenzar, controles, salir)
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/menu.png").id);
@@ -47,13 +45,10 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glTexCoord2d(1, 0);		glVertex3f(9.7, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-9.7, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;
-
 	case CONTROLES:
-
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/controles.png").id);
 		glDisable(GL_LIGHTING);
@@ -64,11 +59,9 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glTexCoord2d(1, 0);		glVertex3f(9.7, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-9.7, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;
-
 	case ESCOGE_PERSONAJE: //Escoger el personaje con el que se quiere jugar
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/escoge_personaje.png").id);
@@ -80,98 +73,78 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glTexCoord2d(1, 0);		glVertex3f(9.7, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-9.7, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;
-
 	case HISTORIA: //Presentacion de la historia
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/historia.png").id); //foto correo
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-
 		glTexCoord2d(0, 1);		glVertex3f(-9.7, -0.25, -0.1);
 		glTexCoord2d(1, 1);		glVertex3f(9.7, -0.25, -0.1);
 		glTexCoord2d(1, 0);		glVertex3f(9.7, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-9.7, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
-
 		break;
-
 	case SUERTE: //Deseamos animo
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/suerte.png").id); //foto animo
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-
 		glTexCoord2d(0, 1);		glVertex3f(-9.7, -0.25, -0.1);
 		glTexCoord2d(1, 1);		glVertex3f(9.7, -0.25, -0.1);
 		glTexCoord2d(1, 0);		glVertex3f(9.7, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-9.7, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;
-
 	case VICTORIA: //Has ganado
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/victoria.png").id); //foto victoria
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-
 		glTexCoord2d(0, 1);		glVertex3f(-9.7, -0.25, -0.1);
 		glTexCoord2d(1, 1);		glVertex3f(9.7, -0.25, -0.1);
 		glTexCoord2d(1, 0);		glVertex3f(9.7, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-9.7, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;
-
 	case GAMEOVER: //Has perdido
 		glEnable(GL_TEXTURE_2D);
-
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/gameover.png").id); //foto derrrota
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-
 		glTexCoord2d(0, 1);		glVertex3f(-9.7, -0.25, -0.1);
 		glTexCoord2d(1, 1);		glVertex3f(9.7, -0.25, -0.1);
 		glTexCoord2d(1, 0);		glVertex3f(9.7, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-9.7, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;
-
 	case FIN: //Fin del juego
-
 		gluLookAt(0.0, 8, 10,   // Posición del ojo si esta en el menu
 			0.0, 4.5, 0.0,
 			0.0, 1.0, 0.0);
-
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fin.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-
 		glTexCoord2d(0, 1);		glVertex3f(-9.7, -0.25, -0.1);
 		glTexCoord2d(1, 1);		glVertex3f(9.7, -0.25, -0.1);
 		glTexCoord2d(1, 0);		glVertex3f(9.7, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-9.7, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;
@@ -296,14 +269,13 @@ void Menu::Musica()
 		ETSIDI::playMusica("bin/bso/intro.mp3", true);
 		break;
 
-	/*case NIVEL1:
-
-		if (nivel1.SetVida() == 2)
-		{
-			ETSIDI::stopMusica();
-			ETSIDI::playMusica("bin/bso/nivel1.mp3", true);
-		}
-		break;*/
+		/*case NIVEL1:
+			if (nivel1.SetVida() == 2)
+			{
+				ETSIDI::stopMusica();
+				ETSIDI::playMusica("bin/bso/nivel1.mp3", true);
+			}
+			break;*/
 
 	case VICTORIA:
 		ETSIDI::stopMusica();
@@ -335,4 +307,3 @@ void Menu::Mueve()
 		nivel1.Mueve();         //Se llama a la función mueve de espacio para controlar los distintos objetos que aparecen en pantalla
 	}*/
 }
-

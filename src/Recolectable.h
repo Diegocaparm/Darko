@@ -20,7 +20,7 @@ public:
 class Corazon :public Recolectable
 {
 private:
-	SpriteSequence sprite{"",1};
+	SpriteSequence sprite{ "",1 };
 public:
 	Corazon();
 	Corazon(float x, float y);
@@ -31,7 +31,7 @@ public:
 class Moneda : public Recolectable
 {
 private:
-	SpriteSequence sprite{"imagenes/moneda.png", 7};
+	SpriteSequence sprite{ "imagenes/moneda.png", 7 };
 public:
 	Moneda();
 	Moneda(float x, float y);
@@ -77,7 +77,7 @@ public:
 };
 
 //Lista de monedas
-class Dinero 
+class Dinero
 {
 protected:
 	Moneda* lista[MAX_MONEDAS];

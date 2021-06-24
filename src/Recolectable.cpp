@@ -355,4 +355,3 @@ void DineroRecolectados::dibujaContador()
 	nDecena.draw();
 	glPopMatrix();
 }
-
