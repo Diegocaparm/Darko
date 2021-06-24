@@ -1,6 +1,13 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@David
+
+- Comenzadas las herencias de los enemigos
+
+- Comenzadas las listas de objetos móviles
+
+
 @Diego
 
 Changes v3.0
