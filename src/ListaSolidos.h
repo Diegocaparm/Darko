@@ -1,5 +1,8 @@
 #pragma once
 #include "Solidos.h"
+#include "Personaje.h"
+#include "Recolectable.h"
+#include "Enemigo.h"
 #define MAX_SOLIDOS 50
 
 class ListaSolidos
@@ -12,6 +15,7 @@ public:
 	bool agregar(Solidos* s);
 	void dibuja();
 	void mueve(float t);
-	//void rebote(Hombre h);
+	void rebote(Personaje& pj, VidasRecolectadas& v);
+	void rebote(Enemigo e);
 };
 

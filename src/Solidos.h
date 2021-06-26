@@ -28,6 +28,7 @@ public:
 	virtual void dibuja();
 	float distancia(Vector2D punto, Vector2D* direccion = 0);
 	bool operator ==(Pared);
+	friend class Interaccion;
 };
 //Plataforma móvil herencia de PARED
 class PlatMovil : public Pared 
@@ -59,6 +60,7 @@ private:
 public:
 	Pincho(float px, float py);
 	void dibuja();
+	friend class Interaccion;
 };
 
 

@@ -1,6 +1,6 @@
 #include "Recolectable.h"
 #include "freeglut.h"
-//#include "interaccion"
+#include "Interaccion.h"
 using ETSIDI::SpriteSequence;
 
 //Constructores de los distintos recolectables y sus listas
@@ -135,16 +135,6 @@ void Vidas::mueve(float t)
 	for (int i = 0; i < numero; i++)
 		lista[i]->mueve(t);
 }
-void Vidas::rebote(Pared pared)
-{
-	//for (int i = 0; i < numero; i++)
-		//Interaccion::rebote(*(lista[i]), pared);
-}
-void Vidas::rebote(Caja caja)
-{
-	//for (int i = 0; i < numero; i++)
-		//Interaccion::rebote(*(lista[i]), caja);
-}
 void Vidas::destruirContenido()
 {
 	for (int i = 0; i < numero; i++) // destrucción de corazones contenidos
@@ -170,7 +160,7 @@ void Vidas::eliminar(Corazon* e)
 			return;
 		}
 }
-/*Corazon* Vidas::colision(Hombre h)
+Corazon* Vidas::recoleccion(Personaje h)
 {
 	for (int i = 0; i < numero; i++)
 	{
@@ -178,7 +168,7 @@ void Vidas::eliminar(Corazon* e)
 			return lista[i];
 	}
 	return 0; //no hay colisión
-}*/
+}
 Corazon* Vidas::operator[](int i)
 {
 	if (i >= numero)//si me paso, devuelvo la ultima
@@ -253,16 +243,6 @@ void Dinero::mueve(float t)
 	for (int i = 0; i < numero; i++)
 		lista[i]->mueve(t);
 }
-void Dinero::rebote(Pared pared)
-{
-	//for (int i = 0; i < numero; i++)
-		//Interaccion::rebote(*(lista[i]), pared);
-}
-void Dinero::rebote(Caja caja)
-{
-	//for (int i = 0; i < numero; i++)
-		//Interaccion::rebote(*(lista[i]), caja);
-}
 void Dinero::destruirContenido()
 {
 	for (int i = 0; i < numero; i++) // destrucción de dinero contenido
@@ -288,16 +268,15 @@ void Dinero::eliminar(Moneda* e)
 			return;
 		}
 }
-/*
-Moneda* Dinero::colision(Hombre h)
+Moneda* Dinero::recoleccion(Personaje h)
 {
 	for (int i = 0; i < numero; i++)
 	{
-		if (Interaccion::recoleccion(*(lista[i]), h))
+		if (Interaccion::recoleccion(*lista[i],h))
 			return lista[i];
 	}
 	return 0; //no hay colisión
-}*/
+}
 Moneda* Dinero::operator[](int i)
 {
 	if (i >= numero)//si me paso, devuelvo la ultima

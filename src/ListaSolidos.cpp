@@ -1,5 +1,4 @@
-#include "ListaSolidos.h"
-#include "freeglut.h"
+#include "Interaccion.h"
 
 //Métodos de la lista de sólidos
 ListaSolidos::ListaSolidos()
@@ -29,4 +28,14 @@ void ListaSolidos::mueve(float t)
 {
 	for (int i = 0; i < numero; i++)
 		lista[i]->mueve(t);
+}
+void ListaSolidos::rebote(Personaje& pj, VidasRecolectadas& v)
+{
+	for (int i = 0; i < numero; i++)
+		Interaccion::rebote(pj, *lista[i], v);
+}
+void ListaSolidos::rebote(Enemigo e)
+{
+	for (int i = 0; i < numero; i++)
+		Interaccion::enemrebote(e, *lista[i]);
 }

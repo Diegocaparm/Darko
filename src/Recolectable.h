@@ -2,6 +2,7 @@
 #include "ETSIDI.h"
 #include "Vector2D.h"
 #include "Caja.h"
+#include "Personaje.h"
 #define MAX_VIDAS 5
 #define MAX_MONEDAS 50
 using ETSIDI::SpriteSequence;
@@ -15,6 +16,7 @@ public:
 	Recolectable(float x, float y);
 	virtual void setPos(float x, float y);				//Set Posicion
 	virtual Vector2D getPos();							//retorna Posicion
+	friend class Interaccion;
 };
 //Corazon herencia de Recolectable
 class Corazon :public Recolectable
@@ -26,6 +28,7 @@ public:
 	Corazon(float x, float y);
 	void dibuja();
 	void mueve(float t);
+	friend class Interaccion;
 };
 //Moneda herencia de Recolectable
 class Moneda : public Recolectable
@@ -37,6 +40,7 @@ public:
 	Moneda(float x, float y);
 	void dibuja();
 	void mueve(float t);
+	friend class Interaccion;
 };
 
 //Lista de vidas
@@ -50,14 +54,11 @@ public:
 	bool agregar(Corazon* c);			//Agrega Un Corazon
 	void dibuja();						//Dibuja Corazon	
 	void mueve(float t);
-	void rebote(Pared pared);
-	void rebote(Caja caja);
 	void destruirContenido();
 	void eliminar(int index);
 	void eliminar(Corazon* e);
-	//Corazon* colision(Hombre h);
+	Corazon* recoleccion(Personaje h);
 	Corazon* operator [] (int i);
-
 };
 //Vidas recolectadas herencia de Vidas
 class VidasRecolectadas : public Vidas
@@ -87,12 +88,10 @@ public:
 	bool agregar(Moneda* d);			//Agrega Moneda
 	void dibuja();						//Dibuja Moneda	
 	void mueve(float t);				//Movimiento Moneda
-	void rebote(Pared pared);
-	void rebote(Caja caja);
 	void destruirContenido();
 	void eliminar(int index);
 	void eliminar(Moneda* d);
-	//Moneda* colision(Hombre h);
+	Moneda* recoleccion(Personaje h);
 	Moneda* operator [] (int i);
 };
 //DineroRecolectado herencia de Dinero

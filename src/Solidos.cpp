@@ -78,7 +78,7 @@ void Pared::dibuja()
 }
 
 //Métodos propios de Pared
-float Pared::distancia(Vector2D punto, Vector2D* direccion = 0)
+float Pared::distancia(Vector2D punto, Vector2D* direccion)
 {
 	Vector2D u = (punto - limite1);
 	Vector2D v = (limite2 - limite1).unitario();

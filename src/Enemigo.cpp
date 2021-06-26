@@ -1,9 +1,10 @@
 #include "Enemigo.h"
+#include "freeglut.h"
 
+//Constructores de los enemigos varios
 Enemigo::Enemigo() {
 
 }
-
 EnemigoDisp::EnemigoDisp(float px, float py) {
 	altura = 2.0f; 
 	vida = 4;
@@ -11,6 +12,94 @@ EnemigoDisp::EnemigoDisp(float px, float py) {
 	setPos(px, py);
 	setAc(0, -9.8f);
 	//dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);	//esta aqui para que este bien la posicion del disparo inicial
+
+}
+Babosa::Babosa(float px, float py) {
+	altura = 1.5f;
+	vida = 5;
+	setColor(2, 0, 0);
+	setPos(px, py);
+}
+Bomber::Bomber(float px, float py) {
+	altura = 2.0f;
+	vida = 2;
+	setColor(200, 100, 0);
+	setPos(px, py);
+	setAc(0, -9.8f);
+}
+Tentaculo::Tentaculo(float px, float py) {
+	altura = 5.0f;
+	vida = 19;
+	setColor(150, 0, 0);
+	setPos(px, py);
+}
+Tank::Tank() {}
+Tank::Tank(float px, float py) {
+	altura = 7.0f;
+	vida = 9;
+	setColor(1, 1, 1);
+	setPos(px, py);
+	setAc(0, -9.8f);
+	/*dispTank1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank4->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank5->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	dispTank1->setVel(-dispTank1->vel, 0.0f);
+	dispTank2->setVel(-dispTank1->vel * 0.707, dispTank1->vel * 0.707);
+	dispTank3->setVel(0.0f, dispTank1->vel);
+	dispTank4->setVel(dispTank1->vel * 0.707, dispTank1->vel * 0.707);
+	dispTank5->setVel(dispTank1->vel, 0.0f);
+	dispTank1->setColor(10, 0, 0);
+	dispTank2->setColor(10, 0, 0);
+	dispTank3->setColor(10, 0, 0);
+	dispTank4->setColor(10, 0, 0);
+	dispTank5->setColor(10, 0, 0);*/
+}
+BossFinal::BossFinal(float px, float py) {
+	altura = 14.0f;
+	vida = 49;
+	setColor(1, 1, 1);
+	setPos(px, py);
+	setAc(0, -9.8f);
+	/*misil1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	misil2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	misil3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	misil4->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	misil5->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	misil6->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	misil7->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	misil8->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	misil9->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+	misil10->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+
+	misil1->setVel(-misil1->vel, 0.0f);
+	misil2->setVel(-misil1->vel * 0.94, misil1->vel * 0.342);
+	misil3->setVel(-misil1->vel * 0.766, misil1->vel * 0.643);
+	misil4->setVel(-misil1->vel * 0.5, misil1->vel * 0.866);
+	misil5->setVel(-misil1->vel * 0.174, misil1->vel * 0.985);
+
+	misil6->setVel(-misil1->vel, -misil1->vel * 0.174);
+	misil7->setVel(-misil1->vel * 0.94, -misil1->vel * 0.342);
+	misil8->setVel(misil1->vel * 0.766, misil1->vel * 0.643);
+	misil9->setVel(misil1->vel * 0.5, misil1->vel * 0.866);
+	misil10->setVel(misil1->vel * 0.174, misil1->vel * 0.985);
+
+	misil1->setColor(10, 0, 0);
+	misil2->setColor(10, 0, 0);
+	misil3->setColor(10, 0, 0);
+	misil4->setColor(10, 0, 0);
+	misil5->setColor(10, 0, 0);
+	misil6->setColor(10, 0, 0);
+	misil7->setColor(10, 0, 0);
+	misil8->setColor(10, 0, 0);
+	misil9->setColor(10, 0, 0);
+	misil10->setColor(10, 0, 0);*/
+}
+
+//Método dibuja de cada enemigo
+void Enemigo::dibuja()
+{
 
 }
 void EnemigoDisp::dibuja()
@@ -57,178 +146,7 @@ void EnemigoDisp::dibuja()
 	glEnd();
 	glPopMatrix();
 }
-void EnemigoDisp::mueve(float t)
-{
-	ObjetoMovil::mueve(t);
-
-	//Disparo de los enemigos cada 3 segundos
-	if (temp < 120) {		//40 para 1 seg
-		temp++;
-		if (temp == 120) {		//volver a disparar
-			/*dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);
-			dispEnem1->setVel(-dispEnem1->vel + velocidad.x, 0.0f);
-			dispEnem1->flagdibujar = 1;*/
-		}
-	}
-	else {
-		//~DispEnem();
-		temp = 0;
-	}
-	if (zonaH == 0) {
-		if (sentido == 0) {
-			velocidad.x = 1;
-		}
-		else
-			velocidad.x = -1;
-	}
-
-	//Añadido por Miguel (crea las paredes de choque)
-	Vector2D e1, e2, e3, e4;
-	e1.x = posicion.x - 0.3f;	e1.y = posicion.y + 2.0f;
-	e2.x = posicion.x + 0.3f;	e2.y = posicion.y + 2.0f;
-	e3.x = posicion.x - 0.3f;	e3.y = posicion.y - 0.0f;
-	e4.x = posicion.x + 0.3f;	e4.y = posicion.y - 0.0f;
-	hitbox.setPos(e1, e2, e3, e4);
-
-	if (tempdmg) {
-		tempdmg--;
-		if (vida <= 0) {	//muerto
-			setColor(1, 1, 1);
-		}
-	}
-	else if (flagdmg) {
-		vida -= 1 + flagesp;
-		//destruir la vida de la interfaz
-		flagdmg = 0;
-		flagesp = 0;
-	}
-}
-
-Tank::Tank(){}
-Tank::Tank(float px, float py) {
-	altura = 7.0f;
-	vida = 9;
-	setColor(1, 1, 1);
-	setPos(px, py);
-	setAc(0, -9.8f);
-	/*dispTank1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank4->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank5->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	dispTank1->setVel(-dispTank1->vel, 0.0f);
-	dispTank2->setVel(-dispTank1->vel * 0.707, dispTank1->vel * 0.707);
-	dispTank3->setVel(0.0f, dispTank1->vel);
-	dispTank4->setVel(dispTank1->vel * 0.707, dispTank1->vel * 0.707);
-	dispTank5->setVel(dispTank1->vel, 0.0f);
-	dispTank1->setColor(10, 0, 0);
-	dispTank2->setColor(10, 0, 0);
-	dispTank3->setColor(10, 0, 0);
-	dispTank4->setColor(10, 0, 0);
-	dispTank5->setColor(10, 0, 0);*/
-}
-void Tank::dibuja()
-{
-	glPushMatrix();
-	glTranslatef(posicion.x, posicion.y, 0);
-	glColor3f(color.r, color.g, color.b);
-	glRotatef(-90, 1, 0, 0);		//dibujar persona
-	glutSolidCylinder(altura / 3, altura / 3, 30, 30);
-	glTranslatef(0, 0, altura / 3);
-	glutSolidSphere(altura / 3, 30, 30);
-	glPopMatrix();
-
-	glPushMatrix();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
-	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
-	glEnd();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
-	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
-	glEnd();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
-	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
-	glEnd();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
-	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
-	glEnd();
-	glPopMatrix();
-}
-void Tank::mueve(float t)
-{
-	ObjetoMovil::mueve(t);
-
-	if (temp < 120) {		//40 para 1 seg
-		temp++;
-		//mueve?
-
-		if (temp == 120) {
-			/*dispTank1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-			dispTank2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-			dispTank3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-			dispTank4->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-			dispTank5->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-			dispTank1->setVel(-dispTank1->vel + velocidad.x, 0.0f);
-			dispTank2->setVel(-dispTank1->vel * 0.707 + velocidad.x, dispTank1->vel * 0.707);
-			dispTank3->setVel(0.0f + velocidad.x, dispTank1->vel);
-			dispTank4->setVel(dispTank1->vel * 0.707 + velocidad.x, dispTank1->vel * 0.707);
-			dispTank5->setVel(dispTank1->vel + velocidad.x, 0.0f);
-			dispTank1->flagdibujar = 1;
-			dispTank2->flagdibujar = 1;
-			dispTank3->flagdibujar = 1;
-			dispTank4->flagdibujar = 1;
-			dispTank5->flagdibujar = 1;*/
-		}
-
-	}
-	else {
-		//~DispEnem();
-		temp = 0;
-	}
-
-	if (zonaH == 0) {
-		if (sentido == 0) {
-			velocidad.x = -1;
-		}
-		else
-			velocidad.x = 1;
-	}
-
-	Vector2D e1, e2, e3, e4;
-	e1.x = posicion.x - altura / 3;		e1.y = posicion.y + altura * 2 / 3;
-	e2.x = posicion.x + altura / 3;		e2.y = posicion.y + altura * 2 / 3;
-	e3.x = posicion.x - altura / 3;		e3.y = posicion.y - 0;
-	e4.x = posicion.x + altura / 3;		e4.y = posicion.y - 0;
-	hitbox.setPos(e1, e2, e3, e4);
-
-	if (tempdmg) {
-		tempdmg--;
-		if (vida <= 0) {	//muerto
-			setColor(1, 1, 1);
-		}
-	}
-	else if (flagdmg) {
-		vida -= 1 + flagesp;
-		//destruir la vida de la interfaz
-		flagdmg = 0;
-		flagesp = 0;
-	}
-}
-
-babosa::babosa(float px, float py) {
-	altura = 1.5f;
-	vida = 5;
-	setColor(2, 0, 0);
-	setPos(px, py);
-}
-void babosa::dibuja() {
+void Babosa::dibuja() {
 	glPushMatrix();
 	glColor3f(color.r, color.g, color.b);
 	glTranslatef(posicion.x, posicion.y, 0);
@@ -260,70 +178,7 @@ void babosa::dibuja() {
 	glEnd();
 	glPopMatrix();
 }
-void babosa::mueve(float t) {
-	ObjetoMovil::mueve(t);
-
-	if (cerca) {
-		if (prx)
-			aceleracion.x = -1;
-		else
-			aceleracion.x = 1;
-
-		if (pry)
-			aceleracion.y = -1;
-		else
-			aceleracion.y = 1;
-
-		if (velocidad.x > 2)
-			velocidad.x = 2;
-		if (velocidad.y > 2)
-			velocidad.y = 2;
-	}
-	else {
-		if (prx)
-			aceleracion.x = -1;
-		else
-			aceleracion.x = 1;
-
-		if (pry)
-			aceleracion.y = -1;
-		else
-			aceleracion.y = 1;
-		if (velocidad.x > 3)
-			velocidad.x = 3;
-		if (velocidad.y > 3)
-			velocidad.y = 3;
-	}
-
-	Vector2D e1, e2, e3, e4;
-	e1.x = posicion.x - altura;		e1.y = posicion.y + altura / 3;
-	e2.x = posicion.x + 0;			e2.y = posicion.y + altura / 3;
-	e3.x = posicion.x - altura;		e3.y = posicion.y - altura / 3;
-	e4.x = posicion.x + 0;			e4.y = posicion.y - altura / 3;
-	hitbox.setPos(e1, e2, e3, e4);
-
-	if (tempdmg) {
-		tempdmg--;
-		if (vida <= 0) {	//muerto
-			setColor(1, 1, 1);
-		}
-	}
-	else if (flagdmg) {
-		vida -= 1 + flagesp;
-		//destruir la vida de la interfaz
-		flagdmg = 0;
-		flagesp = 0;
-	}
-}
-
-bomber::bomber(float px, float py) {
-	altura = 2.0f;
-	vida = 2;
-	setColor(200, 100, 0);
-	setPos(px, py);
-	setAc(0, -9.8f);
-}
-void bomber::dibuja()
+void Bomber::dibuja()
 {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
@@ -354,48 +209,6 @@ void bomber::dibuja()
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
 	glEnd();
 	glPopMatrix();
-}
-void bomber::mueve(float t)
-{
-	posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
-	velocidad = velocidad + aceleracion * t;
-
-
-	//if (zonaH == 0) {
-	if (sentido == 0) {
-		velocidad.x = 1;
-	}
-	else
-		velocidad.x = -1;
-	//}
-
-	//Añadido por Miguel (crea las paredes de choque)
-	Vector2D e1, e2, e3, e4;
-	e1.x = posicion.x - altura;		e1.y = posicion.y + altura;
-	e2.x = posicion.x + altura;		e2.y = posicion.y + altura;
-	e3.x = posicion.x - altura;		e3.y = posicion.y - altura;
-	e4.x = posicion.x + altura;		e4.y = posicion.y - altura;
-	hitbox.setPos(e1, e2, e3, e4);
-
-	if (tempdmg) {
-		tempdmg--;
-		if (vida <= 0) {	//muerto
-			setColor(1, 1, 1);
-		}
-	}
-	else if (flagdmg) {
-		vida -= 1 + flagesp;
-		//destruir la vida de la interfaz
-		flagdmg = 0;
-		flagesp = 0;
-	}
-}
-
-Tentaculo::Tentaculo(float px, float py) {
-	altura = 5.0f;
-	vida = 19;
-	setColor(150, 0, 0);
-	setPos(px, py);
 }
 void Tentaculo::dibuja() {
 	glPushMatrix();
@@ -484,6 +297,215 @@ void Tentaculo::dibuja() {
 	glEnd();
 	glPopMatrix();*/
 }
+void Tank::dibuja()
+{
+	glPushMatrix();
+	glTranslatef(posicion.x, posicion.y, 0);
+	glColor3f(color.r, color.g, color.b);
+	glRotatef(-90, 1, 0, 0);		//dibujar persona
+	glutSolidCylinder(altura / 3, altura / 3, 30, 30);
+	glTranslatef(0, 0, altura / 3);
+	glutSolidSphere(altura / 3, 30, 30);
+	glPopMatrix();
+
+	glPushMatrix();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
+	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
+	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
+	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
+	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
+	glEnd();
+	glPopMatrix();
+}
+void BossFinal::dibuja()
+{
+	glPushMatrix();
+	glTranslatef(posicion.x, posicion.y, 0);
+	glColor3f(color.r, color.g, color.b);
+	glRotatef(-90, 1, 0, 0);		//dibujar persona
+	glutSolidCylinder(altura / 3, altura / 3, 30, 30);
+	glTranslatef(0, 0, altura / 3);
+	glutSolidSphere(altura / 3, 30, 30);
+	glPopMatrix();
+
+	glPushMatrix();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
+	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
+	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
+	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
+	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
+	glEnd();
+	glPopMatrix();
+}
+
+//Métodos mueve de cada enemigo
+void Enemigo::mueve(float t)
+{
+}
+void EnemigoDisp::mueve(float t)
+{
+	ObjetoMovil::mueve(t);
+
+	//Disparo de los enemigos cada 3 segundos
+	if (temp < 120) {		//40 para 1 seg
+		temp++;
+		if (temp == 120) {		//volver a disparar
+			/*dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);
+			dispEnem1->setVel(-dispEnem1->vel + velocidad.x, 0.0f);
+			dispEnem1->flagdibujar = 1;*/
+		}
+	}
+	else {
+		//~DispEnem();
+		temp = 0;
+	}
+	if (zonaH == 0) {
+		if (sentido == 0) {
+			velocidad.x = 1;
+		}
+		else
+			velocidad.x = -1;
+	}
+
+	//Añadido por Miguel (crea las paredes de choque)
+	Vector2D e1, e2, e3, e4;
+	e1.x = posicion.x - 0.3f;	e1.y = posicion.y + 2.0f;
+	e2.x = posicion.x + 0.3f;	e2.y = posicion.y + 2.0f;
+	e3.x = posicion.x - 0.3f;	e3.y = posicion.y - 0.0f;
+	e4.x = posicion.x + 0.3f;	e4.y = posicion.y - 0.0f;
+	hitbox.setPos(e1, e2, e3, e4);
+
+	if (tempdmg) {
+		tempdmg--;
+		if (vida <= 0) {	//muerto
+			setColor(1, 1, 1);
+		}
+	}
+	else if (flagdmg) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
+}
+void Babosa::mueve(float t) {
+	ObjetoMovil::mueve(t);
+
+	if (cerca) {
+		if (prx)
+			aceleracion.x = -1;
+		else
+			aceleracion.x = 1;
+
+		if (pry)
+			aceleracion.y = -1;
+		else
+			aceleracion.y = 1;
+
+		if (velocidad.x > 2)
+			velocidad.x = 2;
+		if (velocidad.y > 2)
+			velocidad.y = 2;
+	}
+	else {
+		if (prx)
+			aceleracion.x = -1;
+		else
+			aceleracion.x = 1;
+
+		if (pry)
+			aceleracion.y = -1;
+		else
+			aceleracion.y = 1;
+		if (velocidad.x > 3)
+			velocidad.x = 3;
+		if (velocidad.y > 3)
+			velocidad.y = 3;
+	}
+
+	Vector2D e1, e2, e3, e4;
+	e1.x = posicion.x - altura;		e1.y = posicion.y + altura / 3;
+	e2.x = posicion.x + 0;			e2.y = posicion.y + altura / 3;
+	e3.x = posicion.x - altura;		e3.y = posicion.y - altura / 3;
+	e4.x = posicion.x + 0;			e4.y = posicion.y - altura / 3;
+	hitbox.setPos(e1, e2, e3, e4);
+
+	if (tempdmg) {
+		tempdmg--;
+		if (vida <= 0) {	//muerto
+			setColor(1, 1, 1);
+		}
+	}
+	else if (flagdmg) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
+}
+void Bomber::mueve(float t)
+{
+	posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
+	velocidad = velocidad + aceleracion * t;
+
+
+	//if (zonaH == 0) {
+	if (sentido == 0) {
+		velocidad.x = 1;
+	}
+	else
+		velocidad.x = -1;
+	//}
+
+	//Añadido por Miguel (crea las paredes de choque)
+	Vector2D e1, e2, e3, e4;
+	e1.x = posicion.x - altura;		e1.y = posicion.y + altura;
+	e2.x = posicion.x + altura;		e2.y = posicion.y + altura;
+	e3.x = posicion.x - altura;		e3.y = posicion.y - altura;
+	e4.x = posicion.x + altura;		e4.y = posicion.y - altura;
+	hitbox.setPos(e1, e2, e3, e4);
+
+	if (tempdmg) {
+		tempdmg--;
+		if (vida <= 0) {	//muerto
+			setColor(1, 1, 1);
+		}
+	}
+	else if (flagdmg) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
+}
 void Tentaculo::mueve(float t) {
 	/*posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
 	velocidad = velocidad + aceleracion * t;
@@ -544,80 +566,65 @@ void Tentaculo::mueve(float t) {
 		flagesp = 0;
 	}
 }
-
-BossFinal::BossFinal(float px, float py) {
-	altura = 14.0f;
-	vida = 49;
-	setColor(1, 1, 1);
-	setPos(px, py);
-	setAc(0, -9.8f);
-	/*misil1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil4->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil5->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil6->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil7->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil8->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil9->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil10->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-
-	misil1->setVel(-misil1->vel, 0.0f);
-	misil2->setVel(-misil1->vel * 0.94, misil1->vel * 0.342);
-	misil3->setVel(-misil1->vel * 0.766, misil1->vel * 0.643);
-	misil4->setVel(-misil1->vel * 0.5, misil1->vel * 0.866);
-	misil5->setVel(-misil1->vel * 0.174, misil1->vel * 0.985);
-
-	misil6->setVel(-misil1->vel, -misil1->vel * 0.174);
-	misil7->setVel(-misil1->vel * 0.94, -misil1->vel * 0.342);
-	misil8->setVel(misil1->vel * 0.766, misil1->vel * 0.643);
-	misil9->setVel(misil1->vel * 0.5, misil1->vel * 0.866);
-	misil10->setVel(misil1->vel * 0.174, misil1->vel * 0.985);
-
-	misil1->setColor(10, 0, 0);
-	misil2->setColor(10, 0, 0);
-	misil3->setColor(10, 0, 0);
-	misil4->setColor(10, 0, 0);
-	misil5->setColor(10, 0, 0);
-	misil6->setColor(10, 0, 0);
-	misil7->setColor(10, 0, 0);
-	misil8->setColor(10, 0, 0);
-	misil9->setColor(10, 0, 0);
-	misil10->setColor(10, 0, 0);*/
-}
-void BossFinal::dibuja()
+void Tank::mueve(float t)
 {
-	glPushMatrix();
-	glTranslatef(posicion.x, posicion.y, 0);
-	glColor3f(color.r, color.g, color.b);
-	glRotatef(-90, 1, 0, 0);		//dibujar persona
-	glutSolidCylinder(altura / 3, altura / 3, 30, 30);
-	glTranslatef(0, 0, altura / 3);
-	glutSolidSphere(altura / 3, 30, 30);
-	glPopMatrix();
+	ObjetoMovil::mueve(t);
 
-	glPushMatrix();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
-	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
-	glEnd();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
-	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
-	glEnd();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
-	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
-	glEnd();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
-	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
-	glEnd();
-	glPopMatrix();
+	if (temp < 120) {		//40 para 1 seg
+		temp++;
+		//mueve?
+
+		if (temp == 120) {
+			/*dispTank1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+			dispTank2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+			dispTank3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+			dispTank4->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+			dispTank5->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+			dispTank1->setVel(-dispTank1->vel + velocidad.x, 0.0f);
+			dispTank2->setVel(-dispTank1->vel * 0.707 + velocidad.x, dispTank1->vel * 0.707);
+			dispTank3->setVel(0.0f + velocidad.x, dispTank1->vel);
+			dispTank4->setVel(dispTank1->vel * 0.707 + velocidad.x, dispTank1->vel * 0.707);
+			dispTank5->setVel(dispTank1->vel + velocidad.x, 0.0f);
+			dispTank1->flagdibujar = 1;
+			dispTank2->flagdibujar = 1;
+			dispTank3->flagdibujar = 1;
+			dispTank4->flagdibujar = 1;
+			dispTank5->flagdibujar = 1;*/
+		}
+
+	}
+	else {
+		//~DispEnem();
+		temp = 0;
+	}
+
+	if (zonaH == 0) {
+		if (sentido == 0) {
+			velocidad.x = -1;
+		}
+		else
+			velocidad.x = 1;
+	}
+
+	Vector2D e1, e2, e3, e4;
+	e1.x = posicion.x - altura / 3;		e1.y = posicion.y + altura * 2 / 3;
+	e2.x = posicion.x + altura / 3;		e2.y = posicion.y + altura * 2 / 3;
+	e3.x = posicion.x - altura / 3;		e3.y = posicion.y - 0;
+	e4.x = posicion.x + altura / 3;		e4.y = posicion.y - 0;
+	hitbox.setPos(e1, e2, e3, e4);
+
+	if (tempdmg) {
+		tempdmg--;
+		if (vida <= 0) {	//muerto
+			setColor(1, 1, 1);
+		}
+	}
+	else if (flagdmg) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
 }
 void BossFinal::mueve(float t)
 {
