@@ -37,5 +37,5 @@ void ListaSolidos::rebote(Personaje& pj, VidasRecolectadas& v)
 void ListaSolidos::rebote(Enemigo e)
 {
 	for (int i = 0; i < numero; i++)
-		Interaccion::enemrebote(e, *lista[i]);
+		Interaccion::rebote(e, *lista[i]);
 }

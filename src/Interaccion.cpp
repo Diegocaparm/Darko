@@ -3,6 +3,208 @@
 #include "stdio.h"
 #define pi 3.14159265
 
+//encontrarle un nuevo hogar a lo que haya aqui
+float DistSeg(Hitbox h, Vector2D p) {
+	float //m1 = (h.esquina1 - h.esquina2).modulo(),
+		m2 = (h.top_r - h.bot_r).modulo(),
+		//m3 = (h.esquina3 - h.esquina4).modulo(),
+		m4 = (h.top_l - h.bot_l).modulo();
+	float h1 = (h.top_l - p).modulo(),
+		h2 = (h.top_r - p).modulo(),
+		h3 = (h.bot_l - p).modulo(),
+		h4 = (h.bot_r - p).modulo();
+	float a1 = (h3 * h3 - h1 * h1 + m2 * m2) / (2 * m2),
+		a2 = (h4 * h4 - h2 * h2 + m4 * m4) / (2 * m4),
+		d1 = sqrt(h3 * h3 - a1 * a1),
+		d2 = sqrt(h4 * h4 - a2 * a2);
+	if (d1 < d2)
+		return d1;
+	else return d2;
+}
+void Interaccion::rebote(listaObjetoMovil om, ListaSolidos so) {
+	for (int i = 0; i < om.numero; i++)
+		for (int j = 0; j < so.numero; j++)
+			rebote(*om.lista[i], *so.lista[j]);
+}
+void Interaccion::rebote(ObjetoMovil om, Solidos s) {
+	//no se si tiene que hacer algo o se llama 
+	//a los correspondientes directamente
+	//objetomovil->enemigo,disparo,personaje->especifico
+}
+void Interaccion::rebote(ObjetoMovil& ob, Caja c) {
+	rebote(ob, c.techo);
+	rebote(ob, c.pared_dcha);
+	rebote(ob, c.pared_izq);
+	rebote(ob, c.suelo);
+}
+void Interaccion::rebote(Disparos& ene, Pared p)
+{
+	//Ponemos los limites de la plataforma
+	float xmin = p.limite2.x;//izq
+	float xmax = p.limite1.x;//dcha
+	float ymin = p.limite2.y;//ab
+	float ymax = p.limite1.y;//arr
+	//Decidimos si estamos arriba o abajo
+	if (ene.getPos().y > ymin - ene.getRadio() / 2)
+		ene.zonaV = 1; //Estamos arriba
+	else
+		ene.zonaV = 0; //Abajo
+	//Decidimos si estamos dentro y si estamos encima
+	if (ene.getPos().x < xmax && ene.getPos().x > xmin)
+	{
+		if (ene.zonaV == 0) { //Sigue igual si esta debajo
+			if (ene.getPos().y > ymax) {
+				ene.setPos(ene.getPos().x, ymax);
+				ene.setVel(ene.vel, 0.0f);
+				ene.setAc(0.0f, -9.8f);
+			}
+		}
+		else //Si está arriba
+		{
+			if (ene.getPos().y < ymin) {
+				ene.setColor(1, 1, 1);
+				//ene.flagdibujar = 0;
+			}
+		}
+	}
+}
+void Interaccion::mov(espada& esp, Personaje& h) {
+	esp.setPos(h.getPos().x, h.getPos().y + h.altura / 2);
+}
+void Interaccion::rebote(Personaje& h, listaObjetoMovil om, VidasRecolectadas& vidasR) {
+	for (int i = 0; i < om.numero; i++)
+		colision(h, *om.lista[i], vidasR);
+}
+void Interaccion::colision(Personaje& h, ObjetoMovil& om, VidasRecolectadas& v) {
+}
+void Interaccion::colision(Personaje& h, disparosEnemigos& de, VidasRecolectadas& v) {
+	if (de.getPos().y - de.getRadio() < h.hitbox.top_l.y && de.getPos().y + de.getRadio() > h.hitbox.bot_l.y)
+		if (de.getPos().x - de.getRadio() < h.hitbox.top_r.x && de.getPos().x + de.getRadio() > h.hitbox.top_l.x) {
+			de.setColor(0, 1, 0);
+			v.reduceVida();
+		}
+}
+void Interaccion::colision(Personaje& h, misiles& m, VidasRecolectadas& v) {
+	Interaccion::colision(h, m, v);
+	Vector2D dist = m.getPos() - h.getPos();
+	if (dist.modulo() < 5) {
+		m.cerca = 1;
+		v.reduceVida();
+	}
+	else
+		m.cerca = 0;
+	if (m.getPos().x < h.getPos().x)
+		m.prx = 0;
+	else
+		m.prx = 1;
+	if (m.getPos().y < h.getPos().y + h.altura / 2)
+		m.pry = 0;
+	else
+		m.pry = 1;
+}
+void Interaccion::colision(Personaje& h, Enemigo& ene, VidasRecolectadas& v) {
+	float dist1 = DistSeg(ene.hitbox, h.hitbox.top_l),
+		dist2 = DistSeg(ene.hitbox, h.hitbox.top_r),
+		dist3 = DistSeg(ene.hitbox, h.hitbox.bot_l),
+		dist4 = DistSeg(ene.hitbox, h.hitbox.bot_r);
+	if (dist1 < 0.2 || dist2 < 0.2 || dist3 < 0.2 || dist4 < 0.2) {
+		v.reduceVida();
+		h.setColor(0, 1, 0);
+	}
+}
+void Interaccion::mov(Personaje& h, Babosa& ene, VidasRecolectadas& v) {
+	Interaccion::colision(h, ene, v);
+	Vector2D dist = ene.getPos() - h.getPos();
+	if (dist.modulo() < 5) {
+		ene.cerca = 1;
+	}
+	else
+		ene.cerca = 0;
+	if (ene.getPos().x < h.getPos().x)
+		ene.prx = 0;
+	else {
+		;
+		ene.prx = 1;
+	}
+	if (ene.getPos().y < h.getPos().y + h.altura / 2)
+		ene.pry = 0;
+	else
+		ene.pry = 1;
+}
+void Interaccion::colision(Personaje& h, Tentaculo& ene, VidasRecolectadas& v) {
+	float dist1 = DistSeg(ene.hitbox, h.hitbox.top_l),
+		dist2 = DistSeg(ene.hitbox, h.hitbox.top_r),
+		dist3 = DistSeg(ene.hitbox, h.hitbox.bot_l),
+		dist4 = DistSeg(ene.hitbox, h.hitbox.bot_r);
+	if (dist1 < 0.2 || dist2 < 0.2 || dist3 < 0.2 || dist4 < 0.2) {
+		v.reduceVida();
+		h.setColor(0, 1, 0);
+	}
+}//3 hitboxes
+void Interaccion::colision(Personaje& h, Bomber& ene, VidasRecolectadas& v) {
+	if ((h.getPos() - ene.getPos()).modulo() < 4) {
+		ene.flag = 1;
+	}
+	if (ene.flag) {
+		ene.temp--;
+		ene.setVel(0,0);
+	}
+	if (ene.temp == 0) {
+		ene.altura = 6;
+		v.reduceVida();		//arreglar esto
+	}
+}
+void Interaccion::rebote(listaObjetoMovil om, listaObjetoMovil om2) {
+	for (int i = 0; i < om.numero; i++)
+		for (int j = 0; j < om2.numero; j++)
+			rebote(*om.lista[i], *om2.lista[j]);
+}
+void Interaccion::rebote(ObjetoMovil ob1, ObjetoMovil ob2) {
+
+}
+void Interaccion::rebote(Enemigo om, disparosAmigos da) {
+	if (da.getPos().y - da.getRadio() < om.hitbox.top_l.y && da.getPos().y + da.getRadio() > om.hitbox.bot_l.y)
+		if (da.getPos().x - da.getRadio() < om.hitbox.top_r.x && da.getPos().x + da.getRadio() > om.hitbox.top_l.x) {
+			da.setColor(0, 1, 0);
+			om.flagdmg = 1;
+			if (om.tempdmg == 0)
+				om.tempdmg = 40;
+			//return true;
+		}
+	//return false;
+}
+void Interaccion::colision(listaObjetoMovil om, espada es) {
+	for (int i = 0; i < om.numero; i++)
+		for (int j = 0; j < om.numero; j++)
+			rebote(*om.lista[i], es);
+}
+void Interaccion::colision(ObjetoMovil ob1, espada esp) {
+
+}
+void Interaccion::colision(Enemigo om, espada es) {
+	if (es.getPos().y - es.getLong() < om.hitbox.top_l.y && es.getPos().y + es.getLong() > om.hitbox.bot_l.y)
+		if (es.getPos().x - es.getLong() < om.hitbox.top_r.x && es.getPos().x + es.getLong() > om.hitbox.top_l.x)
+		{
+			om.setColor(0, 1, 0);
+			om.flagdmg = 1;
+			om.flagesp = 1;
+			if (om.tempdmg == 0)
+				om.tempdmg = 40;
+		}
+}
+
+
+
+
+
+
+
+
+
+
+
+//fin de aqui		//////////////////////////////////////////////
+
 //Funciones auxiliares
 bool DistHitbox(Hitbox h, Vector2D e)
 {
@@ -11,10 +213,14 @@ bool DistHitbox(Hitbox h, Vector2D e)
 	else
 		return false;
 }
-float DistSeg(Hitbox h, Vector2D p);
+//float DistSeg(Hitbox h, Vector2D p);
 //float DistSegmento(segmento s1, Vector2D p);
 
 //Rebote del PJ con los SOLIDOS llamados todos desde la lista
+void Interaccion::rebote(Personaje& h, ListaSolidos ls, VidasRecolectadas& v) {
+	for(int i = 0; i < ls.numero; i++)
+		rebote(h, *ls.lista[i], v);
+}
 void Interaccion::rebote(Personaje& h, Solidos s, VidasRecolectadas& v)
 {
 	//EStá por necesidad, pero no tiene porque tener nada
@@ -142,7 +348,7 @@ void Interaccion::rebote(Personaje& h, Pincho p, VidasRecolectadas& v)
 void Interaccion::rebote(Personaje& h, Caja c, VidasRecolectadas& v)
 {
 	//Generamos los límites de la caja en el eje x
-	float xmin = c.pared_izq.limite2.x;
+	float xmin = c.pared_izq.limite2.x + 0.1f;
 	float xmax = c.techo.limite1.x - 0.1f;
 	if (h.posicion.x > xmax) {
 		h.posicion.x = xmax;
@@ -168,29 +374,13 @@ bool Interaccion::recoleccion(Moneda& m, Personaje h)
 }
 
 //Rebote de los enemigos con los solidos y la caja
-void Interaccion::enemrebote(Enemigo& e, Solidos s)
+void Interaccion::rebote(Enemigo& e, Solidos s)
 {
 }
-void Interaccion::enemrebote(Enemigo& e, Pared p)
-{
-}
-void Interaccion::enemrebote(Enemigo& e, PlatMovil pm)
-{
-}
-void Interaccion::enemrebote(Enemigo& e, Suelo s)
-{
-}
-void Interaccion::enemrebote(Enemigo& e, Pincho p)
-{
-}
-void Interaccion::enemrebote(Enemigo& e, Caja c)
-{
-}
-
-void Interaccion::enemrebote(EnemigoDisp& e, Solidos s)
-{
-}
-void Interaccion::enemrebote(EnemigoDisp& e, Pared p)
+		//esta tiene cosas porque varios enemigos se 
+		//comportan igual: EnemigoDisp, Tank, Boss, Bomber
+		//asi que se eliminan las correspondientes para que elija estas
+void Interaccion::rebote(Enemigo& e, Pared p)
 {
 	//Ponemos los limites de la plataforma
 	float xmin = p.limite2.x;//izq
@@ -227,125 +417,116 @@ void Interaccion::enemrebote(EnemigoDisp& e, Pared p)
 		}
 	}
 }
-void Interaccion::enemrebote(EnemigoDisp& e, PlatMovil pm)
+void Interaccion::rebote(Enemigo& e, PlatMovil pm)
 {
 }
-void Interaccion::enemrebote(EnemigoDisp& e, Suelo s)
+void Interaccion::rebote(Enemigo& e, Suelo s)
 {
 }
-void Interaccion::enemrebote(EnemigoDisp& e, Pincho p)
+void Interaccion::rebote(Enemigo& e, Pincho p)
 {
 }
-void Interaccion::enemrebote(EnemigoDisp& e, Caja c)
+/*void Interaccion::rebote(Enemigo& e, Caja c)
 {
-	enemrebote(e, c.techo);
-	enemrebote(e, c.pared_dcha);
-	enemrebote(e, c.pared_izq);
-	enemrebote(e, c.suelo);
-}
-
-void Interaccion::enemrebote(Babosa& b, Solidos s)
-{
-}
-void Interaccion::enemrebote(Babosa& b, Pared p)
-{
-}
-void Interaccion::enemrebote(Babosa& b, PlatMovil pm)
-{
-}
-void Interaccion::enemrebote(Babosa& b, Suelo s)
-{
-}
-void Interaccion::enemrebote(Babosa& b, Pincho p)
-{
-}
-void Interaccion::enemrebote(Babosa& b, Caja c)
-{
-}
-
-void Interaccion::enemrebote(Bomber& b, Solidos s)
-{
-}
-void Interaccion::enemrebote(Bomber& b, Pared p)
-{
-	/*float xmin = p.limite2.x;//izq
-float xmax = p.limite1.x;//dcha
-float ymin = p.limite2.y;//ab
-float ymax = p.limite1.y - b.radio;//arr
-if (b.posicion.y > ymin - b.radio / 2)
-	b.zonaV = 1;
-else
-	b.zonaV = 0;
-
-if (b.posicion.x+b.radio < xmax && b.posicion.x-b.radio > xmin) {  //zona=0 abajo    zona=1 arriba
-	if (b.zonaV == 0) {
-		if (b.posicion.y > ymax) {
-			b.posicion.y = ymax;
-			b.velocidad.y = 0.0f;
-			b.aceleracion.y = -9.8f;
-		}
-	}
-	else
-		if (b.posicion.y < ymin) {
-			b.posicion.y = ymin;
-			b.velocidad.y = 0.0f;
-			//	ene.aceleracion.y = -9.8f;
-		}
-
-	if (b.posicion.x-b.radio < xmin + 0.5f) {		//cambiar de direccion
-		b.sentido = 1;
-	}
-	if (b.posicion.x+b.radio > xmax - 0.5f) {
-		b.sentido = 0;
-	}
+	rebote(e, c.techo);
+	rebote(e, c.pared_dcha);
+	rebote(e, c.pared_izq);
+	rebote(e, c.suelo);
 }*/
+
+void Interaccion::rebote(EnemigoDisp& e, Solidos s)
+{
+}
+/*void Interaccion::rebote(EnemigoDisp& e, Pared p)
+{
+	
+}*/
+void Interaccion::rebote(EnemigoDisp& e, PlatMovil pm)
+{
+}
+void Interaccion::rebote(EnemigoDisp& e, Suelo s)
+{
+}
+void Interaccion::rebote(EnemigoDisp& e, Pincho p)
+{
+}
+/*void Interaccion::rebote(EnemigoDisp& e, Caja c)
+{
+	
+}*/
+
+//babosa no tiene interacciones con solidos
+void Interaccion::rebote(Babosa& b, Solidos s)
+{
+}
+void Interaccion::rebote(Babosa& b, Pared p)
+{
+}
+void Interaccion::rebote(Babosa& b, PlatMovil pm)
+{
+}
+void Interaccion::rebote(Babosa& b, Suelo s)
+{
+}
+void Interaccion::rebote(Babosa& b, Pincho p)
+{
+}
+/*void Interaccion::rebote(Babosa& b, Caja c)
+{
+}*/
+
+void Interaccion::rebote(Bomber& b, Solidos s)
+{
+}
+/*void Interaccion::rebote(Bomber& b, Pared p)
+{
 //Ponemos los limites de la plataforma
 	float xmin = p.limite2.x;//izq
 	float xmax = p.limite1.x;//dcha
 	float ymin = p.limite2.y;//ab
 	float ymax = p.limite1.y;//arr
-	if (sqrt((b.hitbox.esquina3.y * ene.hitbox.esquina3.y) + (ymin * ymin)) < 0.5) {
+	if (sqrt((b.hitbox.bot_l.y * b.hitbox.bot_l.y) + (ymin * ymin)) < 0.5) {
 		//Decidimos si estamos arriba o abajo
-		if (ene.hitbox.esquina2.y > ymin)
-			ene.zonaV = 1; //Estamos arriba
+		if (b.hitbox.top_r.y > ymin)
+			b.zonaV = 1; //Estamos arriba
 		else
-			ene.zonaV = 0; //Abajo
+			b.zonaV = 0; //Abajo
 		//Decidimos si estamos dentro y si estamos encima
-		if (ene.hitbox.esquina2.x < xmax && ene.hitbox.esquina1.x > xmin)
+		if (b.hitbox.top_r.x < xmax && b.hitbox.top_l.x > xmin)
 		{
-			if (ene.zonaV == 0) { //Sigue igual si esta debajo
-				if (ene.hitbox.esquina1.y > ymax) {
-					ene.posicion.y = ymax - ene.radio;
-					ene.velocidad.y = 0.0f;
-					ene.aceleracion.y = -9.8f;
+			if (b.zonaV == 0) { //Sigue igual si esta debajo
+				if (b.hitbox.top_l.y > ymax) {
+					b.posicion.y = ymax - b.altura;
+					b.velocidad.y = 0.0f;
+					b.aceleracion.y = -9.8f;
 				}
 			}
 			else //Si está arriba
 			{
-				if (ene.hitbox.esquina3.y < ymin) {
-					ene.posicion.y = ymin + ene.radio;
-					ene.velocidad.y = 0.0f;
+				if (b.hitbox.bot_l.y < ymin) {
+					b.posicion.y = ymin + b.altura;
+					b.velocidad.y = 0.0f;
 				}
-				if (ene.hitbox.esquina1.x < xmin + 0.5) {		//cambiar de direccion
-					ene.sentido = 0;
+				if (b.hitbox.top_l.x < xmin + 0.5) {		//cambiar de direccion
+					b.sentido = 0;
 				}
-				if (ene.hitbox.esquina2.x > xmax - 0.5) {
-					ene.sentido = 1;
+				if (b.hitbox.top_r.x > xmax - 0.5) {
+					b.sentido = 1;
 				}
 			}
 		}
 	}
-}
-void Interaccion::enemrebote(Bomber& b, PlatMovil pm)
+}*/
+void Interaccion::rebote(Bomber& b, PlatMovil pm)
 {
 }
-void Interaccion::enemrebote(Bomber& b, Suelo s)
+void Interaccion::rebote(Bomber& b, Suelo s)
 {
 }
-void Interaccion::enemrebote(Bomber& b, Pincho p)
+void Interaccion::rebote(Bomber& b, Pincho p)
 {
 }
-void Interaccion::enemrebote(Bomber& b, Caja c)
+/*void Interaccion::rebote(Bomber& b, Caja c)
 {
 	float xmin = c.techo.limite2.x;
 	float xmax = c.techo.limite1.x;
@@ -358,7 +539,7 @@ void Interaccion::enemrebote(Bomber& b, Caja c)
 
 
 	float ymin = c.pared_dcha.limite2.y;
-	float ymax = c.pared_dcha.limite1.y - b.radio;
+	float ymax = c.pared_dcha.limite1.y - b.altura;
 	if (b.posicion.y > ymax) {
 		b.posicion.y = ymax;
 		b.velocidad.y = 0.0f;
@@ -367,106 +548,32 @@ void Interaccion::enemrebote(Bomber& b, Caja c)
 	if (b.posicion.y < ymin) {
 		b.posicion.y = ymin;
 	}
-}
+}*/
 
-void Interaccion::enemrebote(Tentaculo& t, Solidos s)
+void Interaccion::rebote(Tentaculo& t, Solidos s)
 {
 }
-void Interaccion::enemrebote(Tentaculo& t, Pared p)
+void Interaccion::rebote(Tentaculo& t, Pared p)
 {
 }
-void Interaccion::enemrebote(Tentaculo& t, PlatMovil pm)
+void Interaccion::rebote(Tentaculo& t, PlatMovil pm)
 {
 }
-void Interaccion::enemrebote(Tentaculo& t, Suelo s)
+void Interaccion::rebote(Tentaculo& t, Suelo s)
 {
 }
-void Interaccion::enemrebote(Tentaculo& t, Pincho p)
+void Interaccion::rebote(Tentaculo& t, Pincho p)
 {
 }
-void Interaccion::enemrebote(Tentaculo& t, Caja c)
+/*void Interaccion::rebote(Tentaculo& t, Caja c)
 {
-}
+}*/
 
-void Interaccion::enemrebote(Tank& t, Solidos s)
-{
-
-}
-void Interaccion::enemrebote(Tank& t, Pared p)
-{
-	float xmin = p.limite2.x;//izq
-	float xmax = p.limite1.x;//dcha
-	float ymin = p.limite2.y;//ab
-	float ymax = p.limite1.y - t.altura;//arr
-	if (t.posicion.y > ymin - t.altura / 2)
-		t.zonaV = 1;
-	else
-		t.zonaV = 0;
-
-	if (t.posicion.x < xmax && t.posicion.x > xmin) {  //zona=0 abajo    zona=1 arriba
-		if (t.zonaV == 0) {
-			if (t.posicion.y > ymax) {
-				t.posicion.y = ymax;
-				t.velocidad.y = 0.0f;
-				t.aceleracion.y = -9.8f;
-			}
-		}
-		else
-			if (t.posicion.y < ymin) {
-				t.posicion.y = ymin;
-				t.velocidad.y = 0.0f;
-				//	ene.aceleracion.y = -9.8f;
-			}
-
-		if (t.posicion.x < xmin + 0.5f) {		//cambiar de direccion
-			t.sentido = 1;
-		}
-		if (t.posicion.x > xmax - 0.5f) {
-			t.sentido = 0;
-		}
-	}
-}
-void Interaccion::enemrebote(Tank& t, PlatMovil pm)
+void Interaccion::rebote(Tank& t, Solidos s)
 {
 
 }
-void Interaccion::enemrebote(Tank& t, Suelo s)
-{
-
-}
-void Interaccion::enemrebote(Tank& t, Pincho p)
-{
-
-}
-void Interaccion::enemrebote(Tank& t, Caja c)
-{
-	float xmin = c.techo.limite2.x;
-	float xmax = c.techo.limite1.x;
-	if (t.posicion.x > xmax) {
-		t.posicion.x = xmax;
-	}
-	if (t.posicion.x < xmin) {
-		t.posicion.x = xmin;
-	}
-
-
-	float ymin = c.pared_dcha.limite2.y;
-	float ymax = c.pared_dcha.limite1.y - t.altura;
-	if (t.posicion.y > ymax) {
-		t.posicion.y = ymax;
-		t.velocidad.y = 0.0f;
-		t.aceleracion.y = -9.8f;
-	}
-	if (t.posicion.y < ymin) {
-		t.posicion.y = ymin;
-	}
-}
-
-void Interaccion::enemrebote(BossFinal& bf, Solidos s)
-{
-
-}
-void Interaccion::enemrebote(BossFinal& bf, Pared p)
+/*void Interaccion::rebote(Tank& t, Pared p)
 {
 	float xmin = p.limite2.x;//izq
 	float xmax = p.limite1.x;//dcha
@@ -499,20 +606,20 @@ void Interaccion::enemrebote(BossFinal& bf, Pared p)
 			t.sentido = 0;
 		}
 	}
-}
-void Interaccion::enemrebote(BossFinal& bf, PlatMovil pm)
+}*/
+void Interaccion::rebote(Tank& t, PlatMovil pm)
 {
 
 }
-void Interaccion::enemrebote(BossFinal& bf, Suelo s)
+void Interaccion::rebote(Tank& t, Suelo s)
 {
 
 }
-void Interaccion::enemrebote(BossFinal& bf, Pincho p)
+void Interaccion::rebote(Tank& t, Pincho p)
 {
 
 }
-void Interaccion::enemrebote(BossFinal& bf, Caja c)
+/*void Interaccion::rebote(Tank& t, Caja c)
 {
 	float xmin = c.techo.limite2.x;
 	float xmax = c.techo.limite1.x;
@@ -534,26 +641,94 @@ void Interaccion::enemrebote(BossFinal& bf, Caja c)
 	if (t.posicion.y < ymin) {
 		t.posicion.y = ymin;
 	}
+}*/
+
+void Interaccion::rebote(BossFinal& bf, Solidos s)
+{
+
 }
+/*void Interaccion::rebote(BossFinal& bf, Pared p)
+{
+	float xmin = p.limite2.x;//izq
+	float xmax = p.limite1.x;//dcha
+	float ymin = p.limite2.y;//ab
+	float ymax = p.limite1.y - bf.altura;//arr
+	if (bf.posicion.y > ymin - bf.altura / 2)
+		bf.zonaV = 1;
+	else
+		bf.zonaV = 0;
+
+	if (bf.posicion.x < xmax && bf.posicion.x > xmin) {  //zona=0 abajo    zona=1 arriba
+		if (bf.zonaV == 0) {
+			if (bf.posicion.y > ymax) {
+				bf.posicion.y = ymax;
+				bf.velocidad.y = 0.0f;
+				bf.aceleracion.y = -9.8f;
+			}
+		}
+		else
+			if (bf.posicion.y < ymin) {
+				bf.posicion.y = ymin;
+				bf.velocidad.y = 0.0f;
+				//	ene.aceleracion.y = -9.8f;
+			}
+
+		if (bf.posicion.x < xmin + 0.5f) {		//cambiar de direccion
+			bf.sentido = 1;
+		}
+		if (bf.posicion.x > xmax - 0.5f) {
+			bf.sentido = 0;
+		}
+	}
+}*/
+void Interaccion::rebote(BossFinal& bf, PlatMovil pm)
+{
+
+}
+void Interaccion::rebote(BossFinal& bf, Suelo s)
+{
+
+}
+void Interaccion::rebote(BossFinal& bf, Pincho p)
+{
+
+}
+/*void Interaccion::rebote(BossFinal& bf, Caja c)
+{
+	float xmin = c.techo.limite2.x;
+	float xmax = c.techo.limite1.x;
+	if (bf.posicion.x > xmax) {
+		bf.posicion.x = xmax;
+	}
+	if (bf.posicion.x < xmin) {
+		bf.posicion.x = xmin;
+	}
+
+
+	float ymin = c.pared_dcha.limite2.y;
+	float ymax = c.pared_dcha.limite1.y - bf.altura;
+	if (bf.posicion.y > ymax) {
+		bf.posicion.y = ymax;
+		bf.velocidad.y = 0.0f;
+		bf.aceleracion.y = -9.8f;
+	}
+	if (bf.posicion.y < ymin) {
+		bf.posicion.y = ymin;
+	}
+}*/
 
 
 
 
 
-
-
-
-
-
-/*
-void Interaccion::rebote(DisparosEnemigos& ene, Caja c)
+/*void Interaccion::rebote(disparosEnemigos& ene, Caja c)
 {
 	rebote(ene, c.techo);
 	rebote(ene, c.pared_dcha);
 	rebote(ene, c.pared_izq);
 	rebote(ene, c.suelo);
-}
-void Interaccion::rebote(DisparosEnemigos& ene, Pared p)
+}*/
+/*void Interaccion::rebote(disparosEnemigos& ene, Pared p)
 {
 	//Ponemos los limites de la plataforma
 	float xmin = p.limite2.x;//izq
@@ -578,28 +753,20 @@ void Interaccion::rebote(DisparosEnemigos& ene, Pared p)
 		else //Si está arriba
 		{
 			if (ene.getPos().y < ymin) {
-				/*ene.posicion.y = ymin;
-				ene.velocidad.y = 0.0f;
-				//ene.setColor(1, 1, 1);
-				ene.flagdibujar = 0;
-			}
-			if (ene.getPos().x < xmin + 0.5f) {		//cambiar de direccion
-				ene.sentido = 0;
-			}
-			if (ene.getPos().x > xmax - 0.5f) {
-				ene.sentido = 1;
+				ene.setColor(1, 1, 1);
+				//ene.flagdibujar = 0;
 			}
 		}
 	}
-}
-void Interaccion::rebote(disparosAmigos& ene, Caja c)
+}*/
+/*void Interaccion::rebote(disparosAmigos& ene, Caja c)
 {
 	rebote(ene, c.techo);
 	rebote(ene, c.pared_dcha);
 	rebote(ene, c.pared_izq);
 	rebote(ene, c.suelo);
-}
-void Interaccion::rebote(disparosAmigos& ene, Pared p)
+}*/
+/*void Interaccion::rebote(disparosAmigos& ene, Pared p)
 {
 	//Ponemos los limites de la plataforma
 	float xmin = p.limite2.x;//izq
@@ -625,20 +792,20 @@ void Interaccion::rebote(disparosAmigos& ene, Pared p)
 		{
 			if (ene.getPos().y < ymin) {
 				
-				//ene.setColor(1, 1, 1);
-				ene.flagdibujar = 0;
+				ene.setColor(1, 1, 1);
+				//ene.flagdibujar = 0;
 			}
 		}
 	}
-}
-void Interaccion::rebote(misil& ene, Caja c)
+}*/
+/*void Interaccion::rebote(misiles& ene, Caja c)
 {
 	rebote(ene, c.techo);
 	rebote(ene, c.pared_dcha);
 	rebote(ene, c.pared_izq);
 	rebote(ene, c.suelo);
-}
-void Interaccion::rebote(misil& ene, Pared p)
+}*/
+/*void Interaccion::rebote(misiles& ene, Pared p)
 {
 	//Ponemos los limites de la plataforma
 	float xmin = p.limite2.x;//izq
@@ -664,12 +831,13 @@ void Interaccion::rebote(misil& ene, Pared p)
 		{
 			if (ene.getPos().y < ymin) {
 
-				//ene.setColor(1, 1, 1);
-				ene.flagdibujar = 0;
+				ene.setColor(1, 1, 1);
+				//ene.flagdibujar = 0;
 			}
 		}
 	}
-}
+}*/
+/*
 void Interaccion::rebote(Hombre & h, EnemigoDisp e, VidasRec &v)
 {
 	//int v_aux = v.getVidas();
@@ -1209,4 +1377,4 @@ void Interaccion::colision(Hombre& h, BolaFuego& bola) {
 	b4 = DistHitbox(h.hitbox, bola.hitbox.esquina4);
 	if (b1 || b2 || b3 || b4)
 		bola.setColor(0, 1, 0);
-}
+}*/

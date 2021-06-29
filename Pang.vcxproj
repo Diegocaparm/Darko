@@ -19,11 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Darko.cpp" />
+    <ClCompile Include="src\Caja.cpp" />
+    <ClCompile Include="src\Darko.cpp" />
     <ClCompile Include="src\Disparos.cpp" />
     <ClCompile Include="src\Enemigo.cpp" />
     <ClCompile Include="src\Hitbox.cpp" />
+    <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\listas.cpp" />
+    <ClCompile Include="src\ListaSolidos.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Nivel.cpp" />
     <ClCompile Include="src\ObjetoMovil.cpp" />
@@ -33,11 +36,14 @@
     <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\ColorRGB.h" />
     <ClInclude Include="src\Disparos.h" />
     <ClInclude Include="src\Enemigo.h" />
     <ClInclude Include="src\Hitbox.h" />
+    <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\listas.h" />
+    <ClInclude Include="src\ListaSolidos.h" />
     <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\Nivel.h" />
     <ClInclude Include="src\ObjetoMovil.h" />

@@ -17,5 +17,7 @@ public:
 	void mueve(float t);
 	void rebote(Personaje& pj, VidasRecolectadas& v);
 	void rebote(Enemigo e);
+
+	friend class Interaccion;
 };
 

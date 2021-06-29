@@ -1,5 +1,5 @@
 #pragma once
-#include "Pared.h"
+#include "Solidos.h"
 #include "ColorRGB.h"
 class Caja
 {

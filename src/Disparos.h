@@ -10,6 +10,7 @@ protected:
 public:
     Disparos();
     Disparos(float px, float py);
+    float getVelDef() { return vel; }
     virtual void dibuja();
     virtual void mueve(float);
     virtual void setPos(float, float);
@@ -18,6 +19,7 @@ public:
     virtual void setColor(Byte, Byte, Byte);
     virtual float getRadio();
     
+    friend class Interaccion;
 };
 
 class disparosAmigos :
@@ -25,6 +27,17 @@ class disparosAmigos :
 {
 public:
     disparosAmigos(float px, float py);
+};
+class espada : public Disparos
+{
+    int flag = 0;
+    float angulo = 0;
+public:
+    espada(float px, float py);
+    void mueve(float t);
+    int getFlag();
+    void setFlag(int);
+    float getLong();
 };
 
 class disparosEnemigos :
@@ -44,5 +57,6 @@ public:
     misiles(float px, float py);
     void mueve(float);
     
+    friend class Interaccion;
 };
 

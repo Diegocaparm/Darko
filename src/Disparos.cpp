@@ -71,6 +71,30 @@ disparosAmigos::disparosAmigos(float px, float py) {
 	//la velocidad variable chunga
 	//setVel(3+vx,0);
 }
+espada::espada(float px, float py) {
+	Disparos(px, py);
+	radio = 1.5f;
+}
+void espada::mueve(float t) {
+	ObjetoMovil::mueve(t);
+	if (flag) {
+		angulo += 9;
+		if (angulo > 360) {
+			flag = 0;
+			angulo = 0;
+		}
+	}
+}
+int espada::getFlag() {
+	return flag;
+}
+void espada::setFlag(int i) {
+	flag = i;
+}
+float espada::getLong() {
+	return radio;
+}
+
 disparosEnemigos::disparosEnemigos(float px, float py) {
 	Disparos(px, py);
 	radio = 0.25f;

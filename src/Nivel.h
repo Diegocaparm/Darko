@@ -22,7 +22,10 @@
 #include "ListaBolasFuego.h"*/
 
 #include "listas.h"
-#include "Solidos.h"
+#include "ListaSolidos.h"
+#include "Recolectable.h"
+#include "Interaccion.h"
+
 
 class Nivel
 {
@@ -36,34 +39,37 @@ public:
 	int nivel; //Será lo que usemos para identificar en que nivel estamos
 	//Estructura del nivel
 	Caja caja;
+	ListaSolidos solidos;	//esto equivale a lo siguiente creo
+	/*
 	listaPlat plataformas;
 	listaPinchos listPinchos;
 	ListaBolasFuego listaFuego;
 
-	listaMovil movil;
+	listaMovil movil;*/
 
 	//Pj
-	Hombre hombre;
+	Personaje hombre;
 	listaDisparosAmigos dispAmig;
 	espada espada;
 
 	//Enemigos
-	listaEnemDisp enemigosDisp;
+	listaObjetoMovil moviles;
+	/*listaEnemDisp enemigosDisp;
 	listaTank Tanks;
 	listaBabosa babosas;
 	listaTentaculo tentaculos;
 	listaBomber bombers;
 	listaDisparosEnemigos disparos;
-	bossFinal boss;
-	listaMisiles misiles;
+	BossFinal boss;
+	listaMisiles misiles;*/
 
 	//Listas para vidas
 	Vidas vidas;							//Vidas del entorno (Recolectables)
-	VidasRec vidasR;						//Vidas del Pj (Recogidas)
+	VidasRecolectadas vidasR;				//Vidas del Pj (Recogidas)
 
 	//Listas para Dinero
 	Dinero dineros;							//Monedas del entorno (Recolectables)
-	DineroRec dinerosR;						//Dinero del Pj (Recogidas)
+	DineroRecolectados dinerosR;			//Dinero del Pj (Recogidas)
 
 public://Métodos
 	void teclaUp(unsigned char key);

@@ -1,5 +1,6 @@
 #pragma once
 #include "ObjetoMovil.h"
+#include "Disparos.h"
 
 //Enemigo herencia de OBJETOMOVIL
 class Enemigo : public ObjetoMovil
@@ -7,7 +8,6 @@ class Enemigo : public ObjetoMovil
 protected:
     int tempdmg = 0, flagdmg = 0, flagesp = 0, vida = 0;	////////////////////////////////////
     float altura = 0.5;   //altura, radio, longitud
-    int zonaV = 0, zonaH = 0;	//zonaV=0 abajo =1 arriba		zonaH =-1 izq = 0 dentro = 1 dcha
     int temp = 0, sentido = 1;	//temp contador para disparar	sentido=0 izq =1 dcha
 public:
     Enemigo();
@@ -22,6 +22,7 @@ public:
     EnemigoDisp(float px, float py);
     void dibuja();
     void mueve(float t);
+    disparosEnemigos* dispEnem1 = new disparosEnemigos();
 };
 //Babosa herencia de ENEMIGO
 class Babosa : public Enemigo
@@ -34,14 +35,18 @@ public:
     void dibuja();
     void mueve(float t);
 
+    friend class Interaccion;
 };
 //Bomber herencia de ENEMIGO
 class Bomber : public Enemigo
 {
+    int flag = 0;
 public:
     Bomber(float px, float py);
     void dibuja();
     void mueve(float t);
+
+    friend class Interaccion;
 };
 //Tentáculo herencia de ENEMIGO
 class Tentaculo : public Enemigo
@@ -62,6 +67,11 @@ public:
     Tank(float px, float py);
     void dibuja();
     void mueve(float t);
+    disparosEnemigos* dispTank1 = new disparosEnemigos(),
+        * dispTank2 = new disparosEnemigos(),
+        * dispTank3 = new disparosEnemigos(),
+        * dispTank4 = new disparosEnemigos(),
+        * dispTank5 = new disparosEnemigos();
 };
 //BossFinal herencia de TANK
 class BossFinal : public Tank

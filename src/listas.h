@@ -2,6 +2,7 @@
 #include "Disparos.h"
 #include "Enemigo.h"
 #include "Solidos.h"
+#include "Caja.h"
 
 #define MAX_NUM 1000
 #define MAX_DISP 100
@@ -19,8 +20,8 @@ public:
 	void setPos(float px, float py);
 	void setColor(Byte r, Byte g, Byte b);
 	bool agregar(ObjetoMovil* disp);
-	//void rebote(Caja caja);
-	void rebote(Pared p);
+	/*void rebote(Caja caja);//creo que esto hay que quitarlo lin51.cpp
+	void rebote(Pared p);*/
 	//void rebote(listaPlat lp);
 
 	//void rebote();
@@ -92,17 +93,17 @@ public:
 };
 class listaBabosa :public listasEnemigos
 {
-	babosa* lista[MAX_ENEM];
+	Babosa* lista[MAX_ENEM];
 public:
-	bool agregar(babosa* disp);
-	void eliminar(babosa* DE);
+	bool agregar(Babosa* disp);
+	void eliminar(Babosa* DE);
 };
 class listaBomber :public listasEnemigos
 {
-	bomber* lista[MAX_ENEM];
+	Bomber* lista[MAX_ENEM];
 public:
-	bool agregar(bomber* disp);
-	void eliminar(bomber* DE);
+	bool agregar(Bomber* disp);
+	void eliminar(Bomber* DE);
 };
 class listaTentaculo :public listasEnemigos
 {

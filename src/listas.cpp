@@ -52,13 +52,13 @@ void listaObjetoMovil::setColor(Byte r, Byte g, Byte b)
 {
 	for (int i = 0; i < numero; i++)
 		Interaccion::rebote(*(lista[i]), caja);
-}*/
+}
 
 void listaObjetoMovil::rebote(Pared p)
 {
 	for (int i = 0; i < numero; i++) {}
 		//Interaccion::rebote(*(lista[i]), p);
-}
+}*/
 
 /*void listaObjetoMovil::rebote(listaPlat lp) {
 	for (int i = 0; i < lp.numero; i++)
@@ -310,7 +310,7 @@ void listaTank::eliminar(Tank* e)
 	}
 }
 //babosa
-bool listaBabosa::agregar(babosa* ene)
+bool listaBabosa::agregar(Babosa* ene)
 {
 	bool aux = true;
 	listasEnemigos::agregar(ene);		//meter en lista enemigos y objeto movil
@@ -327,7 +327,7 @@ bool listaBabosa::agregar(babosa* ene)
 		return true;
 	}
 }
-void listaBabosa::eliminar(babosa* e)
+void listaBabosa::eliminar(Babosa* e)
 {
 	listasEnemigos::eliminar(e);				//eliminar de lista enemigos y objeto movil
 	for (int i = 0; i < numero; i++) {
@@ -339,7 +339,7 @@ void listaBabosa::eliminar(babosa* e)
 	}
 }
 //bomber
-bool listaBomber::agregar(bomber* ene)
+bool listaBomber::agregar(Bomber* ene)
 {
 	bool aux = true;
 	listasEnemigos::agregar(ene);		//meter en lista enemigos y objeto movil
@@ -356,7 +356,7 @@ bool listaBomber::agregar(bomber* ene)
 		return true;
 	}
 }
-void listaBomber::eliminar(bomber* e)
+void listaBomber::eliminar(Bomber* e)
 {
 	listasEnemigos::eliminar(e);				//eliminar de lista enemigos y objeto movil
 	for (int i = 0; i < numero; i++) {
