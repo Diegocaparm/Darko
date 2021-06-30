@@ -48,7 +48,7 @@ class Suelo : public Pared
 private:
 	Vector2D bajo1, bajo2;
 public:
-	Suelo(float limx1, float limy1, float limx2, float limy2); //Constructor con anchura y altura
+	Suelo(float limx1, float altura, float limx2, float bajo); //Constructor con anchura y altura
 	void dibuja();
 };
 //Pincho herencia de SOLIDO

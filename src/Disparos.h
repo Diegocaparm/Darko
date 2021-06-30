@@ -1,5 +1,7 @@
 #pragma once
 #include "ObjetoMovil.h"
+#include "ColorRGB.h"
+
 class Disparos :
     public ObjetoMovil
 {
@@ -10,7 +12,6 @@ protected:
 public:
     Disparos();
     Disparos(float px, float py);
-    float getVelDef() { return vel; }
     virtual void dibuja();
     virtual void mueve(float);
     virtual void setPos(float, float);
@@ -18,43 +19,41 @@ public:
     virtual void setAc(float, float);
     virtual void setColor(Byte, Byte, Byte);
     virtual float getRadio();
-    
+    float getVelDef() { return vel; }
+
     friend class Interaccion;
 };
-
-class disparosAmigos :
-    public Disparos
+//DisparosAmigos herencia de DISPAROS
+class DisparosAmigos : public Disparos
 {
 public:
-    disparosAmigos(float px, float py);
+    DisparosAmigos(float px, float py);
 };
-class espada : public Disparos
+//Espada herencia de DISPAROS
+class Espada : public Disparos
 {
     int flag = 0;
     float angulo = 0;
 public:
-    espada(float px, float py);
+    Espada(float px, float py);
     void mueve(float t);
     int getFlag();
     void setFlag(int);
     float getLong();
 };
-
-class disparosEnemigos :
-    public Disparos
+//DisparosEnemigos herencia de DISPAROS
+class DisparosEnemigos : public Disparos
 {
 public:
-    disparosEnemigos(float px, float py);
-
+    DisparosEnemigos(float px, float py);
 };
-
-class misiles :
-    public Disparos
+//Misiles herencia de DISPAROS
+class Misiles : public Disparos
 {
     int prx=0, pry=0;		//posicion relativa al personaje principal
     int cerca = 0;		//=1 si esta a menos de 5m, cambia el movimiento
 public:
-    misiles(float px, float py);
+    Misiles(float px, float py);
     void mueve(float);
     
     friend class Interaccion;

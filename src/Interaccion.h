@@ -4,7 +4,7 @@
 #include "Caja.h"
 #include "Personaje.h"
 #include "Recolectable.h"
-//#include "ListaEnemigos.h"
+#include "ListaEnemigos.h"
 #include "listas.h"
 
 
@@ -16,21 +16,21 @@ public:
 	static void rebote(ObjetoMovil, Solidos);
 	void rebote(ObjetoMovil&, Caja);
 	void rebote(Disparos&, Pared);
-	static void mov(espada& esp, Personaje& h);
+	static void mov(Espada& esp, Personaje& h);
 	static void rebote(Personaje&, listaObjetoMovil, VidasRecolectadas&);
 	static void colision(Personaje& h, ObjetoMovil& om, VidasRecolectadas& v);
-	void colision(Personaje& h, disparosEnemigos& de, VidasRecolectadas& v);
-	void colision(Personaje& h, misiles& m, VidasRecolectadas& v);
+	void colision(Personaje& h, DisparosEnemigos& de, VidasRecolectadas& v);
+	void colision(Personaje& h, Misiles& m, VidasRecolectadas& v);
 	static void colision(Personaje&, Enemigo&, VidasRecolectadas&);
 	void mov(Personaje&, Babosa&, VidasRecolectadas&);
 	void colision(Personaje&, Tentaculo&, VidasRecolectadas&);//arreglar
 	void colision(Personaje& h, Bomber& ene, VidasRecolectadas& v);
 	static void rebote(listaObjetoMovil, listaObjetoMovil);
 	static void rebote(ObjetoMovil, ObjetoMovil);
-	void rebote(Enemigo, disparosAmigos);
-	static void colision(listaObjetoMovil, espada);
-	static void colision(ObjetoMovil, espada);
-	void colision(Enemigo, espada);
+	void rebote(Enemigo, DisparosAmigos);
+	static void colision(listaObjetoMovil, Espada);
+	static void colision(ObjetoMovil, Espada);
+	void colision(Enemigo, Espada);
 
 
 	//PJ con entorno
@@ -46,12 +46,14 @@ public:
 	static bool recoleccion(Corazon& c, Personaje h);
 	static bool recoleccion(Moneda& m, Personaje h);
 
+	//Interacción entre listas
+	static void rebote(ListaEnemigos le, ListaSolidos ls);
 	//Enemigos con entorno
-	void rebote(Enemigo& e, Solidos s);
-	void rebote(Enemigo& e, Pared p);
-	void rebote(Enemigo& e, PlatMovil pm);
-	void rebote(Enemigo& e, Suelo s);
-	void rebote(Enemigo& e, Pincho p);
+	static void rebote(Enemigo& e, Solidos s);
+	static void rebote(Enemigo& e, Pared p);
+	static void rebote(Enemigo& e, PlatMovil pm);
+	static void rebote(Enemigo& e, Suelo s);
+	static void rebote(Enemigo& e, Pincho p);
 	//void rebote(Enemigo& e, Caja c);
 
 	void rebote(EnemigoDisp& e, Solidos s);

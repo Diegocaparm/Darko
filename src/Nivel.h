@@ -25,7 +25,7 @@
 #include "ListaSolidos.h"
 #include "Recolectable.h"
 #include "Interaccion.h"
-
+#include "ListaEnemigos.h"
 
 class Nivel
 {
@@ -54,13 +54,9 @@ public:
 
 	//Enemigos
 	listaObjetoMovil moviles;
+	ListaEnemigos enemigos;
 	/*listaEnemDisp enemigosDisp;
-	listaTank Tanks;
-	listaBabosa babosas;
-	listaTentaculo tentaculos;
-	listaBomber bombers;
 	listaDisparosEnemigos disparos;
-	BossFinal boss;
 	listaMisiles misiles;*/
 
 	//Listas para vidas

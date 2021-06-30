@@ -1,5 +1,6 @@
 #include "Disparos.h"
 
+//Constructores de los distintos disparos
 Disparos::Disparos() {
 	setColor(10, 100, 0);
 	//radio = 0.15f;
@@ -11,21 +12,37 @@ Disparos::Disparos(float px, float py) {
 	//radio = 0.15f;
 	setAc(0, -0.5);
 }
-
-void Disparos::dibuja()
-{
-	glColor3f(color.r, color.g, color.b);
-	glPushMatrix();
-	glTranslatef(posicion.x, posicion.y, 0); //disparo
-	glutSolidSphere(radio, 20, 20);
-	glTranslatef(0, -posicion.y, 0);
-	glPopMatrix();
+DisparosAmigos::DisparosAmigos(float px, float py) {
+	Disparos(px, py);
+	radio = 0.15f;
+	//la velocidad variable chunga
+	//setVel(3+vx,0);
+}
+Espada::Espada(float px, float py) {
+	Disparos(px, py);
+	radio = 1.5f;
+}
+DisparosEnemigos::DisparosEnemigos(float px, float py) {
+	Disparos(px, py);
+	radio = 0.25f;
+	setVel(-vel, 0);
+}
+Misiles::Misiles(float px, float py) {
+	Disparos(px, py);
+	radio = 0.5f;
+	setVel(-vel, 0);
 }
 
+//Métodos virtuales de Disparos
+void Disparos::dibuja()
+{
+
+}
 void Disparos::mueve(float t)
 {
+	//Este virtual genérico si que está con cosas porque es el que usan 
+	//los disparos buenos y malos 
 	ObjetoMovil::mueve(t);
-
 	if (temp < 120) {		//40 para 1 seg
 		temp++;
 		//dispEnem1.mueve(t);
@@ -40,12 +57,10 @@ void Disparos::mueve(float t)
 		temp = 0;
 	}
 }
-
 void Disparos::setPos(float ix, float iy) {
 	posicion.x = ix;
 	posicion.y = iy;
 }
-
 void Disparos::setVel(float vx, float vy) {
 	velocidad.x = vx;
 	velocidad.y = vy;
@@ -63,19 +78,8 @@ float Disparos::getRadio() {
 	return radio;
 }
 
-
-
-disparosAmigos::disparosAmigos(float px, float py) {
-	Disparos(px, py);
-	radio = 0.15f;
-	//la velocidad variable chunga
-	//setVel(3+vx,0);
-}
-espada::espada(float px, float py) {
-	Disparos(px, py);
-	radio = 1.5f;
-}
-void espada::mueve(float t) {
+//Métodos propios de Espada
+void Espada::mueve(float t) {
 	ObjetoMovil::mueve(t);
 	if (flag) {
 		angulo += 9;
@@ -85,29 +89,18 @@ void espada::mueve(float t) {
 		}
 	}
 }
-int espada::getFlag() {
+int Espada::getFlag() {
 	return flag;
 }
-void espada::setFlag(int i) {
+void Espada::setFlag(int i) {
 	flag = i;
 }
-float espada::getLong() {
+float Espada::getLong() {
 	return radio;
 }
 
-disparosEnemigos::disparosEnemigos(float px, float py) {
-	Disparos(px, py);
-	radio = 0.25f;
-	setVel(-vel, 0);
-}
-misiles::misiles(float px, float py) {
-	Disparos(px, py);
-	radio = 0.5f;
-	setVel(-vel, 0);
-}
-
-
-void misiles::mueve(float t) {
+//Métodos propios de Misiles
+void Misiles::mueve(float t) {
 	Disparos::mueve(t);
 	if (cerca) {
 		if (prx)

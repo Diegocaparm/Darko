@@ -21,6 +21,8 @@ float DistSeg(Hitbox h, Vector2D p) {
 		return d1;
 	else return d2;
 }
+
+
 void Interaccion::rebote(listaObjetoMovil om, ListaSolidos so) {
 	for (int i = 0; i < om.numero; i++)
 		for (int j = 0; j < so.numero; j++)
@@ -68,7 +70,7 @@ void Interaccion::rebote(Disparos& ene, Pared p)
 		}
 	}
 }
-void Interaccion::mov(espada& esp, Personaje& h) {
+void Interaccion::mov(Espada& esp, Personaje& h) {
 	esp.setPos(h.getPos().x, h.getPos().y + h.altura / 2);
 }
 void Interaccion::rebote(Personaje& h, listaObjetoMovil om, VidasRecolectadas& vidasR) {
@@ -77,14 +79,15 @@ void Interaccion::rebote(Personaje& h, listaObjetoMovil om, VidasRecolectadas& v
 }
 void Interaccion::colision(Personaje& h, ObjetoMovil& om, VidasRecolectadas& v) {
 }
-void Interaccion::colision(Personaje& h, disparosEnemigos& de, VidasRecolectadas& v) {
+
+void Interaccion::colision(Personaje& h, DisparosEnemigos& de, VidasRecolectadas& v) {
 	if (de.getPos().y - de.getRadio() < h.hitbox.top_l.y && de.getPos().y + de.getRadio() > h.hitbox.bot_l.y)
 		if (de.getPos().x - de.getRadio() < h.hitbox.top_r.x && de.getPos().x + de.getRadio() > h.hitbox.top_l.x) {
 			de.setColor(0, 1, 0);
 			v.reduceVida();
 		}
 }
-void Interaccion::colision(Personaje& h, misiles& m, VidasRecolectadas& v) {
+void Interaccion::colision(Personaje& h, Misiles& m, VidasRecolectadas& v) {
 	Interaccion::colision(h, m, v);
 	Vector2D dist = m.getPos() - h.getPos();
 	if (dist.modulo() < 5) {
@@ -102,6 +105,7 @@ void Interaccion::colision(Personaje& h, misiles& m, VidasRecolectadas& v) {
 	else
 		m.pry = 1;
 }
+
 void Interaccion::colision(Personaje& h, Enemigo& ene, VidasRecolectadas& v) {
 	float dist1 = DistSeg(ene.hitbox, h.hitbox.top_l),
 		dist2 = DistSeg(ene.hitbox, h.hitbox.top_r),
@@ -162,7 +166,7 @@ void Interaccion::rebote(listaObjetoMovil om, listaObjetoMovil om2) {
 void Interaccion::rebote(ObjetoMovil ob1, ObjetoMovil ob2) {
 
 }
-void Interaccion::rebote(Enemigo om, disparosAmigos da) {
+void Interaccion::rebote(Enemigo om, DisparosAmigos da) {
 	if (da.getPos().y - da.getRadio() < om.hitbox.top_l.y && da.getPos().y + da.getRadio() > om.hitbox.bot_l.y)
 		if (da.getPos().x - da.getRadio() < om.hitbox.top_r.x && da.getPos().x + da.getRadio() > om.hitbox.top_l.x) {
 			da.setColor(0, 1, 0);
@@ -173,15 +177,15 @@ void Interaccion::rebote(Enemigo om, disparosAmigos da) {
 		}
 	//return false;
 }
-void Interaccion::colision(listaObjetoMovil om, espada es) {
+void Interaccion::colision(listaObjetoMovil om, Espada es) {
 	for (int i = 0; i < om.numero; i++)
 		for (int j = 0; j < om.numero; j++)
 			rebote(*om.lista[i], es);
 }
-void Interaccion::colision(ObjetoMovil ob1, espada esp) {
+void Interaccion::colision(ObjetoMovil ob1, Espada esp) {
 
 }
-void Interaccion::colision(Enemigo om, espada es) {
+void Interaccion::colision(Enemigo om, Espada es) {
 	if (es.getPos().y - es.getLong() < om.hitbox.top_l.y && es.getPos().y + es.getLong() > om.hitbox.bot_l.y)
 		if (es.getPos().x - es.getLong() < om.hitbox.top_r.x && es.getPos().x + es.getLong() > om.hitbox.top_l.x)
 		{
@@ -213,8 +217,6 @@ bool DistHitbox(Hitbox h, Vector2D e)
 	else
 		return false;
 }
-//float DistSeg(Hitbox h, Vector2D p);
-//float DistSegmento(segmento s1, Vector2D p);
 
 //Rebote del PJ con los SOLIDOS llamados todos desde la lista
 void Interaccion::rebote(Personaje& h, ListaSolidos ls, VidasRecolectadas& v) {
@@ -373,13 +375,20 @@ bool Interaccion::recoleccion(Moneda& m, Personaje h)
 	return dentro;
 }
 
+//Llamada a la funcion que rebota las listas de enemigos y solidos
+void Interaccion::rebote(ListaEnemigos le, ListaSolidos ls)
+{
+	for (int i = 0; i < le.numero; i++)
+		for (int j = 0; j < ls.numero; j++)
+			rebote(*le.lista[i], *ls.lista[j]);
+}
 //Rebote de los enemigos con los solidos y la caja
 void Interaccion::rebote(Enemigo& e, Solidos s)
 {
-}
 		//esta tiene cosas porque varios enemigos se 
 		//comportan igual: EnemigoDisp, Tank, Boss, Bomber
 		//asi que se eliminan las correspondientes para que elija estas
+}
 void Interaccion::rebote(Enemigo& e, Pared p)
 {
 	//Ponemos los limites de la plataforma
@@ -437,7 +446,8 @@ void Interaccion::rebote(Enemigo& e, Pincho p)
 void Interaccion::rebote(EnemigoDisp& e, Solidos s)
 {
 }
-/*void Interaccion::rebote(EnemigoDisp& e, Pared p)
+/*
+void Interaccion::rebote(EnemigoDisp& e, Pared p)
 {
 	
 }*/

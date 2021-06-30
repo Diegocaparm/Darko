@@ -1,3 +1,4 @@
+#include "solidos.h"
 #include "Interaccion.h"
 
 //Métodos de la lista de sólidos
@@ -33,9 +34,4 @@ void ListaSolidos::rebote(Personaje& pj, VidasRecolectadas& v)
 {
 	for (int i = 0; i < numero; i++)
 		Interaccion::rebote(pj, *lista[i], v);
-}
-void ListaSolidos::rebote(Enemigo e)
-{
-	for (int i = 0; i < numero; i++)
-		Interaccion::rebote(e, *lista[i]);
 }

@@ -17,7 +17,8 @@ public:
 	bool agregar(Enemigo* e);
 	void dibuja();
 	void mueve(float t);
-	void rebote(ListaSolidos ls);
+	void eliminar(Enemigo* e);
+	friend class Interaccion;
 };
 
 
