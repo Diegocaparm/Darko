@@ -54,12 +54,23 @@ public:
 //Pincho herencia de SOLIDO
 class Pincho : public Solidos
 {
-private:
-	//float altura = 2.5f;
+protected:
 	Hitbox hitbox;
 public:
+	Pincho();
 	Pincho(float px, float py);
 	void dibuja();
+	friend class Interaccion;
+};
+//BolaFuego herencia de PINCHO
+class BolaFuego : public Pincho
+{
+private:
+	Vector2D vel, borde;
+public:
+	BolaFuego(float px, float py, float limtop, float limbot);
+	void dibuja();
+	void mueve(float t);
 	friend class Interaccion;
 };
 

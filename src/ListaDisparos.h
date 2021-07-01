@@ -13,7 +13,6 @@ private:
 public:
 	ListaDisparos();
 	bool agregar(Disparos* d);
-	bool agregar(Disparos* d, Enemigo e);
 	void dibuja();
 	void mueve(float t);
 	void colision(Personaje& pj, VidasRecolectadas& v);

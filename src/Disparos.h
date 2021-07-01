@@ -47,8 +47,8 @@ class DisparosEnemigos : public Disparos
 public:
     DisparosEnemigos(float px, float py);
 };
-//Misiles herencia de DISPAROS
-class Misiles : public Disparos
+//Misiles herencia de DISPAROSENEMIGOS
+class Misiles : public DisparosEnemigos
 {
     int prx=0, pry=0;		//posicion relativa al personaje principal
     int cerca = 0;		//=1 si esta a menos de 5m, cambia el movimiento

@@ -18,21 +18,6 @@ bool ListaDisparos::agregar(Disparos* d)
 		return false; //Capacidad máxima alcanzada
 	return true;
 }
-bool ListaDisparos::agregar(Disparos* d, Enemigo e)
-{
-	for (int i = 0; i < numero; i++)
-		if (lista[i] == d)
-			return false;
-	if (numero < MAX_DISP)
-	{
-		lista[numero++] = d;
-		//Aqui sería meter los disparos al enemigo que pasamos por parámetro
-	}
-
-	else
-		return false; //Capacidad máxima alcanzada
-	return true;
-}
 void ListaDisparos::dibuja()
 {
 	for (int i = 0; i < numero; i++)
@@ -43,7 +28,6 @@ void ListaDisparos::mueve(float t)
 	for (int i = 0; i < numero; i++)
 		lista[i]->mueve(t);
 }
-
 void ListaDisparos::colision(Personaje& pj, VidasRecolectadas& v)
 {
 	for (int i = 0;i < MAX_DISP;i++)

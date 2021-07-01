@@ -31,6 +31,7 @@ Suelo::Suelo(float limx1, float altura, float limx2, float bajo)
 	limite1.y = limite2.y = altura;
 	bajo1.y = bajo2.y = bajo;
 }
+Pincho::Pincho() {};
 Pincho::Pincho(float px, float py) {
 	//Situamos los pinchos
 	setPos(px, py);
@@ -39,6 +40,15 @@ Pincho::Pincho(float px, float py) {
 	hitbox.bot_r.x = posicion.x + 1.3;	hitbox.bot_r.y = posicion.y;
 	hitbox.top_l.x = posicion.x - 1.3;	hitbox.top_l.y = posicion.y + 2.5f;
 	hitbox.top_l.x = posicion.x - 1.3;	hitbox.top_l.y = posicion.y + 2.5f;
+}
+BolaFuego::BolaFuego(float px, float py, float limtop, float limbot)
+{
+	//radio = 0.75f;
+	vel.x = 0.0f;
+	vel.y = 10.0f;
+	setPos(px, py);
+	borde = { limbot, limtop };
+	setColor(1, 0, 0);
 }
 
 //Métodos virtuales de Solidos
@@ -150,4 +160,29 @@ void Pincho::dibuja()
 	glRotatef(-90, 1, 0, 0);
 	glutSolidCone(0.5f, 2.5f, 20, 10);
 	glPopMatrix();
+}
+//Métodos propios de BolaFuego
+void BolaFuego::dibuja()
+{
+	//Dibujo
+	glPushMatrix();
+	glColor3f(color.r, color.g, color.b);
+	glTranslatef(posicion.x, posicion.y, 0.5);
+	glutWireSphere(0.75f, 15, 15);
+	glPopMatrix();
+}
+void BolaFuego::mueve(float t)
+{
+	if ((posicion.y > borde.y) || (posicion.y < borde.x)) //Si superamos limtop o  bajamos de limbot
+	{
+		vel.y = -vel.y;
+	}
+	posicion.y = posicion.y + vel.y * t;
+	//posicion hitbox
+	Vector2D e1, e2, e3, e4;
+	e1.x = posicion.x - 0.75f;			e1.y = posicion.y + 0.75f;
+	e2.x = posicion.x + 0.75f;			e2.y = posicion.y + 0.75f;
+	e3.x = posicion.x - 0.75f;			e3.y = posicion.y - 0.75f;
+	e4.x = posicion.x + 0.75f;			e4.y = posicion.y - 0.75f;
+	hitbox.setPos(e1, e2, e3, e4);
 }
