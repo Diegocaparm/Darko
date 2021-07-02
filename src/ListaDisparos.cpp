@@ -28,8 +28,4 @@ void ListaDisparos::mueve(float t)
 	for (int i = 0; i < numero; i++)
 		lista[i]->mueve(t);
 }
-void ListaDisparos::colision(Personaje& pj, VidasRecolectadas& v)
-{
-	for (int i = 0;i < MAX_DISP;i++)
-		Interaccion::colision(pj, *lista[i], v);
-}
+

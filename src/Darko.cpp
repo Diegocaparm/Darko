@@ -3,7 +3,7 @@
 #include "Menu.h"
 
 //Menu (Creo que deberíamos llamar todos los niveles como estados desde el menú e inicializarlos allí)
-Menu menu;
+//Menu menu;
 Nivel nivel;
 
 //Llamadas a callbacks
@@ -69,7 +69,7 @@ void OnDraw(void)
 
 void OnKeyDown(unsigned char key, int x_t, int y_t)
 {
-	menu.Tecla(key); //Creo que el código del teclado del nivel 1 también debería ir en el menú
+	//menu.Tecla(key); //Creo que el código del teclado del nivel 1 también debería ir en el menú
 	nivel.teclaDown(key);
 
 	glutPostRedisplay();
@@ -85,7 +85,7 @@ void OnKeyUp(unsigned char key, int x_t, int y_t)
 
 void onSpecialKeyboardDown(int key, int x, int y)
 {
-	menu.TeclaEspecial(key); //Creo que el código del teclado del nivel 1 también debería ir en el menú
+	//menu.TeclaEspecial(key); //Creo que el código del teclado del nivel 1 también debería ir en el menú
 	nivel.teclaEspecial(key);
 }
 
@@ -97,7 +97,7 @@ void onSpecialKeyboardDown(int key, int x, int y)
 
 void OnTimer(int value)
 {
-	menu.Mueve(); //Lo mismo de antes
+	//menu.Mueve(); //Lo mismo de antes
 	nivel.mueve();
 
 	glutTimerFunc(25, OnTimer, 0);

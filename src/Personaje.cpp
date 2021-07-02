@@ -87,3 +87,8 @@ void Personaje::mueve(float t) {
 	e4.x = posicion.x + 0.3f;	e4.y = posicion.y - 0.0f;
 	hitbox.setPos(e1, e2, e3, e4);
 }
+
+int Personaje::getNivel()
+{
+	return flagnivel;
+}

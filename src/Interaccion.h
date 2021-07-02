@@ -19,12 +19,15 @@ public:
 	static void rebote(Personaje& h, Pared p, VidasRecolectadas& v);
 	static void rebote(Personaje& h, PlatMovil pm, VidasRecolectadas& v);
 	static void rebote(Personaje& h, Suelo s, VidasRecolectadas& v);
+	static void rebote(Personaje& h, Final f, VidasRecolectadas& v);
 	static void rebote(Personaje& h, Pincho p, VidasRecolectadas& v);
 	static void rebote(Personaje& h, BolaFuego b, VidasRecolectadas& v);
 	static void rebote(Personaje& h, Caja c, VidasRecolectadas& v);
 	//Recolectables
 	static bool recoleccion(Corazon& c, Personaje h);
+	static Corazon* recoleccion(Vidas& v, Personaje h);
 	static bool recoleccion(Moneda& m, Personaje h);
+	static Moneda* recoleccion(Dinero& d, Personaje h);
 	//Espada y disparos buenos
 	static void mov(Espada& esp, Personaje& h);
 	//si eso un metodo dispara flambeante pero por ahora vacio
@@ -34,14 +37,14 @@ public:
 	static void colision(Personaje& h, DisparosEnemigos& de, VidasRecolectadas& v);
 	static void colision(Personaje& h, Misiles& m, VidasRecolectadas& v);
 	//Enemigos y listas
-	void colision(Personaje& h, ListaEnemigos le, VidasRecolectadas& v);
-	void colision(Personaje& h, Enemigo& e, VidasRecolectadas& v);
-	void colision(Personaje& h, EnemigoDisp& e, VidasRecolectadas& v);
-	void colision(Personaje& h, Babosa& b, VidasRecolectadas&);
-	void colision(Personaje& h, Bomber& b, VidasRecolectadas& v);
-	void colision(Personaje& h, Tentaculo& t, VidasRecolectadas&);//arreglar
-	void colision(Personaje& h, Tank& t, VidasRecolectadas& v);
-	void colision(Personaje& h, BossFinal& b, VidasRecolectadas& v);
+	static void colision(Personaje& h, ListaEnemigos le, VidasRecolectadas& v);
+	static void colision(Personaje& h, Enemigo& e, VidasRecolectadas& v);
+	static void colision(Personaje& h, EnemigoDisp& e, VidasRecolectadas& v);
+	static void colision(Personaje& h, Babosa& b, VidasRecolectadas&);
+	static void colision(Personaje& h, Bomber& b, VidasRecolectadas& v);
+	static void colision(Personaje& h, Tentaculo& t, VidasRecolectadas&);//arreglar
+	static void colision(Personaje& h, Tank& t, VidasRecolectadas& v);
+	static void colision(Personaje& h, BossFinal& b, VidasRecolectadas& v);
 	////////////////////////////////////////////////////////////////////
 
 	//////////////////////////////////////////////////////////////////// Enemigos
@@ -51,6 +54,7 @@ public:
 	static void rebote(Enemigo& e, Pared p);
 	static void rebote(Enemigo& e, PlatMovil pm);
 	static void rebote(Enemigo& e, Suelo s);
+	static void rebote(Enemigo& e, Final p);
 	static void rebote(Enemigo& e, Pincho p);
 	static void rebote(Enemigo& e, BolaFuego b);
 	//void rebote(Enemigo& e, Caja c);
@@ -58,6 +62,7 @@ public:
 	//void rebote(EnemigoDisp& e, Pared p);
 	static void rebote(EnemigoDisp& e, PlatMovil pm);
 	static void rebote(EnemigoDisp& e, Suelo s);
+	static void rebote(EnemigoDisp& e, Final p);
 	static void rebote(EnemigoDisp& e, Pincho p);
 	static void rebote(EnemigoDisp& e, BolaFuego p);
 	//void rebote(EnemigoDisp& e, Caja c);
@@ -65,6 +70,7 @@ public:
 	void rebote(Babosa& b, Pared p);
 	void rebote(Babosa& b, PlatMovil pm);
 	void rebote(Babosa& b, Suelo s);
+	void rebote(Babosa& b, Final p);
 	void rebote(Babosa& b, Pincho p);
 	void rebote(Babosa& b, BolaFuego p);
 	//void rebote(Babosa& b, Caja c);
@@ -72,6 +78,7 @@ public:
 	//void rebote(Bomber& b, Pared p);
 	void rebote(Bomber& b, PlatMovil pm);
 	void rebote(Bomber& b, Suelo s);
+	void rebote(Bomber& b, Final p);
 	void rebote(Bomber& b, Pincho p);
 	void rebote(Bomber& b, BolaFuego p);
 	//void rebote(Bomber& b, Caja c);
@@ -79,6 +86,7 @@ public:
 	void rebote(Tentaculo& t, Pared p);
 	void rebote(Tentaculo& t, PlatMovil pm);
 	void rebote(Tentaculo& t, Suelo s);
+	void rebote(Tentaculo& t, Final p);
 	void rebote(Tentaculo& t, Pincho p);
 	void rebote(Tentaculo& t, BolaFuego p);
 	//void rebote(Tentaculo& t, Caja c);
@@ -86,6 +94,7 @@ public:
 	//void rebote(Tank& t, Pared p);
 	void rebote(Tank& t, PlatMovil pm);
 	void rebote(Tank& t, Suelo s);
+	void rebote(Tank& t, Final p);
 	void rebote(Tank& t, Pincho p);
 	void rebote(Tank& t, BolaFuego p);
 	//void rebote(Tank& t, Caja c);
@@ -93,33 +102,35 @@ public:
 	//void rebote(BossFinal& bf, Pared p);
 	void rebote(BossFinal& bf, PlatMovil pm);
 	void rebote(BossFinal& bf, Suelo s);
+	void rebote(BossFinal& bf, Final p);
 	void rebote(BossFinal& bf, Pincho p);
 	void rebote(BossFinal& bf, BolaFuego p);
 	//void rebote(BossFinal& bf, Caja c);
 	//Espada y disparos buenos
 	static void colision(Espada esp, ListaEnemigos le);
-	void colision(Espada esp, Enemigo e);
-	void colision(Espada esp, EnemigoDisp e);
-	void colision(Espada esp, Babosa b);
-	void colision(Espada esp, Bomber b);
-	void colision(Espada esp, Tentaculo t);
-	void colision(Espada esp, Tank t);
-	void colision(Espada esp, BossFinal b);
-	void colision(ListaDisparos ld, ListaEnemigos le);
-	void colision(Disparos d, Enemigo e);
-	void colision(Disparos d, EnemigoDisp e);
-	void colision(Disparos d, Babosa b);
-	void colision(Disparos d, Bomber b);
-	void colision(Disparos d, Tentaculo t);
-	void colision(Disparos d, Tank t);
-	void colision(Disparos d, BossFinal b);
-	void colision(DisparosAmigos d, Enemigo e);
-	void colision(DisparosAmigos d, EnemigoDisp e);
-	void colision(DisparosAmigos d, Babosa b);
-	void colision(DisparosAmigos d, Bomber b);
-	void colision(DisparosAmigos d, Tentaculo t);
-	void colision(DisparosAmigos d, Tank t);
-	void colision(DisparosAmigos d, BossFinal b);
+	static void colision(Espada esp, Enemigo e);
+	static void colision(Espada esp, EnemigoDisp e);
+	static void colision(Espada esp, Babosa b);
+	static void colision(Espada esp, Bomber b);
+	static void colision(Espada esp, Tentaculo t);
+	static void colision(Espada esp, Tank t);
+	static void colision(Espada esp, BossFinal b);
+	static void colision(ListaDisparos ld, ListaEnemigos le);
+	static void colision(Disparos d, Enemigo e);
+	static void colision(Disparos d, EnemigoDisp e);
+	static void colision(Disparos d, Babosa b);
+	static void colision(Disparos d, Bomber b);
+	static void colision(Disparos d, Tentaculo t);
+	static void colision(Disparos d, Tank t);
+	static void colision(Disparos d, BossFinal b);
+	static void colision(DisparosAmigos d, ListaEnemigos le);
+	static void colision(DisparosAmigos d, Enemigo e);
+	static void colision(DisparosAmigos d, EnemigoDisp e);
+	static void colision(DisparosAmigos d, Babosa b);
+	static void colision(DisparosAmigos d, Bomber b);
+	static void colision(DisparosAmigos d, Tentaculo t);
+	static void colision(DisparosAmigos d, Tank t);
+	static void colision(DisparosAmigos d, BossFinal b);
 	////////////////////////////////////////////////////////////////////
 
 	

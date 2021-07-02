@@ -26,7 +26,7 @@ public:
 	Pared(float x1, float y1, float x2, float y2, Byte r, Byte g, Byte b); //Constructor automático
 	virtual void setLims(float x1, float y1, float x2, float y2); //Establece los dos limites de la plataforma
 	virtual void dibuja();
-	float distancia(Vector2D punto, Vector2D* direccion = 0);
+	virtual float distancia(Vector2D punto, Vector2D* direccion = 0);
 	bool operator ==(Pared);
 	friend class Interaccion;
 };
@@ -39,7 +39,6 @@ private:
 public:
 	PlatMovil(float, float, float, float, float, float, float, float, float, float, Byte, Byte, Byte); //Constructor completo
 	void mueve(float);
-
 	friend class Interaccion;
 };
 //Suelo herencia de PARED
@@ -50,6 +49,12 @@ private:
 public:
 	Suelo(float limx1, float altura, float limx2, float bajo); //Constructor con anchura y altura
 	void dibuja();
+};
+//Final herencia de PARED
+class Final : public Pared
+{
+public:
+	Final(float x1, float y1, float x2, float y2); //Constructor propio
 };
 //Pincho herencia de SOLIDO
 class Pincho : public Solidos

@@ -160,15 +160,6 @@ void Vidas::eliminar(Corazon* e)
 			return;
 		}
 }
-Corazon* Vidas::recoleccion(Personaje h)
-{
-	for (int i = 0; i < numero; i++)
-	{
-		if (Interaccion::recoleccion(*(lista[i]), h))
-			return lista[i];
-	}
-	return 0; //no hay colisión
-}
 Corazon* Vidas::operator[](int i)
 {
 	if (i >= numero)//si me paso, devuelvo la ultima
@@ -267,15 +258,6 @@ void Dinero::eliminar(Moneda* e)
 			eliminar(i);
 			return;
 		}
-}
-Moneda* Dinero::recoleccion(Personaje h)
-{
-	for (int i = 0; i < numero; i++)
-	{
-		if (Interaccion::recoleccion(*lista[i],h))
-			return lista[i];
-	}
-	return 0; //no hay colisión
 }
 Moneda* Dinero::operator[](int i)
 {

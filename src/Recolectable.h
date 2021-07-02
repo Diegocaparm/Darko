@@ -57,8 +57,8 @@ public:
 	void destruirContenido();
 	void eliminar(int index);
 	void eliminar(Corazon* e);
-	Corazon* recoleccion(Personaje h);
 	Corazon* operator [] (int i);
+	friend class Interaccion;
 };
 //Vidas recolectadas herencia de Vidas
 class VidasRecolectadas : public Vidas
@@ -74,7 +74,6 @@ public:
 	int getVidas();
 	int getVidasInicial();
 	void reduceVida();
-
 };
 
 //Lista de monedas
@@ -91,8 +90,8 @@ public:
 	void destruirContenido();
 	void eliminar(int index);
 	void eliminar(Moneda* d);
-	Moneda* recoleccion(Personaje h); ////DAERROR
 	Moneda* operator [] (int i);
+	friend class Interaccion;
 };
 //DineroRecolectado herencia de Dinero
 class DineroRecolectados : public Dinero

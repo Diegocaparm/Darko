@@ -147,6 +147,59 @@ void Interaccion::rebote(Personaje& h, Suelo s, VidasRecolectadas& v)
 {
 	//Tampoco tiene porque tener nada pero si que tiene que estar
 }
+void Interaccion::rebote(Personaje& h, Final p, VidasRecolectadas& v)
+{
+	float xmin = p.limite2.x;//izq
+	float xmax = p.limite1.x;//dcha
+	float ymin = p.limite2.y;//ab
+	float ymax = p.limite1.y - h.altura;//arr
+
+	if (p.limite1.y == p.limite2.y) {
+		if (h.posicion.y > ymin - h.altura / 2)
+			h.zonaV = 1;
+		else
+			h.zonaV = 0;
+
+		if (h.posicion.x < xmax && h.posicion.x > xmin) {  //zona=0 abajo    zona=1 arriba
+			if (h.zonaV == 0) {
+				if (h.posicion.y > ymax) {
+					h.posicion.y = ymax;
+					h.velocidad.y = 0.0f;
+					h.aceleracion.y = -9.8f;
+				}
+			}
+			else //Estamos arriba, hemos pasado el nivel
+				if (h.posicion.y < ymin) {
+					h.posicion.y = ymin;
+					h.velocidad.y = 0.0f;
+					h.flagnivel++; //Aumenta el nivel que se crea
+					h.setPos(-4, 11); //Y posiciona al PJ al inicio de este
+				}
+		}
+	}
+	else if (sqrt((h.posicion.x - xmin) * (h.posicion.x - xmin)) < 0.7) {
+		if (h.hitbox.top_r.x > xmin + 0.2)
+			h.zonaH = 1;	//dcha
+		else if (h.hitbox.top_l.x < xmin - 0.2)
+			h.zonaH = 0;	//izq
+		if (h.hitbox.bot_r.y < p.limite1.y - 0.5 && h.hitbox.bot_r.y > p.limite2.y)
+		{  //zona=0 izq    zona=1 dcha
+			if (h.zonaH == 0) {
+				if (h.hitbox.top_l.x > xmax) {
+					h.posicion.x = xmin - 0.4;
+					h.velocidad.x = 0.0f;
+					h.aceleracion.y = -9.8f;
+				}
+			}
+			else
+				if (h.hitbox.top_r.x < xmin) {
+					h.posicion.x = xmax + 0.4;
+					h.velocidad.x = 0.0f;
+					h.aceleracion.y = -9.8f;
+				}
+		}
+	}
+}
 void Interaccion::rebote(Personaje& h, Pincho p, VidasRecolectadas& v)
 {
 	bool b1, b2, b3, b4;
@@ -193,10 +246,28 @@ bool Interaccion::recoleccion(Corazon& c, Personaje h)
 	bool dentro = DistHitbox(h.hitbox, c.posicion);
 	return dentro;
 }
+Corazon* Interaccion::recoleccion(Vidas& v,Personaje h)
+{
+	for (int i = 0; i < v.numero; i++)
+	{
+		if (Interaccion::recoleccion(*(v.lista[i]), h))
+			return v.lista[i];
+	}
+	return 0; //no hay colisión
+}
 bool Interaccion::recoleccion(Moneda& m, Personaje h)
 {
 	bool dentro = DistHitbox(h.hitbox, m.posicion);
 	return dentro;
+}
+Moneda* Interaccion::recoleccion(Dinero& d, Personaje h)
+{
+	for (int i = 0; i < d.numero; i++)
+	{
+		if (Interaccion::recoleccion(*d.lista[i], h))
+			return d.lista[i];
+	}
+	return 0; //no hay colisión
 }
 //Espada y disparos buenos
 void Interaccion::mov(Espada& esp, Personaje& h) {
@@ -391,6 +462,43 @@ void Interaccion::rebote(Enemigo& e, PlatMovil pm)
 void Interaccion::rebote(Enemigo& e, Suelo s)
 {
 }
+void Interaccion::rebote(Enemigo& e, Final p)
+{
+	//Ponemos los limites de la plataforma
+	float xmin = p.limite2.x;//izq
+	float xmax = p.limite1.x;//dcha
+	float ymin = p.limite2.y;//ab
+	float ymax = p.limite1.y - e.altura;//arr
+	//Decidimos si estamos arriba o abajo
+	if (e.posicion.y > ymin - e.altura / 2)
+		e.zonaV = 1; //Estamos arriba
+	else
+		e.zonaV = 0; //Abajo
+	//Decidimos si estamos dentro y si estamos encima
+	if (e.posicion.x < xmax && e.posicion.x > xmin)
+	{
+		if (e.zonaV == 0) { //Sigue igual si esta debajo
+			if (e.posicion.y > ymax) {
+				e.posicion.y = ymax;
+				e.velocidad.y = 0.0f;
+				e.aceleracion.y = -9.8f;
+			}
+		}
+		else //Si está arriba
+		{
+			if (e.posicion.y < ymin) {
+				e.posicion.y = ymin;
+				e.velocidad.y = 0.0f;
+			}
+			if (e.posicion.x < xmin + 0.5f) {		//cambiar de direccion
+				e.sentido = 0;
+			}
+			if (e.posicion.x > xmax - 0.5f) {
+				e.sentido = 1;
+			}
+		}
+	}
+}
 void Interaccion::rebote(Enemigo& e, Pincho p)
 {
 }
@@ -418,6 +526,10 @@ void Interaccion::rebote(EnemigoDisp& e, PlatMovil pm)
 void Interaccion::rebote(EnemigoDisp& e, Suelo s)
 {
 }
+void Interaccion::rebote(EnemigoDisp& e, Final p)
+{
+
+}
 void Interaccion::rebote(EnemigoDisp& e, Pincho p)
 {
 }
@@ -438,6 +550,9 @@ void Interaccion::rebote(Babosa& b, PlatMovil pm)
 {
 }
 void Interaccion::rebote(Babosa& b, Suelo s)
+{
+}
+void Interaccion::rebote(Babosa& b, Final p)
 {
 }
 void Interaccion::rebote(Babosa& b, Pincho p)
@@ -497,6 +612,9 @@ void Interaccion::rebote(Bomber& b, PlatMovil pm)
 void Interaccion::rebote(Bomber& b, Suelo s)
 {
 }
+void Interaccion::rebote(Bomber& b, Final p)
+{
+}
 void Interaccion::rebote(Bomber& b, Pincho p)
 {
 }
@@ -536,6 +654,9 @@ void Interaccion::rebote(Tentaculo& t, PlatMovil pm)
 {
 }
 void Interaccion::rebote(Tentaculo& t, Suelo s)
+{
+}
+void Interaccion::rebote(Tentaculo& t, Final p)
 {
 }
 void Interaccion::rebote(Tentaculo& t, Pincho p)
@@ -592,6 +713,9 @@ void Interaccion::rebote(Tank& t, PlatMovil pm)
 void Interaccion::rebote(Tank& t, Suelo s)
 {
 
+}
+void Interaccion::rebote(Tank& t, Final p)
+{
 }
 void Interaccion::rebote(Tank& t, Pincho p)
 {
@@ -668,6 +792,9 @@ void Interaccion::rebote(BossFinal& bf, PlatMovil pm)
 void Interaccion::rebote(BossFinal& bf, Suelo s)
 {
 
+}
+void Interaccion::rebote(BossFinal& bf, Final p)
+{
 }
 void Interaccion::rebote(BossFinal& bf, Pincho p)
 {
@@ -807,6 +934,11 @@ void Interaccion::colision(Disparos d, Tank t)
 }
 void Interaccion::colision(Disparos d, BossFinal b)
 {
+}
+void Interaccion::colision(DisparosAmigos d, ListaEnemigos le)
+{
+	for (int i = 0; i < le.numero; i++)
+		colision(d, *le.lista[i]);
 }
 void Interaccion::colision(DisparosAmigos d, Enemigo e)
 {

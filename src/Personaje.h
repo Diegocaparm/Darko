@@ -5,14 +5,17 @@ class Personaje : public ObjetoMovil
 {
 private:
     float altura = 1.8f;
-    int salto = 1, sentido = 0, flag = 0, flagH = 0, disparo = 0;
-    //flagH=-1 izquierda	=0	quieto	   =1 derecha
-
+    int salto = 1;
+    int sentido = 0;
+    int flag = 0;
+    int flagH = 0; //-1 izquierda   =0 quieto   =1 derecha
+    int disparo = 0; //Flag para que el hombre dispare
+    int flagnivel = 1; //Indica el nivel donde estamos, aumenta al llegar al final
 public:
     Personaje();
     void dibuja();
     void mueve(float t);
-    //void dispara();
+    int getNivel();
     DisparosAmigos* bala = new DisparosAmigos(posicion.x, posicion.y);
 
     friend class Interaccion;

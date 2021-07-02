@@ -31,6 +31,10 @@ Suelo::Suelo(float limx1, float altura, float limx2, float bajo)
 	limite1.y = limite2.y = altura;
 	bajo1.y = bajo2.y = bajo;
 }
+Final::Final(float x1, float y1, float x2, float y2)
+{
+	setLims(x1, y1, x2, y2);
+}
 Pincho::Pincho() {};
 Pincho::Pincho(float px, float py) {
 	//Situamos los pinchos
@@ -86,8 +90,6 @@ void Pared::dibuja()
 	glEnd();
 	glEnable(GL_LIGHTING);
 }
-
-//Métodos propios de Pared
 float Pared::distancia(Vector2D punto, Vector2D* direccion)
 {
 	Vector2D u = (punto - limite1);
@@ -107,6 +109,8 @@ float Pared::distancia(Vector2D punto, Vector2D* direccion)
 		*direccion = dir.unitario();
 	return distancia;
 }
+
+//Métodos propios de Pared
 bool Pared::operator==(Pared p)
 {
 	if (limite1 == p.limite1 && limite2 == p.limite2) {
