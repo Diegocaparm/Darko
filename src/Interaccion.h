@@ -29,10 +29,10 @@ public:
 	static void mov(Espada& esp, Personaje& h);
 	//si eso un metodo dispara flambeante pero por ahora vacio
 	//Disparos malos y misiles
-	void colision(Personaje& h, ListaDisparos ld, VidasRecolectadas& v);
-	void colision(Personaje& h, Disparos& d, VidasRecolectadas& v);
-	void colision(Personaje& h, DisparosEnemigos& de, VidasRecolectadas& v);
-	void colision(Personaje& h, Misiles& m, VidasRecolectadas& v);
+	static void colision(Personaje& h, ListaDisparos ld, VidasRecolectadas& v);
+	static void colision(Personaje& h, Disparos& d, VidasRecolectadas& v);
+	static void colision(Personaje& h, DisparosEnemigos& de, VidasRecolectadas& v);
+	static void colision(Personaje& h, Misiles& m, VidasRecolectadas& v);
 	//Enemigos y listas
 	void colision(Personaje& h, ListaEnemigos le, VidasRecolectadas& v);
 	void colision(Personaje& h, Enemigo& e, VidasRecolectadas& v);
@@ -46,20 +46,20 @@ public:
 
 	//////////////////////////////////////////////////////////////////// Enemigos
 	//Entorno
-	void rebote(ListaEnemigos le, ListaSolidos ls);
-	void rebote(Enemigo& e, Solidos s);
-	void rebote(Enemigo& e, Pared p);
-	void rebote(Enemigo& e, PlatMovil pm);
-	void rebote(Enemigo& e, Suelo s);
-	void rebote(Enemigo& e, Pincho p);
-	void rebote(Enemigo& e, BolaFuego b);
+	static void rebote(ListaEnemigos le, ListaSolidos ls);
+	static void rebote(Enemigo& e, Solidos s);
+	static void rebote(Enemigo& e, Pared p);
+	static void rebote(Enemigo& e, PlatMovil pm);
+	static void rebote(Enemigo& e, Suelo s);
+	static void rebote(Enemigo& e, Pincho p);
+	static void rebote(Enemigo& e, BolaFuego b);
 	//void rebote(Enemigo& e, Caja c);
-	void rebote(EnemigoDisp& e, Solidos s);
+	static void rebote(EnemigoDisp& e, Solidos s);
 	//void rebote(EnemigoDisp& e, Pared p);
-	void rebote(EnemigoDisp& e, PlatMovil pm);
-	void rebote(EnemigoDisp& e, Suelo s);
-	void rebote(EnemigoDisp& e, Pincho p);
-	void rebote(EnemigoDisp& e, BolaFuego p);
+	static void rebote(EnemigoDisp& e, PlatMovil pm);
+	static void rebote(EnemigoDisp& e, Suelo s);
+	static void rebote(EnemigoDisp& e, Pincho p);
+	static void rebote(EnemigoDisp& e, BolaFuego p);
 	//void rebote(EnemigoDisp& e, Caja c);
 	void rebote(Babosa& b, Solidos s);
 	void rebote(Babosa& b, Pared p);
@@ -97,7 +97,7 @@ public:
 	void rebote(BossFinal& bf, BolaFuego p);
 	//void rebote(BossFinal& bf, Caja c);
 	//Espada y disparos buenos
-	void colision(Espada esp, ListaEnemigos le);
+	static void colision(Espada esp, ListaEnemigos le);
 	void colision(Espada esp, Enemigo e);
 	void colision(Espada esp, EnemigoDisp e);
 	void colision(Espada esp, Babosa b);

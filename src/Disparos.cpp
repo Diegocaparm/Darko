@@ -18,10 +18,12 @@ DisparosAmigos::DisparosAmigos(float px, float py) {
 	//la velocidad variable chunga
 	//setVel(3+vx,0);
 }
+Espada::Espada() {}
 Espada::Espada(float px, float py) {
 	Disparos(px, py);
 	radio = 1.5f;
 }
+DisparosEnemigos::DisparosEnemigos() {}
 DisparosEnemigos::DisparosEnemigos(float px, float py) {
 	Disparos(px, py);
 	radio = 0.25f;

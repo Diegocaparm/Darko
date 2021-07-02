@@ -91,7 +91,7 @@ public:
 	void destruirContenido();
 	void eliminar(int index);
 	void eliminar(Moneda* d);
-	Moneda* recoleccion(Personaje h);
+	Moneda* recoleccion(Personaje h); ////DAERROR
 	Moneda* operator [] (int i);
 };
 //DineroRecolectado herencia de Dinero

@@ -15,7 +15,7 @@ public:
 	bool agregar(Disparos* d);
 	void dibuja();
 	void mueve(float t);
-	void colision(Personaje& pj, VidasRecolectadas& v);
+	void colision(Personaje& pj, VidasRecolectadas& v); //DAERROR
 	friend class Interaccion;
 };
 

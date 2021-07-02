@@ -35,6 +35,7 @@ class Espada : public Disparos
     int flag = 0;
     float angulo = 0;
 public:
+    Espada();
     Espada(float px, float py);
     void mueve(float t);
     int getFlag();
@@ -45,6 +46,7 @@ public:
 class DisparosEnemigos : public Disparos
 {
 public:
+    DisparosEnemigos();
     DisparosEnemigos(float px, float py);
 };
 //Misiles herencia de DISPAROSENEMIGOS

@@ -4,6 +4,7 @@ Personaje::Personaje() {
 	setPos(-4, 11);
 	setAc(0, -9.8);
 	setColor(1, 1, 0);
+	bala->setPos(posicion.x, posicion.y + altura * 2 / 3);
 }
 
 void Personaje::dibuja() {

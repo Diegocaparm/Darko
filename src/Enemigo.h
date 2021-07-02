@@ -22,7 +22,7 @@ public:
     EnemigoDisp(float px, float py);
     void dibuja();
     void mueve(float t);
-    disparosEnemigos* dispEnem1 = new disparosEnemigos();
+    DisparosEnemigos* dispEnem1 = new DisparosEnemigos(posicion.x, posicion.y);
 };
 //Babosa herencia de ENEMIGO
 class Babosa : public Enemigo
@@ -67,11 +67,11 @@ public:
     Tank(float px, float py);
     void dibuja();
     void mueve(float t);
-    disparosEnemigos* dispTank1 = new disparosEnemigos(),
-        * dispTank2 = new disparosEnemigos(),
-        * dispTank3 = new disparosEnemigos(),
-        * dispTank4 = new disparosEnemigos(),
-        * dispTank5 = new disparosEnemigos();
+    DisparosEnemigos* dispTank1 = new DisparosEnemigos(posicion.x,posicion.y),
+        * dispTank2 = new DisparosEnemigos(posicion.x, posicion.y),
+        * dispTank3 = new DisparosEnemigos(posicion.x, posicion.y),
+        * dispTank4 = new DisparosEnemigos(posicion.x, posicion.y),
+        * dispTank5 = new DisparosEnemigos(posicion.x, posicion.y);
 };
 //BossFinal herencia de TANK
 class BossFinal : public Tank
