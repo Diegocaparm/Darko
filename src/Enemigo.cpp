@@ -476,10 +476,10 @@ void Bomber::mueve(float t)
 
 	//if (zonaH == 0) {
 	if (sentido == 0) {
-		velocidad.x = 1;
+		velocidad.x = -1;
 	}
 	else
-		velocidad.x = -1;
+		velocidad.x = 1;
 	//}
 
 	//Añadido por Miguel (crea las paredes de choque)

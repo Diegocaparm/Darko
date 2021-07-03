@@ -728,6 +728,7 @@ void Interaccion::rebote(Bomber* e, Pared* p)
 	Enemigo* ene;
 	ene = dynamic_cast <Enemigo*> (e);
 	Interaccion::rebote(ene, p);
+	
 }
 void Interaccion::rebote(Bomber* b, PlatMovil* pm)
 {
