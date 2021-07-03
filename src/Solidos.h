@@ -7,6 +7,7 @@ class Solidos
 protected:
 	Vector2D posicion;
 	ColorRGB color;
+	int cosa=0;	//1 pared, 2 plat movil, 3 suelo, 4 final, 5 pincho, 6 bola
 public:
 	Solidos();
 	//~Solidos();
@@ -14,6 +15,8 @@ public:
 	virtual void setColor(Byte r, Byte g, Byte b);
 	virtual void dibuja();
 	virtual void mueve(float t);
+	void setCosa(int);
+	int getCosa();
 	friend class Interaccion;
 };
 //Pared herencia de SOLIDO

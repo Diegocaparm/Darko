@@ -1,11 +1,14 @@
 #pragma once
 #include "ObjetoMovil.h"
 #include "Disparos.h"
+#include <math.h>
+#define pi 3.14159265359
 
 //Enemigo herencia de OBJETOMOVIL
 class Enemigo : public ObjetoMovil
 {
 protected:
+    int cosa = 0;   //1 disp, 2 tank, 3 babosa, 4 bomber, 5 tent, 6 boss
     int tempdmg = 0, flagdmg = 0, flagesp = 0, vida = 0;	////////////////////////////////////
     float altura = 0.5;   //altura, radio, longitud
     int temp = 0, sentido = 1;	//temp contador para disparar	sentido=0 izq =1 dcha
@@ -54,6 +57,7 @@ class Tentaculo : public Enemigo
 private:
     int flag = 0;       //direccion de oscilacion
     float angulo = 0;   //angulo de giro
+    Hitbox hitbox[3];
 public:
     Tentaculo(float px, float py);
     void dibuja();

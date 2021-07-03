@@ -2,7 +2,7 @@
 
 void Nivel::dibuja()
 {	//Creamos la cámara
-	gluLookAt(hombre.getPos().x, 11.5, z_ojo,  // posicion del ojo  
+	gluLookAt(hombre.getPos().x, 11.5, z_ojo+20,  // posicion del ojo  
 		hombre.getPos().x, 7.5f, 0.0,      // hacia que punto mira  (hombre.posicion.y + 8)
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
@@ -137,7 +137,7 @@ bool Nivel::cargarnivel()
 		disparos.agregar(E1.dispEnem1);
 
 		//EXPECTATIVA
-		enemigos.agregar(new EnemigoDisp(0.0f,0.0f)); //Enemigo plat1
+		enemigos.agregar(new EnemigoDisp(0.0f,12.0f)); //Enemigo plat1
 		enemigos.agregar(new EnemigoDisp(15.0f, 0.0f));
 		enemigos.agregar(new EnemigoDisp(22.0f, 0.0f));
 		enemigos.agregar(new EnemigoDisp(35.0f, 0.0f));
@@ -149,7 +149,7 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new EnemigoDisp(140.0f, 11.0f)); //Enemigo plat7
 		enemigos.agregar(new EnemigoDisp(174.0f, 0.0f));
 		enemigos.agregar(new EnemigoDisp(193.0f, 0.0f));
-		enemigos.agregar(new Tank(193.0f, 15.0f));
+		enemigos.agregar(new Tank(193.0f, 7.0f));
 		enemigos.agregar(new Babosa(10.0f, 13.0f));
 
 

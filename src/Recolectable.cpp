@@ -77,7 +77,7 @@ void Corazon::dibuja()
 	glColor3f(1.0f, 0.0f, 0.0f);
 	glutSolidSphere(radio, 20, 20);
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/corazon.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/corazon.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);

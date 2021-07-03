@@ -33,5 +33,5 @@ void ListaSolidos::mueve(float t)
 void ListaSolidos::rebote(Personaje& pj, VidasRecolectadas& v)
 {
 	for (int i = 0; i < numero; i++)
-		Interaccion::rebote(pj, *lista[i], v);
+		Interaccion::rebote(pj, lista[i], v);
 }

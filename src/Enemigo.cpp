@@ -6,6 +6,7 @@ Enemigo::Enemigo() {
 
 }
 EnemigoDisp::EnemigoDisp(float px, float py) {
+	cosa = 1;
 	altura = 2.0f; 
 	vida = 4;
 	setColor(1, 0, 0);
@@ -15,12 +16,14 @@ EnemigoDisp::EnemigoDisp(float px, float py) {
 
 }
 Babosa::Babosa(float px, float py) {
+	cosa = 3;
 	altura = 1.5f;
 	vida = 5;
 	setColor(2, 0, 0);
 	setPos(px, py);
 }
 Bomber::Bomber(float px, float py) {
+	cosa = 4;
 	altura = 2.0f;
 	vida = 2;
 	setColor(200, 100, 0);
@@ -28,6 +31,7 @@ Bomber::Bomber(float px, float py) {
 	setAc(0, -9.8f);
 }
 Tentaculo::Tentaculo(float px, float py) {
+	cosa = 5;
 	altura = 5.0f;
 	vida = 19;
 	setColor(150, 0, 0);
@@ -35,6 +39,7 @@ Tentaculo::Tentaculo(float px, float py) {
 }
 Tank::Tank() {}
 Tank::Tank(float px, float py) {
+	cosa = 2;
 	altura = 7.0f;
 	vida = 9;
 	setColor(1, 1, 1);
@@ -57,6 +62,7 @@ Tank::Tank(float px, float py) {
 	dispTank5->setColor(10, 0, 0);
 }
 BossFinal::BossFinal(float px, float py) {
+	cosa = 6;
 	altura = 14.0f;
 	vida = 49;
 	setColor(1, 1, 1);
@@ -221,7 +227,7 @@ void Tentaculo::dibuja() {
 	glutSolidSphere(altura / 8, 30, 30);
 	glPopMatrix();
 
-	/*glPushMatrix();
+	glPushMatrix();
 	//glTranslatef(posicion.x, posicion.y, 0);
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
@@ -286,7 +292,7 @@ void Tentaculo::dibuja() {
 	glVertex3f(hitbox[2].bot_l.x, hitbox[2].bot_l.y, 0);
 	glVertex3f(hitbox[2].top_l.x, hitbox[2].top_l.y, 0);
 	glEnd();
-	glPopMatrix();*/
+	glPopMatrix();
 }
 void Tank::dibuja()
 {
@@ -380,10 +386,10 @@ void EnemigoDisp::mueve(float t)
 	}
 	if (zonaH == 0) {
 		if (sentido == 0) {
-			velocidad.x = 1;
+			velocidad.x = -1;
 		}
 		else
-			velocidad.x = -1;
+			velocidad.x = 1;
 	}
 
 	//Añadido por Miguel (crea las paredes de choque)
@@ -513,36 +519,36 @@ void Tentaculo::mueve(float t) {
 	else
 		angulo -= 0.2f;
 
-	//Vector2D e1, e2, e3, e4;
-	/*float h0 = sqrt(longitud * longitud + longitud * longitud / 36);
+	Vector2D e1, e2, e3, e4;
+	/*float h0 = sqrt(altura * altura + altura * altura / 36);
 	float beta0 = atan(1 / 6);
-	e1.x = h0 * sin((a) * pi / 180 - beta0);		e1.y = h0 * sin((a )*pi/180 - beta0);
-	e2.x = h0* sin((a) * pi / 180 + beta0);			e2.y = h0 * cos((a ) * pi / 180 + beta0);
-	e3.x = -(longitud / 6) * cos(a * pi / 180);		e3.y = (longitud / 6) * (sin(a * pi / 180));
-	e4.x = (longitud / 6) * cos(a * pi / 180);		e4.y = -(longitud / 6) * (sin(a * pi / 180));*/
+	e1.x = h0 * sin((angulo) * pi / 180 - beta0);		e1.y = h0 * sin((angulo )*pi/180 - beta0);
+	e2.x = h0* sin((angulo) * pi / 180 + beta0);			e2.y = h0 * cos((angulo ) * pi / 180 + beta0);
+	e3.x = -(altura / 6) * cos(angulo * pi / 180);		e3.y = (altura / 6) * (sin(angulo * pi / 180));
+	e4.x = (altura / 6) * cos(angulo * pi / 180);		e4.y = -(altura / 6) * (sin(angulo * pi / 180));*/
 
-	/*e1.x = -(longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;		e1.y = (longitud) * (cos(-a * pi / 180)) + posicion.y;
-	e2.x = (longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;			e2.y = (longitud) * (cos(-a * pi / 180)) + posicion.y;
-	e3.x = -(longitud / 6) * cos(-a * pi / 180) + posicion.x;				e3.y = -(longitud / 6) * (sin(-a * pi / 180)) + posicion.y;
-	e4.x = (longitud / 6) * cos(-a * pi / 180) + posicion.x;					e4.y = (longitud / 6) * (sin(-a * pi / 180)) + posicion.y;
+	e1.x = -(altura / 6) + altura * sin(angulo * pi / 180) + posicion.x;		e1.y = (altura) * (cos(-angulo * pi / 180)) + posicion.y;
+	e2.x = (altura / 6) + altura * sin(angulo * pi / 180) + posicion.x;			e2.y = (altura) * (cos(-angulo * pi / 180)) + posicion.y;
+	e3.x = -(altura / 6) * cos(-angulo * pi / 180) + posicion.x;				e3.y = -(altura / 6) * (sin(-angulo * pi / 180)) + posicion.y;
+	e4.x = (altura / 6) * cos(-angulo * pi / 180) + posicion.x;					e4.y = (altura / 6) * (sin(-angulo * pi / 180)) + posicion.y;
 	hitbox[0].setPos(e1, e2, e3, e4);
 
 
 	Vector2D e11, e21, e31, e41;
-	e11.x = -(longitud / 6) + longitud * sin(3 * a * pi / 180);		e11.y = (longitud) * (cos(3 * a * pi / 180)) + 2 * sin(a * pi / 180) * sin(a * pi / 180);
-	e21.x = (longitud / 6) + longitud * sin(3 * a * pi / 180);		e21.y = (longitud) * (cos(3 * a * pi / 180)) + 2 * sin(a * pi / 180) * sin(a * pi / 180);
-	e31.x = -(longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;			e31.y = (longitud) * (cos(-a * pi / 180)) + posicion.y;
-	e41.x = (longitud / 6) + longitud * sin(a * pi / 180) + posicion.x;			e41.y = (longitud) * (cos(-a * pi / 180)) + posicion.y;
+	e11.x = -(altura / 6) + altura * sin(3 * angulo * pi / 180);		e11.y = (altura) * (cos(3 * angulo * pi / 180)) + 2 * sin(angulo * pi / 180) * sin(angulo * pi / 180);
+	e21.x = (altura / 6) + altura * sin(3 * angulo * pi / 180);		e21.y = (altura) * (cos(3 * angulo * pi / 180)) + 2 * sin(angulo * pi / 180) * sin(angulo * pi / 180);
+	e31.x = -(altura / 6) + altura * sin(angulo * pi / 180) + posicion.x;			e31.y = (altura) * (cos(-angulo * pi / 180)) + posicion.y;
+	e41.x = (altura / 6) + altura * sin(angulo * pi / 180) + posicion.x;			e41.y = (altura) * (cos(-angulo * pi / 180)) + posicion.y;
 	Vector2D e111 = { e11.x + posicion.x, e1.y + e11.y }, e211 = { e21.x + posicion.x, e2.y + e21.y };
 	hitbox[1].setPos(e111, e211, e31, e41);
 
 	Vector2D e12, e22, e32, e42;
-	e12.x = -(longitud / 6) + longitud * 2 * sin(3.2 * a * pi / 180);		e12.y = (longitud) * (cos(a * pi / 180)) - 0.5 * (cos(a * pi / 180));
-	e22.x = (longitud / 6) + longitud * 2 * sin(3.2 * a * pi / 180);		e22.y = (longitud) * (cos(a * pi / 180)) - 0.5 * (cos(a * pi / 180));
-	e32.x = -(longitud / 6) + longitud * sin(3 * a * pi / 180);			e32.y = (longitud) * (cos(3 * a * pi / 180)) + 2 * sin(a * pi / 180) * sin(a * pi / 180);
-	e42.x = (longitud / 6) + longitud * sin(3 * a * pi / 180);			e42.y = (longitud) * (cos(3 * a * pi / 180)) + 2 * sin(a * pi / 180) * sin(a * pi / 180);
+	e12.x = -(altura / 6) + altura * 2 * sin(3.2 * angulo * pi / 180);		e12.y = (altura) * (cos(angulo * pi / 180)) - 0.5 * (cos(angulo * pi / 180));
+	e22.x = (altura / 6) + altura * 2 * sin(3.2 * angulo * pi / 180);		e22.y = (altura) * (cos(angulo * pi / 180)) - 0.5 * (cos(angulo * pi / 180));
+	e32.x = -(altura / 6) + altura * sin(3 * angulo * pi / 180);			e32.y = (altura) * (cos(3 * angulo * pi / 180)) + 2 * sin(angulo * pi / 180) * sin(angulo * pi / 180);
+	e42.x = (altura / 6) + altura * sin(3 * angulo * pi / 180);			e42.y = (altura) * (cos(3 * angulo * pi / 180)) + 2 * sin(angulo * pi / 180) * sin(angulo * pi / 180);
 	Vector2D e121 = { e12.x + posicion.x, e111.y + e12.y }, e221 = { e22.x + posicion.x, e211.y + e22.y };
-	hitbox[2].setPos(e121, e221, e111, e211);*/
+	hitbox[2].setPos(e121, e221, e111, e211);
 
 	if (tempdmg) {
 		tempdmg--;

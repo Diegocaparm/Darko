@@ -20,5 +20,9 @@ public:
 
     friend class Interaccion;
     friend class Nivel;
+
+
+    friend class Solidos;
+    friend class Pared;
 };
 

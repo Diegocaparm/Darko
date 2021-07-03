@@ -22,7 +22,7 @@ public:
 class Corazon :public Recolectable
 {
 private:
-	SpriteSequence sprite{"imagenes/corazon.png",1 };
+	SpriteSequence sprite{"bin/imagenes/corazon.png",1 };
 public:
 	Corazon();
 	Corazon(float x, float y);
@@ -34,7 +34,7 @@ public:
 class Moneda : public Recolectable
 {
 private:
-	SpriteSequence sprite{ "imagenes/moneda.png", 7 };
+	SpriteSequence sprite{ "bin/imagenes/moneda.png", 7 };
 public:
 	Moneda();
 	Moneda(float x, float y);
@@ -99,8 +99,8 @@ class DineroRecolectados : public Dinero
 {
 private:
 	int dinero_actual = 0;
-	SpriteSequence nUnidad{ "imagenes/numero.png",10 };
-	SpriteSequence nDecena{ "imagenes/numero.png",10 };
+	SpriteSequence nUnidad{ "bin/imagenes/numero.png",10 };
+	SpriteSequence nDecena{ "bin/imagenes/numero.png",10 };
 	Vector2D pos;
 public:
 	DineroRecolectados();

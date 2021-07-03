@@ -12,11 +12,13 @@ Pared::Pared()
 }
 Pared::Pared(float x1, float y1, float x2, float y2, Byte r, Byte g, Byte b) 
 {
+	setCosa(1);
 	setLims(x1, y1, x2, y2);
 	setColor(r, g, b);
 }
 PlatMovil::PlatMovil(float lim1x, float lim1y, float lim2x, float lim2y, float vx, float vy, float ex1x, float ex1y, float ex2x, float ex2y, Byte r, Byte g, Byte b)
 {
+	setCosa(2);
 	setColor(r, g, b);
 	setLims(lim1x, lim1y, lim2x, lim2y);
 	vel = { vx,vy };
@@ -25,6 +27,7 @@ PlatMovil::PlatMovil(float lim1x, float lim1y, float lim2x, float lim2y, float v
 }
 Suelo::Suelo(float limx1, float altura, float limx2, float bajo)
 {
+	setCosa(3);
 	limite1.x = bajo1.x = limx1;
 	limite2.x = bajo2.x = limx2;
 
@@ -33,21 +36,30 @@ Suelo::Suelo(float limx1, float altura, float limx2, float bajo)
 }
 Final::Final(float x1, float y1, float x2, float y2)
 {
+	setCosa(4);
 	setLims(x1, y1, x2, y2);
 }
 Pincho::Pincho() {};
 Pincho::Pincho(float px, float py) {
+	setCosa(5);
 	//Situamos los pinchos
 	setPos(px, py);
 	//Situamos las esquimnas de su hitbox
 	hitbox.bot_l.x = posicion.x - 1.3;	hitbox.bot_l.y = posicion.y;
 	hitbox.bot_r.x = posicion.x + 1.3;	hitbox.bot_r.y = posicion.y;
 	hitbox.top_l.x = posicion.x - 1.3;	hitbox.top_l.y = posicion.y + 2.5f;
-	hitbox.top_l.x = posicion.x - 1.3;	hitbox.top_l.y = posicion.y + 2.5f;
+	hitbox.top_r.x = posicion.x + 1.3;	hitbox.top_r.y = posicion.y + 2.5f;
+	/*Vector2D e1, e2, e3, e4;
+	e1.x = posicion.x - 1.3;		e1.y = posicion.y + 2.5;
+	e2.x = posicion.x + 1.3;		e2.y = posicion.y + 2.5;
+	e3.x = posicion.x - 1.3;		e3.y = posicion.y - 0;
+	e4.x = posicion.x + 1.3;		e4.y = posicion.y - 0;
+	hitbox.setPos(e1, e2, e3, e4);*/
 }
 BolaFuego::BolaFuego(float px, float py, float limtop, float limbot)
 {
 	//radio = 0.75f;
+	setCosa(6);
 	vel.x = 0.0f;
 	vel.y = 10.0f;
 	setPos(px, py);
@@ -69,6 +81,12 @@ void Solidos::setPos(float px, float py)
 }
 void Solidos::dibuja() {} //Vacios para entrar en lista
 void Solidos::mueve(float t) {} //El de arriba y este
+void Solidos::setCosa(int i) {
+	cosa = i;
+}
+int Solidos::getCosa() {
+	return cosa;
+}
 
 //Métodos virtuales de Pared
 void Pared::setLims(float x1, float y1, float x2, float y2)
@@ -163,6 +181,30 @@ void Pincho::dibuja()
 	glTranslatef(posicion.x - 1, posicion.y, 0);
 	glRotatef(-90, 1, 0, 0);
 	glutSolidCone(0.5f, 2.5f, 20, 10);
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
+	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
+	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
+	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
+	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
+	glEnd();
 	glPopMatrix();
 }
 //Métodos propios de BolaFuego
