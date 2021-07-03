@@ -1,25 +1,30 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@David
+Changes v3.3
+
+- Solucionadas las interacciones entre personaje y enemigos con el entorno
+
 @Diego y Mica
 
 Changes v3.2
 
-Juntadas las listas de enemigos, solidos y el personaje en interacciones
+- Juntadas las listas de enemigos, solidos y el personaje en interacciones
 
-Comenzada la lista de disparos e interactuada con enemigops y el personaje
+- Comenzada la lista de disparos e interactuada con enemigops y el personaje
 
-Adaptados los mundos a los nuevos cambios introducidos
+- Adaptados los mundos a los nuevos cambios introducidos
 
-Añadida a la lista de solidos la clase bola de fuego
+- Añadida a la lista de solidos la clase bola de fuego
 
 @David
 
 Changes v3.1
 
-Comenzadas las herencias de los enemigos
+- Comenzadas las herencias de los enemigos
 
-Comenzadas las listas de objetos móviles
+- Comenzadas las listas de objetos móviles
 
 @Diego
 
