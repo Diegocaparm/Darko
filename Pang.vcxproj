@@ -25,7 +25,8 @@
     <ClCompile Include="src\Enemigo.cpp" />
     <ClCompile Include="src\Hitbox.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
-    <ClCompile Include="src\listas.cpp" />
+    <ClCompile Include="src\ListaDisparos.cpp" />
+    <ClCompile Include="src\ListaEnemigos.cpp" />
     <ClCompile Include="src\ListaSolidos.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Nivel.cpp" />
@@ -42,7 +43,8 @@
     <ClInclude Include="src\Enemigo.h" />
     <ClInclude Include="src\Hitbox.h" />
     <ClInclude Include="src\Interaccion.h" />
-    <ClInclude Include="src\listas.h" />
+    <ClInclude Include="src\ListaDisparos.h" />
+    <ClInclude Include="src\ListaEnemigos.h" />
     <ClInclude Include="src\ListaSolidos.h" />
     <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\Nivel.h" />

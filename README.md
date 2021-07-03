@@ -1,21 +1,7 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
-@Diego y Mica
-
-Changes v3.3
-
-- Juntadas las listas de enemigos, solidos y el personaje en interacciones
-
-- Comenzada la lista de disparos e interactuada con enemigops y el personaje
-
-- Adaptados los mundos a los nuevos cambios introducidos
-
-- Añadida a la lista de solidos la clase bola de fuego
-
 @David
-
-Changes v3.2
 
 - Comenzadas las herencias de los enemigos
 

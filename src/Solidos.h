@@ -49,12 +49,14 @@ private:
 public:
 	Suelo(float limx1, float altura, float limx2, float bajo); //Constructor con anchura y altura
 	void dibuja();
+	friend class Interaccion;
 };
 //Final herencia de PARED
 class Final : public Pared
 {
 public:
 	Final(float x1, float y1, float x2, float y2); //Constructor propio
+	friend class Interaccion;
 };
 //Pincho herencia de SOLIDO
 class Pincho : public Solidos

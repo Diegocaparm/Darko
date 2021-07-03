@@ -62,18 +62,9 @@ BossFinal::BossFinal(float px, float py) {
 	setColor(1, 1, 1);
 	setPos(px, py);
 	setAc(0, -9.8f);
-	/*misil1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil4->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil5->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil6->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil7->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil8->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil9->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-	misil10->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 
-	misil1->setVel(-misil1->vel, 0.0f);
+	/*
+	misil1->setVel(-misil1., 0.0f);
 	misil2->setVel(-misil1->vel * 0.94, misil1->vel * 0.342);
 	misil3->setVel(-misil1->vel * 0.766, misil1->vel * 0.643);
 	misil4->setVel(-misil1->vel * 0.5, misil1->vel * 0.866);
@@ -83,7 +74,7 @@ BossFinal::BossFinal(float px, float py) {
 	misil7->setVel(-misil1->vel * 0.94, -misil1->vel * 0.342);
 	misil8->setVel(misil1->vel * 0.766, misil1->vel * 0.643);
 	misil9->setVel(misil1->vel * 0.5, misil1->vel * 0.866);
-	misil10->setVel(misil1->vel * 0.174, misil1->vel * 0.985);
+	misil10->setVel(misil1->vel * 0.174, misil1->vel * 0.985);*/
 
 	misil1->setColor(10, 0, 0);
 	misil2->setColor(10, 0, 0);
@@ -94,7 +85,7 @@ BossFinal::BossFinal(float px, float py) {
 	misil7->setColor(10, 0, 0);
 	misil8->setColor(10, 0, 0);
 	misil9->setColor(10, 0, 0);
-	misil10->setColor(10, 0, 0);*/
+	misil10->setColor(10, 0, 0);
 }
 
 //Método dibuja de cada enemigo

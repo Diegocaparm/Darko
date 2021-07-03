@@ -22,7 +22,7 @@ public:
 class Corazon :public Recolectable
 {
 private:
-	SpriteSequence sprite{ "",1 };
+	SpriteSequence sprite{"imagenes/corazon.png",1 };
 public:
 	Corazon();
 	Corazon(float x, float y);
@@ -74,6 +74,7 @@ public:
 	int getVidas();
 	int getVidasInicial();
 	void reduceVida();
+	friend class Interaccion;
 };
 
 //Lista de monedas
@@ -106,4 +107,5 @@ public:
 	void mueve(float t, Vector2D v);
 	void aumentaDinero();
 	void dibujaContador();
+	friend class Interaccion;
 };

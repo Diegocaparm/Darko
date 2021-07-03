@@ -13,7 +13,6 @@ Recolectable::Recolectable(float x, float y)
 }
 Corazon::Corazon()
 {
-
 }
 Corazon::Corazon(float x, float y)
 {

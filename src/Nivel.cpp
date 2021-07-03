@@ -32,6 +32,7 @@ void Nivel::mueve()
 	Interaccion::mov(espada, hombre);
 	enemigos.mueve(0.025f);
 	disparos.mueve(0.025f);
+	////Interaccion::dispara(enemigos, disparos); Aún no se donde va jaja
 
 	//Movimiento vidas y monedas
 	vidas.mueve(0.025f);
@@ -45,6 +46,7 @@ void Nivel::mueve()
 	Interaccion::rebote(hombre, caja, vidasR);
 	Interaccion::rebote(hombre, solidos, vidasR);
 	Interaccion::rebote(enemigos, solidos);
+	Interaccion::choque(disparos, solidos);
 
 	//Interacciones del hombre con los enemigos
 	Interaccion::colision(hombre, enemigos, vidasR);

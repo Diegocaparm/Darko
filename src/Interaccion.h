@@ -107,74 +107,69 @@ public:
 	void rebote(BossFinal& bf, BolaFuego p);
 	//void rebote(BossFinal& bf, Caja c);
 	//Espada y disparos buenos
-	static void colision(Espada esp, ListaEnemigos le);
-	static void colision(Espada esp, Enemigo e);
-	static void colision(Espada esp, EnemigoDisp e);
-	static void colision(Espada esp, Babosa b);
-	static void colision(Espada esp, Bomber b);
-	static void colision(Espada esp, Tentaculo t);
-	static void colision(Espada esp, Tank t);
-	static void colision(Espada esp, BossFinal b);
+	static void colision(Espada& esp, ListaEnemigos le);
+	static void colision(Espada& esp, Enemigo& e);
+	static void colision(Espada& esp, EnemigoDisp& e);
+	static void colision(Espada& esp, Babosa& b);
+	static void colision(Espada& esp, Bomber& b);
+	static void colision(Espada& esp, Tentaculo& t);
+	static void colision(Espada& esp, Tank& t);
+	static void colision(Espada& esp, BossFinal& b);
 	static void colision(ListaDisparos ld, ListaEnemigos le);
-	static void colision(Disparos d, Enemigo e);
-	static void colision(Disparos d, EnemigoDisp e);
-	static void colision(Disparos d, Babosa b);
-	static void colision(Disparos d, Bomber b);
-	static void colision(Disparos d, Tentaculo t);
-	static void colision(Disparos d, Tank t);
-	static void colision(Disparos d, BossFinal b);
-	static void colision(DisparosAmigos d, ListaEnemigos le);
-	static void colision(DisparosAmigos d, Enemigo e);
-	static void colision(DisparosAmigos d, EnemigoDisp e);
-	static void colision(DisparosAmigos d, Babosa b);
-	static void colision(DisparosAmigos d, Bomber b);
-	static void colision(DisparosAmigos d, Tentaculo t);
-	static void colision(DisparosAmigos d, Tank t);
-	static void colision(DisparosAmigos d, BossFinal b);
+	static void colision(Disparos& d, Enemigo& e); //Este vale
+	static void colision(Disparos& d, EnemigoDisp& e);
+	static void colision(Disparos& d, Babosa& b);
+	static void colision(Disparos& d, Bomber& b);
+	static void colision(Disparos& d, Tentaculo& t);
+	static void colision(Disparos& d, Tank& t);
+	static void colision(Disparos& d, BossFinal& b);
+	static void colision(DisparosAmigos& d, ListaEnemigos& le);
+	static void colision(DisparosAmigos& d, Enemigo& e); //Este tmb
+	static void colision(DisparosAmigos& d, EnemigoDisp& e);
+	static void colision(DisparosAmigos& d, Babosa& b);
+	static void colision(DisparosAmigos& d, Bomber& b);
+	static void colision(DisparosAmigos& d, Tentaculo& t);
+	static void colision(DisparosAmigos& d, Tank& t);
+	static void colision(DisparosAmigos& d, BossFinal& b);
 	////////////////////////////////////////////////////////////////////
 
-	
-
-
-
-
-	//buscar sitio para esto
-	//static void rebote(listaObjetoMovil, ListaSolidos);
-	static void rebote(ObjetoMovil, Solidos);
-	void rebote(ObjetoMovil&, Caja);
-	void rebote(Disparos&, Pared);
-
-	//static void rebote(Personaje&, listaObjetoMovil, VidasRecolectadas&);
-	//static void colision(Personaje& h, ObjetoMovil& om, VidasRecolectadas& v);
-
-	//static void rebote(listaObjetoMovil, listaObjetoMovil);
-	static void rebote(ObjetoMovil, ObjetoMovil);
-
-	//static void colision(listaObjetoMovil, Espada);
-	static void colision(ObjetoMovil, Espada);
-
-
-
-	//Disparos con entorno
-	//void rebote(disparosEnemigos& ene, Caja c);
-	//void rebote(disparosEnemigos& ene, Pared p);
-	//void rebote(disparosAmigos& ene, Caja c);
-	//void rebote(disparosAmigos& ene, Pared p);
-	//void rebote(misiles& ene, Caja c);
-	//void rebote(misiles& ene, Pared p);
-/*
-
-
-	static void colision(Hombre& h, DisparosEnemigos& de, VidasRec& v);
-	static void colision(Hombre& h, misil& m, VidasRec& v);
-
-	static bool colision(EnemigoDisp& ene, disparosAmigos& da);
-	static bool colision(Tank& ene, disparosAmigos& da);
-	static bool colision(Babosa& ene, disparosAmigos& da);
-	static bool colision(Tentaculo& ene, disparosAmigos& da);	
-	static bool colision(bomber& ene, disparosAmigos& da);
-	static bool colision(bossFinal& ene, disparosAmigos& da);
-
-	*/
+	//////////////////////////////////////////////////////////////////// Disparos
+	//Entorno
+	static void choque(ListaDisparos ld, ListaSolidos ls);
+	static void choque(Disparos& d, Solidos s);
+	static void choque(Disparos& d, Pared p);
+	static void choque(Disparos& d, PlatMovil pm);
+	static void choque(Disparos& d, Suelo s);
+	static void choque(Disparos& d, Final f);
+	static void choque(Disparos& d, Pincho s);
+	static void choque(Disparos& d, BolaFuego b);
+	static void choque(DisparosAmigos& d, Solidos s);
+	static void choque(DisparosAmigos& d, Pared p);
+	static void choque(DisparosAmigos& d, PlatMovil pm);
+	static void choque(DisparosAmigos& d, Suelo s);
+	static void choque(DisparosAmigos& d, Final f);
+	static void choque(DisparosAmigos& d, Pincho s);
+	static void choque(DisparosAmigos& d, BolaFuego b);
+	static void choque(DisparosEnemigos& d, Solidos s);
+	static void choque(DisparosEnemigos& d, Pared p);
+	static void choque(DisparosEnemigos& d, PlatMovil pm);
+	static void choque(DisparosEnemigos& d, Suelo s);
+	static void choque(DisparosEnemigos& d, Final f);
+	static void choque(DisparosEnemigos& d, Pincho s);
+	static void choque(DisparosEnemigos& d, BolaFuego b);
+	static void choque(Misiles& d, Solidos s);
+	static void choque(Misiles& d, Pared p);
+	static void choque(Misiles& d, PlatMovil pm);
+	static void choque(Misiles& d, Suelo s);
+	static void choque(Misiles& d, Final f);
+	static void choque(Misiles& d, Pincho s);
+	static void choque(Misiles& d, BolaFuego b);
+	//Invocación de disparos desde cada enemigo
+	static void dispara(ListaEnemigos le, ListaDisparos ld);
+	static void dispara(Enemigo& e, ListaDisparos ld);
+	static void dispara(EnemigoDisp& e, ListaDisparos ld);
+	static void dispara(Tank& t, ListaDisparos ld);
+	static void dispara(BossFinal& b, ListaDisparos ld);
+	////////////////////////////////////////////////////////////////////
 };
 	

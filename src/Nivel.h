@@ -16,7 +16,7 @@ public:
 	float z_ojo;
 
 	int nivel; //Será lo que usemos para identificar en que nivel estamos
-	int mundo;
+	int mundo; 
 
 	//Estructura del nivel
 	Caja caja;

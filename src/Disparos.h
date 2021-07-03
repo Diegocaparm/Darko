@@ -28,6 +28,7 @@ class DisparosAmigos : public Disparos
 {
 public:
     DisparosAmigos(float px, float py);
+    friend class Interaccion;
 };
 //Espada herencia de DISPAROS
 class Espada : public Disparos
@@ -41,6 +42,7 @@ public:
     int getFlag();
     void setFlag(int);
     float getLong();
+    friend class Interaccion;
 };
 //DisparosEnemigos herencia de DISPAROS
 class DisparosEnemigos : public Disparos
@@ -48,6 +50,7 @@ class DisparosEnemigos : public Disparos
 public:
     DisparosEnemigos();
     DisparosEnemigos(float px, float py);
+    friend class Interaccion;
 };
 //Misiles herencia de DISPAROSENEMIGOS
 class Misiles : public DisparosEnemigos
