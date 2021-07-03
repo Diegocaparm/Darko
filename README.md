@@ -1,12 +1,25 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@Diego y Mica
+
+Changes v3.2
+
+Juntadas las listas de enemigos, solidos y el personaje en interacciones
+
+Comenzada la lista de disparos e interactuada con enemigops y el personaje
+
+Adaptados los mundos a los nuevos cambios introducidos
+
+Añadida a la lista de solidos la clase bola de fuego
+
 @David
 
-- Comenzadas las herencias de los enemigos
+Changes v3.1
 
-- Comenzadas las listas de objetos móviles
+Comenzadas las herencias de los enemigos
 
+Comenzadas las listas de objetos móviles
 
 @Diego
 
@@ -18,7 +31,6 @@ Changes v3.0
 
 - Borradas por tanto las clases Pared, Pincho y PlatMovil de /src 
 
-
 @Mica 
 
 Changes v2.9
@@ -29,13 +41,11 @@ Changes v2.9
 
 - Cambios en los parametros de pincho (mas pequeño) y hombre (cae desde más altura)
 
-
 @Miguel
 
 Changes v2.8
 
 - Contadores de vida y dinero solucionado. (Pendiente crear función reduceVida() para más fácil implementación en el resto de codigo)
-
 
 @Diego y Mica
 
@@ -43,13 +53,11 @@ Changes v2.7
 
 - Terminados los niveles 4 y 5 (***)
 
-
 @David
 
 Changes v2.6
 
 - Sistema de vida y daño contra enemigos 
-
 
 @David
 
@@ -57,8 +65,7 @@ Changes v2.5
 
 - Solución de errores
 
-
-@ Diego y Mica
+@Diego y Mica
 
 Changes v2.4
 
@@ -66,7 +73,7 @@ Changes v2.4
 
 - Terminados los niveles 2 y 3 (***)
 
-@ Diego y Mica
+@Diego y Mica
 
 Changes v2.3
 
@@ -132,7 +139,6 @@ Changes v1.9
 
 - Se han empezado las interacciones de personaje con bonus, pinchos, babosa y bomber
 
-
 @David
 
 Changes v1.8
@@ -145,7 +151,6 @@ Changes v1.8
 
 - Se ha solucionado la caida del mundo por el borde derecho
 
-
 @Miguel
 
 Changes v1.7.
@@ -153,7 +158,6 @@ Changes v1.7.
 - Se han terminado la interaccion Hombre-EnemigoDisp
 
 - Se ha añadido el aumento de Monedas (Faltaria un sprite de numeros para mejor implementacion)
-
 
 @David
 
@@ -165,14 +169,11 @@ Changes v1.6.
 
 - Se ha solucionado problema con tank y tentáculo
 
-
 @Miguel
 
 Changes v1.5.
 
-
 - Se ha añadido sistema de vida y moneda renovado con listas y herencias. Ahora las vidas recolectadas aumenta.
-
 
 @David
 
@@ -184,30 +185,23 @@ Changes v1.4.
 
 - Se han arreglado las colisiones entre plataformas, hombre y eneDisp usando las listas
 
-
 @Diego
 
 Changes v1.3.
 
 - A falta de añadir los archivos referenciados, el menú está añadido
 
-
 - Las vidas se mueven ahora en el eje x con el personaje pero no saltan con él
-
 
 @Miguel:
 
 Changes v1.2.
 
-
 - Se ha comenzado la interacción entre enemigos.
-
 
 - La vida ahora se mueve junto al personaje.
 
-
 - Ajustado el ojo para moverse por el eje "y" también.
-
 
 @Miguel:
 
