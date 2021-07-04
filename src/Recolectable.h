@@ -17,7 +17,7 @@ public:
 	virtual void setPos(float x, float y);				//Set Posicion
 	virtual Vector2D getPos();							//retorna Posicion
 	friend class Interaccion;
-	int varm = 0;
+
 };
 //Corazon herencia de Recolectable
 class Corazon :public Recolectable
