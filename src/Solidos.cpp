@@ -1,7 +1,7 @@
 #include "Solidos.h"
 #include "freeglut.h"
 
-//Constructores de los sólidos varios
+//Constructores de los sÃ³lidos varios
 Solidos::Solidos()
 {
 
@@ -67,7 +67,7 @@ BolaFuego::BolaFuego(float px, float py, float limtop, float limbot)
 	setColor(1, 0, 0);
 }
 
-//Métodos virtuales de Solidos
+//MÃ©todos virtuales de Solidos
 void Solidos::setColor(Byte r, Byte g, Byte b)
 {
 	color.r = r;
@@ -88,7 +88,7 @@ int Solidos::getCosa() {
 	return cosa;
 }
 
-//Métodos virtuales de Pared
+//MÃ©todos virtuales de Pared
 void Pared::setLims(float x1, float y1, float x2, float y2)
 {
 	limite1.x = x1;
@@ -98,15 +98,18 @@ void Pared::setLims(float x1, float y1, float x2, float y2)
 }
 void Pared::dibuja()
 {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo1.png").id);
 	glDisable(GL_LIGHTING);
-	glColor3ub(color.r, color.g, color.b);
 	glBegin(GL_POLYGON);
-	glVertex3d(limite1.x, limite1.y, 10);
-	glVertex3d(limite2.x, limite2.y, 10);
-	glVertex3d(limite2.x, limite2.y, -10);
-	glVertex3d(limite1.x, limite1.y, -10);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0.4, 0.2);		glVertex2f(limite1.x + 0.5, limite1.y - 1);
+	glTexCoord2d(0.6, 0.2);		glVertex2f(limite2.x + 0.5, limite2.y - 1);
+	glTexCoord2d(0.6, 0.05);	glVertex2f(limite2.x - 0.5, limite2.y + 0.5);
+	glTexCoord2d(0.4, 0.05);	glVertex2f(limite1.x - 0.5, limite1.y + 0.5);
 	glEnd();
 	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
 }
 float Pared::distancia(Vector2D punto, Vector2D* direccion)
 {
@@ -128,7 +131,7 @@ float Pared::distancia(Vector2D punto, Vector2D* direccion)
 	return distancia;
 }
 
-//Métodos propios de Pared
+//MÃ©todos propios de Pared
 bool Pared::operator==(Pared p)
 {
 	if (limite1 == p.limite1 && limite2 == p.limite2) {
@@ -136,7 +139,7 @@ bool Pared::operator==(Pared p)
 	}
 	return false;
 }
-//Métodos propios de PlatMovil
+//MÃ©todos propios de PlatMovil
 void PlatMovil::mueve(float t)
 {
 	limite1 = limite1 + vel * t; //Movemos el limite 1 con la velocidad indicada
@@ -153,61 +156,29 @@ void PlatMovil::mueve(float t)
 		vel.y = -vel.y;
 	}
 }
-//Métodos propios de Suelo
+//MÃ©todos propios de Suelo
 void Suelo::dibuja()
 {
-	//Pintamos aquí el sprite que sea
+	//Pintamos aquÃ­ el sprite que sea
 }
-//Métodos propios de Pinchos
+//MÃ©todos propios de Pinchos
 void Pincho::dibuja()
 {
-	//Esto lo sustituiremos por el srpite que toque
-	glPushMatrix();
-	glColor3f(0.5f, 0.5f, 0.5f);
-	glTranslatef(posicion.x + 1, posicion.y, 0);
-	glRotatef(-90, 1, 0, 0);
-	glutSolidCone(0.5f, 2.5f, 20, 10);
-	glPopMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/pinchos.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
 
-	glPushMatrix();
-	glColor3f(0.5f, 0.5f, 0.5f);
-	glTranslatef(posicion.x, posicion.y, 0);
-	glRotatef(-90, 1, 0, 0);
-	glutSolidCone(0.5f, 2.5f, 20, 10);
-	glPopMatrix();
-
-	glPushMatrix();
-	glColor3f(0.5f, 0.5f, 0.5f);
-	glTranslatef(posicion.x - 1, posicion.y, 0);
-	glRotatef(-90, 1, 0, 0);
-	glutSolidCone(0.5f, 2.5f, 20, 10);
-	glPopMatrix();
-
-
-	glPushMatrix();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
-	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
+	glTexCoord2d(0.25, 0.6);		glVertex3f(posicion.x - 2, posicion.y, 0.1);
+	glTexCoord2d(0.75, 0.6);		glVertex3f(posicion.x + 2, posicion.y, 0.1);
+	glTexCoord2d(0.75, 0.2);		glVertex3f(posicion.x + 2, posicion.y + 2, 0.1);
+	glTexCoord2d(0.25, 0.2);		glVertex3f(posicion.x - 2, posicion.y + 2, 0.1);
 	glEnd();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
-	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
-	glEnd();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
-	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
-	glEnd();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
-	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
-	glEnd();
-	glPopMatrix();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
 }
-//Métodos propios de BolaFuego
+//MÃ©todos propios de BolaFuego
 void BolaFuego::dibuja()
 {
 	//Dibujo
