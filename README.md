@@ -1,11 +1,20 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@David
+Changes v3.5
+- Solucionadas colisiones con paredes verticales
+- Solucionado movimiento de enemigos cuando hay varias plataformas en distintas alturas
+- Solucionado espada y colisiones con espada
+
+
 @Diego y Mica
-- Colocados los sprites de:
+Changes v3.4
+    - Colocados los sprites de:
     - Sólidos (suelo, plataformas, pinchos y bolas de fuego)
     - Enemigos (faltan por mejorar babosas, tentaculos y bombers
     - Personaje darko (a modo de prueba)
+    
 @David
 Changes v3.3
 
