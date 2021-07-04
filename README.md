@@ -3,9 +3,9 @@ Repositorio para el trabajo de Informática Industrial
 
 @Diego y Mica
 - Colocados los sprites de:
-    - sólidos (suelo, plataformas, pinchos y bolas de fuego)
-    - enemigos (faltan por mejorar babosas, tentaculos y bombers
-    - personaje darko (a modo de prueba)
+    - Sólidos (suelo, plataformas, pinchos y bolas de fuego)
+    - Enemigos (faltan por mejorar babosas, tentaculos y bombers
+    - Personaje darko (a modo de prueba)
 @David
 Changes v3.3
 
