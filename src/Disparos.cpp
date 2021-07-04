@@ -12,11 +12,11 @@ Disparos::Disparos(float px, float py) {
 	//radio = 0.15f;
 	setAc(0, -0.5);
 }
-DisparosAmigos::DisparosAmigos(float px, float py) {
+DisparosAmigos::DisparosAmigos(float px, float py, float vx, float vy) {
 	Disparos(px, py);
 	radio = 0.15f;
 	//la velocidad variable chunga
-	//setVel(3+vx,0);
+	setVel(vel+vx,vy);
 }
 Espada::Espada() {}
 Espada::Espada(float px, float py) {
@@ -38,6 +38,11 @@ Misiles::Misiles(float px, float py) {
 //Métodos virtuales de Disparos
 void Disparos::dibuja()
 {
+	glPushMatrix();
+	glTranslatef(posicion.x, posicion.y, 0);
+	glColor3f(color.r, color.g, color.b);
+	glutSolidSphere(radio, 30, 30);
+	glPopMatrix();
 
 }
 void Disparos::mueve(float t)

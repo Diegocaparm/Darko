@@ -32,7 +32,7 @@ void Nivel::mueve()
 	Interaccion::mov(espada, hombre);
 	enemigos.mueve(0.025f);
 	disparos.mueve(0.025f);
-	////Interaccion::dispara(enemigos, disparos); Aún no se donde va jaja
+	//Interaccion::dispara(enemigos, disparos); //Aún no se donde va jaja
 
 	//Movimiento vidas y monedas
 	vidas.mueve(0.025f);
@@ -152,6 +152,7 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new Tank(193.0f, 7.0f));
 		enemigos.agregar(new Babosa(10.0f, 13.0f));
 
+		Interaccion::dispara(enemigos, disparos); //Aún no se donde va jaja
 
 		/*
 		//meter disparos en lista
@@ -1313,16 +1314,19 @@ void Nivel::teclaDown(unsigned char key)
 		//cosas de espada
 		espada.setFlag(1);
 		break;
-	//case ' ':
-		/*disparosAmigos * dispam = new disparosAmigos(hombre.posicion.x, hombre.posicion.y + hombre.altura * 2 / 3, hombre.velocidad.x, 0);
-		if (dispAmig.agregar(dispam))
-			hombre.setVelx(0);
+	case 'z':
+		hombre.setColor(1, 0, 0);
+	case ' ':
+		DisparosAmigos * dispam = new DisparosAmigos(hombre.getPos().x, hombre.getPos().y + 1.8 * 2 / 3, hombre.velocidad.x, 0);
+		if (disparos.agregar(dispam))
+			hombre.setVel(0,hombre.velocidad.y);
 		else delete dispam;
 		break;
 		/*default:
 			hombre.setVelx(0.0f);
 			hombre.salto = 1;
 			break;*/
+	
 	}
 }
 

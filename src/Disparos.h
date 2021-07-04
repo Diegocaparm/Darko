@@ -6,7 +6,7 @@ class Disparos :
     public ObjetoMovil
 {
 protected:
-    float radio;
+    float radio=0.15;
     float temp = 0;
     float vel = 3;      //velocidad inicial
 public:
@@ -27,7 +27,7 @@ public:
 class DisparosAmigos : public Disparos
 {
 public:
-    DisparosAmigos(float px, float py);
+    DisparosAmigos(float px, float py, float vx, float vy);
     friend class Interaccion;
 };
 //Espada herencia de DISPAROS

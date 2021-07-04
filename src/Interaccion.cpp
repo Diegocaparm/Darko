@@ -4,6 +4,7 @@
 #define pi 3.14159265
 
 //Funciones auxiliares
+
 bool DistHitbox(Hitbox h, Vector2D e)
 {
 	if (h.top_r.x<e.x && h.top_l.x>e.x && h.top_r.y > e.y && h.bot_r.y < e.y)
@@ -24,9 +25,21 @@ float DistSeg(Hitbox h, Vector2D p) {
 		a2 = (h4 * h4 - h2 * h2 + m4 * m4) / (2 * m4),
 		d1 = sqrt(h3 * h3 - a1 * a1),
 		d2 = sqrt(h4 * h4 - a2 * a2);
-	if (d1 < d2)
-		return d1;
-	else return d2;
+	if (h.top_l.y > p.y && h.bot_l.y < p.y)
+		if (d1 < d2)
+			return d1;
+		else return d2;
+	else return 1;
+}
+bool Interaccion::ColisionGen(Hitbox& ene, Hitbox& h, VidasRecolectadas& v) {
+	float dist1 = DistSeg(ene, h.top_l),
+		dist2 = DistSeg(ene, h.top_r),
+		dist3 = DistSeg(ene, h.bot_l),
+		dist4 = DistSeg(ene, h.bot_r);
+	if (dist1 < 0.2 || dist2 < 0.2 || dist3 < 0.2 || dist4 < 0.2) {
+		return true;
+	}
+	else return false;
 }
 
 //////////////////////////////////////////////////////////////////// PJ
@@ -233,14 +246,9 @@ void Interaccion::rebote(Personaje& h, Final* p, VidasRecolectadas& v)
 }
 void Interaccion::rebote(Personaje& h, Pincho *p, VidasRecolectadas& v)
 {
-	bool b1, b2, b3, b4;
-	b1 = DistHitbox(h.hitbox, p->hitbox.top_r);
-	b2 = DistHitbox(h.hitbox, p->hitbox.top_l);
-	b3 = DistHitbox(h.hitbox, p->hitbox.bot_r);
-	b4 = DistHitbox(h.hitbox, p->hitbox.bot_l);
-	if (b1 || b2 || b3 || b4) {
+	if (ColisionGen(p->hitbox, h.hitbox, v)) {
 		v.reduceVida();
-		h.setColor(1, 1, 1);
+		h.setColor(0, 1, 1);
 	}
 }
 void Interaccion::rebote(Personaje& h, BolaFuego* b, VidasRecolectadas& v)
@@ -344,62 +352,70 @@ void Interaccion::colision(Personaje& h, Misiles& m, VidasRecolectadas& v) {
 //Enemigos y listas
 void Interaccion::colision(Personaje& h, ListaEnemigos le, VidasRecolectadas& v)
 {
-	for (int i = 0; i < le.numero; i++)
-		colision(h, *le.lista[i], v);
+	for (int i = 0; i < le.numero; i++) {
+		if (le.lista[i]->cosa == 3) {
+			Babosa* p;
+			p = dynamic_cast <Babosa*> (le.lista[i]);
+			Interaccion::colision(h, p, v);
+		}
+		else if (le.lista[i]->cosa == 4) {
+			Bomber* p;
+			p = dynamic_cast <Bomber*> (le.lista[i]);
+			Interaccion::colision(h, p, v);
+		}
+		else if (le.lista[i]->cosa == 5) {
+			Tentaculo* p;
+			p = dynamic_cast <Tentaculo*> (le.lista[i]);
+			Interaccion::colision(h, p, v);
+		}
+		else
+			colision(h, *le.lista[i], v);
+	}
 }
 void Interaccion::colision(Personaje& h, Enemigo& ene, VidasRecolectadas& v) {
-	float dist1 = DistSeg(ene.hitbox, h.hitbox.top_l),
-		dist2 = DistSeg(ene.hitbox, h.hitbox.top_r),
-		dist3 = DistSeg(ene.hitbox, h.hitbox.bot_l),
-		dist4 = DistSeg(ene.hitbox, h.hitbox.bot_r);
-	if (dist1 < 0.2 || dist2 < 0.2 || dist3 < 0.2 || dist4 < 0.2) {
+	if (ColisionGen(ene.hitbox, h.hitbox, v)) {
 		v.reduceVida();
-		//h.setColor(0, 1, 1);
+		h.setColor(0, 1, 1);
 	}
 }
 void Interaccion::colision(Personaje& h, EnemigoDisp& e, VidasRecolectadas& v)
 {
-	float dist1 = DistSeg(e.hitbox, h.hitbox.top_l),
+	/*float dist1 = DistSeg(e.hitbox, h.hitbox.top_l),
 		dist2 = DistSeg(e.hitbox, h.hitbox.top_r),
 		dist3 = DistSeg(e.hitbox, h.hitbox.bot_l),
 		dist4 = DistSeg(e.hitbox, h.hitbox.bot_r);
 	if (dist1 < 0.2 || dist2 < 0.2 || dist3 < 0.2 || dist4 < 0.2) {
 		v.reduceVida();
 		h.setColor(0, 1, 0);
-	}
+	}*/
 }
-void Interaccion::colision(Personaje& h, Babosa& ene, VidasRecolectadas& v) {
-	float dist1 = DistSeg(ene.hitbox, h.hitbox.top_l),
-		dist2 = DistSeg(ene.hitbox, h.hitbox.top_r),
-		dist3 = DistSeg(ene.hitbox, h.hitbox.bot_l),
-		dist4 = DistSeg(ene.hitbox, h.hitbox.bot_r);
-	if (dist1 < 0.2 || dist2 < 0.2 || dist3 < 0.2 || dist4 < 0.2) {
+void Interaccion::colision(Personaje& h, Babosa* ene, VidasRecolectadas& v) {
+	if (ColisionGen(ene->hitbox, h.hitbox, v)) {
 		v.reduceVida();
 		h.setColor(0, 1, 0);
 	}
-	Vector2D dist = ene.getPos() - h.getPos();
+	Vector2D dist = ene->getPos() - h.getPos();
 	if (dist.modulo() < 5) {
-		ene.cerca = 1;
+		ene->cerca = 1;
 	}
 	else
-		ene.cerca = 0;
-	if (ene.getPos().x < h.getPos().x)
-		ene.prx = 0;
+		ene->cerca = 0;
+	if (ene->getPos().x < h.getPos().x)
+		ene->prx = 0;
 	else {
-		;
-		ene.prx = 1;
+		ene->prx = 1;
 	}
-	if (ene.getPos().y < h.getPos().y + h.altura / 2)
-		ene.pry = 0;
+	if (ene->getPos().y < h.getPos().y + h.altura / 2)
+		ene->pry = 0;
 	else
-		ene.pry = 1;
+		ene->pry = 1;
 }
-void Interaccion::colision(Personaje& h, Tentaculo& ene, VidasRecolectadas& v) {
+void Interaccion::colision(Personaje& h, Tentaculo* ene, VidasRecolectadas& v) {
 	for (int i = 0; i < 3; i++) {
-		float dist1 = DistSeg(ene.hitbox[i], h.hitbox.top_l),
-			dist2 = DistSeg(ene.hitbox[i], h.hitbox.top_r),
-			dist3 = DistSeg(ene.hitbox[i], h.hitbox.bot_l),
-			dist4 = DistSeg(ene.hitbox[i], h.hitbox.bot_r);
+		float dist1 = DistSeg(ene->hitbox[i], h.hitbox.top_l),
+			dist2 = DistSeg(ene->hitbox[i], h.hitbox.top_r),
+			dist3 = DistSeg(ene->hitbox[i], h.hitbox.bot_l),
+			dist4 = DistSeg(ene->hitbox[i], h.hitbox.bot_r);
 		if (dist1 < 0.2 || dist2 < 0.2 || dist3 < 0.2 || dist4 < 0.2) {
 			v.reduceVida();
 			h.setColor(0, 1, 0);
@@ -407,25 +423,21 @@ void Interaccion::colision(Personaje& h, Tentaculo& ene, VidasRecolectadas& v) {
 
 	}
 }//3 hitboxes
-void Interaccion::colision(Personaje& h, Bomber& ene, VidasRecolectadas& v) {
-	float dist1 = DistSeg(ene.hitbox, h.hitbox.top_l),
-		dist2 = DistSeg(ene.hitbox, h.hitbox.top_r),
-		dist3 = DistSeg(ene.hitbox, h.hitbox.bot_l),
-		dist4 = DistSeg(ene.hitbox, h.hitbox.bot_r);
-	if (dist1 < 0.2 || dist2 < 0.2 || dist3 < 0.2 || dist4 < 0.2) {
+void Interaccion::colision(Personaje& h, Bomber* ene, VidasRecolectadas& v) {
+	if (ColisionGen(ene->hitbox, h.hitbox, v)) {
 		v.reduceVida();
 		h.setColor(0, 1, 0);
 	}
 
-	if ((h.getPos() - ene.getPos()).modulo() < 4) {
-		ene.flag = 1;
+	if ((h.getPos() - ene->getPos()).modulo() < 4) {
+		ene->flag = 1;
 	}
-	if (ene.flag) {
-		ene.temp--;
-		ene.setVel(0, 0);
+	if (ene->flag) {
+		ene->temp--;
+		ene->setVel(0, 0);
 	}
-	if (ene.temp == 0) {
-		ene.altura = 6;
+	if (ene->temp == 0) {
+		ene->altura = 6;
 		//v.reduceVida();		//arreglar esto
 	}
 }
@@ -1381,36 +1393,50 @@ void Interaccion::choque(Misiles& d, BolaFuego b)
 void Interaccion::dispara(ListaEnemigos le, ListaDisparos ld)
 {
 	for (int i = 0; i < le.numero; i++)
-		dispara(*le.lista[i], ld);
+		dispara(le.lista[i], ld);
 }
-void Interaccion::dispara(Enemigo& e, ListaDisparos ld)
+void Interaccion::dispara(Enemigo* e, ListaDisparos ld)
 {
-	//
+	if (e->cosa == 1) {
+		EnemigoDisp* ene;
+		ene = dynamic_cast <EnemigoDisp*> (e);
+		Interaccion::dispara(ene, ld);
+	}
+	else if (e->cosa == 2) {
+		Tank* ene;
+		ene = dynamic_cast <Tank*> (e);
+		Interaccion::dispara(ene, ld);
+	}
+	else if (e->cosa == 6) {
+		BossFinal* ene;
+		ene = dynamic_cast <BossFinal*> (e);
+		Interaccion::dispara(ene, ld);
+	}
 }
-void Interaccion::dispara(EnemigoDisp& e, ListaDisparos ld)
+void Interaccion::dispara(EnemigoDisp* e, ListaDisparos ld)
 {
-	ld.agregar(e.dispEnem1);
+	ld.agregar(e->dispEnem1);
 }
-void Interaccion::dispara(Tank& t, ListaDisparos ld)
+void Interaccion::dispara(Tank* t, ListaDisparos ld)
 {
-	ld.agregar(t.dispTank1);
-	ld.agregar(t.dispTank2);
-	ld.agregar(t.dispTank3);
-	ld.agregar(t.dispTank4);
-	ld.agregar(t.dispTank5);
+	ld.agregar(t->dispTank1);
+	ld.agregar(t->dispTank2);
+	ld.agregar(t->dispTank3);
+	ld.agregar(t->dispTank4);
+	ld.agregar(t->dispTank5);
 }
-void Interaccion::dispara(BossFinal& b, ListaDisparos ld)
+void Interaccion::dispara(BossFinal* b, ListaDisparos ld)
 {
-	ld.agregar(b.misil1);
-	ld.agregar(b.misil2);
-	ld.agregar(b.misil3);
-	ld.agregar(b.misil4);
-	ld.agregar(b.misil5);
-	ld.agregar(b.misil6);
-	ld.agregar(b.misil7);
-	ld.agregar(b.misil8);
-	ld.agregar(b.misil9);
-	ld.agregar(b.misil10);
+	ld.agregar(b->misil1);
+	ld.agregar(b->misil2);
+	ld.agregar(b->misil3);
+	ld.agregar(b->misil4);
+	ld.agregar(b->misil5);
+	ld.agregar(b->misil6);
+	ld.agregar(b->misil7);
+	ld.agregar(b->misil8);
+	ld.agregar(b->misil9);
+	ld.agregar(b->misil10);
 }
 ////////////////////////////////////////////////////////////////////
 

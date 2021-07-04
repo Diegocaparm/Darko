@@ -12,6 +12,7 @@
 class Interaccion
 {
 public:
+	static bool ColisionGen(Hitbox& ene, Hitbox& h, VidasRecolectadas& v);
 	//////////////////////////////////////////////////////////////////// PJ
 	//Entorno
 	static void rebote(Personaje& h, ListaSolidos ls, VidasRecolectadas& v);
@@ -40,9 +41,9 @@ public:
 	static void colision(Personaje& h, ListaEnemigos le, VidasRecolectadas& v);
 	static void colision(Personaje& h, Enemigo& e, VidasRecolectadas& v);
 	static void colision(Personaje& h, EnemigoDisp& e, VidasRecolectadas& v);
-	static void colision(Personaje& h, Babosa& b, VidasRecolectadas&);
-	static void colision(Personaje& h, Bomber& b, VidasRecolectadas& v);
-	static void colision(Personaje& h, Tentaculo& t, VidasRecolectadas&);//arreglar
+	static void colision(Personaje& h, Babosa* b, VidasRecolectadas&);
+	static void colision(Personaje& h, Bomber* b, VidasRecolectadas& v);
+	static void colision(Personaje& h, Tentaculo* t, VidasRecolectadas&);//arreglar
 	static void colision(Personaje& h, Tank& t, VidasRecolectadas& v);
 	static void colision(Personaje& h, BossFinal& b, VidasRecolectadas& v);
 	////////////////////////////////////////////////////////////////////
@@ -166,10 +167,10 @@ public:
 	static void choque(Misiles& d, BolaFuego b);
 	//Invocación de disparos desde cada enemigo
 	static void dispara(ListaEnemigos le, ListaDisparos ld);
-	static void dispara(Enemigo& e, ListaDisparos ld);
-	static void dispara(EnemigoDisp& e, ListaDisparos ld);
-	static void dispara(Tank& t, ListaDisparos ld);
-	static void dispara(BossFinal& b, ListaDisparos ld);
+	static void dispara(Enemigo* e, ListaDisparos ld);
+	static void dispara(EnemigoDisp* e, ListaDisparos ld);
+	static void dispara(Tank* t, ListaDisparos ld);
+	static void dispara(BossFinal* b, ListaDisparos ld);
 	////////////////////////////////////////////////////////////////////
 };
 	

@@ -375,9 +375,9 @@ void EnemigoDisp::mueve(float t)
 	if (temp < 120) {		//40 para 1 seg
 		temp++;
 		if (temp == 120) {		//volver a disparar
-			/*dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);
-			dispEnem1->setVel(-dispEnem1->vel + velocidad.x, 0.0f);
-			dispEnem1->flagdibujar = 1;*/
+			dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);
+			dispEnem1->setVel(-dispEnem1->getVelDef() + velocidad.x, 0.0f);
+			//dispEnem1->flagdibujar = 1;
 		}
 	}
 	else {

@@ -16,7 +16,7 @@ public:
     void dibuja();
     void mueve(float t);
     int getNivel();
-    DisparosAmigos* bala = new DisparosAmigos(posicion.x, posicion.y);
+    //DisparosAmigos* bala = new DisparosAmigos(posicion.x, posicion.y);
 
     friend class Interaccion;
     friend class Nivel;

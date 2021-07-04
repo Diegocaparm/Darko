@@ -11,7 +11,7 @@ protected:
     int cosa = 0;   //1 disp, 2 tank, 3 babosa, 4 bomber, 5 tent, 6 boss
     int tempdmg = 0, flagdmg = 0, flagesp = 0, vida = 0;	////////////////////////////////////
     float altura = 0.5;   //altura, radio, longitud
-    int temp = 0, sentido = 1;	//temp contador para disparar	sentido=0 izq =1 dcha
+    int temp = 40, sentido = 1;	//temp contador para disparar	sentido=0 izq =1 dcha
 public:
     Enemigo();
     virtual void dibuja();
