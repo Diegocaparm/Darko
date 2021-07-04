@@ -3,6 +3,8 @@
 #include "Disparos.h"
 #include <math.h>
 #define pi 3.14159265359
+#include "ETSIDI.h"
+using ETSIDI::SpriteSequence;
 
 //Enemigo herencia de OBJETOMOVIL
 class Enemigo : public ObjetoMovil
@@ -12,11 +14,13 @@ protected:
     int tempdmg = 0, flagdmg = 0, flagesp = 0, vida = 0;	////////////////////////////////////
     float altura = 0.5;   //altura, radio, longitud
     int temp = 40, sentido = 1;	//temp contador para disparar	sentido=0 izq =1 dcha
+    int var=0; //variable para cambiar de sprite cada seg
 public:
     Enemigo();
     virtual void dibuja();
     virtual void mueve(float t);
     friend class Interaccion;
+
 };
 //EnemigoDisp herencia de ENEMIGO
 class EnemigoDisp : public Enemigo
@@ -27,6 +31,7 @@ public:
     void mueve(float t);
     DisparosEnemigos* dispEnem1 = new DisparosEnemigos(posicion.x, posicion.y);
     friend class Interaccion;
+    SpriteSequence sprite{ "bin/imagenes/frankfvect.png", 2 };
 };
 //Babosa herencia de ENEMIGO
 class Babosa : public Enemigo
@@ -39,6 +44,7 @@ public:
     void dibuja();
     void mueve(float t);
     friend class Interaccion;
+    SpriteSequence sprite{ "bin/imagenes/babfvect.png", 2 };
 };
 //Bomber herencia de ENEMIGO
 class Bomber : public Enemigo
@@ -50,6 +56,7 @@ public:
     void mueve(float t);
 
     friend class Interaccion;
+    SpriteSequence sprite{ "bin/imagenes/bomberfvect.png", 2 };
 };
 //Tentáculo herencia de ENEMIGO
 class Tentaculo : public Enemigo
@@ -63,6 +70,7 @@ public:
     void dibuja();
     void mueve(float t);
     friend class Interaccion;
+   // SpriteSequence sprite{ "bin/imagenes/tentfvect.png", 3 };
 };
 //Tank herencia de ENEMIGO
 class Tank : public Enemigo
@@ -78,6 +86,7 @@ public:
         * dispTank4 = new DisparosEnemigos(posicion.x, posicion.y),
         * dispTank5 = new DisparosEnemigos(posicion.x, posicion.y);
     friend class Interaccion;
+    SpriteSequence sprite{ "bin/imagenes/tanquefvect.png", 1 };
 };
 //BossFinal herencia de TANK
 class BossFinal : public Tank
@@ -97,4 +106,5 @@ public:
         * misil9 = new Misiles(posicion.x, posicion.y + altura / 2),
         * misil10 = new Misiles(posicion.x, posicion.y + altura / 2);
     friend class Interaccion;
+    SpriteSequence sprite{ "bin/imagenes/megatanquefvect.png", 1 };
 };

@@ -17,6 +17,7 @@ public:
 	virtual void setPos(float x, float y);				//Set Posicion
 	virtual Vector2D getPos();							//retorna Posicion
 	friend class Interaccion;
+	int varm = 0;
 };
 //Corazon herencia de Recolectable
 class Corazon :public Recolectable
@@ -34,7 +35,7 @@ public:
 class Moneda : public Recolectable
 {
 private:
-	SpriteSequence sprite{ "bin/imagenes/moneda.png", 7 };
+	SpriteSequence sprite{ "bin/imagenes/moneda1.png", 7 };
 public:
 	Moneda();
 	Moneda(float x, float y);
@@ -83,6 +84,7 @@ class Dinero
 protected:
 	Moneda* lista[MAX_MONEDAS];
 	int numero;
+
 public:
 	Dinero();							//Constructor
 	bool agregar(Moneda* d);			//Agrega Moneda
@@ -102,6 +104,7 @@ private:
 	SpriteSequence nUnidad{ "bin/imagenes/numero.png",10 };
 	SpriteSequence nDecena{ "bin/imagenes/numero.png",10 };
 	Vector2D pos;
+
 public:
 	DineroRecolectados();
 	void mueve(float t, Vector2D v);

@@ -13,7 +13,8 @@ EnemigoDisp::EnemigoDisp(float px, float py) {
 	setPos(px, py);
 	setAc(0, -9.8f);
 	dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);	//esta aqui para que este bien la posicion del disparo inicial
-
+	sprite.setCenter(1, 0.3);
+	sprite.setSize(2.5, 2.5);
 }
 Babosa::Babosa(float px, float py) {
 	cosa = 3;
@@ -21,6 +22,8 @@ Babosa::Babosa(float px, float py) {
 	vida = 5;
 	setColor(2, 0, 0);
 	setPos(px, py);
+	sprite.setCenter(1.25,1.25);
+	sprite.setSize(2, 2);
 }
 Bomber::Bomber(float px, float py) {
 	cosa = 4;
@@ -29,6 +32,8 @@ Bomber::Bomber(float px, float py) {
 	setColor(200, 100, 0);
 	setPos(px, py);
 	setAc(0, -9.8f);
+	sprite.setCenter(2, 0.3);
+	sprite.setSize(4, 4);
 }
 Tentaculo::Tentaculo(float px, float py) {
 	cosa = 5;
@@ -36,6 +41,8 @@ Tentaculo::Tentaculo(float px, float py) {
 	vida = 19;
 	setColor(150, 0, 0);
 	setPos(px, py);
+	//sprite.setCenter(1, 0);
+	//sprite.setSize(2, 2);
 }
 Tank::Tank() {}
 Tank::Tank(float px, float py) {
@@ -60,6 +67,8 @@ Tank::Tank(float px, float py) {
 	dispTank3->setColor(10, 0, 0);
 	dispTank4->setColor(10, 0, 0);
 	dispTank5->setColor(10, 0, 0);
+	sprite.setCenter(5, 0.5);
+	sprite.setSize(10, 10);
 }
 BossFinal::BossFinal(float px, float py) {
 	cosa = 6;
@@ -92,6 +101,8 @@ BossFinal::BossFinal(float px, float py) {
 	misil8->setColor(10, 0, 0);
 	misil9->setColor(10, 0, 0);
 	misil10->setColor(10, 0, 0);
+	sprite.setCenter(5, 0.5);
+	sprite.setSize(10, 10);
 }
 
 //Método dibuja de cada enemigo
@@ -104,7 +115,7 @@ void EnemigoDisp::dibuja()
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
 	glColor3f(color.r, color.g, color.b);
-	glRotatef(-90, 1, 0, 0);		//dibujar persona
+	/*glRotatef(-90, 1, 0, 0);		//dibujar persona
 	glTranslatef(-0.2, 0, 0);
 	glutSolidCylinder(0.1, altura / 3, 30, 30);
 	glTranslatef(0.4, 0, 0);
@@ -116,7 +127,15 @@ void EnemigoDisp::dibuja()
 	//glutSolidTeapot(altura/6);
 	glutSolidSphere(altura / 6, 30, 30);
 	glTranslatef(0, 0, -altura * 5 / 6);
-	//glRotatef(90, 1, 0, 0);
+	//glRotatef(90, 1, 0, 0);*/
+	//gestion de direccion y animacion
+	if (velocidad.x > 0.01)sprite.flip(true, false);
+	if (velocidad.x < -0.01)sprite.flip(false, false);
+	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
+		sprite.setState(0);
+	//else if (sprite.getState() == 0)
+		//sprite.setState(0, true);
+	sprite.draw();
 	glPopMatrix();
 
 	//Añadido por Miguel (Dibuja los bordes de choque)
@@ -147,9 +166,17 @@ void Babosa::dibuja() {
 	glPushMatrix();
 	glColor3f(color.r, color.g, color.b);
 	glTranslatef(posicion.x, posicion.y, 0);
-	glRotatef(-90, 0, 1, 0);
-	glutSolidCylinder(altura / 3, altura, 30, 30);
-	//glRotatef(90, 0, 1, 0);
+	//glRotatef(-90, 0, 1, 0);
+	//glutSolidCylinder(altura / 3, altura, 30, 30);
+	//gestion de direccion y animacion
+	if (velocidad.x > 0.01)sprite.flip(true, false);
+	if (velocidad.x < -0.01)sprite.flip(false, false);
+	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
+		sprite.setState(0);
+	else if (sprite.getState() == 0)
+		sprite.setState(1, false);
+	sprite.draw();
+	glRotatef(90, 0, 1, 0);
 	glPopMatrix();
 
 	glPushMatrix();
@@ -180,7 +207,16 @@ void Bomber::dibuja()
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
 	glColor3f(color.r, color.g, color.b);
-	glutSolidSphere(altura, 30, 30);
+	//glutSolidSphere(altura, 30, 30);
+	//gestion de direccion y animacion
+	if (velocidad.x > 0.01)sprite.flip(true, false);
+	if (velocidad.x < -0.01)sprite.flip(false, false);
+	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
+		sprite.setState(0);
+	else if (sprite.getState() == 0)
+		sprite.setState(1, false);
+		//sprite.collides();
+	sprite.draw();
 	glPopMatrix();
 
 	//Añadido por Miguel (Dibuja los bordes de choque)
@@ -225,7 +261,15 @@ void Tentaculo::dibuja() {
 	glRotatef(angulo, 0, 1, 0);
 	glutSolidCylinder(altura / 8, altura, 30, 30);
 	glutSolidSphere(altura / 8, 30, 30);
+	/*if (velocidad.x > 0.01)sprite.flip(false, false);
+	if (velocidad.x < -0.01)sprite.flip(true, false);
+	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
+		sprite.setState(0);
+	else if (sprite.getState() == 0)
+		sprite.setState(1, false);
+	sprite.draw();*/
 	glPopMatrix();
+
 
 	glPushMatrix();
 	//glTranslatef(posicion.x, posicion.y, 0);
@@ -299,10 +343,17 @@ void Tank::dibuja()
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
 	glColor3f(color.r, color.g, color.b);
-	glRotatef(-90, 1, 0, 0);		//dibujar persona
+	/*glRotatef(-90, 1, 0, 0);		//dibujar persona
 	glutSolidCylinder(altura / 3, altura / 3, 30, 30);
 	glTranslatef(0, 0, altura / 3);
-	glutSolidSphere(altura / 3, 30, 30);
+	glutSolidSphere(altura / 3, 30, 30);*/
+	if (velocidad.x > 0.01)sprite.flip(true, false);
+	if (velocidad.x < -0.01)sprite.flip(false, false);
+	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
+	sprite.setState(0);
+	else if (sprite.getState() == 0)
+	sprite.setState(1, false);
+	sprite.draw();
 	glPopMatrix();
 
 	glPushMatrix();
@@ -333,10 +384,17 @@ void BossFinal::dibuja()
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
 	glColor3f(color.r, color.g, color.b);
-	glRotatef(-90, 1, 0, 0);		//dibujar persona
+	if (velocidad.x > 0.01)sprite.flip(true, false);
+	if (velocidad.x < -0.01)sprite.flip(false, false);
+	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
+		sprite.setState(0);
+	else if (sprite.getState() == 0)
+		sprite.setState(1, false);
+	sprite.draw();
+	/*glRotatef(-90, 1, 0, 0);		//dibujar persona
 	glutSolidCylinder(altura / 3, altura / 3, 30, 30);
 	glTranslatef(0, 0, altura / 3);
-	glutSolidSphere(altura / 3, 30, 30);
+	glutSolidSphere(altura / 3, 30, 30);*/
 	glPopMatrix();
 
 	glPushMatrix();
@@ -370,6 +428,14 @@ void Enemigo::mueve(float t)
 void EnemigoDisp::mueve(float t)
 {
 	ObjetoMovil::mueve(t);
+
+	if (var < 10)
+		var++;
+	else
+	{
+		sprite.loop();
+		var = 0;
+	}
 
 	//Disparo de los enemigos cada 3 segundos
 	if (temp < 120) {		//40 para 1 seg
@@ -415,6 +481,7 @@ void EnemigoDisp::mueve(float t)
 }
 void Babosa::mueve(float t) {
 	ObjetoMovil::mueve(t);
+	//if interaccioon entre enemigo pj= true, cambia de sprite
 
 	if (cerca) {
 		if (prx)
@@ -507,6 +574,7 @@ void Tentaculo::mueve(float t) {
 	/*posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
 	velocidad = velocidad + aceleracion * t;
 	velocidad.x = aceleracion.x = 0;*/      //creo que se puede quitar todo
+	//sprite.loop();
 
 	int lim = 15;
 	if (angulo > lim)

@@ -1,7 +1,7 @@
 #include "Solidos.h"
 #include "freeglut.h"
 
-//Constructores de los sÃ³lidos varios
+//Constructores de los sólidos varios
 Solidos::Solidos()
 {
 
@@ -56,7 +56,7 @@ Pincho::Pincho(float px, float py) {
 	e4.x = posicion.x + 1.3;		e4.y = posicion.y - 0;
 	hitbox.setPos(e1, e2, e3, e4);*/
 }
-BolaFuego::BolaFuego(float px, float py, float limtop, float limbot)
+BolaFuego::BolaFuego(float px, float py, float limtop, float limbot) : fireball("bin/imagenes/fireball.png", 4, 3)
 {
 	//radio = 0.75f;
 	setCosa(6);
@@ -67,7 +67,7 @@ BolaFuego::BolaFuego(float px, float py, float limtop, float limbot)
 	setColor(1, 0, 0);
 }
 
-//MÃ©todos virtuales de Solidos
+//Métodos virtuales de Solidos
 void Solidos::setColor(Byte r, Byte g, Byte b)
 {
 	color.r = r;
@@ -88,7 +88,7 @@ int Solidos::getCosa() {
 	return cosa;
 }
 
-//MÃ©todos virtuales de Pared
+//Métodos virtuales de Pared
 void Pared::setLims(float x1, float y1, float x2, float y2)
 {
 	limite1.x = x1;
@@ -131,7 +131,7 @@ float Pared::distancia(Vector2D punto, Vector2D* direccion)
 	return distancia;
 }
 
-//MÃ©todos propios de Pared
+//Métodos propios de Pared
 bool Pared::operator==(Pared p)
 {
 	if (limite1 == p.limite1 && limite2 == p.limite2) {
@@ -139,7 +139,7 @@ bool Pared::operator==(Pared p)
 	}
 	return false;
 }
-//MÃ©todos propios de PlatMovil
+//Métodos propios de PlatMovil
 void PlatMovil::mueve(float t)
 {
 	limite1 = limite1 + vel * t; //Movemos el limite 1 con la velocidad indicada
@@ -156,12 +156,12 @@ void PlatMovil::mueve(float t)
 		vel.y = -vel.y;
 	}
 }
-//MÃ©todos propios de Suelo
+//Métodos propios de Suelo
 void Suelo::dibuja()
 {
-	//Pintamos aquÃ­ el sprite que sea
+	//Pintamos aquí el sprite que sea
 }
-//MÃ©todos propios de Pinchos
+//Métodos propios de Pinchos
 void Pincho::dibuja()
 {
 	glEnable(GL_TEXTURE_2D);
@@ -177,19 +177,52 @@ void Pincho::dibuja()
 	glEnd();
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
+
+	glPushMatrix();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
+	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
+	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
+	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
+	glEnd();
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
+	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
+	glEnd();
+	glPopMatrix();
 }
-//MÃ©todos propios de BolaFuego
+//Métodos propios de BolaFuego
 void BolaFuego::dibuja()
 {
 	//Dibujo
+	//Dimensiones del sprite
+	fireball.setCenter(2, 2);
+	fireball.setSize(4, 4);
+
+	//Dibujo
 	glPushMatrix();
-	glColor3f(color.r, color.g, color.b);
 	glTranslatef(posicion.x, posicion.y, 0.5);
-	glutWireSphere(0.75f, 15, 15);
+	fireball.draw();
+	fireball.loop();
+	glPopMatrix();
 	glPopMatrix();
 }
 void BolaFuego::mueve(float t)
 {
+	if (vel.y > 0.01)fireball.flip(true, false);
+	if (vel.y < -0.01)fireball.flip(true, true);
+	if ((vel.y < 0.01) && (vel.y > -0.01))
+		fireball.setState(0);
 	if ((posicion.y > borde.y) || (posicion.y < borde.x)) //Si superamos limtop o  bajamos de limbot
 	{
 		vel.y = -vel.y;

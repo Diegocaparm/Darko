@@ -1,9 +1,11 @@
 #include "Personaje.h"
 
 Personaje::Personaje() {
-	setPos(-4, 11);		//-4 o 180
+	setPos(-4, 16);		//-4 o 180
 	setAc(0, -9.8);
 	setColor(1, 1, 0);
+	sprite.setCenter(1.5, 0);
+	sprite.setSize(3, 3);
 	//bala->setPos(posicion.x, posicion.y + altura * 2 / 3);
 }
 
@@ -11,7 +13,7 @@ void Personaje::dibuja() {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
 	glColor3f(color.r, color.g, color.b);
-	glRotatef(-90, 1, 0, 0);		//dibujar persona
+	/*glRotatef(-90, 1, 0, 0);		//dibujar persona
 	glTranslatef(-0.2, 0, 0);
 	glutSolidCylinder(0.1, altura / 3, 30, 30);
 	glTranslatef(0.4, 0, 0);
@@ -21,7 +23,16 @@ void Personaje::dibuja() {
 	glTranslatef(0, 0, altura / 2);
 	glutSolidSphere(altura / 6, 30, 30);
 	glTranslatef(0, 0, -altura * 5 / 6);
-	glRotatef(90, 1, 0, 0);
+	glRotatef(90, 1, 0, 0);*/
+	//gestion de direccion y animacion
+	if (velocidad.x > 0.01)sprite.flip(false, false);
+	if (velocidad.x < -0.01)sprite.flip(true, false);
+	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
+		sprite.setState(0);
+	else if (sprite.getState() == 0)
+		sprite.setState(1, false);
+	sprite.draw();
+
 	glPopMatrix();
 
 	//Añadido por Miguel (Dibuja los bordes de choque)

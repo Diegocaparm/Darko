@@ -1,8 +1,9 @@
 #include "Nivel.h"
+#include "freeglut.h"
 
 void Nivel::dibuja()
 {	//Creamos la cámara
-	gluLookAt(hombre.getPos().x, 11.5, z_ojo+20,  // posicion del ojo  
+	gluLookAt(hombre.getPos().x, 11.5, z_ojo,  // posicion del ojo  
 		hombre.getPos().x, 7.5f, 0.0,      // hacia que punto mira  (hombre.posicion.y + 8)
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
@@ -76,7 +77,8 @@ void Nivel::inicializa()
 	y_ojo = 7.5;
 	z_ojo = 30;
 
-	nivel = hombre.getNivel();
+	//nivel = hombre.getNivel();
+	nivel = 3;
 	cargarnivel();
 }
 
@@ -84,6 +86,19 @@ bool Nivel::cargarnivel()
 {
 	if (nivel == 1)
 	{
+		//background
+		/*glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo_rojo.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex2f(-10, 0);
+		glTexCoord2d(1, 1); glVertex2f(10, 0);
+		glTexCoord2d(1, 0); glVertex2f(10, 15);
+		glTexCoord2d(0, 0); glVertex2f(-10, 15);
+		glEnd();
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);*/
 		//Agregamos los suelos
 		solidos.agregar(new Pared(50.0f, 0.0f, -30.0f, 0.0f, 0, 100, 0));
 		solidos.agregar(new Suelo(-30.0f, 0.0f, 50.0f, -10.0f));

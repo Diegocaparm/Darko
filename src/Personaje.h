@@ -1,10 +1,12 @@
 #pragma once
 #include "Disparos.h"
 #include "ListaDisparos.h"
+#include "ETSIDI.h"
+using ETSIDI::SpriteSequence;// para usar el sprite del hombre
 class Personaje : public ObjetoMovil
 {
 private:
-    float altura = 1.8f;
+    float altura = 2.5f;
     int salto = 1;
     int sentido = 0;
     int flag = 0;
@@ -17,6 +19,7 @@ public:
     void mueve(float t);
     int getNivel();
     //DisparosAmigos* bala = new DisparosAmigos(posicion.x, posicion.y);
+    SpriteSequence sprite{ "bin/imagenes/darkoespfvect.png", 2 };
 
     friend class Interaccion;
     friend class Nivel;

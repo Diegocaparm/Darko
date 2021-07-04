@@ -25,8 +25,8 @@ Moneda::Moneda(float x, float y)
 {
 	setPos(x, y);
 	//Recolectable(x, y);
-	sprite.setCenter(1, 0);
-	sprite.setSize(2, 2);
+	sprite.setCenter(0.75, 0);
+	sprite.setSize(1.5, 1.5);
 }
 Vidas::Vidas()
 {

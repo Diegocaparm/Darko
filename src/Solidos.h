@@ -1,7 +1,8 @@
 #pragma once
 #include "Hitbox.h"
 #include "ColorRGB.h"
-
+#include "ETSIDI.h"
+using ETSIDI::SpriteSequence;
 class Solidos
 {
 protected:
@@ -18,6 +19,7 @@ public:
 	void setCosa(int);
 	int getCosa();
 	friend class Interaccion;
+
 };
 //Pared herencia de SOLIDO
 class Pared : public Solidos
@@ -82,6 +84,7 @@ public:
 	void dibuja();
 	void mueve(float t);
 	friend class Interaccion;
+	SpriteSequence fireball;
 };
 
 
