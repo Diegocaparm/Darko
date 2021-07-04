@@ -109,13 +109,13 @@ public:
 	//void rebote(BossFinal& bf, Caja c);
 	//Espada y disparos buenos
 	static void colision(Espada& esp, ListaEnemigos le);
-	static void colision(Espada& esp, Enemigo& e);
-	static void colision(Espada& esp, EnemigoDisp& e);
-	static void colision(Espada& esp, Babosa& b);
-	static void colision(Espada& esp, Bomber& b);
-	static void colision(Espada& esp, Tentaculo& t);
-	static void colision(Espada& esp, Tank& t);
-	static void colision(Espada& esp, BossFinal& b);
+	static void colision(Espada& esp, Enemigo* e);
+	static void colision(Espada& esp, EnemigoDisp* e);
+	static void colision(Espada& esp, Babosa* b);
+	static void colision(Espada& esp, Bomber* b);
+	static void colision(Espada& esp, Tentaculo* t);
+	static void colision(Espada& esp, Tank* t);
+	static void colision(Espada& esp, BossFinal* b);
 	static void colision(ListaDisparos ld, ListaEnemigos le);
 	static void colision(Disparos& d, Enemigo& e); //Este vale
 	static void colision(Disparos& d, EnemigoDisp& e);

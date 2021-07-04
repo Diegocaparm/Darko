@@ -18,7 +18,10 @@ DisparosAmigos::DisparosAmigos(float px, float py, float vx, float vy) {
 	//la velocidad variable chunga
 	setVel(vel+vx,vy);
 }
-Espada::Espada() {}
+Espada::Espada() {
+	setColor(0, 1, 1);
+	radio = 1.5f;
+}
 Espada::Espada(float px, float py) {
 	Disparos(px, py);
 	radio = 1.5f;
@@ -86,6 +89,15 @@ float Disparos::getRadio() {
 }
 
 //Métodos propios de Espada
+void Espada::dibuja() {
+	glPushMatrix();
+	glColor3f(color.r, color.g, color.b);
+	glTranslatef(posicion.x, posicion.y, 0);
+	glRotatef(90, -1, 0, 0);
+	glRotatef(angulo - 45, 0, 1, 0);
+	glutSolidCylinder(radio / 12, radio, 30, 30);
+	glPopMatrix();
+}
 void Espada::mueve(float t) {
 	ObjetoMovil::mueve(t);
 	if (flag) {

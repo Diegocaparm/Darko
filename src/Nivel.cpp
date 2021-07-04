@@ -78,7 +78,7 @@ void Nivel::inicializa()
 	z_ojo = 30;
 
 	//nivel = hombre.getNivel();
-	nivel = 3;
+	nivel = 1;
 	cargarnivel();
 }
 

@@ -38,6 +38,7 @@ class Espada : public Disparos
 public:
     Espada();
     Espada(float px, float py);
+    void dibuja();
     void mueve(float t);
     int getFlag();
     void setFlag(int);
