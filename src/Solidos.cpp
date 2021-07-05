@@ -110,8 +110,8 @@ void Pared::dibuja()
 	glColor3f(1, 1, 1);
 	glTexCoord2d(0.4, 0.2);		glVertex2f(limite1.x + 0.5, limite1.y - 1);
 	glTexCoord2d(0.6, 0.2);		glVertex2f(limite2.x + 0.5, limite2.y - 1);
-	glTexCoord2d(0.6, 0.05);	glVertex2f(limite2.x - 0.5, limite2.y + 0.5);
-	glTexCoord2d(0.4, 0.05);	glVertex2f(limite1.x - 0.5, limite1.y + 0.5);
+	glTexCoord2d(0.6, 0.1);	glVertex2f(limite2.x - 0.5, limite2.y + 0.5);
+	glTexCoord2d(0.4, 0.1);	glVertex2f(limite1.x - 0.5, limite1.y + 0.5);
 	glEnd();
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);

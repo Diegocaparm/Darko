@@ -23,6 +23,138 @@ void Nivel::dibuja()
 	enemigos.dibuja();
 	espada.dibuja();
 	disparos.dibuja();
+	glPushMatrix();
+	glTranslatef(hombre.getPos().x, 0, -1);
+	switch (hombre.flagnivel) {
+	case 1:
+		//mundo1
+		glEnable(GL_TEXTURE_2D);
+		
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo1.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glEnd();
+		break;
+	case 2:
+		//mundo1
+		glEnable(GL_TEXTURE_2D);
+
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo1.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glEnd();
+		break;
+	case 3:
+		//mundo1
+		glEnable(GL_TEXTURE_2D);
+
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo1.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glEnd();
+		break;
+
+	case 4:
+		//mundo2
+	glEnable(GL_TEXTURE_2D);
+	
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+	glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+	glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+	glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+	glEnd();
+		break;
+	case 5:
+		//mundo2
+		glEnable(GL_TEXTURE_2D);
+
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glEnd();
+		break;
+	case 6:
+		//mundo2
+		glEnable(GL_TEXTURE_2D);
+
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glEnd();
+		break;
+	case 7:
+		//mundo3
+
+	glEnable(GL_TEXTURE_2D);
+	
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/Espacio.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+	glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+	glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+	glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+	glEnd();
+	case 8:
+		//mundo3
+
+		glEnable(GL_TEXTURE_2D);
+
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/Espacio.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glEnd();
+	case 9:
+		//mundo3
+
+		glEnable(GL_TEXTURE_2D);
+
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/Espacio.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glEnd();
+	}
+	glPopMatrix();
 }
 
 void Nivel::mueve()
@@ -77,8 +209,7 @@ void Nivel::inicializa()
 	y_ojo = 7.5;
 	z_ojo = 30;
 
-	//nivel = hombre.getNivel();
-	nivel = 1;
+	nivel = hombre.getNivel();
 	cargarnivel();
 }
 
