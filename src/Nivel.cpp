@@ -34,11 +34,11 @@ void Nivel::dibuja()
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
-		glEnd();
+		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
+		glEnd(); 
 		break;
 	case 2:
 		//mundo1
@@ -48,10 +48,10 @@ void Nivel::dibuja()
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
 		glEnd();
 		break;
 	case 3:
@@ -62,10 +62,10 @@ void Nivel::dibuja()
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
 		glEnd();
 		break;
 
@@ -73,42 +73,42 @@ void Nivel::dibuja()
 		//mundo2
 	glEnable(GL_TEXTURE_2D);
 	
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/viaje2.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
-	glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-	glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-	glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-	glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+	glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
+	glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
+	glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
+	glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
 	glEnd();
 		break;
 	case 5:
 		//mundo2
 		glEnable(GL_TEXTURE_2D);
 
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/viaje2.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
 		glEnd();
 		break;
 	case 6:
 		//mundo2
 		glEnable(GL_TEXTURE_2D);
 
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/viaje2.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
 		glEnd();
 		break;
 	case 7:
@@ -120,10 +120,10 @@ void Nivel::dibuja()
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
-	glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-	glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-	glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-	glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+	glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
+	glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
+	glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
+	glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
 	glEnd();
 	case 8:
 		//mundo3
@@ -134,10 +134,10 @@ void Nivel::dibuja()
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
 		glEnd();
 	case 9:
 		//mundo3
@@ -148,10 +148,10 @@ void Nivel::dibuja()
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
 		glEnd();
 	}
 	glPopMatrix();
@@ -217,19 +217,6 @@ bool Nivel::cargarnivel()
 {
 	if (nivel == 1)
 	{
-		//background
-		/*glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo_rojo.png").id);
-		glDisable(GL_LIGHTING);
-		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex2f(-10, 0);
-		glTexCoord2d(1, 1); glVertex2f(10, 0);
-		glTexCoord2d(1, 0); glVertex2f(10, 15);
-		glTexCoord2d(0, 0); glVertex2f(-10, 15);
-		glEnd();
-		glEnable(GL_LIGHTING);
-		glDisable(GL_TEXTURE_2D);*/
 		//Agregamos los suelos
 		solidos.agregar(new Pared(50.0f, 0.0f, -30.0f, 0.0f, 0, 100, 0));
 		solidos.agregar(new Suelo(-30.0f, 0.0f, 50.0f, -10.0f));
