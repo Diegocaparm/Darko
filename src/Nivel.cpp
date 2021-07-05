@@ -34,11 +34,11 @@ void Nivel::dibuja()
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
-		glEnd(); 
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glEnd();
 		break;
 	case 2:
 		//mundo1
@@ -48,10 +48,10 @@ void Nivel::dibuja()
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
 		glEnd();
 		break;
 	case 3:
@@ -62,10 +62,10 @@ void Nivel::dibuja()
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
 		glEnd();
 		break;
 
@@ -73,42 +73,42 @@ void Nivel::dibuja()
 		//mundo2
 	glEnable(GL_TEXTURE_2D);
 	
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/viaje2.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
-	glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
-	glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
-	glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
-	glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
+	glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+	glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+	glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+	glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
 	glEnd();
 		break;
 	case 5:
 		//mundo2
 		glEnable(GL_TEXTURE_2D);
 
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/viaje2.png").id);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
 		glEnd();
 		break;
 	case 6:
 		//mundo2
 		glEnable(GL_TEXTURE_2D);
 
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/viaje2.png").id);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
 		glEnd();
 		break;
 	case 7:
@@ -120,10 +120,10 @@ void Nivel::dibuja()
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
-	glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
-	glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
-	glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
-	glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
+	glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+	glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+	glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+	glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
 	glEnd();
 	case 8:
 		//mundo3
@@ -134,10 +134,10 @@ void Nivel::dibuja()
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
 		glEnd();
 	case 9:
 		//mundo3
@@ -148,10 +148,10 @@ void Nivel::dibuja()
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(-30, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 0); glVertex3f(25, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
 		glEnd();
 	}
 	glPopMatrix();
@@ -217,6 +217,19 @@ bool Nivel::cargarnivel()
 {
 	if (nivel == 1)
 	{
+		//background
+		/*glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo_rojo.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex2f(-10, 0);
+		glTexCoord2d(1, 1); glVertex2f(10, 0);
+		glTexCoord2d(1, 0); glVertex2f(10, 15);
+		glTexCoord2d(0, 0); glVertex2f(-10, 15);
+		glEnd();
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);*/
 		//Agregamos los suelos
 		solidos.agregar(new Pared(50.0f, 0.0f, -30.0f, 0.0f, 0, 100, 0));
 		solidos.agregar(new Suelo(-30.0f, 0.0f, 50.0f, -10.0f));
@@ -251,7 +264,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(145.0f, 10.0f, 135.0f, 10.0f, 50, 150, 250));
 		solidos.agregar(new Pared(155.0f, 7.50f, 150.0f, 7.50f, 150, 150, 50));
 		solidos.agregar(new Pared(175.0f, 5.0f, 158.0f, 5.0f, 150, 150, 50));
-		solidos.agregar(new Pared(197.0f, 5.0f, 182.0f, 5.0f, 150, 150, 50));
+		solidos.agregar(new Final(197.0f, 5.0f, 182.0f, 5.0f));
 		//Agregamos los pinchos
 		solidos.agregar(new Pincho(25.0f, 0.0f));
 		solidos.agregar(new Pincho(40.0f, 10.0f)); //Pincho en plat3
@@ -263,13 +276,6 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pincho(165.0f, 5.0f)); //Pincho en plat8
 
 		//Creacion de los enemigos
-
-		//REALIDAD
-		EnemigoDisp E1(0.0f, 0.0f);
-		enemigos.agregar(&E1);
-		disparos.agregar(E1.dispEnem1);
-
-		//EXPECTATIVA
 		enemigos.agregar(new EnemigoDisp(0.0f,12.0f)); //Enemigo plat1
 		enemigos.agregar(new EnemigoDisp(15.0f, 0.0f));
 		enemigos.agregar(new EnemigoDisp(22.0f, 0.0f));
@@ -415,7 +421,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(69.0f, 7.0f, 65.0f, 7.0f, 50, 150, 250));
 		solidos.agregar(new Pared(75.0f, 9.0f, 71.0f, 9.0f, 50, 150, 250));
 		solidos.agregar(new Pared(82.0f, 10.5f, 78.0f, 10.50f, 50, 150, 250));//la siguiente plat es movil
-		solidos.agregar(new PlatMovil(86.0f, 8.0f, 92.0f, 8.0f, 3.0f, 0.0f, 86.0f, 8.0f, 120.0f, 8.0f, 50, 150, 250));//Plataforma móvil
+		solidos.agregar(new PlatMovil(86.0f, 8.0f, 92.0f, 8.0f, 3.0f, 0.0f, 86.0f, 8.0f, 120.0f, 8.0f));//Plataforma móvil
 		solidos.agregar(new Pared(145.0f, 2.50f, 137.0f, 2.50f, 50, 150, 250));
 		solidos.agregar(new Pared(175.0f, 2.5f, 167.5f, 2.5f, 150, 150, 250));
 		solidos.agregar(new Pared(183.0f, 6.0f, 177.0f, 6.0f, 50, 150, 250));//plat movil en esta posicion
@@ -423,7 +429,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(200.0f, 12.0f, 197.0f, 12.0f, 250, 150, 250));
 		solidos.agregar(new Pared(200.0f, 10.0f, 197.0f, 10.0f, 250, 150, 250));
 		solidos.agregar(new Pared(200.0f, 8.0f, 197.0f, 8.0f, 250, 150, 250));
-		solidos.agregar(new Pared(200.0f, 2.0f, 197.0f, 2.0f, 250, 150, 250));
+		solidos.agregar(new Final(200.0f, 2.0f, 197.0f, 2.0f));
 		//Agregamos los pinchos
 		solidos.agregar(new Pincho(25.0f, 0.0f));//suelo1
 		solidos.agregar(new Pincho(162.0f, 0.0f));//suelo4
@@ -771,6 +777,7 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(141.0f, 0.5f));
 		//Creaccion de Monedas del Pj
 		dinerosR.agregar(new Moneda(8.0f, 14.0f));
+		return true;
 	}
 	else if (nivel == 5)
 	{
@@ -811,9 +818,9 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(90.0f, 2.5f, 85.0f, 2.5f, 0, 100, 0)); //Plat4
 		solidos.agregar(new Pared(97.0f, 5.0f, 92.0f, 5.0f, 0, 100, 0)); //Plat5
 		solidos.agregar(new Pared(105.0f, 7.5f, 100.0f, 7.5f, 0, 100, 0)); //Plat6
-		solidos.agregar(new PlatMovil(142.0f, 11.0f, 148.0f, 11.0f, 5.0f, 1.0f, 135.0f, 9.0f, 150.0f, 12.0f, 50, 150, 250));//Arriba MAL
-		solidos.agregar(new PlatMovil(142.0f, 3.0f, 148.0f, 3.0f, 5.0f, -1.0f, 135.0f, 5.0f, 150.0f, 2.0f, 50, 150, 250));//Abajo BIEN
-		solidos.agregar(new PlatMovil(184.0f, 2.0f, 189.0f, 2.0f, 3.0f, 0.0f, 182.0f, 2.0f, 192.0f, 2.0f, 50, 150, 250));//Movil fin
+		solidos.agregar(new PlatMovil(142.0f, 11.0f, 148.0f, 11.0f, 5.0f, 1.0f, 135.0f, 9.0f, 150.0f, 12.0f));//Arriba MAL
+		solidos.agregar(new PlatMovil(142.0f, 3.0f, 148.0f, 3.0f, 5.0f, -1.0f, 135.0f, 5.0f, 150.0f, 2.0f));//Abajo BIEN
+		solidos.agregar(new PlatMovil(184.0f, 2.0f, 189.0f, 2.0f, 3.0f, 0.0f, 182.0f, 2.0f, 192.0f, 2.0f));//Movil fin
 		//Agregamos el resto de elementos
 		solidos.agregar(new Pincho(27.5f, 7.5f));
 		solidos.agregar(new Pincho(152.0f, 12.0f));
@@ -884,6 +891,7 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(178.0f, 3.0f));
 		//Creaccion de Monedas del Pj
 		dinerosR.agregar(new Moneda(8.0f, 14.0f));
+		return true;
 	}
 	else if (nivel == 6)
 	{
@@ -910,7 +918,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(92.0f, 2.5f, 86.0f, 2.5f, 50, 150, 50));        //plat7
 		solidos.agregar(new Pared(104.0f, 5.0f, 96.0f, 5.0f, 50, 150, 50));       //plat8
 		solidos.agregar(new Pared(115.0f, 7.5f, 107.0f, 7.5f, 50, 150, 50));      //plat9
-		solidos.agregar(new PlatMovil(117.0f, 7.5f, 122.0f, 7.5f, 5.0f, 0.0f, 119.5f, 7.5f, 150.5f, 7.5f, 50, 150, 250));
+		solidos.agregar(new PlatMovil(117.0f, 7.5f, 122.0f, 7.5f, 5.0f, 0.0f, 119.5f, 7.5f, 150.5f, 7.5f));
 		solidos.agregar(new Pared(175.0f, 7.5f, 155.0f, 7.5f, 50, 150, 50));      //plat11
 		//Agregamos el resto de elementos
 		solidos.agregar(new Pincho(63.5f, 0.0f)); //suelo1
@@ -990,6 +998,7 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(171.0f, 8.0f));
 		//Creaccion de Monedas del Pj
 		dinerosR.agregar(new Moneda(8.0f, 14.0f));
+		return true;
 	}
 	else if (nivel == 7)
 	{
@@ -1010,7 +1019,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(60.0f, 2.5f, 60.0f, -0.01f, 5, 150, 25));    //PARED 3 
 		solidos.agregar(new Pared(67.0f, -10.0f, 67.0f, 2.5f, 5, 150, 25));    //pozo 4 drcha
 		//Agregamos las plataformas aéreas
-		solidos.agregar(new PlatMovil(27.0f, 2.5f, 32.0f, 2.5f, 5.0f, 0.0f, 27.0f, 2.5f, 39.0f, 2.5f, 50, 150, 250));//plat1
+		solidos.agregar(new PlatMovil(27.0f, 2.5f, 32.0f, 2.5f, 5.0f, 0.0f, 27.0f, 2.5f, 39.0f, 2.5f));//plat1
 		solidos.agregar(new Pared(75.0f, 5.0f, 69.0f, 5.0f, 50, 150, 50));     //plat2
 		solidos.agregar(new Pared(86.0f, 7.5f, 77.0f, 7.5f, 50, 150, 50));     //plat3
 		solidos.agregar(new Pared(92.0f, 10.0f, 87.0f, 10.0f, 50, 150, 50));   //plat4
@@ -1021,7 +1030,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(130.0f, 7.5f, 125.0f, 7.5f, 50, 150, 50));   //plat9
 		solidos.agregar(new Pared(138.0f, 5.0f, 132.0f, 5.0f, 50, 150, 50));   //plat10
 		solidos.agregar(new Pared(141.0f, 2.5f, 135.0f, 2.5f, 50, 150, 50));   //plat11
-		solidos.agregar(new PlatMovil(145.0f, 2.5f, 150.0f, 2.5f, 5.0f, 0.0f, 143.0f, 2.5f, 163.0f, 2.5f, 50, 150, 250));  //plat12
+		solidos.agregar(new PlatMovil(145.0f, 2.5f, 150.0f, 2.5f, 5.0f, 0.0f, 143.0f, 2.5f, 163.0f, 2.5f));  //plat12
 		solidos.agregar(new Pared(173.0f, 2.5f, 167.0f, 2.5f, 50, 150, 50));   //plat13
 		solidos.agregar(new Pared(180.0f, 5.0f, 175.0f, 5.0f, 50, 150, 50));   //plat14
 		solidos.agregar(new Pared(187.0f, 7.5f, 182.0f, 7.5f, 50, 150, 50));   //plat15
@@ -1112,6 +1121,7 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(177.5f, 5.5f)); //plat14
 		//Creaccion de Monedas del Pj
 		dinerosR.agregar(new Moneda(8.0f, 14.0f));
+		return true;
 	}
 	else if (nivel == 8)
 	{
@@ -1261,6 +1271,7 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(193.0f, 13.0f));  //plat7
 		//Creaccion de Monedas del Pj
 		dinerosR.agregar(new Moneda(8.0f, 14.0f));
+		return true;
 	}
 	else if (nivel == 9)
 	{
@@ -1401,7 +1412,9 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(141.0f, 0.5f));
 		//Creaccion de Monedas del Pj
 		dinerosR.agregar(new Moneda(8.0f, 14.0f));
+		return true;
 	}
+	else return false;
 }
 
 void Nivel::teclaUp(unsigned char key)
@@ -1450,7 +1463,7 @@ void Nivel::teclaDown(unsigned char key)
 	case 'z':
 		hombre.setColor(1, 0, 0);
 	case ' ':
-		DisparosAmigos * dispam = new DisparosAmigos(hombre.getPos().x, hombre.getPos().y + 1.8 * 2 / 3, hombre.velocidad.x, 0);
+		DisparosAmigos * dispam = new DisparosAmigos(hombre.getPos().x, hombre.getPos().y + 1.8f * 2 / 3, hombre.velocidad.x, 0);
 		if (disparos.agregar(dispam))
 			hombre.setVel(0,hombre.velocidad.y);
 		else delete dispam;

@@ -2,9 +2,9 @@
 
 Personaje::Personaje() {
 	setPos(-4, 16);		//-4 o 180
-	setAc(0, -9.8);
+	setAc(0, -9.8f);
 	setColor(1, 1, 0);
-	sprite.setCenter(1.5, 0);
+	sprite.setCenter(1.5f, 0);
 	sprite.setSize(3, 3);
 	//bala->setPos(posicion.x, posicion.y + altura * 2 / 3);
 }

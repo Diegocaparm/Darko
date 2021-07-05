@@ -16,10 +16,9 @@ Pared::Pared(float x1, float y1, float x2, float y2, Byte r, Byte g, Byte b)
 	setLims(x1, y1, x2, y2);
 	setColor(r, g, b);
 }
-PlatMovil::PlatMovil(float lim1x, float lim1y, float lim2x, float lim2y, float vx, float vy, float ex1x, float ex1y, float ex2x, float ex2y, Byte r, Byte g, Byte b)
+PlatMovil::PlatMovil(float lim1x, float lim1y, float lim2x, float lim2y, float vx, float vy, float ex1x, float ex1y, float ex2x, float ex2y)
 {
 	setCosa(2);
-	setColor(r, g, b);
 	setLims(lim1x, lim1y, lim2x, lim2y);
 	vel = { vx,vy };
 	extremo1 = { ex1x,ex1y };
@@ -50,10 +49,10 @@ Pincho::Pincho(float px, float py) {
 	//Situamos los pinchos
 	setPos(px, py);
 	//Situamos las esquimnas de su hitbox
-	hitbox.bot_l.x = posicion.x - 1.3;	hitbox.bot_l.y = posicion.y;
-	hitbox.bot_r.x = posicion.x + 1.3;	hitbox.bot_r.y = posicion.y;
-	hitbox.top_l.x = posicion.x - 1.3;	hitbox.top_l.y = posicion.y + 2.5f;
-	hitbox.top_r.x = posicion.x + 1.3;	hitbox.top_r.y = posicion.y + 2.5f;
+	hitbox.bot_l.x = posicion.x - 1.3f;	hitbox.bot_l.y = posicion.y;
+	hitbox.bot_r.x = posicion.x + 1.3f;	hitbox.bot_r.y = posicion.y;
+	hitbox.top_l.x = posicion.x - 1.3f;	hitbox.top_l.y = posicion.y + 2.5f;
+	hitbox.top_r.x = posicion.x + 1.3f;	hitbox.top_r.y = posicion.y + 2.5f;
 	/*Vector2D e1, e2, e3, e4;
 	e1.x = posicion.x - 1.3;		e1.y = posicion.y + 2.5;
 	e2.x = posicion.x + 1.3;		e2.y = posicion.y + 2.5;
@@ -108,10 +107,10 @@ void Pared::dibuja()
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
-	glTexCoord2d(0.4, 0.2);		glVertex2f(limite1.x + 0.5, limite1.y - 1);
-	glTexCoord2d(0.6, 0.2);		glVertex2f(limite2.x + 0.5, limite2.y - 1);
-	glTexCoord2d(0.6, 0.1);	glVertex2f(limite2.x - 0.5, limite2.y + 0.5);
-	glTexCoord2d(0.4, 0.1);	glVertex2f(limite1.x - 0.5, limite1.y + 0.5);
+	glTexCoord2d(0.4, 0.2);		glVertex2f(limite1.x + 0.5f, limite1.y - 1);
+	glTexCoord2d(0.6, 0.2);		glVertex2f(limite2.x + 0.5f, limite2.y - 1);
+	glTexCoord2d(0.6, 0.1);	glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
+	glTexCoord2d(0.4, 0.1);	glVertex2f(limite1.x - 0.5f, limite1.y + 0.5f);
 	glEnd();
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
@@ -164,24 +163,38 @@ void PlatMovil::mueve(float t)
 //Métodos propios de Suelo
 void Suelo::dibuja()
 {
-	//Pintamos aquí el sprite que sea
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo1.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0, 1);			glVertex2f(bajo1.x, bajo1.y);
+	glTexCoord2d(0.95, 1);		glVertex2f(bajo2.x, bajo2.y);
+	glTexCoord2d(0.95, 0.75);	glVertex2f(limite2.x, limite2.y);
+	glTexCoord2d(0, 0.75);		glVertex2f(limite1.x, limite1.y);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+}
+//Métodos propios de Final
+void Final::dibuja()
+{
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo1.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0.68, 0.4);	glVertex2f(limite1.x + 0.5f, limite1.y - 1);
+	glTexCoord2d(0.95, 0.4);	glVertex2f(limite2.x + 0.5f, limite2.y - 1);
+	glTexCoord2d(0.95, 0.3);	glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
+	glTexCoord2d(0.68, 0.3);	glVertex2f(limite1.x - 0.5f, limite1.y + 0.5f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
 }
 //Métodos propios de Pinchos
 void Pincho::dibuja()
 {
-	/*glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/pinchos.png").id);
-	glDisable(GL_LIGHTING);
-	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 1);
-
-	glTexCoord2d(0.25, 0.6);		glVertex3f(posicion.x - 2, posicion.y, 0.1);
-	glTexCoord2d(0.75, 0.6);		glVertex3f(posicion.x + 2, posicion.y, 0.1);
-	glTexCoord2d(0.75, 0.2);		glVertex3f(posicion.x + 2, posicion.y + 2, 0.1);
-	glTexCoord2d(0.25, 0.2);		glVertex3f(posicion.x - 2, posicion.y + 2, 0.1);
-	glEnd();
-	glEnable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);*/
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
 	sprite.setState(1, true);
@@ -215,7 +228,6 @@ void Pincho::dibuja()
 //Métodos propios de BolaFuego
 void BolaFuego::dibuja()
 {
-	//Dibujo
 	//Dimensiones del sprite
 	fireball.setCenter(2, 2);
 	fireball.setSize(4, 4);

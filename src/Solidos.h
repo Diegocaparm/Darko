@@ -42,7 +42,7 @@ private:
 	Vector2D vel;
 	Vector2D extremo1, extremo2;
 public:
-	PlatMovil(float, float, float, float, float, float, float, float, float, float, Byte, Byte, Byte); //Constructor completo
+	PlatMovil(float, float, float, float, float, float, float, float, float, float); //Constructor completo
 	void mueve(float);
 	friend class Interaccion;
 };
@@ -50,7 +50,7 @@ public:
 class Suelo : public Pared 
 {
 private:
-	Vector2D bajo1, bajo2;
+	Vector2D bajo1, bajo2; //Puntos de abajo del cuadrado (lim1, lim2, bajo1, bajo2)
 public:
 	Suelo(float limx1, float altura, float limx2, float bajo); //Constructor con anchura y altura
 	void dibuja();
@@ -61,6 +61,7 @@ class Final : public Pared
 {
 public:
 	Final(float x1, float y1, float x2, float y2); //Constructor propio
+	void dibuja();
 	friend class Interaccion;
 };
 //Pincho herencia de SOLIDO

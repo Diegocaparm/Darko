@@ -113,7 +113,7 @@ void Enemigo::dibuja()
 void EnemigoDisp::dibuja()
 {
 	glPushMatrix();
-	glTranslatef(posicion.x, posicion.y, 0);
+	glTranslatef(posicion.x, posicion.y, 0.1);
 	glColor3f(color.r, color.g, color.b);
 	/*glRotatef(-90, 1, 0, 0);		//dibujar persona
 	glTranslatef(-0.2, 0, 0);

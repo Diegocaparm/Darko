@@ -1,10 +1,5 @@
 #pragma once
-#include "Disparos.h"
 #include "Enemigo.h"
-#include "ListaSolidos.h"
-
-#define MAX_NUM 1000
-#define MAX_DISP 100
 #define MAX_ENEM 100
 
 class ListaEnemigos
