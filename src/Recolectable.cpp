@@ -1,32 +1,45 @@
 #include "Recolectable.h"
 #include "freeglut.h"
 #include "Interaccion.h"
+#include "stdio.h"
 using ETSIDI::SpriteSequence;
 
 //Constructores de los distintos recolectables y sus listas
 Recolectable::Recolectable()
 {
+	radio = 1.5;
+	setPos(0, 0);
 }
 Recolectable::Recolectable(float x, float y)
 {
+	radio = 1.5;
 	setPos(x, y);
 }
 Corazon::Corazon()
 {
+	radio = 1.5;
+	setPos(0, 0);
+	sprite.setCenter(1, 0);
+	sprite.setSize(2, 2);
 }
 Corazon::Corazon(float x, float y)
 {
+	radio = 1.5;
 	setPos(x, y);
+	sprite.setCenter(1, 0);
+	sprite.setSize(2, 2);
 }
 Moneda::Moneda()
 {
+	radio = 1.5;
+	setPos(0, 0);
 }
 Moneda::Moneda(float x, float y)
 {
+	radio = 1.5;
 	setPos(x, y);
-	//Recolectable(x, y);
-	sprite.setCenter(0.75, 0);
-	sprite.setSize(1.5, 1.5);
+	sprite.setCenter(1, 0);
+	sprite.setSize(2, 2);
 }
 Vidas::Vidas()
 {
@@ -34,10 +47,7 @@ Vidas::Vidas()
 	for (int i = 0; i < MAX_VIDAS; i++)
 		lista[i] = 0;
 }
-VidasRecolectadas::VidasRecolectadas()
-{
 
-}
 Dinero::Dinero()
 {
 	numero = 0;
@@ -72,28 +82,19 @@ void Corazon::dibuja()
 {
 	//Pendiente a editar
 
-	/*glPushMatrix();
+	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
 	glColor3f(1.0f, 0.0f, 0.0f);
-	glutSolidSphere(radio, 20, 20);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/corazon.png").id);
-	glDisable(GL_LIGHTING);
-	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 1);
-	glTexCoord2d(0, 1); glVertex2f(0, 0);
-	glTexCoord2d(1, 1); glVertex2f(1.5, 0);
-	glTexCoord2d(1, 0); glVertex2f(1.5, 1.5);
-	glTexCoord2d(0, 0); glVertex2f(0, 1.5);
-	glEnd();
-	glEnable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);
-	glPopMatrix();*/
+	//glutSolidSphere(radio, 20, 20);
+	sprite.setState(1, true);
+	sprite.draw();
+	glPopMatrix();
 }
 void Corazon::mueve(float t)
 {
 	sprite.loop();
 }
+
 //Metodos propios de Moneda
 void Moneda::dibuja()
 {
@@ -159,6 +160,17 @@ void Vidas::eliminar(Corazon* e)
 			return;
 		}
 }
+
+Corazon* Vidas::recoleccion(Personaje h)
+{
+	for (int i = 0; i < numero; i++)
+	{
+		if (Interaccion::recoleccion(*(lista[i]), h))
+			return lista[i];
+	}
+	return 0; //no hay colisión
+}
+
 Corazon* Vidas::operator[](int i)
 {
 	if (i >= numero)//si me paso, devuelvo la ultima
@@ -177,6 +189,7 @@ bool VidasRecolectadas::agregar(Corazon* c)
 	if (numero < MAX_VIDAS) {
 		lista[numero++] = c; // último puesto sin rellenar
 		contador_vidas++;
+		printf("%d\n", contador_vidas);
 	}
 	else
 		return false; // capacidad máxima alcanzada
@@ -199,6 +212,7 @@ void VidasRecolectadas::mueve(float t, float posx)
 }
 int VidasRecolectadas::getVidas()
 {
+	printf("%d", contador_vidas);
 	return contador_vidas;
 }
 int VidasRecolectadas::getVidasInicial()
@@ -258,6 +272,17 @@ void Dinero::eliminar(Moneda* e)
 			return;
 		}
 }
+
+Moneda* Dinero::recoleccion(Personaje h)
+{
+	for (int i = 0; i < numero; i++)
+	{
+		if (Interaccion::recoleccion(*lista[i], h))
+			return lista[i];
+	}
+	return 0; //no hay colisión
+}
+
 Moneda* Dinero::operator[](int i)
 {
 	if (i >= numero)//si me paso, devuelvo la ultima
@@ -283,7 +308,7 @@ void DineroRecolectados::dibujaContador()
 {
 
 	glPushMatrix();
-	glTranslatef(pos.x + 10, 12, 1);
+	glTranslatef(pos.x + 8.5, 13.5, 1);
 
 	//glutSolidSphere(0.2, 20, 20);
 	for (int i = 0; i < 10; i++) {
@@ -311,7 +336,7 @@ void DineroRecolectados::dibujaContador()
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(pos.x + 8, 12, 1);
+	glTranslatef(pos.x + 6.5, 13.5, 1);
 	nDecena.draw();
 	glPopMatrix();
 }

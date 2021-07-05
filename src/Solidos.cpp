@@ -39,8 +39,13 @@ Final::Final(float x1, float y1, float x2, float y2)
 	setCosa(4);
 	setLims(x1, y1, x2, y2);
 }
-Pincho::Pincho() {};
+Pincho::Pincho() {
+	sprite.setCenter(1, 0);
+	sprite.setSize(2, 2);
+};
 Pincho::Pincho(float px, float py) {
+	sprite.setCenter(2.5, 1.5);
+	sprite.setSize(5, 5);
 	setCosa(5);
 	//Situamos los pinchos
 	setPos(px, py);
@@ -164,7 +169,7 @@ void Suelo::dibuja()
 //Métodos propios de Pinchos
 void Pincho::dibuja()
 {
-	glEnable(GL_TEXTURE_2D);
+	/*glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/pinchos.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
@@ -176,8 +181,14 @@ void Pincho::dibuja()
 	glTexCoord2d(0.25, 0.2);		glVertex3f(posicion.x - 2, posicion.y + 2, 0.1);
 	glEnd();
 	glEnable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);
+	glDisable(GL_TEXTURE_2D);*/
+	glPushMatrix();
+	glTranslatef(posicion.x, posicion.y, 0);
+	sprite.setState(1, true);
+	sprite.draw();
+	glPopMatrix();
 
+	//Hitbox
 	glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);

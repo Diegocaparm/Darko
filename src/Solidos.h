@@ -68,6 +68,7 @@ class Pincho : public Solidos
 {
 protected:
 	Hitbox hitbox;
+	SpriteSequence sprite{ "bin/imagenes/pinchos.png", 1 };
 public:
 	Pincho();
 	Pincho(float px, float py);

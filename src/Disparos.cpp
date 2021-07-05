@@ -13,7 +13,7 @@ Disparos::Disparos(float px, float py) {
 	setAc(0, -0.5);
 }
 DisparosAmigos::DisparosAmigos(float px, float py, float vx, float vy) {
-	Disparos(px, py);
+	setPos(px, py);
 	radio = 0.15f;
 	//la velocidad variable chunga
 	setVel(vel+vx,vy);
@@ -28,7 +28,8 @@ Espada::Espada(float px, float py) {
 }
 DisparosEnemigos::DisparosEnemigos() {}
 DisparosEnemigos::DisparosEnemigos(float px, float py) {
-	Disparos(px, py);
+	//Disparos(px, py);
+	setPos(px, py);
 	radio = 0.25f;
 	setVel(-vel, 0);
 }

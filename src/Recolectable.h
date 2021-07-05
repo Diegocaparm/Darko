@@ -2,15 +2,20 @@
 #include "ETSIDI.h"
 #include "Vector2D.h"
 #include "Caja.h"
-#include "Personaje.h"
+//#include "Personaje.h"
 #define MAX_VIDAS 5
 #define MAX_MONEDAS 50
+
+//Declaracion directa
+class Personaje;
+
 using ETSIDI::SpriteSequence;
 
 class Recolectable
 {
 protected:
 	Vector2D posicion;
+	float radio;
 public:
 	Recolectable();
 	Recolectable(float x, float y);
@@ -35,7 +40,7 @@ public:
 class Moneda : public Recolectable
 {
 private:
-	SpriteSequence sprite{ "bin/imagenes/moneda1.png", 7 };
+	SpriteSequence sprite{ "bin/imagenes/moneda.png", 7 };
 public:
 	Moneda();
 	Moneda(float x, float y);
@@ -58,6 +63,7 @@ public:
 	void destruirContenido();
 	void eliminar(int index);
 	void eliminar(Corazon* e);
+	Corazon* recoleccion(Personaje h);
 	Corazon* operator [] (int i);
 	friend class Interaccion;
 };
@@ -68,7 +74,7 @@ private:
 	int vida_inicial = 3;
 	int contador_vidas = -1;
 public:
-	VidasRecolectadas();
+	
 	bool agregar(Corazon* c);			//Agrega Un Corazon Recolectado
 	void eliminar(int i);
 	void mueve(float t, float posx);
@@ -93,6 +99,7 @@ public:
 	void destruirContenido();
 	void eliminar(int index);
 	void eliminar(Moneda* d);
+	Moneda* recoleccion(Personaje h);
 	Moneda* operator [] (int i);
 	friend class Interaccion;
 };

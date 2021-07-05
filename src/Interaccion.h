@@ -26,9 +26,10 @@ public:
 	static void rebote(Personaje& h, Caja c, VidasRecolectadas& v);
 	//Recolectables
 	static bool recoleccion(Corazon& c, Personaje h);
-	static Corazon* recoleccion(Vidas& v, Personaje h);
+	//static Corazon* recoleccion(Vidas& v, Personaje h);
 	static bool recoleccion(Moneda& m, Personaje h);
-	static Moneda* recoleccion(Dinero& d, Personaje h);
+	//static Moneda* recoleccion(Dinero& d, Personaje h);
+	
 	//Espada y disparos buenos
 	static void mov(Espada& esp, Personaje& h);
 	//si eso un metodo dispara flambeante pero por ahora vacio

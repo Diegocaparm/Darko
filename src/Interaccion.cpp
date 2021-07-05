@@ -282,32 +282,30 @@ void Interaccion::rebote(Personaje& h, Caja c, VidasRecolectadas& v)
 //Recolectables
 bool Interaccion::recoleccion(Corazon& c, Personaje h)
 {
-	bool dentro = DistHitbox(h.hitbox, c.posicion);
-	return dentro;
+	/*bool dentro = DistHitbox(h.hitbox, c.posicion);
+	return dentro;*/
+	Vector2D pos = h.getPos(); //la posicion de la base del hombre
+	pos.y += h.altura / 2.0f; //posicion del centro
+	float distancia = (c.posicion - pos).modulo();
+	if (distancia < c.radio)
+		return true;
+	return false;
 }
-Corazon* Interaccion::recoleccion(Vidas& v,Personaje h)
-{
-	for (int i = 0; i < v.numero; i++)
-	{
-		if (Interaccion::recoleccion(*(v.lista[i]), h))
-			return v.lista[i];
-	}
-	return 0; //no hay colisión
-}
+
+
 bool Interaccion::recoleccion(Moneda& m, Personaje h)
 {
-	bool dentro = DistHitbox(h.hitbox, m.posicion);
-	return dentro;
+	/*bool dentro = DistHitbox(h.hitbox, m.posicion);
+	return dentro;*/
+	Vector2D pos = h.getPos(); //la posicion de la base del hombre
+	pos.y += h.altura / 2.0f; //posicion del centro
+	float distancia = (m.posicion - pos).modulo();
+	if (distancia < m.radio)
+		return true;
+	return false;
 }
-Moneda* Interaccion::recoleccion(Dinero& d, Personaje h)
-{
-	for (int i = 0; i < d.numero; i++)
-	{
-		if (Interaccion::recoleccion(*d.lista[i], h))
-			return d.lista[i];
-	}
-	return 0; //no hay colisión
-}
+
+
 //Espada y disparos buenos
 void Interaccion::mov(Espada& esp, Personaje& h) {
 	esp.setPos(h.getPos().x, h.getPos().y + h.altura / 2);

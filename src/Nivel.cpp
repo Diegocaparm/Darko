@@ -58,13 +58,13 @@ void Nivel::mueve()
 
 	//Interaccion Pj con Vida y Monedas
 	//Elimina Vida recogida
-	Corazon* aux_c = Interaccion::recoleccion(vidas, hombre);
+	Corazon* aux_c = vidas.recoleccion(hombre);
 	if (aux_c != 0) {				//si alguna Vida ha chocado
 		vidas.eliminar(aux_c);
 		vidasR.agregar(new Corazon());
 	}
 	//Elimina Monedas recogidas
-	Moneda* aux_m = Interaccion::recoleccion(dineros, hombre);
+	Moneda* aux_m = dineros.recoleccion(hombre);
 	if (aux_m != 0) {				//si alguna Moneda ha chocado
 		dineros.eliminar(aux_m);
 		dinerosR.aumentaDinero();
@@ -222,7 +222,7 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(178.0f, 5.0f)); //Vida antes del jefe final
 
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 
 		//Creaccion de Monedas Recolectables
@@ -356,7 +356,7 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(170.0f, 2.5f)); //plat 8
 
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 
 		//Creaccion de Monedas Recolectables
@@ -492,7 +492,7 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(135.0f, 3.0f)); //suelo7
 		vidas.agregar(new Corazon(163.0f, 9.5f)); //plat12
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(-2.0f, 0.5f));//suelo1
@@ -629,7 +629,7 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(133.0f, 10.5f)); //suelo7
 		vidas.agregar(new Corazon(160.0f, 6.0f)); //plat12
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(17.0f, 8.0f));  //suelo2
@@ -742,7 +742,7 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(160.0f, 2.5f));
 		vidas.agregar(new Corazon(170.0f, 2.5f));
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(66.0f, 0.5f));
@@ -837,7 +837,7 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(130.0f, 8.0f)); //plat movil 10
 		vidas.agregar(new Corazon(76.0f, 10.5f)); //plat6
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(54.0f, 0.5f));  //suelo1
@@ -1101,7 +1101,7 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(107.0f, 10.5f)); //suelo4
 		vidas.agregar(new Corazon(141.0f, 8.0f)); //suelo6
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(0.0f, 13.0f));  //suelo1
@@ -1254,7 +1254,7 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(167.0f, 10.5f)); //suelo10
 		vidas.agregar(new Corazon(137.0f, 12.0f)); //suelo11
 		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
+		for (int i = 0; i < vidasR.getVidasInicial(); i++)
 			vidasR.agregar(new Corazon());
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(17.0f, 6.5f));  //suelo3

@@ -2,6 +2,7 @@
 #include "Disparos.h"
 #include "ListaDisparos.h"
 #include "ETSIDI.h"
+
 using ETSIDI::SpriteSequence;// para usar el sprite del hombre
 class Personaje : public ObjetoMovil
 {
@@ -27,5 +28,6 @@ public:
 
     friend class Solidos;
     friend class Pared;
+    //friend class Vida;
 };
 
