@@ -11,9 +11,9 @@ Changes v3.5
 @Diego y Mica
 Changes v3.4
     - Colocados los sprites de:
-    - Sólidos (suelo, plataformas, pinchos y bolas de fuego)
-    - Enemigos (faltan por mejorar babosas, tentaculos y bombers
-    - Personaje darko (a modo de prueba)
+        - Sólidos (suelo, plataformas, pinchos y bolas de fuego)
+        - Enemigos (faltan por mejorar babosas, tentaculos y bombers
+        - Personaje darko (a modo de prueba)
     
 @David
 Changes v3.3
