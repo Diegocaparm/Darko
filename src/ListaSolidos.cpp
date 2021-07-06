@@ -20,10 +20,10 @@ bool ListaSolidos::agregar(Solidos* s)
 		return false; //Capacidad máxima alcanzada
 	return true;
 }
-void ListaSolidos::dibuja()
+void ListaSolidos::dibuja(int mundo)
 {
 	for (int i = 0; i < numero; i++)
-		lista[i]->dibuja();
+		lista[i]->dibuja(mundo);
 }
 void ListaSolidos::mueve(float t)
 {

@@ -8,7 +8,6 @@ Personaje::Personaje() {
 	sprite.setSize(3, 3);
 	//bala->setPos(posicion.x, posicion.y + altura * 2 / 3);
 }
-
 void Personaje::dibuja() {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
@@ -59,7 +58,6 @@ void Personaje::dibuja() {
 	glEnd();
 	glPopMatrix();
 }
-
 void Personaje::mueve(float t) {
 	ObjetoMovil::mueve(t);
 	//velocidad horizontal
@@ -98,7 +96,6 @@ void Personaje::mueve(float t) {
 	e4.x = posicion.x + 0.3f;	e4.y = posicion.y - 0.0f;
 	hitbox.setPos(e1, e2, e3, e4);
 }
-
 int Personaje::getNivel()
 {
 	return flagnivel;

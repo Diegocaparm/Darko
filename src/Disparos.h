@@ -2,8 +2,7 @@
 #include "ObjetoMovil.h"
 #include "ColorRGB.h"
 
-class Disparos :
-    public ObjetoMovil
+class Disparos : public ObjetoMovil
 {
 protected:
     int cosa;
@@ -28,6 +27,7 @@ public:
 class DisparosAmigos : public Disparos
 {
 public:
+    DisparosAmigos();
     DisparosAmigos(float px, float py, float vx, float vy);
     friend class Interaccion;
 };
@@ -60,6 +60,7 @@ class Misiles : public DisparosEnemigos
     int prx=0, pry=0;		//posicion relativa al personaje principal
     int cerca = 0;		//=1 si esta a menos de 5m, cambia el movimiento
 public:
+    Misiles();
     Misiles(float px, float py);
     void mueve(float);
     

@@ -292,8 +292,6 @@ bool Interaccion::recoleccion(Corazon& c, Personaje h)
 		return true;
 	return false;
 }
-
-
 bool Interaccion::recoleccion(Moneda& m, Personaje h)
 {
 	/*bool dentro = DistHitbox(h.hitbox, m.posicion);
@@ -305,8 +303,6 @@ bool Interaccion::recoleccion(Moneda& m, Personaje h)
 		return true;
 	return false;
 }
-
-
 //Espada y disparos buenos
 void Interaccion::mov(Espada& esp, Personaje& h) {
 	esp.setPos(h.getPos().x, h.getPos().y + h.altura / 2);
@@ -751,7 +747,6 @@ void Interaccion::rebote(Bomber* e, Pared* p)
 	Enemigo* ene;
 	ene = dynamic_cast <Enemigo*> (e);
 	Interaccion::rebote(ene, p);
-	
 }
 void Interaccion::rebote(Bomber* b, PlatMovil* pm)
 {
@@ -1131,7 +1126,7 @@ void Interaccion::colision(ListaDisparos ld, ListaEnemigos le)
 void Interaccion::colision(Disparos* d, Enemigo& e)
 {
 	if (d->cosa == 1) {							// no esta entrando
-		d->setColor(1, 0, 0);
+		d->setColor(0, 0, 0);
 		DisparosAmigos* p;
 		p = dynamic_cast <DisparosAmigos*> (d);
 		Interaccion::colision(p, e);

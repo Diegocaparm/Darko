@@ -83,7 +83,7 @@ void Solidos::setPos(float px, float py)
 	posicion.x = px;
 	posicion.y = py;
 }
-void Solidos::dibuja() {} //Vacios para entrar en lista
+void Solidos::dibuja(int i) {} //Vacios para entrar en lista
 void Solidos::mueve(float t) {} //El de arriba y este
 void Solidos::setCosa(int i) {
 	cosa = i;
@@ -100,20 +100,31 @@ void Pared::setLims(float x1, float y1, float x2, float y2)
 	limite2.x = x2;
 	limite2.y = y2;
 }
-void Pared::dibuja()
+void Pared::dibuja(int i)
 {
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo1.png").id);
-	glDisable(GL_LIGHTING);
-	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 1);
-	glTexCoord2d(0.4, 0.2);		glVertex2f(limite1.x + 0.5f, limite1.y - 1);
-	glTexCoord2d(0.6, 0.2);		glVertex2f(limite2.x + 0.5f, limite2.y - 1);
-	glTexCoord2d(0.6, 0.1);	glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
-	glTexCoord2d(0.4, 0.1);	glVertex2f(limite1.x - 0.5f, limite1.y + 0.5f);
-	glEnd();
-	glEnable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);
+	if (i == 1)
+	{
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo1.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0.4, 0.2);		glVertex2f(limite1.x + 0.5f, limite1.y - 1);
+		glTexCoord2d(0.6, 0.2);		glVertex2f(limite2.x + 0.5f, limite2.y - 1);
+		glTexCoord2d(0.6, 0.1);	glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
+		glTexCoord2d(0.4, 0.1);	glVertex2f(limite1.x - 0.5f, limite1.y + 0.5f);
+		glEnd();
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
+	}
+	else if (i == 2)
+	{
+
+	}
+	else
+	{
+
+	}
 }
 float Pared::distancia(Vector2D punto, Vector2D* direccion)
 {
@@ -144,6 +155,21 @@ bool Pared::operator==(Pared p)
 	return false;
 }
 //Métodos propios de PlatMovil
+void PlatMovil::dibuja(int i)
+{
+	if (i == 1)
+	{
+
+	}
+	else if (i == 2)
+	{
+
+	}
+	else
+	{
+
+	}
+}
 void PlatMovil::mueve(float t)
 {
 	limite1 = limite1 + vel * t; //Movemos el limite 1 con la velocidad indicada
@@ -161,23 +187,34 @@ void PlatMovil::mueve(float t)
 	}
 }
 //Métodos propios de Suelo
-void Suelo::dibuja()
+void Suelo::dibuja(int i)
 {
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo1.png").id);
-	glDisable(GL_LIGHTING);
-	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 1);
-	glTexCoord2d(0.1, 1);			glVertex2f(bajo1.x, bajo1.y);
-	glTexCoord2d(0.95, 1);		glVertex2f(bajo2.x, bajo2.y);
-	glTexCoord2d(0.95, 0.75);	glVertex2f(limite2.x, limite2.y);
-	glTexCoord2d(0.1, 0.75);		glVertex2f(limite1.x, limite1.y);
-	glEnd();
-	glEnable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);
+	if (i == 1)
+	{
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo1.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0.1, 1);			glVertex2f(bajo1.x, bajo1.y);
+		glTexCoord2d(0.95, 1);		glVertex2f(bajo2.x, bajo2.y);
+		glTexCoord2d(0.95, 0.75);	glVertex2f(limite2.x, limite2.y);
+		glTexCoord2d(0.1, 0.75);		glVertex2f(limite1.x, limite1.y);
+		glEnd();
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
+	}
+	else if (i == 2)
+	{
+
+	}
+	else
+	{
+
+	}
 }
 //Métodos propios de Final
-void Final::dibuja()
+void Final::dibuja(int i)
 {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo1.png").id);
@@ -193,7 +230,7 @@ void Final::dibuja()
 	glDisable(GL_TEXTURE_2D);
 }
 //Métodos propios de Pinchos
-void Pincho::dibuja()
+void Pincho::dibuja(int i)
 {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
@@ -226,7 +263,7 @@ void Pincho::dibuja()
 	glPopMatrix();
 }
 //Métodos propios de BolaFuego
-void BolaFuego::dibuja()
+void BolaFuego::dibuja(int i)
 {
 	//Dimensiones del sprite
 	fireball.setCenter(2, 2);

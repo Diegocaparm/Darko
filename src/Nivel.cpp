@@ -7,9 +7,62 @@ void Nivel::dibuja()
 		hombre.getPos().x, 7.5f, 0.0,      // hacia que punto mira  (hombre.posicion.y + 8)
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
-	//Dibuja la estructura del nivel
-	caja.dibuja(); //Aqui le podemos pasar por parámetro mundo
-	solidos.dibuja(); //Idem a con la caja
+	nivel = hombre.getNivel();
+
+	if (nivel <= 3)
+	{
+		caja.dibuja(1);		//Dibujamos la caja del mundo 1
+		solidos.dibuja(1);	//Dibujamos los solidos del mundo 1
+		glPushMatrix();
+		glTranslatef(hombre.getPos().x, 0, -1);
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo1.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glEnd();
+		glPopMatrix();
+	}
+	else if (nivel > 3 && nivel <= 6)
+	{
+		caja.dibuja(2);		//Dibujamos la caja del mundo 2
+		solidos.dibuja(2);	//Dibujamos los solidos del mundo 2
+		glPushMatrix();
+		glTranslatef(hombre.getPos().x, 0, -1);
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glEnd();
+		glPopMatrix();
+	}
+	else
+	{
+		caja.dibuja(3);		//Dibujamos la caja del mundo 3
+		solidos.dibuja(3);	//Dibujamos los solidos del mundo 1
+		glPushMatrix();
+		glTranslatef(hombre.getPos().x, 0, -1);
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/Espacio.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
+		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
+		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
+		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
+		glEnd();
+		glPopMatrix();
+	}
 
 	//Dibuja Vida y Monedas
 	vidas.dibuja();			//Vidas del entorno
@@ -23,138 +76,6 @@ void Nivel::dibuja()
 	enemigos.dibuja();
 	espada.dibuja();
 	disparos.dibuja();
-	glPushMatrix();
-	glTranslatef(hombre.getPos().x, 0, -1);
-	switch (hombre.flagnivel) {
-	case 1:
-		//mundo1
-		glEnable(GL_TEXTURE_2D);
-		
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo1.png").id);
-		glDisable(GL_LIGHTING);
-		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
-		glEnd();
-		break;
-	case 2:
-		//mundo1
-		glEnable(GL_TEXTURE_2D);
-
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo1.png").id);
-		glDisable(GL_LIGHTING);
-		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
-		glEnd();
-		break;
-	case 3:
-		//mundo1
-		glEnable(GL_TEXTURE_2D);
-
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo1.png").id);
-		glDisable(GL_LIGHTING);
-		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
-		glEnd();
-		break;
-
-	case 4:
-		//mundo2
-	glEnable(GL_TEXTURE_2D);
-	
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
-	glDisable(GL_LIGHTING);
-	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 1);
-	glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-	glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-	glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-	glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
-	glEnd();
-		break;
-	case 5:
-		//mundo2
-		glEnable(GL_TEXTURE_2D);
-
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
-		glDisable(GL_LIGHTING);
-		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
-		glEnd();
-		break;
-	case 6:
-		//mundo2
-		glEnable(GL_TEXTURE_2D);
-
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo2.png").id);
-		glDisable(GL_LIGHTING);
-		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
-		glEnd();
-		break;
-	case 7:
-		//mundo3
-
-	glEnable(GL_TEXTURE_2D);
-	
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/Espacio.png").id);
-	glDisable(GL_LIGHTING);
-	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 1);
-	glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-	glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-	glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-	glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
-	glEnd();
-	case 8:
-		//mundo3
-
-		glEnable(GL_TEXTURE_2D);
-
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/Espacio.png").id);
-		glDisable(GL_LIGHTING);
-		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
-		glEnd();
-	case 9:
-		//mundo3
-
-		glEnable(GL_TEXTURE_2D);
-
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/Espacio.png").id);
-		glDisable(GL_LIGHTING);
-		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex3f(25, -10, -10);
-		glTexCoord2d(1, 1); glVertex3f(25, 25, -10);
-		glTexCoord2d(1, 0); glVertex3f(-30, 25, -10);
-		glTexCoord2d(0, 0); glVertex3f(-30, -10, -10);
-		glEnd();
-	}
-	glPopMatrix();
 }
 
 void Nivel::mueve()

@@ -13,7 +13,7 @@ private:
 public:
 	ListaSolidos();
 	bool agregar(Solidos* s);
-	void dibuja();
+	void dibuja(int i);
 	void mueve(float t);
 	void rebote(Personaje& pj, VidasRecolectadas& v);
 

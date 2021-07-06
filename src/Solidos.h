@@ -14,7 +14,7 @@ public:
 	//~Solidos();
 	virtual void setPos(float px, float py);
 	virtual void setColor(Byte r, Byte g, Byte b);
-	virtual void dibuja();
+	virtual void dibuja(int i);
 	virtual void mueve(float t);
 	void setCosa(int);
 	int getCosa();
@@ -30,7 +30,7 @@ public:
 	Pared();
 	Pared(float x1, float y1, float x2, float y2, Byte r, Byte g, Byte b); //Constructor automático
 	virtual void setLims(float x1, float y1, float x2, float y2); //Establece los dos limites de la plataforma
-	virtual void dibuja();
+	virtual void dibuja(int i);
 	virtual float distancia(Vector2D punto, Vector2D* direccion = 0);
 	bool operator ==(Pared);
 	friend class Interaccion;
@@ -43,6 +43,7 @@ private:
 	Vector2D extremo1, extremo2;
 public:
 	PlatMovil(float, float, float, float, float, float, float, float, float, float); //Constructor completo
+	void dibuja(int i);
 	void mueve(float);
 	friend class Interaccion;
 };
@@ -53,7 +54,7 @@ private:
 	Vector2D bajo1, bajo2; //Puntos de abajo del cuadrado (lim1, lim2, bajo1, bajo2)
 public:
 	Suelo(float limx1, float altura, float limx2, float bajo); //Constructor con anchura y altura
-	void dibuja();
+	void dibuja(int i);
 	friend class Interaccion;
 };
 //Final herencia de PARED
@@ -61,7 +62,7 @@ class Final : public Pared
 {
 public:
 	Final(float x1, float y1, float x2, float y2); //Constructor propio
-	void dibuja();
+	void dibuja(int i);
 	friend class Interaccion;
 };
 //Pincho herencia de SOLIDO
@@ -73,7 +74,7 @@ protected:
 public:
 	Pincho();
 	Pincho(float px, float py);
-	void dibuja();
+	void dibuja(int i);
 	friend class Interaccion;
 };
 //BolaFuego herencia de PINCHO
@@ -83,7 +84,7 @@ private:
 	Vector2D vel, borde;
 public:
 	BolaFuego(float px, float py, float limtop, float limbot);
-	void dibuja();
+	void dibuja(int i);
 	void mueve(float t);
 	friend class Interaccion;
 	SpriteSequence fireball;

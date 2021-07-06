@@ -6,7 +6,7 @@ class Caja
 	Pared suelo, techo, pared_izq, pared_dcha;
 public:
 	Caja();
-	void dibuja();
+	void dibuja(int i);
 	void Inicializa();
 	friend class Interaccion;
 };

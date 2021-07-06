@@ -12,6 +12,11 @@ Disparos::Disparos(float px, float py) {
 	//radio = 0.15f;
 	setAc(0, -0.5);
 }
+DisparosAmigos::DisparosAmigos()
+{
+	radio = 0.15f;
+	cosa = 1;
+}
 DisparosAmigos::DisparosAmigos(float px, float py, float vx, float vy) {
 	cosa = 1;
 	setPos(px, py);
@@ -35,6 +40,11 @@ DisparosEnemigos::DisparosEnemigos(float px, float py) {
 	setPos(px, py);
 	radio = 0.25f;
 	setVel(-vel, 0);
+}
+Misiles::Misiles()
+{
+	cosa = 3;
+	radio = 0.5f;
 }
 Misiles::Misiles(float px, float py) {
 	cosa = 3;
