@@ -138,8 +138,8 @@ void Interaccion::rebote(Personaje& h, Pared *p, VidasRecolectadas& v)
 }
 void Interaccion::rebote(Personaje& h, PlatMovil* pm, VidasRecolectadas& v)
 {
-	float xmin = pm->limite2.x;//izq
-	float xmax = pm->limite1.x;//dcha
+	float xmin = pm->limite1.x;//izq
+	float xmax = pm->limite2.x;//dcha
 	float ymin = pm->limite2.y;//ab
 	float ymax = pm->limite1.y - h.altura;//arr
 
@@ -160,8 +160,8 @@ void Interaccion::rebote(Personaje& h, PlatMovil* pm, VidasRecolectadas& v)
 			else
 				if (h.posicion.y < ymin) {
 					h.posicion.y = ymin;
-					h.velocidad.y = 0.0f;
-					//	h.aceleracion.y = -9.8f;
+					h.velocidad = pm->vel;
+					h.salto = 1;
 				}
 		}
 	}
