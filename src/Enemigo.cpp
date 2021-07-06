@@ -105,7 +105,7 @@ BossFinal::BossFinal(float px, float py) {
 	sprite.setSize(10, 10);
 }
 
-//MÃ©todo dibuja de cada enemigo
+//Método dibuja de cada enemigo
 void Enemigo::dibuja()
 {
 
@@ -138,7 +138,7 @@ void EnemigoDisp::dibuja()
 	sprite.draw();
 	glPopMatrix();
 
-	//AÃ±adido por Miguel (Dibuja los bordes de choque)
+	//Añadido por Miguel (Dibuja los bordes de choque)
 	glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
@@ -219,7 +219,7 @@ void Bomber::dibuja()
 	sprite.draw();
 	glPopMatrix();
 
-	//AÃ±adido por Miguel (Dibuja los bordes de choque)
+	//Añadido por Miguel (Dibuja los bordes de choque)
 	glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
@@ -421,7 +421,7 @@ void BossFinal::dibuja()
 	glPopMatrix();
 }
 
-//MÃ©todos mueve de cada enemigo
+//Métodos mueve de cada enemigo
 void Enemigo::mueve(float t)
 {
 }
@@ -458,7 +458,7 @@ void EnemigoDisp::mueve(float t)
 			velocidad.x = 1;
 	}
 
-	//AÃ±adido por Miguel (crea las paredes de choque)
+	//Añadido por Miguel (crea las paredes de choque)
 	Vector2D e1, e2, e3, e4;
 	e1.x = posicion.x - 0.3f;	e1.y = posicion.y + 2.0f;
 	e2.x = posicion.x + 0.3f;	e2.y = posicion.y + 2.0f;
@@ -549,7 +549,7 @@ void Bomber::mueve(float t)
 		velocidad.x = 1;
 	//}
 
-	//AÃ±adido por Miguel (crea las paredes de choque)
+	//Añadido por Miguel (crea las paredes de choque)
 	Vector2D e1, e2, e3, e4;
 	e1.x = posicion.x - altura;		e1.y = posicion.y + altura;
 	e2.x = posicion.x + altura;		e2.y = posicion.y + altura;

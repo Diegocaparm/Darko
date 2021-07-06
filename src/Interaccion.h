@@ -118,21 +118,21 @@ public:
 	static void colision(Espada& esp, Tank* t);
 	static void colision(Espada& esp, BossFinal* b);
 	static void colision(ListaDisparos ld, ListaEnemigos le);
-	static void colision(Disparos& d, Enemigo& e); //Este vale
-	static void colision(Disparos& d, EnemigoDisp& e);
-	static void colision(Disparos& d, Babosa& b);
-	static void colision(Disparos& d, Bomber& b);
-	static void colision(Disparos& d, Tentaculo& t);
-	static void colision(Disparos& d, Tank& t);
-	static void colision(Disparos& d, BossFinal& b);
-	static void colision(DisparosAmigos& d, ListaEnemigos& le);
-	static void colision(DisparosAmigos& d, Enemigo& e); //Este tmb
-	static void colision(DisparosAmigos& d, EnemigoDisp& e);
-	static void colision(DisparosAmigos& d, Babosa& b);
-	static void colision(DisparosAmigos& d, Bomber& b);
-	static void colision(DisparosAmigos& d, Tentaculo& t);
-	static void colision(DisparosAmigos& d, Tank& t);
-	static void colision(DisparosAmigos& d, BossFinal& b);
+	static void colision(Disparos* d, Enemigo& e); //Este vale
+	static void colision(Disparos* d, EnemigoDisp& e);
+	static void colision(Disparos* d, Babosa& b);
+	static void colision(Disparos* d, Bomber& b);
+	static void colision(Disparos* d, Tentaculo& t);
+	static void colision(Disparos* d, Tank& t);
+	static void colision(Disparos* d, BossFinal& b);
+	static void colision(DisparosAmigos* d, ListaEnemigos& le);
+	static void colision(DisparosAmigos* d, Enemigo& e); //Este tmb
+	static void colision(DisparosAmigos* d, EnemigoDisp& e);
+	/*static void colision(DisparosAmigos* d, Babosa& b);
+	static void colision(DisparosAmigos* d, Bomber& b);
+	static void colision(DisparosAmigos* d, Tentaculo& t);
+	static void colision(DisparosAmigos* d, Tank& t);
+	static void colision(DisparosAmigos* d, BossFinal& b);*/
 	////////////////////////////////////////////////////////////////////
 
 	//////////////////////////////////////////////////////////////////// Disparos
@@ -167,8 +167,8 @@ public:
 	static void choque(Misiles& d, Pincho s);
 	static void choque(Misiles& d, BolaFuego b);
 	//Invocación de disparos desde cada enemigo
-	static void dispara(ListaEnemigos le, ListaDisparos* ld);
-	static void dispara(Enemigo* e, ListaDisparos* ld);
+	static void dispara(ListaEnemigos le, ListaDisparos *ld);
+	static void dispara(Enemigo* e, ListaDisparos *ld);
 	static void dispara(EnemigoDisp* e, ListaDisparos* ld);
 	static void dispara(Tank* t, ListaDisparos* ld);
 	static void dispara(BossFinal* b, ListaDisparos* ld);

@@ -35,7 +35,7 @@ void Personaje::dibuja() {
 
 	glPopMatrix();
 
-	//AÃ±adido por Miguel (Dibuja los bordes de choque)
+	//Añadido por Miguel (Dibuja los bordes de choque)
 	glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
@@ -90,7 +90,7 @@ void Personaje::mueve(float t) {
 	if (velocidad.y < 0.3f && velocidad.y > -0.3f && sentido == 1 && salto == 0)
 		salto = 1;
 
-	//AÃ±adido por Miguel (crea las paredes hitbox)
+	//Añadido por Miguel (crea las paredes hitbox)
 	Vector2D e1, e2, e3, e4;
 	e1.x = posicion.x - 0.3f;	e1.y = posicion.y + 1.8f;
 	e2.x = posicion.x + 0.3f;	e2.y = posicion.y + 1.8f;
