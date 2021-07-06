@@ -97,17 +97,18 @@ void Interaccion::rebote(Personaje& h, Pared *p, VidasRecolectadas& v)
 			h.zonaV = 0;
 
 		if (h.posicion.x < xmax && h.posicion.x > xmin) {  //zona=0 abajo    zona=1 arriba
-			if (h.zonaV == 0) {
+			if (h.zonaV == 0) { //Esta abajo
 				if (h.posicion.y > ymax) {
 					h.posicion.y = ymax;
 					h.velocidad.y = 0.0f;
 					h.aceleracion.y = -9.8f;
 				}
 			}
-			else
+			else //Está arriba
 				if (h.posicion.y < ymin) {
 					h.posicion.y = ymin;
 					h.velocidad.y = 0.0f;
+					h.salto = 1;
 					//	h.aceleracion.y = -9.8f;
 				}
 		}

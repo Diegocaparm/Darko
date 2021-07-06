@@ -168,10 +168,10 @@ void Suelo::dibuja()
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
-	glTexCoord2d(0, 1);			glVertex2f(bajo1.x, bajo1.y);
+	glTexCoord2d(0.1, 1);			glVertex2f(bajo1.x, bajo1.y);
 	glTexCoord2d(0.95, 1);		glVertex2f(bajo2.x, bajo2.y);
 	glTexCoord2d(0.95, 0.75);	glVertex2f(limite2.x, limite2.y);
-	glTexCoord2d(0, 0.75);		glVertex2f(limite1.x, limite1.y);
+	glTexCoord2d(0.1, 0.75);		glVertex2f(limite1.x, limite1.y);
 	glEnd();
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);

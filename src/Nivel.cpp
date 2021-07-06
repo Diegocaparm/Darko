@@ -236,7 +236,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(80.0f, 0.0f, 55.0f, 0.0f, 0, 100, 0));
 		solidos.agregar(new Suelo(55.0f, 0.0f, 80.0f, -10.0f));
 		solidos.agregar(new Pared(132.0f, 0.0f, 87.0f, 0.0f, 0, 100, 0));
-		solidos.agregar(new Suelo(97.0f, 0.0f, 132.0f, -10.0f));
+		solidos.agregar(new Suelo(87.0f, 0.0f, 132.0f, -10.0f));
 		solidos.agregar(new Pared(150.0f, 0.0f, 139.0f, 0.0f, 0, 100, 0));
 		solidos.agregar(new Suelo(139.0f, 0.0f, 150.0f, -10.0f));
 		solidos.agregar(new Pared(200.0f, 0.0f, 156.0f, 0.0f, 0, 100, 0));
@@ -1468,32 +1468,9 @@ void Nivel::teclaDown(unsigned char key)
 			hombre.setVel(0,hombre.velocidad.y);
 		else delete dispam;
 		break;
-		/*default:
-			hombre.setVelx(0.0f);
-			hombre.salto = 1;
-			break;*/
-	
 	}
 }
 
 void Nivel::teclaEspecial(unsigned char key)
 {
-	/*
-	switch (key)
-	{
-	case GLUT_KEY_LEFT:
-		hombre.setVelx(-7.50f);	//hombre.setVel(-5.0f,0.0f);
-		break;
-	case GLUT_KEY_RIGHT:
-		hombre.setVelx(7.50f);
-		break;
-	case GLUT_KEY_UP:
-		if (hombre.salto == 1)
-			hombre.salto = 0;
-		break;
-	default:
-		hombre.setVelx(0.0f);
-		hombre.salto = 1;
-		break;
-	}*/
 }

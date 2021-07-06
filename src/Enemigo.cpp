@@ -114,20 +114,6 @@ void EnemigoDisp::dibuja()
 {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0.1);
-	glColor3f(color.r, color.g, color.b);
-	/*glRotatef(-90, 1, 0, 0);		//dibujar persona
-	glTranslatef(-0.2, 0, 0);
-	glutSolidCylinder(0.1, altura / 3, 30, 30);
-	glTranslatef(0.4, 0, 0);
-	glutSolidCylinder(0.1, altura / 3, 30, 30);
-	glTranslatef(-0.2, 0, altura / 3);
-	glutSolidCylinder(0.35, altura / 3, 30, 30);
-	glTranslatef(0, 0, altura / 2);
-	glRotatef(90, 1, 0, 0);
-	//glutSolidTeapot(altura/6);
-	glutSolidSphere(altura / 6, 30, 30);
-	glTranslatef(0, 0, -altura * 5 / 6);
-	//glRotatef(90, 1, 0, 0);*/
 	//gestion de direccion y animacion
 	if (velocidad.x > 0.01)sprite.flip(true, false);
 	if (velocidad.x < -0.01)sprite.flip(false, false);
@@ -164,8 +150,7 @@ void EnemigoDisp::dibuja()
 }
 void Babosa::dibuja() {
 	glPushMatrix();
-	glColor3f(color.r, color.g, color.b);
-	glTranslatef(posicion.x, posicion.y, 0);
+	glTranslatef(posicion.x, posicion.y, 0.1);
 	//glRotatef(-90, 0, 1, 0);
 	//glutSolidCylinder(altura / 3, altura, 30, 30);
 	//gestion de direccion y animacion
