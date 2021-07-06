@@ -1,7 +1,7 @@
 #include "Personaje.h"
 
 Personaje::Personaje() {
-	setPos(180, 16);		//-4 o 180
+	setPos(-4, 16);		//-4 o 180
 	setAc(0, -9.8f);
 	setColor(1, 1, 0);
 	sprite.setCenter(1.5f, 0);
@@ -35,7 +35,7 @@ void Personaje::dibuja() {
 
 	glPopMatrix();
 
-	//Añadido por Miguel (Dibuja los bordes de choque)
+	//AÃ±adido por Miguel (Dibuja los bordes de choque)
 	glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
@@ -90,7 +90,7 @@ void Personaje::mueve(float t) {
 	if (velocidad.y < 0.3f && velocidad.y > -0.3f && sentido == 1 && salto == 0)
 		salto = 1;
 
-	//Añadido por Miguel (crea las paredes hitbox)
+	//AÃ±adido por Miguel (crea las paredes hitbox)
 	Vector2D e1, e2, e3, e4;
 	e1.x = posicion.x - 0.3f;	e1.y = posicion.y + 1.8f;
 	e2.x = posicion.x + 0.3f;	e2.y = posicion.y + 1.8f;
