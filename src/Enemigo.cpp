@@ -105,7 +105,7 @@ BossFinal::BossFinal(float px, float py) {
 	sprite.setSize(10, 10);
 }
 
-//Método dibuja de cada enemigo
+//MÃ©todo dibuja de cada enemigo
 void Enemigo::dibuja()
 {
 
@@ -115,7 +115,7 @@ void EnemigoDisp::dibuja()
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0.1);
 	glColor3f(color.r, color.g, color.b);
-	glRotatef(-90, 1, 0, 0);		//dibujar persona
+	/*glRotatef(-90, 1, 0, 0);		//dibujar persona
 	glTranslatef(-0.2, 0, 0);
 	glutSolidCylinder(0.1, altura / 3, 30, 30);
 	glTranslatef(0.4, 0, 0);
@@ -127,18 +127,18 @@ void EnemigoDisp::dibuja()
 	//glutSolidTeapot(altura/6);
 	glutSolidSphere(altura / 6, 30, 30);
 	glTranslatef(0, 0, -altura * 5 / 6);
-	//glRotatef(90, 1, 0, 0);
+	//glRotatef(90, 1, 0, 0);*/
 	//gestion de direccion y animacion
-	/*if (velocidad.x > 0.01)sprite.flip(true, false);
+	if (velocidad.x > 0.01)sprite.flip(true, false);
 	if (velocidad.x < -0.01)sprite.flip(false, false);
 	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
 		sprite.setState(0);
 	//else if (sprite.getState() == 0)
 		//sprite.setState(0, true);
-	sprite.draw();*/
+	sprite.draw();
 	glPopMatrix();
 
-	//Añadido por Miguel (Dibuja los bordes de choque)
+	//AÃ±adido por Miguel (Dibuja los bordes de choque)
 	glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
@@ -219,7 +219,7 @@ void Bomber::dibuja()
 	sprite.draw();
 	glPopMatrix();
 
-	//Añadido por Miguel (Dibuja los bordes de choque)
+	//AÃ±adido por Miguel (Dibuja los bordes de choque)
 	glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
@@ -421,7 +421,7 @@ void BossFinal::dibuja()
 	glPopMatrix();
 }
 
-//Métodos mueve de cada enemigo
+//MÃ©todos mueve de cada enemigo
 void Enemigo::mueve(float t)
 {
 }
@@ -458,7 +458,7 @@ void EnemigoDisp::mueve(float t)
 			velocidad.x = 1;
 	}
 
-	//Añadido por Miguel (crea las paredes de choque)
+	//AÃ±adido por Miguel (crea las paredes de choque)
 	Vector2D e1, e2, e3, e4;
 	e1.x = posicion.x - 0.3f;	e1.y = posicion.y + 2.0f;
 	e2.x = posicion.x + 0.3f;	e2.y = posicion.y + 2.0f;
@@ -549,7 +549,7 @@ void Bomber::mueve(float t)
 		velocidad.x = 1;
 	//}
 
-	//Añadido por Miguel (crea las paredes de choque)
+	//AÃ±adido por Miguel (crea las paredes de choque)
 	Vector2D e1, e2, e3, e4;
 	e1.x = posicion.x - altura;		e1.y = posicion.y + altura;
 	e2.x = posicion.x + altura;		e2.y = posicion.y + altura;
