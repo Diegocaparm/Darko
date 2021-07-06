@@ -1,7 +1,7 @@
 #include "Personaje.h"
 
 Personaje::Personaje() {
-	setPos(-4, 16);		//-4 o 180
+	setPos(180, 16);		//-4 o 180
 	setAc(0, -9.8f);
 	setColor(1, 1, 0);
 	sprite.setCenter(1.5f, 0);

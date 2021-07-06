@@ -291,7 +291,7 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new Tank(193.0f, 7.0f));
 		enemigos.agregar(new Babosa(10.0f, 13.0f));
 
-		Interaccion::dispara(enemigos, disparos); //Aún no se donde va jaja
+		Interaccion::dispara(enemigos, &disparos); //Aún no se donde va jaja
 
 		/*
 		//meter disparos en lista

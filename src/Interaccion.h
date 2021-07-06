@@ -35,9 +35,9 @@ public:
 	//si eso un metodo dispara flambeante pero por ahora vacio
 	//Disparos malos y misiles
 	static void colision(Personaje& h, ListaDisparos ld, VidasRecolectadas& v);
-	static void colision(Personaje& h, Disparos& d, VidasRecolectadas& v);
-	static void colision(Personaje& h, DisparosEnemigos& de, VidasRecolectadas& v);
-	static void colision(Personaje& h, Misiles& m, VidasRecolectadas& v);
+	static void colision(Personaje& h, Disparos* d, VidasRecolectadas& v);
+	static void colision(Personaje& h, DisparosEnemigos* de, VidasRecolectadas& v);
+	static void colision(Personaje& h, Misiles* m, VidasRecolectadas& v);
 	//Enemigos y listas
 	static void colision(Personaje& h, ListaEnemigos le, VidasRecolectadas& v);
 	static void colision(Personaje& h, Enemigo& e, VidasRecolectadas& v);
@@ -167,11 +167,11 @@ public:
 	static void choque(Misiles& d, Pincho s);
 	static void choque(Misiles& d, BolaFuego b);
 	//Invocación de disparos desde cada enemigo
-	static void dispara(ListaEnemigos le, ListaDisparos ld);
-	static void dispara(Enemigo* e, ListaDisparos ld);
-	static void dispara(EnemigoDisp* e, ListaDisparos ld);
-	static void dispara(Tank* t, ListaDisparos ld);
-	static void dispara(BossFinal* b, ListaDisparos ld);
+	static void dispara(ListaEnemigos le, ListaDisparos* ld);
+	static void dispara(Enemigo* e, ListaDisparos* ld);
+	static void dispara(EnemigoDisp* e, ListaDisparos* ld);
+	static void dispara(Tank* t, ListaDisparos* ld);
+	static void dispara(BossFinal* b, ListaDisparos* ld);
 	////////////////////////////////////////////////////////////////////
 };
 	

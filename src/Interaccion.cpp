@@ -314,38 +314,48 @@ void Interaccion::mov(Espada& esp, Personaje& h) {
 void Interaccion::colision(Personaje& h, ListaDisparos ld, VidasRecolectadas& v)
 {
 	for (int i = 0; i < ld.numero;i++)
-		colision(h, *ld.lista[i], v);
+		colision(h, ld.lista[i], v);
 }
-void Interaccion::colision(Personaje& h, Disparos& d, VidasRecolectadas& v) {
+void Interaccion::colision(Personaje& h, Disparos* d, VidasRecolectadas& v) {
+	if (d->cosa == 2) {
+		DisparosEnemigos* p;
+		p = dynamic_cast <DisparosEnemigos*> (d);
+		Interaccion::colision(h, p, v);
+	}
+	else if (d->cosa == 3) {
+		Misiles* p;
+		p = dynamic_cast <Misiles*> (d);
+		Interaccion::colision(h, p, v);
+	}
 }
-void Interaccion::colision(Personaje& h, DisparosEnemigos& de, VidasRecolectadas& v) {
-	if (de.getPos().y - de.getRadio() < h.hitbox.top_l.y && de.getPos().y + de.getRadio() > h.hitbox.bot_l.y)
-		if (de.getPos().x - de.getRadio() < h.hitbox.top_r.x && de.getPos().x + de.getRadio() > h.hitbox.top_l.x) {
-			de.setColor(0, 1, 0);
+void Interaccion::colision(Personaje& h, DisparosEnemigos* de, VidasRecolectadas& v) {
+	if (de->getPos().y - de->getRadio() < h.hitbox.top_l.y && de->getPos().y + de->getRadio() > h.hitbox.bot_l.y)
+		if (de->getPos().x - de->getRadio() < h.hitbox.top_r.x && de->getPos().x + de->getRadio() > h.hitbox.top_l.x) {
+			de->setColor(0, 1, 0);
 			v.reduceVida();
 		}
 }
-void Interaccion::colision(Personaje& h, Misiles& m, VidasRecolectadas& v) {
-	if (m.getPos().y - m.getRadio() < h.hitbox.top_l.y && m.getPos().y + m.getRadio() > h.hitbox.bot_l.y)
-		if (m.getPos().x - m.getRadio() < h.hitbox.top_r.x && m.getPos().x + m.getRadio() > h.hitbox.top_l.x) {
-			m.setColor(0, 1, 0);
+void Interaccion::colision(Personaje& h, Misiles* m, VidasRecolectadas& v) {
+	if (m->getPos().y - m->getRadio() < h.hitbox.top_l.y && m->getPos().y + m->getRadio() > h.hitbox.bot_l.y)
+		if (m->getPos().x - m->getRadio() < h.hitbox.top_r.x && m->getPos().x + m->getRadio() > h.hitbox.top_l.x) {
+			m->setColor(0, 1, 0);
 			v.reduceVida();
 		}
-	Vector2D dist = m.getPos() - h.getPos();
+	Vector2D dist = m->getPos() - h.getPos();
 	if (dist.modulo() < 5) {
-		m.cerca = 1;
+		m->cerca = 1;
 		v.reduceVida();
 	}
 	else
-		m.cerca = 0;
-	if (m.getPos().x < h.getPos().x)
-		m.prx = 0;
+		m->cerca = 0;
+	if (m->getPos().x < h.getPos().x)
+		m->prx = 0;
 	else
-		m.prx = 1;
-	if (m.getPos().y < h.getPos().y + h.altura / 2)
-		m.pry = 0;
+		m->prx = 1;
+	if (m->getPos().y < h.getPos().y + h.altura / 2)
+		m->pry = 0;
 	else
-		m.pry = 1;
+		m->pry = 1;
 }
 //Enemigos y listas
 void Interaccion::colision(Personaje& h, ListaEnemigos le, VidasRecolectadas& v)
@@ -1421,12 +1431,12 @@ void Interaccion::choque(Misiles& d, BolaFuego b)
 {
 }
 //Invocación de disparos desde cada enemigo
-void Interaccion::dispara(ListaEnemigos le, ListaDisparos ld)
+void Interaccion::dispara(ListaEnemigos le, ListaDisparos* ld)
 {
 	for (int i = 0; i < le.numero; i++)
 		dispara(le.lista[i], ld);
 }
-void Interaccion::dispara(Enemigo* e, ListaDisparos ld)
+void Interaccion::dispara(Enemigo* e, ListaDisparos* ld)
 {
 	if (e->cosa == 1) {
 		EnemigoDisp* ene;
@@ -1444,30 +1454,37 @@ void Interaccion::dispara(Enemigo* e, ListaDisparos ld)
 		Interaccion::dispara(ene, ld);
 	}
 }
-void Interaccion::dispara(EnemigoDisp* e, ListaDisparos ld)
+void Interaccion::dispara(EnemigoDisp* e, ListaDisparos* ld)
 {
-	ld.agregar(e->dispEnem1);
+	e->dispEnem1->setPos(1, 2);
+	if (ld->agregar(e->dispEnem1)) {
+		e->setColor(1, 1, 1);
+	}
+	else e->setColor(1, 0, 1);
 }
-void Interaccion::dispara(Tank* t, ListaDisparos ld)
+void Interaccion::dispara(Tank* t, ListaDisparos* ld)
 {
-	ld.agregar(t->dispTank1);
-	ld.agregar(t->dispTank2);
-	ld.agregar(t->dispTank3);
-	ld.agregar(t->dispTank4);
-	ld.agregar(t->dispTank5);
+	if (ld->agregar(t->dispTank1) &&
+		ld->agregar(t->dispTank2) &&
+		ld->agregar(t->dispTank3) &&
+		ld->agregar(t->dispTank4) &&
+		ld->agregar(t->dispTank5)) {
+		t->setColor(1, 1, 1);
+	}
+	else t->setColor(1, 0, 1);
 }
-void Interaccion::dispara(BossFinal* b, ListaDisparos ld)
+void Interaccion::dispara(BossFinal* b, ListaDisparos* ld)
 {
-	ld.agregar(b->misil1);
-	ld.agregar(b->misil2);
-	ld.agregar(b->misil3);
-	ld.agregar(b->misil4);
-	ld.agregar(b->misil5);
-	ld.agregar(b->misil6);
-	ld.agregar(b->misil7);
-	ld.agregar(b->misil8);
-	ld.agregar(b->misil9);
-	ld.agregar(b->misil10);
+	ld->agregar(b->misil1);
+	ld->agregar(b->misil2);
+	ld->agregar(b->misil3);
+	ld->agregar(b->misil4);
+	ld->agregar(b->misil5);
+	ld->agregar(b->misil6);
+	ld->agregar(b->misil7);
+	ld->agregar(b->misil8);
+	ld->agregar(b->misil9);
+	ld->agregar(b->misil10);
 }
 ////////////////////////////////////////////////////////////////////
 

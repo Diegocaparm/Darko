@@ -6,6 +6,7 @@ class Disparos :
     public ObjetoMovil
 {
 protected:
+    int cosa;
     float radio=0.15f;
     float temp = 0;
     float vel = 3;      //velocidad inicial

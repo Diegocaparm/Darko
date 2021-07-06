@@ -115,7 +115,7 @@ void EnemigoDisp::dibuja()
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0.1);
 	glColor3f(color.r, color.g, color.b);
-	/*glRotatef(-90, 1, 0, 0);		//dibujar persona
+	glRotatef(-90, 1, 0, 0);		//dibujar persona
 	glTranslatef(-0.2, 0, 0);
 	glutSolidCylinder(0.1, altura / 3, 30, 30);
 	glTranslatef(0.4, 0, 0);
@@ -127,15 +127,15 @@ void EnemigoDisp::dibuja()
 	//glutSolidTeapot(altura/6);
 	glutSolidSphere(altura / 6, 30, 30);
 	glTranslatef(0, 0, -altura * 5 / 6);
-	//glRotatef(90, 1, 0, 0);*/
+	//glRotatef(90, 1, 0, 0);
 	//gestion de direccion y animacion
-	if (velocidad.x > 0.01)sprite.flip(true, false);
+	/*if (velocidad.x > 0.01)sprite.flip(true, false);
 	if (velocidad.x < -0.01)sprite.flip(false, false);
 	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
 		sprite.setState(0);
 	//else if (sprite.getState() == 0)
 		//sprite.setState(0, true);
-	sprite.draw();
+	sprite.draw();*/
 	glPopMatrix();
 
 	//Añadido por Miguel (Dibuja los bordes de choque)
@@ -640,17 +640,17 @@ void Tank::mueve(float t)
 		//mueve?
 
 		if (temp == 120) {
-			/*dispTank1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+			dispTank1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 			dispTank2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 			dispTank3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 			dispTank4->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 			dispTank5->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
-			dispTank1->setVel(-dispTank1->vel + velocidad.x, 0.0f);
-			dispTank2->setVel(-dispTank1->vel * 0.707 + velocidad.x, dispTank1->vel * 0.707);
-			dispTank3->setVel(0.0f + velocidad.x, dispTank1->vel);
-			dispTank4->setVel(dispTank1->vel * 0.707 + velocidad.x, dispTank1->vel * 0.707);
-			dispTank5->setVel(dispTank1->vel + velocidad.x, 0.0f);
-			dispTank1->flagdibujar = 1;
+			dispTank1->setVel(-dispTank1->getVelDef() + velocidad.x, 0.0f);
+			dispTank2->setVel(-dispTank1->getVelDef() * 0.707 + velocidad.x, dispTank1->getVelDef() * 0.707);
+			dispTank3->setVel(0.0f + velocidad.x, dispTank1->getVelDef());
+			dispTank4->setVel(dispTank1->getVelDef() * 0.707 + velocidad.x, dispTank1->getVelDef() * 0.707);
+			dispTank5->setVel(dispTank1->getVelDef() + velocidad.x, 0.0f);
+			/*dispTank1->flagdibujar = 1;
 			dispTank2->flagdibujar = 1;
 			dispTank3->flagdibujar = 1;
 			dispTank4->flagdibujar = 1;
