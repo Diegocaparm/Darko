@@ -908,6 +908,9 @@ void Interaccion::rebote(Tank* t, Suelo* s)
 }
 void Interaccion::rebote(Tank* t, Final* p)
 {
+	Enemigo* ene;
+	ene = dynamic_cast <Enemigo*> (t);
+	Interaccion::rebote(ene, p);
 }
 void Interaccion::rebote(Tank* t, Pincho* p)
 {

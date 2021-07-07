@@ -5,17 +5,23 @@ Disparos::Disparos() {
 	setColor(10, 100, 0);
 	//radio = 0.15f;
 	setAc(0, -0.5);
+	sprite.setCenter(3, 2.9);
+	sprite.setSize(3, 6);
 }
 Disparos::Disparos(float px, float py) {
 	setColor(10, 100, 0);
 	setPos(px, py);
 	//radio = 0.15f;
 	setAc(0, -0.5);
+	sprite.setCenter(3, 2.9);
+	sprite.setSize(3, 6);
 }
 DisparosAmigos::DisparosAmigos()
 {
 	radio = 0.15f;
 	cosa = 1;
+	//sprite.setCenter(1, 1);
+	//sprite.setSize(2, 2);
 }
 DisparosAmigos::DisparosAmigos(float px, float py, float vx, float vy) {
 	cosa = 1;
@@ -23,15 +29,20 @@ DisparosAmigos::DisparosAmigos(float px, float py, float vx, float vy) {
 	radio = 0.15f;
 	//la velocidad variable chunga
 	setVel(vel+vx,vy);
+
 }
 Espada::Espada() {
 	cosa = 1;
 	setColor(0, 1, 1);
 	radio = 1.5f;
+	sprite.setCenter(3.1, 1.5);
+	sprite.setSize(4,4);
+
 }
 Espada::Espada(float px, float py) {
 	Disparos(px, py);
 	radio = 1.5f;
+
 }
 DisparosEnemigos::DisparosEnemigos() {}
 DisparosEnemigos::DisparosEnemigos(float px, float py) {
@@ -40,26 +51,37 @@ DisparosEnemigos::DisparosEnemigos(float px, float py) {
 	setPos(px, py);
 	radio = 0.25f;
 	setVel(-vel, 0);
+
 }
 Misiles::Misiles()
 {
 	cosa = 3;
 	radio = 0.5f;
+	misil.setCenter(3, 2.9);
+	misil.setSize(3, 6);
 }
 Misiles::Misiles(float px, float py) {
 	cosa = 3;
 	setPos(px, py);
 	radio = 0.5f;
 	setVel(-vel, 0);
+	misil.setCenter(3, 2.9);
+	misil.setSize(3, 6);
 }
 
 //Métodos virtuales de Disparos
 void Disparos::dibuja()
 {
 	glPushMatrix();
-	glTranslatef(posicion.x, posicion.y, 0);
+	glTranslatef(posicion.x, posicion.y, 0.2);
 	glColor3f(color.r, color.g, color.b);
-	glutSolidSphere(radio, 30, 30);
+	if (velocidad.x > 0.01)sprite.flip(true, false);
+	if (velocidad.x < -0.01)sprite.flip(false, false);
+	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
+		sprite.setState(0);
+	else if (sprite.getState() == 0)
+		sprite.setState(0, true);
+	sprite.draw();
 	glPopMatrix();
 
 }
@@ -68,6 +90,7 @@ void Disparos::mueve(float t)
 	//Este virtual genérico si que está con cosas porque es el que usan 
 	//los disparos buenos y malos 
 	ObjetoMovil::mueve(t);
+	sprite.loop();
 	if (temp < 120) {		//40 para 1 seg
 		temp++;
 		//dispEnem1.mueve(t);
@@ -107,10 +130,12 @@ float Disparos::getRadio() {
 void Espada::dibuja() {
 	glPushMatrix();
 	glColor3f(color.r, color.g, color.b);
-	glTranslatef(posicion.x, posicion.y, 0);
-	glRotatef(90, -1, 0, 0);
-	glRotatef(angulo - 45, 0, 1, 0);
-	glutSolidCylinder(radio / 12, radio, 30, 30);
+	glTranslatef(posicion.x, posicion.y, 0.2);
+	//glRotatef(90, -1, 0, 0);
+	glRotatef(angulo , 0, 0, -1);
+	//sprite.flip(true, true);
+	//glutSolidCylinder(radio / 12, radio, 30, 30);
+	sprite.draw();
 	glPopMatrix();
 }
 void Espada::mueve(float t) {
@@ -136,6 +161,8 @@ float Espada::getLong() {
 //Métodos propios de Misiles
 void Misiles::mueve(float t) {
 	Disparos::mueve(t);
+	misil.loop();
+
 	if (cerca) {
 		if (prx)
 			aceleracion.x = -1.5;
@@ -167,4 +194,19 @@ void Misiles::mueve(float t) {
 		if (velocidad.y > 3.5)
 			velocidad.y = 3.5;
 	}
+}
+
+void Misiles::dibuja()
+{
+	glPushMatrix();
+	glTranslatef(posicion.x, posicion.y, 0.2);
+	glColor3f(color.r, color.g, color.b);
+	if (velocidad.x > 0.01)misil.flip(true, false);
+	if (velocidad.x < -0.01)misil.flip(false, false);
+	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
+		misil.setState(0);
+	else if (misil.getState() == 0)
+		misil.setState(0, true);
+	misil.draw();
+	glPopMatrix();
 }

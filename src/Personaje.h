@@ -13,7 +13,7 @@ private:
     int flag = 0;
     int flagH = 0; //-1 izquierda   =0 quieto   =1 derecha
     int disparo = 0; //Flag para que el hombre dispare
-    int flagnivel = 1, nivelaux = 0; //Indica el nivel donde estamos, aumenta al llegar al final
+    int flagnivel = 7, nivelaux = 0; //Indica el nivel donde estamos, aumenta al llegar al final
     int tempdmg = 0;
     int guardapersonaje; //Sin inicializar porque se ha de elegir
     SpriteSequence sprite_darko, sprite_humano;

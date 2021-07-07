@@ -1,6 +1,8 @@
 #pragma once
 #include "ObjetoMovil.h"
 #include "ColorRGB.h"
+#include "ETSIDI.h"
+using ETSIDI::SpriteSequence;
 
 class Disparos : public ObjetoMovil
 {
@@ -22,6 +24,7 @@ public:
     float getVelDef() { return vel; }
 
     friend class Interaccion;
+    SpriteSequence sprite{ "bin/imagenes/disparo.png", 4 };
 };
 //DisparosAmigos herencia de DISPAROS
 class DisparosAmigos : public Disparos
@@ -30,6 +33,7 @@ public:
     DisparosAmigos();
     DisparosAmigos(float px, float py, float vx, float vy);
     friend class Interaccion;
+    
 };
 //Espada herencia de DISPAROS
 class Espada : public Disparos
@@ -45,6 +49,7 @@ public:
     void setFlag(int);
     float getLong();
     friend class Interaccion;
+    SpriteSequence sprite{ "bin/imagenes/espada.png", 1 };
 };
 //DisparosEnemigos herencia de DISPAROS
 class DisparosEnemigos : public Disparos
@@ -53,6 +58,7 @@ public:
     DisparosEnemigos();
     DisparosEnemigos(float px, float py);
     friend class Interaccion;
+
 };
 //Misiles herencia de DISPAROSENEMIGOS
 class Misiles : public DisparosEnemigos
@@ -63,7 +69,9 @@ public:
     Misiles();
     Misiles(float px, float py);
     void mueve(float);
+    void dibuja();
     
     friend class Interaccion;
+    SpriteSequence misil{ "bin/imagenes/misil.png", 4,1 };
 };
 

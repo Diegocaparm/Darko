@@ -67,8 +67,8 @@ Tank::Tank(float px, float py) {
 	dispTank3->setColor(10, 0, 0);
 	dispTank4->setColor(10, 0, 0);
 	dispTank5->setColor(10, 0, 0);
-	sprite.setCenter(5, 0.5);
-	sprite.setSize(10, 10);
+	sprite.setCenter(3, 0.5);
+	sprite.setSize(6, 6);
 }
 BossFinal::BossFinal(float px, float py) {
 	cosa = 6;
@@ -326,7 +326,7 @@ void Tentaculo::dibuja() {
 void Tank::dibuja()
 {
 	glPushMatrix();
-	glTranslatef(posicion.x, posicion.y, 0);
+	glTranslatef(posicion.x, posicion.y, 0.21);
 	glColor3f(color.r, color.g, color.b);
 	/*glRotatef(-90, 1, 0, 0);		//dibujar persona
 	glutSolidCylinder(altura / 3, altura / 3, 30, 30);

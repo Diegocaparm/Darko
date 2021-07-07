@@ -1,7 +1,7 @@
 #include "Personaje.h"
 #include "stdio.h"
 
-Personaje::Personaje() :sprite_darko("bin/imagenes/darkoespfvect.png", 2), sprite_humano("bin/imagenes/astrofvect.png", 2) {
+Personaje::Personaje() :sprite_darko("bin/imagenes/darkopist.png", 2), sprite_humano("bin/imagenes/astropist.png", 2) {
 	//fin = 200;		//MIRAR CUANDO SE TERMINA EL NIVEL
 	setPos(-4, 16);		//-4 o 180
 	setAc(0, -9.8);
