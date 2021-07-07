@@ -1,6 +1,13 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@David y Diego
+Changes v3.6
+- Solucionadas colisiones entre disparosAmigos y enemigos
+- Solucionadas colisiones entre bolaFuego y personaje
+- Solucionadas interacciones con plataforma movil
+
+
 @David
 Changes v3.5
 - Solucionadas colisiones con paredes verticales
