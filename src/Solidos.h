@@ -46,6 +46,7 @@ public:
 	void dibuja(int i);
 	void mueve(float);
 	friend class Interaccion;
+	SpriteSequence platmovil1{ "bin/imagenes/andamio.png", 1, 1 }, platmovil2{ "bin/imagenes/Nave.png", 1, 1 }, platmovil3{ "bin/imagenes/marte.png", 1, 1 };
 };
 //Suelo herencia de PARED
 class Suelo : public Pared 

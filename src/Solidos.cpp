@@ -159,14 +159,47 @@ void PlatMovil::dibuja(int i)
 {
 	if (i == 1)
 	{
+		//Dimensiones del sprite
+		platmovil1.setCenter((limite2.x - limite1.x) * 3/2,3);
+		platmovil1.setSize((limite2.x-limite1.x)*3, 5);
+
+		//Dibujo
+		glPushMatrix();
+		glTranslatef(posicion.x, posicion.y, 0.5);
+
+		platmovil1.draw();
+		glPopMatrix();
 
 	}
 	else if (i == 2)
 	{
+		//Dimensiones del sprite
+		platmovil2.setCenter((limite2.x - limite1.x) * 3 / 2, 3);
+		platmovil2.setSize((limite2.x - limite1.x) * 3, 5);
+
+		//Dibujo
+		glPushMatrix();
+		glTranslatef(posicion.x, posicion.y, 0.5);
+		if (vel.x < -0.01)platmovil2.flip(true, false);
+		if (vel.x > 0.01)platmovil2.flip(false, false);
+		if ((vel.x < 0.01) && (vel.x > -0.01))
+			platmovil2.setState(0);
+		platmovil2.draw();
+		glPopMatrix();
+
 
 	}
 	else
 	{
+		//Dimensiones del sprite
+		platmovil3.setCenter((limite2.x - limite1.x) * 3 / 2, 3);
+		platmovil3.setSize((limite2.x - limite1.x) * 3, 5);
+
+		//Dibujo
+		glPushMatrix();
+		glTranslatef(posicion.x, posicion.y, 0.5);
+		platmovil3.draw();
+		glPopMatrix();
 
 	}
 }
@@ -275,7 +308,7 @@ void BolaFuego::dibuja(int i)
 	fireball.draw();
 	fireball.loop();
 	glPopMatrix();
-	glPopMatrix();
+	//glPopMatrix();
 }
 void BolaFuego::mueve(float t)
 {
