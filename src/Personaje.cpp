@@ -85,6 +85,8 @@ void Personaje::mueve(float t) {
 			salto = 1;		//comentar para salto infinito
 		}
 	}
+	if (tempdmg)	//volverse invulnerable
+		tempdmg--;
 	//if (velocidad.y < 0.3f && velocidad.y > -0.3f && sentido == 1 && salto == 0)
 		//salto = 1;
 

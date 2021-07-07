@@ -15,6 +15,10 @@ public:
 	bool agregar(Disparos* d);
 	void dibuja();
 	void mueve(float t);
+	void destruirContenido();
+	void eliminar(int index);
+	void eliminar(Disparos* e);
+	Disparos* operator [] (int i);
 	friend class Interaccion;
 };
 

@@ -80,6 +80,12 @@ void Nivel::dibuja()
 
 void Nivel::mueve()
 {
+	//elegir el nivel
+	if (hombre.flagnivel != hombre.nivelaux) {
+		nivel = hombre.getNivel();
+		cargarnivel();
+		hombre.nivelaux = hombre.flagnivel;
+	}
 	//Movimientos personaje, disparos y enemigos
 	hombre.mueve(0.025f);
 	espada.mueve(0.025f);
@@ -122,6 +128,7 @@ void Nivel::mueve()
 		dineros.eliminar(aux_m);
 		dinerosR.aumentaDinero();
 	}
+	
 }
 
 void Nivel::inicializa()
@@ -130,8 +137,8 @@ void Nivel::inicializa()
 	y_ojo = 7.5;
 	z_ojo = 30;
 
-	nivel = hombre.getNivel();
-	cargarnivel();
+	/*nivel = hombre.getNivel();
+	cargarnivel();*/
 }
 
 bool Nivel::cargarnivel()
@@ -212,6 +219,7 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new Tank(193.0f, 7.0f));
 		enemigos.agregar(new Babosa(10.0f, 13.0f));
 
+			enemigos.agregar(new BossFinal(10, 10));
 		Interaccion::dispara(enemigos, &disparos); //Aún no se donde va jaja
 
 		/*

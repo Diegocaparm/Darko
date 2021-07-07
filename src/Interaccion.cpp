@@ -160,8 +160,8 @@ void Interaccion::rebote(Personaje& h, PlatMovil* pm, VidasRecolectadas& v)
 			else
 				if (h.posicion.y < ymin) {
 					h.posicion.y = ymin;
-					h.velocidad = pm->vel+h.velocidad;
-					h.aceleracion = 0;
+					h.velocidad.x = pm->vel.x+h.velocidad.x;
+					h.velocidad.y = 0;
 					h.salto = 1;
 				}
 		}
@@ -249,14 +249,20 @@ void Interaccion::rebote(Personaje& h, Final* p, VidasRecolectadas& v)
 void Interaccion::rebote(Personaje& h, Pincho *p, VidasRecolectadas& v)
 {
 	if (ColisionGen(p->hitbox, h.hitbox)) {
-		v.reduceVida();
+		if (h.tempdmg == 0) {
+			v.reduceVida();
+			h.tempdmg = 40;
+		}
 		h.setColor(0, 1, 1);
 	}
 }
 void Interaccion::rebote(Personaje& h, BolaFuego* b, VidasRecolectadas& v)
 {
 	if (ColisionGen(b->hitbox, h.hitbox)) {
-		v.reduceVida();
+		if (h.tempdmg == 0) {
+			v.reduceVida();
+			h.tempdmg = 40;
+		}
 		h.setColor(1, 0, 1);
 	}
 }
@@ -324,19 +330,25 @@ void Interaccion::colision(Personaje& h, DisparosEnemigos* de, VidasRecolectadas
 	if (de->getPos().y - de->getRadio() < h.hitbox.top_l.y && de->getPos().y + de->getRadio() > h.hitbox.bot_l.y)
 		if (de->getPos().x - de->getRadio() < h.hitbox.top_r.x && de->getPos().x + de->getRadio() > h.hitbox.top_l.x) {
 			de->setColor(0, 1, 0);
-			v.reduceVida();
+			if (h.tempdmg == 0) {
+				v.reduceVida();
+				h.tempdmg = 40;
+			}
 		}
 }
 void Interaccion::colision(Personaje& h, Misiles* m, VidasRecolectadas& v) {
 	if (m->getPos().y - m->getRadio() < h.hitbox.top_l.y && m->getPos().y + m->getRadio() > h.hitbox.bot_l.y)
 		if (m->getPos().x - m->getRadio() < h.hitbox.top_r.x && m->getPos().x + m->getRadio() > h.hitbox.top_l.x) {
 			m->setColor(0, 1, 0);
-			v.reduceVida();
+			if (h.tempdmg == 0) {
+				v.reduceVida();
+				h.tempdmg = 40;
+			}
 		}
 	Vector2D dist = m->getPos() - h.getPos();
 	if (dist.modulo() < 5) {
 		m->cerca = 1;
-		v.reduceVida();
+		//v.reduceVida();//?
 	}
 	else
 		m->cerca = 0;
@@ -374,7 +386,10 @@ void Interaccion::colision(Personaje& h, ListaEnemigos le, VidasRecolectadas& v)
 }
 void Interaccion::colision(Personaje& h, Enemigo& ene, VidasRecolectadas& v) {
 	if (ColisionGen(ene.hitbox, h.hitbox)) {
-		v.reduceVida();
+		if (h.tempdmg == 0) {
+			v.reduceVida();
+			h.tempdmg = 40;
+		}
 		h.setColor(0, 1, 1);
 	}
 }
@@ -391,7 +406,10 @@ void Interaccion::colision(Personaje& h, EnemigoDisp& e, VidasRecolectadas& v)
 }
 void Interaccion::colision(Personaje& h, Babosa* ene, VidasRecolectadas& v) {
 	if (ColisionGen(ene->hitbox, h.hitbox)) {
-		v.reduceVida();
+		if (h.tempdmg == 0) {
+			v.reduceVida();
+			h.tempdmg = 40;
+		}
 		h.setColor(0, 1, 0);
 	}
 	Vector2D dist = ene->getPos() - h.getPos();
@@ -417,7 +435,10 @@ void Interaccion::colision(Personaje& h, Tentaculo* ene, VidasRecolectadas& v) {
 			dist3 = DistSeg(ene->hitbox[i], h.hitbox.bot_l),
 			dist4 = DistSeg(ene->hitbox[i], h.hitbox.bot_r);
 		if (dist1 < 0.2 || dist2 < 0.2 || dist3 < 0.2 || dist4 < 0.2) {
-			v.reduceVida();
+			if (h.tempdmg == 0) {
+				v.reduceVida();
+				h.tempdmg = 40;
+			}
 			h.setColor(0, 1, 0);
 		}
 
@@ -425,7 +446,10 @@ void Interaccion::colision(Personaje& h, Tentaculo* ene, VidasRecolectadas& v) {
 }//3 hitboxes
 void Interaccion::colision(Personaje& h, Bomber* ene, VidasRecolectadas& v) {
 	if (ColisionGen(ene->hitbox, h.hitbox)) {
-		v.reduceVida();
+		if (h.tempdmg == 0) {
+			v.reduceVida();
+			h.tempdmg = 40;
+		}
 		h.setColor(0, 1, 0);
 	}
 

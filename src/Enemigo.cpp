@@ -685,7 +685,7 @@ void BossFinal::mueve(float t)
 		//mueve?
 
 		if (temp == 120) {
-			/*misil1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
+			misil1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 			misil2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 			misil3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 			misil4->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
@@ -696,18 +696,18 @@ void BossFinal::mueve(float t)
 			misil9->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 			misil10->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 
-			misil1->setVel(-misil1->vel, 0.0f);
-			misil2->setVel(-misil1->vel * 0.94, misil1->vel * 0.342);
-			misil3->setVel(-misil1->vel * 0.766, misil1->vel * 0.643);
-			misil4->setVel(-misil1->vel * 0.5, misil1->vel * 0.866);
-			misil5->setVel(-misil1->vel * 0.174, misil1->vel * 0.985);
-			misil6->setVel(-misil1->vel, -misil1->vel * 0.174);
-			misil7->setVel(-misil1->vel * 0.94, -misil1->vel * 0.342);
-			misil8->setVel(misil1->vel * 0.766, misil1->vel * 0.643);
-			misil9->setVel(misil1->vel * 0.5, misil1->vel * 0.866);
-			misil10->setVel(misil1->vel * 0.174, misil1->vel * 0.985);
+			misil1->setVel(-misil1->getVelDef(), 0.0f);
+			misil2->setVel(-misil1->getVelDef() * 0.94, misil1->getVelDef() * 0.342);
+			misil3->setVel(-misil1->getVelDef() * 0.766, misil1->getVelDef() * 0.643);
+			misil4->setVel(-misil1->getVelDef() * 0.5, misil1->getVelDef() * 0.866);
+			misil5->setVel(-misil1->getVelDef() * 0.174, misil1->getVelDef() * 0.985);
+			misil6->setVel(-misil1->getVelDef(), -misil1->getVelDef() * 0.174);
+			misil7->setVel(-misil1->getVelDef() * 0.94, -misil1->getVelDef() * 0.342);
+			misil8->setVel(misil1->getVelDef() * 0.766, misil1->getVelDef() * 0.643);
+			misil9->setVel(misil1->getVelDef() * 0.5, misil1->getVelDef() * 0.866);
+			misil10->setVel(misil1->getVelDef() * 0.174, misil1->getVelDef() * 0.985);
 
-			misil1->flagdibujar = 1;
+			/*misil1->flagdibujar = 1;
 			misil2->flagdibujar = 1;
 			misil3->flagdibujar = 1;
 			misil4->flagdibujar = 1;

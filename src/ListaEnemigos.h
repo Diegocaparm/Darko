@@ -12,7 +12,10 @@ public:
 	bool agregar(Enemigo* e);
 	void dibuja();
 	void mueve(float t);
+	void destruirContenido();
+	void eliminar(int index);
 	void eliminar(Enemigo* e);
+	Enemigo* operator [] (int i);
 	friend class Interaccion;
 };
 

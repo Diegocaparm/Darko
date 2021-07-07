@@ -30,7 +30,36 @@ void ListaEnemigos::mueve(float t)
 	for (int i = 0; i < numero; i++)
 		lista[i]->mueve(t);
 }
+void ListaEnemigos::destruirContenido()
+{
+	for (int i = 0; i < numero; i++) // destrucción de corazones contenidos
+		delete lista[i];
 
+	numero = 0; // inicializa lista
+}
+void ListaEnemigos::eliminar(int index)
+{
+	if ((index < 0) || (index >= numero))
+		return;
+	delete lista[index];
+	numero--;
+	for (int i = index; i < numero; i++)
+		lista[i] = lista[i + 1];
+}
 void ListaEnemigos::eliminar(Enemigo* e)
 {
+	for (int i = 0; i < numero; i++)
+		if (lista[i] == e)
+		{
+			eliminar(i);
+			return;
+		}
+}
+Enemigo* ListaEnemigos::operator[](int i)
+{
+	if (i >= numero)//si me paso, devuelvo la ultima
+		i = numero - 1;
+	if (i < 0) //si el indice es negativo, devuelvo la primera
+		i = 0;
+	return lista[i];
 }
