@@ -29,8 +29,8 @@ void Nivel::dibuja()
 	}
 	else if (nivel > 3 && nivel <= 6)
 	{
-		caja.dibuja(2);		//Dibujamos la caja del mundo 2
-		solidos.dibuja(2);	//Dibujamos los solidos del mundo 2
+		caja.dibuja(1);		//Dibujamos la caja del mundo 2
+		solidos.dibuja(1);	//Dibujamos los solidos del mundo 2
 		glPushMatrix();
 		glTranslatef(hombre.getPos().x, 0, -1);
 		glEnable(GL_TEXTURE_2D);
