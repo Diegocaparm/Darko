@@ -9,6 +9,9 @@ Personaje::Personaje():sprite_darko("bin/imagenes/darkoespfvect.png", 2 ), sprit
 	sprite_darko.setSize(3, 3);
 	sprite_humano.setCenter(1.5, 0);
 	sprite_humano.setSize(3, 3);
+
+	puntero = &sprite_darko;
+	guardapersonaje = 2;
 	//bala->setPos(posicion.x, posicion.y + altura * 2 / 3);
 }
 
@@ -73,7 +76,7 @@ void Personaje::dibuja() {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
 	glColor3f(color.r, color.g, color.b);
-	/*glRotatef(-90, 1, 0, 0);		//dibujar persona
+	glRotatef(-90, 1, 0, 0);		//dibujar persona
 	glTranslatef(-0.2, 0, 0);
 	glutSolidCylinder(0.1, altura / 3, 30, 30);
 	glTranslatef(0.4, 0, 0);
@@ -83,7 +86,7 @@ void Personaje::dibuja() {
 	glTranslatef(0, 0, altura / 2);
 	glutSolidSphere(altura / 6, 30, 30);
 	glTranslatef(0, 0, -altura * 5 / 6);
-	glRotatef(90, 1, 0, 0);*/
+	glRotatef(90, 1, 0, 0);
 	//gestion de direccion y animacion
 	if (velocidad.x > 0.01)puntero->flip(false, false); //Para la selección del personaje pongo un puntero para no poner el sprite directamente
 	if (velocidad.x < -0.01)puntero->flip(true, false);

@@ -126,7 +126,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		gluLookAt(camara, 11.5, nivel.z_ojo,  // posicion del ojo  
 			camara, 7.5f, 0.0,      // hacia que punto mira  (hombre.posicion.y + 8)
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    		
-
+		
 		nivel.dibuja();
 		//vida1.GetMov(ojo);
 
@@ -295,6 +295,10 @@ void Menu::Tecla(unsigned char key)
 		break;
 
 	case NIVEL:
+
+		nivel.teclaUp(key);
+		nivel.teclaDown(key);
+
 		if (key == 27)              //Pulsa esc para volver al MENU
 			estado = MENU;
 

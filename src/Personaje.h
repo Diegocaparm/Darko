@@ -16,7 +16,7 @@ private:
     int flagnivel = 1; //Indica el nivel donde estamos, aumenta al llegar al final
     int guardapersonaje; //Sin inicializar porque se ha de elegir
     int fin;
-    SpriteSequence sprite_darko, sprite_humano;
+    SpriteSequence sprite_darko{ "bin/imagenes/darkoespfvect.png", 2 }, sprite_humano{ "bin/imagenes/astrofvect.png", 2 };
     SpriteSequence *puntero;
 public:
     Personaje();
