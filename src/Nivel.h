@@ -43,7 +43,6 @@ public:
 public://Métodos
 	void teclaUp(unsigned char key);
 	void teclaDown(unsigned char key);
-
 	void teclaEspecial(unsigned char key);
 	void mueve();
 	void dibuja(); //Aquí le podemos meter como parámetro un int con el mundo en el que estamos
@@ -51,4 +50,6 @@ public://Métodos
 	bool cargarnivel();
 	bool borrarnivel();
 	//void teclaEspecialUp(unsigned char key);
+	void setDarko() { hombre.setDarko(); }
+	void setHumano() { hombre.setHumano(); }
 };

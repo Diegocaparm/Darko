@@ -15,18 +15,24 @@ private:
     int disparo = 0; //Flag para que el hombre dispare
     int flagnivel = 1, nivelaux = 0; //Indica el nivel donde estamos, aumenta al llegar al final
     int tempdmg = 0;
+    int guardapersonaje; //Sin inicializar porque se ha de elegir
+    SpriteSequence sprite_darko, sprite_humano;
+    SpriteSequence* puntero;
 public:
     Personaje();
     void dibuja();
     void mueve(float t);
     int getNivel();
     //DisparosAmigos* bala = new DisparosAmigos(posicion.x, posicion.y);
-    SpriteSequence sprite{ "bin/imagenes/darkoespfvect.png", 2 };
+    //SpriteSequence sprite{ "bin/imagenes/darkoespfvect.png", 2 };
+
+    int setPersonaje(unsigned char key);
+    int getguardapersonaje() { return guardapersonaje; }
+    void setDarko() { puntero = &sprite_darko; }
+    void setHumano() { puntero = &sprite_humano; }
 
     friend class Interaccion;
     friend class Nivel;
-
-
     friend class Solidos;
     friend class Pared;
     //friend class Vida;

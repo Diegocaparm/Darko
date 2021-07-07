@@ -3,9 +3,9 @@
 
 void Nivel::dibuja()
 {	//Creamos la cámara
-	gluLookAt(hombre.getPos().x, 11.5, z_ojo,  // posicion del ojo  
+	/*gluLookAt(hombre.getPos().x, 11.5, z_ojo,  // posicion del ojo  
 		hombre.getPos().x, 7.5f, 0.0,      // hacia que punto mira  (hombre.posicion.y + 8)
-		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+		0.0, 1.0, 0.0);*/      // definimos hacia arriba (eje Y)    
 
 	nivel = hombre.getNivel();
 
