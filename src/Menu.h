@@ -13,6 +13,8 @@ class Menu
 	int guardanivel;
 	float camara;
 	Nivel nivel;
+	int aux, aux1, aux2, aux3, aux4, aux5, aux6, aux7, aux8 = 0;
+	//int aux1 = 0;
 public:
 	Menu();
 	~Menu();

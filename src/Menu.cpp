@@ -1,10 +1,11 @@
 #include "Menu.h"
 #include "freeglut.h"
+#include "stdio.h"
 
 Menu::Menu()  //Constructor
 {
 	estado = START;                                  //Comienza el juego en START
-	ETSIDI::playMusica("bin/bso/intro.mp3", true);   //Se activa la música del inicio
+	ETSIDI::playMusica("bin/musica/menu.ogg", true);   //Se activa la música del inicio
 	camara = 0;
 }
 
@@ -121,7 +122,6 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 
 	case NIVEL: //Comenzamos el juego
 		camara = nivel.hombre.getPos().x;   // recoge la posicion x del muñeco en la variable ojo
-		if (camara <= 0) camara = 0;
 		gluLookAt(camara, 11.5, nivel.z_ojo,  // posicion del ojo  
 			camara, 7.5f, 0.0,      // hacia que punto mira  (hombre.posicion.y + 8)
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    		
@@ -140,33 +140,74 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		}*/
 
 			nivel.inicializa();
-			/*switch (nivel.hombre.getguardapersonaje()) {         //Dibuja el personaje escogido
-			case 0:
-				nivel.hombre.setDarko();	//Cargo a Darko
-				break;
-			case 1:
-				nivel.hombre.setHumano();	//Cargo Astronauta
-				break;
-			}*/
 			if (nivel.nivel == 1)
+			{
 				estado = NIVEL;
-			else if (nivel.nivel == 2)	//CAMBIAR?? En algún punto hay que poner un nivel ++, quizás aquí es buena opción
-				estado = NIVEL;			//nivel.nivel++??????
-			else if (nivel.nivel == 3)
+				Musica();
+				aux++;
+				
+			
+			}
+			if (nivel.nivel == 2)	//CAMBIAR?? En algún punto hay que poner un nivel ++, quizás aquí es buena opción
+			{
+				
 				estado = NIVEL;
-			else if (nivel.nivel == 4)
+				Musica();
+				aux1++;
+
+			}
+			if (nivel.nivel == 3)
+			{
+
 				estado = NIVEL;
-			else if (nivel.nivel == 5)
+				Musica();
+				aux2++;
+			}
+			if (nivel.nivel == 4)
+			{
+
 				estado = NIVEL;
-			else if (nivel.nivel == 6)
+				Musica();
+				aux3++;
+			}
+			if (nivel.nivel == 5)
+			{
+
 				estado = NIVEL;
-			else if (nivel.nivel == 7)
+				Musica();
+				aux4++;
+			}
+			if (nivel.nivel == 6)
+			{
+
 				estado = NIVEL;
-			else if (nivel.nivel == 8)
+				Musica();
+				aux5++;
+			}
+			if (nivel.nivel == 7)
+			{
+
 				estado = NIVEL;
-			else if (nivel.nivel == 9)
+				Musica();
+				aux6++;
+			}
+			if (nivel.nivel == 8)
+			{
+
+				estado = NIVEL;
+				Musica();
+				aux7++;
+			}
+			if (nivel.nivel == 9)
+			{
+
+				estado = NIVEL;
+				Musica();
+				aux8++;
+			}
+			if (nivel.nivel > 9)
 				estado = VICTORIA;
-			Musica();
+			//Musica();
 
 		break;
 
@@ -261,18 +302,19 @@ void Menu::Tecla(unsigned char key)
 	case ESCOGE_PERSONAJE:
 		if (key == 27)              //Pulsa esc para volver al MENU
 			estado = MENU;
+		//if (key == 13)
 		if (nivel.hombre.setPersonaje(key))
-			//if (key == 80 || key == 112 || key == 72 || key == 104)
+		//if (key == 80 || key == 112 || key == 72 || key == 104)
 			estado = HISTORIA;
 
-		Musica();					//Comenzaría la música de la historia 
+		//Musica();				//Comenzaría la música de la historia 
 		break;
 
 	case HISTORIA:
 		if (key == 27)              //Pulsa esc para volver al MENU
 		{
 			estado = MENU;
-			Musica();				//Comenzaría la música del menú
+			//Musica();				//Comenzaría la música del menú
 		}
 		if (key == 13)              //Pulsa enter para pasar a la siguiente pantalla
 			estado = SUERTE;
@@ -286,7 +328,7 @@ void Menu::Tecla(unsigned char key)
 		{
 			nivel.inicializa();
 			estado = NIVEL;
-			Musica();				//COMENZARÍA LA MÚSICA QUE QUISIÉRAMOS PONERLE AL NIVEL1
+			Musica();				//COMENZARÍA LA MÚSICA QUE QUISIÉRAMOS PONERLE AL NIVEL
 		}
 		break;
 
@@ -296,7 +338,10 @@ void Menu::Tecla(unsigned char key)
 		nivel.teclaDown(key);
 
 		if (key == 27)              //Pulsa esc para volver al MENU
+		{
 			estado = MENU;
+			Musica();				//Comenzaría la música del menú
+		}
 
 	case GAMEOVER:
 		if (key == 27)              //Pulsa esc para salir del juego
@@ -343,34 +388,83 @@ void Menu::Musica()
 {
 	switch (estado)
 	{
-	case HISTORIA:
+	/*case HISTORIA:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/historia.mp3", true);
-		break;
+		ETSIDI::playMusica("bin/musica/historia.mp3", true);
+		break;*/
 
 	case MENU:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/intro.mp3", true);
+		ETSIDI::playMusica("bin/musica/intro.ogg", true);
 		break;
 
 	case NIVEL:
+		/*printf_s("No entro");
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/nivel.mp3", true);
+		ETSIDI::playMusica("bin/musica/mundo1.ogg", true);*/
+		if (aux == 2)
+		{
+			printf_s("No entro");
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo1.ogg", true);
+		}
+		if (aux1 == 2)	//CAMBIAR?? En algún punto hay que poner un nivel ++, quizás aquí es buena opción
+		{
+			printf_s("No entro2");
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo2.ogg", true);
+		}
+		if (aux2 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo3o4.ogg", true);
+		}
+		if (aux3 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo4o3.ogg", true);
+		}
+		if (aux4 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo5.ogg", true);
+		}
+		if (aux5 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo6.ogg", true);
+		}
+		if (aux6 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo1.ogg", true);
+		}
+		if (aux7 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo1.ogg", true);
+		}
+		if (aux8 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo1.ogg", true);
+		}
+		
 		break;
 
 	case VICTORIA:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/victoria.mp3", true);
+		ETSIDI::playMusica("bin/musica/victoria.ogg", true);
 		break;
 
 	case GAMEOVER:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/gameover.mp3", true);
+		ETSIDI::playMusica("bin/musica/derrota.ogg", true);
 		break;
 
 	case FIN:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/fin.mp3", true);
+		ETSIDI::playMusica("bin/musica/victoria.ogg", true);
 		break;
 	}
 
