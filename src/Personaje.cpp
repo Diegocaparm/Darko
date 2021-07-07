@@ -82,7 +82,7 @@ void Personaje::mueve(float t) {
 		if (salto == 1) {
 			aceleracion.y = 300;
 			flag = 0;
-			salto = 0;		//comentar para salto infinito
+			salto = 1;		//comentar para salto infinito
 		}
 	}
 	//if (velocidad.y < 0.3f && velocidad.y > -0.3f && sentido == 1 && salto == 0)

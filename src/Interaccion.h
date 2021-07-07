@@ -12,8 +12,8 @@
 class Interaccion
 {
 public:
-	static bool ColisionGen(Hitbox& ene, Hitbox& h, VidasRecolectadas& v);
-	//////////////////////////////////////////////////////////////////// PJ
+	static bool ColisionGen(Hitbox ene, Hitbox h);
+		//////////////////////////////////////////////////////////////////// PJ
 	//Entorno
 	static void rebote(Personaje& h, ListaSolidos ls, VidasRecolectadas& v);
 	static void rebote(Personaje& h, Solidos* s, VidasRecolectadas &v);

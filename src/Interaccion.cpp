@@ -31,7 +31,7 @@ float DistSeg(Hitbox h, Vector2D p) {
 		else return d2;
 	else return 1;
 }
-bool Interaccion::ColisionGen(Hitbox& ene, Hitbox& h, VidasRecolectadas& v) {
+bool Interaccion::ColisionGen(Hitbox ene, Hitbox h) {
 	float dist1 = DistSeg(ene, h.top_l),
 		dist2 = DistSeg(ene, h.top_r),
 		dist3 = DistSeg(ene, h.bot_l),
@@ -247,22 +247,16 @@ void Interaccion::rebote(Personaje& h, Final* p, VidasRecolectadas& v)
 }
 void Interaccion::rebote(Personaje& h, Pincho *p, VidasRecolectadas& v)
 {
-	if (ColisionGen(p->hitbox, h.hitbox, v)) {
+	if (ColisionGen(p->hitbox, h.hitbox)) {
 		v.reduceVida();
 		h.setColor(0, 1, 1);
 	}
 }
 void Interaccion::rebote(Personaje& h, BolaFuego* b, VidasRecolectadas& v)
 {
-	bool b1, b2, b3, b4;
-	b1 = DistHitbox(h.hitbox, b->hitbox.top_l);
-	b2 = DistHitbox(h.hitbox, b->hitbox.top_r);
-	b3 = DistHitbox(h.hitbox, b->hitbox.bot_l);
-	b4 = DistHitbox(h.hitbox, b->hitbox.bot_r);
-	if (b1 || b2 || b3 || b4)
-	{
-		b->setColor(0, 1, 0);
+	if (ColisionGen(b->hitbox, h.hitbox)) {
 		v.reduceVida();
+		h.setColor(1, 0, 1);
 	}
 }
 void Interaccion::rebote(Personaje& h, Caja c, VidasRecolectadas& v)
@@ -378,7 +372,7 @@ void Interaccion::colision(Personaje& h, ListaEnemigos le, VidasRecolectadas& v)
 	}
 }
 void Interaccion::colision(Personaje& h, Enemigo& ene, VidasRecolectadas& v) {
-	if (ColisionGen(ene.hitbox, h.hitbox, v)) {
+	if (ColisionGen(ene.hitbox, h.hitbox)) {
 		v.reduceVida();
 		h.setColor(0, 1, 1);
 	}
@@ -395,7 +389,7 @@ void Interaccion::colision(Personaje& h, EnemigoDisp& e, VidasRecolectadas& v)
 	}*/
 }
 void Interaccion::colision(Personaje& h, Babosa* ene, VidasRecolectadas& v) {
-	if (ColisionGen(ene->hitbox, h.hitbox, v)) {
+	if (ColisionGen(ene->hitbox, h.hitbox)) {
 		v.reduceVida();
 		h.setColor(0, 1, 0);
 	}
@@ -429,7 +423,7 @@ void Interaccion::colision(Personaje& h, Tentaculo* ene, VidasRecolectadas& v) {
 	}
 }//3 hitboxes
 void Interaccion::colision(Personaje& h, Bomber* ene, VidasRecolectadas& v) {
-	if (ColisionGen(ene->hitbox, h.hitbox, v)) {
+	if (ColisionGen(ene->hitbox, h.hitbox)) {
 		v.reduceVida();
 		h.setColor(0, 1, 0);
 	}
@@ -1117,8 +1111,8 @@ void Interaccion::colision(Espada& esp, BossFinal* b)
 }
 void Interaccion::colision(ListaDisparos ld, ListaEnemigos le)
 {
-	for (int i = 0; i < le.numero; i++)
-		for (int j = 0; j < ld.numero; j++) {
+	for (int i = 0; i < ld.numero; i++)
+		for (int j = 0; j < le.numero; j++) {
 			//int i = 0;
 			Interaccion::colision(ld.lista[i], *le.lista[j]);
 		}
@@ -1126,7 +1120,7 @@ void Interaccion::colision(ListaDisparos ld, ListaEnemigos le)
 void Interaccion::colision(Disparos* d, Enemigo& e)
 {
 	if (d->cosa == 1) {							// no esta entrando
-		d->setColor(0, 0, 0);
+		//d->setColor(0, 0, 0);
 		DisparosAmigos* p;
 		p = dynamic_cast <DisparosAmigos*> (d);
 		Interaccion::colision(p, e);
