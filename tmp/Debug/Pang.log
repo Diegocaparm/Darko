@@ -1,0 +1,19 @@
+﻿  Recolectable.cpp
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Disparos.h(9,16): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\ListaEnemigos.h(7,1): warning C4005: 'MAX_DISP': redefinición de macro
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\ListaDisparos.h(6): message : vea la definición anterior de 'MAX_DISP'
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Recolectable.cpp(311,21): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Recolectable.cpp(339,21): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  Solidos.cpp
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Solidos.cpp(53,30): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Solidos.cpp(54,30): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Solidos.cpp(55,30): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Solidos.cpp(56,30): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Solidos.cpp(111,48): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Solidos.cpp(112,48): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Solidos.cpp(113,65): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Solidos.cpp(113,48): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Solidos.cpp(114,65): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\izofi\Desktop\Darko-main - copia (2)\src\Solidos.cpp(114,48): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  Generando código...
+  Pang.vcxproj -> C:\Users\izofi\Desktop\Darko-main - copia (2)\bin\Darko.exe
