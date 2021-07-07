@@ -49,5 +49,6 @@ public://Métodos
 	void dibuja(); //Aquí le podemos meter como parámetro un int con el mundo en el que estamos
 	void inicializa();
 	bool cargarnivel();
+	bool borrarnivel();
 	//void teclaEspecialUp(unsigned char key);
 };

@@ -162,11 +162,9 @@ void PlatMovil::dibuja(int i)
 		//Dimensiones del sprite
 		platmovil1.setCenter((limite2.x - limite1.x) * 3/2,3);
 		platmovil1.setSize((limite2.x-limite1.x)*3, 5);
-
 		//Dibujo
 		glPushMatrix();
 		glTranslatef(posicion.x, posicion.y, 0.5);
-
 		platmovil1.draw();
 		glPopMatrix();
 
@@ -176,7 +174,6 @@ void PlatMovil::dibuja(int i)
 		//Dimensiones del sprite
 		platmovil2.setCenter((limite2.x - limite1.x) * 3 / 2, 3);
 		platmovil2.setSize((limite2.x - limite1.x) * 3, 5);
-
 		//Dibujo
 		glPushMatrix();
 		glTranslatef(posicion.x, posicion.y, 0.5);
@@ -186,21 +183,17 @@ void PlatMovil::dibuja(int i)
 			platmovil2.setState(0);
 		platmovil2.draw();
 		glPopMatrix();
-
-
 	}
 	else
 	{
 		//Dimensiones del sprite
 		platmovil3.setCenter((limite2.x - limite1.x) * 3 / 2, 3);
 		platmovil3.setSize((limite2.x - limite1.x) * 3, 5);
-
 		//Dibujo
 		glPushMatrix();
 		glTranslatef(posicion.x, posicion.y, 0.5);
 		platmovil3.draw();
 		glPopMatrix();
-
 	}
 }
 void PlatMovil::mueve(float t)
@@ -301,7 +294,6 @@ void BolaFuego::dibuja(int i)
 	//Dimensiones del sprite
 	fireball.setCenter(2, 2);
 	fireball.setSize(4, 4);
-
 	//Dibujo
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0.5);

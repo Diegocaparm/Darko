@@ -29,8 +29,8 @@ void Nivel::dibuja()
 	}
 	else if (nivel > 3 && nivel <= 6)
 	{
-		caja.dibuja(1);		//Dibujamos la caja del mundo 2
-		solidos.dibuja(1);	//Dibujamos los solidos del mundo 2
+		caja.dibuja(2);		//Dibujamos la caja del mundo 2
+		solidos.dibuja(2);	//Dibujamos los solidos del mundo 2
 		glPushMatrix();
 		glTranslatef(hombre.getPos().x, 0, -1);
 		glEnable(GL_TEXTURE_2D);
@@ -80,9 +80,10 @@ void Nivel::dibuja()
 
 void Nivel::mueve()
 {
-	//elegir el nivel
+	//Elegir el nivel
 	if (hombre.flagnivel != hombre.nivelaux) {
 		nivel = hombre.getNivel();
+		borrarnivel();
 		cargarnivel();
 		hombre.nivelaux = hombre.flagnivel;
 	}
@@ -92,7 +93,6 @@ void Nivel::mueve()
 	Interaccion::mov(espada, hombre);
 	enemigos.mueve(0.025f);
 	disparos.mueve(0.025f);
-	//Interaccion::dispara(enemigos, disparos); //Aún no se donde va jaja
 
 	//Movimiento vidas y monedas
 	vidas.mueve(0.025f);
@@ -128,7 +128,6 @@ void Nivel::mueve()
 		dineros.eliminar(aux_m);
 		dinerosR.aumentaDinero();
 	}
-	
 }
 
 void Nivel::inicializa()
@@ -145,19 +144,6 @@ bool Nivel::cargarnivel()
 {
 	if (nivel == 1)
 	{
-		//background
-		/*glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/fondo_rojo.png").id);
-		glDisable(GL_LIGHTING);
-		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1); glVertex2f(-10, 0);
-		glTexCoord2d(1, 1); glVertex2f(10, 0);
-		glTexCoord2d(1, 0); glVertex2f(10, 15);
-		glTexCoord2d(0, 0); glVertex2f(-10, 15);
-		glEnd();
-		glEnable(GL_LIGHTING);
-		glDisable(GL_TEXTURE_2D);*/
 		//Agregamos los suelos
 		solidos.agregar(new Pared(50.0f, 0.0f, -30.0f, 0.0f, 0, 100, 0));
 		solidos.agregar(new Suelo(-30.0f, 0.0f, 50.0f, -10.0f));
@@ -218,56 +204,8 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new EnemigoDisp(193.0f, 0.0f));
 		enemigos.agregar(new Tank(193.0f, 7.0f));
 		enemigos.agregar(new Babosa(10.0f, 13.0f));
-
-			enemigos.agregar(new BossFinal(10, 10));
+		//enemigos.agregar(new BossFinal(10, 10));
 		Interaccion::dispara(enemigos, &disparos); //Aún no se donde va jaja
-
-		/*
-		//meter disparos en lista
-		disparos.agregar(ped1->dispEnem1);
-		disparos.agregar(ped2->dispEnem1);
-		disparos.agregar(ped3->dispEnem1);
-		disparos.agregar(ped4->dispEnem1);
-		disparos.agregar(ped5->dispEnem1);
-		disparos.agregar(ped6->dispEnem1);
-		disparos.agregar(ped7->dispEnem1);
-		disparos.agregar(ped8->dispEnem1);
-		disparos.agregar(ped9->dispEnem1);
-		disparos.agregar(Tank1->dispTank1);
-		disparos.agregar(Tank1->dispTank2);
-		disparos.agregar(Tank1->dispTank3);
-		disparos.agregar(Tank1->dispTank4);
-		disparos.agregar(Tank1->dispTank5);*/
-		//meter enemigos en sus listas
-		/*moviles.agregar(ped1);
-		moviles.agregar(ped2);
-		moviles.agregar(ped3);
-		moviles.agregar(ped4);
-		moviles.agregar(ped5);
-		moviles.agregar(ped6);
-		moviles.agregar(ped7);
-		moviles.agregar(ped8);
-		moviles.agregar(ped9);
-		moviles.agregar(ped10);
-		moviles.agregar(ped11);
-		moviles.agregar(ped12);
-		moviles.agregar(Tank1);
-		moviles.agregar(new Babosa(10.0f, 13.0f));
-		//meter disparos en lista
-		moviles.agregar(ped1->dispEnem1);
-		moviles.agregar(ped2->dispEnem1);
-		moviles.agregar(ped3->dispEnem1);
-		moviles.agregar(ped4->dispEnem1);
-		moviles.agregar(ped5->dispEnem1);
-		moviles.agregar(ped6->dispEnem1);
-		moviles.agregar(ped7->dispEnem1);
-		moviles.agregar(ped8->dispEnem1);
-		moviles.agregar(ped9->dispEnem1);
-		moviles.agregar(Tank1->dispTank1);
-		moviles.agregar(Tank1->dispTank2);
-		moviles.agregar(Tank1->dispTank3);
-		moviles.agregar(Tank1->dispTank4);
-		moviles.agregar(Tank1->dispTank5);*/
 
 		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
 		vidas.agregar(new Corazon(32.5f, 8.0f)); //La vida a la que invita la casa
@@ -385,23 +323,6 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new EnemigoDisp(198.0f, 12.5f)); //enemigos apoyo al tentaculo
 		enemigos.agregar(new EnemigoDisp(198.0f, 10.5f));
 		enemigos.agregar(new EnemigoDisp(199.0f, 8.5f));
-
-		//meter disparos en lista
-		/*moviles.agregar(ped1->dispEnem1);
-		moviles.agregar(ped2->dispEnem1);
-		moviles.agregar(ped3->dispEnem1);
-		moviles.agregar(ped4->dispEnem1);
-		moviles.agregar(ped5->dispEnem1);
-		moviles.agregar(ped6->dispEnem1);
-		moviles.agregar(ped7->dispEnem1);
-		moviles.agregar(ped8->dispEnem1);
-		moviles.agregar(ped9->dispEnem1);
-		moviles.agregar(ped10->dispEnem1);
-		moviles.agregar(ped11->dispEnem1);
-		moviles.agregar(ped12->dispEnem1);
-		moviles.agregar(ped14->dispEnem1);
-		moviles.agregar(ped15->dispEnem1);
-		moviles.agregar(ped16->dispEnem1);*/
 
 		//Agregamos las vidas recolectables
 		vidas.agregar(new Corazon(67.0f, 7.5f)); //plat 4
@@ -530,15 +451,6 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new EnemigoDisp(176.0f, 7.5f)); //p8	
 		enemigos.agregar(new EnemigoDisp(178.0f, 12.0f)); //p14
 
-		//meter disparos en lista
-		/*moviles.agregar(ped1->dispEnem1);
-		moviles.agregar(ped2->dispEnem1);
-		moviles.agregar(ped4->dispEnem1);
-		moviles.agregar(ped5->dispEnem1);
-		moviles.agregar(ped6->dispEnem1);
-		moviles.agregar(ped7->dispEnem1);
-		moviles.agregar(ped8->dispEnem1);*/
-
 		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
 		vidas.agregar(new Corazon(60.0f, 0.5f)); //suelo5
 		vidas.agregar(new Corazon(107.5f, 5.5f)); //plat 5
@@ -661,21 +573,6 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new EnemigoDisp(185.0f, 0.0f)); //suelo11
 		enemigos.agregar(new Tank(175.0f, 2.5f));
 
-		//meter enemigos en sus listas
-		/*moviles.agregar(ped1->dispEnem1);
-		moviles.agregar(ped2->dispEnem1);
-		moviles.agregar(ped3->dispEnem1);
-		moviles.agregar(ped4->dispEnem1);
-		moviles.agregar(ped5->dispEnem1);
-		moviles.agregar(ped6->dispEnem1);
-		moviles.agregar(ped7->dispEnem1);
-		moviles.agregar(ped8->dispEnem1);
-		moviles.agregar(tank1->dispTank1);
-		moviles.agregar(tank1->dispTank2);
-		moviles.agregar(tank1->dispTank3);
-		moviles.agregar(tank1->dispTank4);
-		moviles.agregar(tank1->dispTank5);*/
-
 		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
 		vidas.agregar(new Corazon(60.0f, 0.5f)); //suelo5
 		vidas.agregar(new Corazon(114.5f, 8.5f)); //plat 4
@@ -781,17 +678,6 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new EnemigoDisp(175.0f, 12.5f));
 		enemigos.agregar(new Tank(120.0f, 8.5f));
 
-		/*moviles.agregar(ped1->dispEnem1);
-		moviles.agregar(ped2->dispEnem1);
-		moviles.agregar(ped3->dispEnem1);
-		moviles.agregar(ped4->dispEnem1);
-		moviles.agregar(ped5->dispEnem1);
-		moviles.agregar(tank1->dispTank1);
-		moviles.agregar(tank1->dispTank2);
-		moviles.agregar(tank1->dispTank3);
-		moviles.agregar(tank1->dispTank4);
-		moviles.agregar(tank1->dispTank5);*/
-
 		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
 		vidas.agregar(new Corazon(160.0f, 2.5f));
 		vidas.agregar(new Corazon(170.0f, 2.5f));
@@ -874,18 +760,6 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new EnemigoDisp(88.0f, 2.5f)); //p7
 		enemigos.agregar(new EnemigoDisp(78.0f, 0.0f)); //suelo2
 		enemigos.agregar(new Tank(167.5f, 7.5f)); //suelo3
-
-		/*moviles.agregar(ped1->dispEnem1);
-		moviles.agregar(ped2->dispEnem1);
-		moviles.agregar(ped4->dispEnem1);
-		moviles.agregar(ped5->dispEnem1);
-		moviles.agregar(ped6->dispEnem1);
-		moviles.agregar(ped7->dispEnem1);
-		moviles.agregar(tank1->dispTank1);
-		moviles.agregar(tank1->dispTank2);
-		moviles.agregar(tank1->dispTank3);
-		moviles.agregar(tank1->dispTank4);
-		moviles.agregar(tank1->dispTank5);*/
 
 		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
 		vidas.agregar(new Corazon(30.0f, 8.0f)); //plat2
@@ -980,7 +854,6 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new BolaFuego(146.0f, -1.0f, 16.0f, -5.0f)); //p11
 		solidos.agregar(new BolaFuego(188.5f, -3.0f, 16.0f, -5.0f)); //p16
 
-
 		//Agregamos los enemigos
 		enemigos.agregar(new EnemigoDisp(57.5f, 0.0f)); //suelo3
 		enemigos.agregar(new EnemigoDisp(63.0f, 0.0f)); //suelo4
@@ -995,23 +868,6 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new Bomber(120.0f, 12.0f));//plat8
 		enemigos.agregar(new Babosa(137.0f, 2.5f));//plat11
 		enemigos.agregar(new Tank(45.0f, 0.0f)); //suelo2
-
-		/*moviles.agregar(ped1->dispEnem1);
-		moviles.agregar(ped2->dispEnem1);
-		moviles.agregar(ped3->dispEnem1);
-		moviles.agregar(ped4->dispEnem1);
-		moviles.agregar(ped4->dispEnem1);
-		moviles.agregar(ped5->dispEnem1);
-		moviles.agregar(ped6->dispEnem1);
-		moviles.agregar(ped7->dispEnem1);
-		moviles.agregar(ped8->dispEnem1);
-		moviles.agregar(ped9->dispEnem1);
-		moviles.agregar(tank1->dispTank1);
-		moviles.agregar(tank1->dispTank2);
-		moviles.agregar(tank1->dispTank3);
-		moviles.agregar(tank1->dispTank4);
-		moviles.agregar(tank1->dispTank5);
-		*/
 
 		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
 		vidas.agregar(new Corazon(90.0f, 10.5f)); //plat4
@@ -1128,29 +984,6 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new EnemigoDisp(171.0f, 7.5f));
 		enemigos.agregar(new Tank(140.0f, 7.5f)); //suelo6
 		enemigos.agregar(new Tank(88.0f, 10.0f)); //suelo4
-
-		/*//meter enemigos en sus listas
-		moviles.agregar(ped1->dispEnem1);
-		moviles.agregar(ped2->dispEnem1);
-		moviles.agregar(ped3->dispEnem1);
-		moviles.agregar(ped4->dispEnem1);
-		moviles.agregar(ped5->dispEnem1);
-		moviles.agregar(ped6->dispEnem1);
-		moviles.agregar(ped7->dispEnem1);
-		moviles.agregar(ped8->dispEnem1);
-		moviles.agregar(ped10->dispEnem1);
-		moviles.agregar(ped11->dispEnem1);
-		moviles.agregar(ped12->dispEnem1);
-		moviles.agregar(tank1->dispTank1);
-		moviles.agregar(tank1->dispTank2);
-		moviles.agregar(tank1->dispTank3);
-		moviles.agregar(tank1->dispTank4);
-		moviles.agregar(tank1->dispTank5);
-		moviles.agregar(tank2->dispTank1);
-		moviles.agregar(tank2->dispTank2);
-		moviles.agregar(tank2->dispTank3);
-		moviles.agregar(tank2->dispTank4);
-		moviles.agregar(tank2->dispTank5);*/
 
 		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
 		vidas.agregar(new Corazon(53.0f, 8.0f)); //plat5
@@ -1275,35 +1108,8 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new Babosa(35.0f, 0.0f));//suelo1
 		enemigos.agregar(new Babosa(190.0f, 0.0f));//suelo1
 		enemigos.agregar(new Tank(45.0f, 9.5f)); //suelo3
+		enemigos.agregar(new BossFinal(10.0f, 10.0f));
 
-		/*
-			//* tank3 = new Tank(195.0f, 0.0f); este me da problema asi que vamos viendo
-			//bossFinal* boss = new bossFinal(111.0f, 8.5f);
-		//meter enemigos en sus listas
-
-		//moviles.agregar(tank3);
-		moviles.agregar(ped1->dispEnem1);
-		moviles.agregar(ped2->dispEnem1);
-		moviles.agregar(ped4->dispEnem1);
-		moviles.agregar(ped5->dispEnem1);
-		moviles.agregar(ped6->dispEnem1);
-		moviles.agregar(ped7->dispEnem1);
-		moviles.agregar(ped8->dispEnem1);
-		moviles.agregar(ped9->dispEnem1);
-		moviles.agregar(ped10->dispEnem1);
-		moviles.agregar(ped11->dispEnem1);
-		moviles.agregar(ped12->dispEnem1);
-		moviles.agregar(tank1->dispTank1);
-		moviles.agregar(tank1->dispTank2);
-		moviles.agregar(tank1->dispTank3);
-		moviles.agregar(tank1->dispTank4);
-		moviles.agregar(tank1->dispTank5);
-		disparos.agregar(tank3->dispTank1);
-		disparos.agregar(tank3->dispTank2);
-		disparos.agregar(tank3->dispTank3);
-		disparos.agregar(tank3->dispTank4);
-		disparos.agregar(tank3->dispTank5);
-		*/
 		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
 		vidas.agregar(new Corazon(47.0f, 1.0f)); //suelo1
 		vidas.agregar(new Corazon(80.5f, 9.75f)); //suelo5
@@ -1344,6 +1150,16 @@ bool Nivel::cargarnivel()
 		return true;
 	}
 	else return false;
+}
+
+bool Nivel::borrarnivel()
+{
+	solidos.destruirContenido();
+	enemigos.destruirContenido();
+	disparos.destruirContenido();
+	vidas.destruirContenido();
+	dineros.destruirContenido();
+	return true;
 }
 
 void Nivel::teclaUp(unsigned char key)

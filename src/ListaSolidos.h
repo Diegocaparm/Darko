@@ -16,7 +16,7 @@ public:
 	void dibuja(int i);
 	void mueve(float t);
 	void rebote(Personaje& pj, VidasRecolectadas& v);
-
+	void destruirContenido();
 	friend class Interaccion;
 };
 

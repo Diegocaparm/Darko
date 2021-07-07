@@ -35,3 +35,9 @@ void ListaSolidos::rebote(Personaje& pj, VidasRecolectadas& v)
 	for (int i = 0; i < numero; i++)
 		Interaccion::rebote(pj, lista[i], v);
 }
+void ListaSolidos::destruirContenido()
+{
+	for (int i = 0; i < numero; i++)
+		delete lista[i];
+	numero = 0;
+}

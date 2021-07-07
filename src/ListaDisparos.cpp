@@ -32,7 +32,6 @@ void ListaDisparos::destruirContenido()
 {
 	for (int i = 0; i < numero; i++) // destrucción de corazones contenidos
 		delete lista[i];
-
 	numero = 0; // inicializa lista
 }
 void ListaDisparos::eliminar(int index)
