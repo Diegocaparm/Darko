@@ -160,7 +160,8 @@ void Interaccion::rebote(Personaje& h, PlatMovil* pm, VidasRecolectadas& v)
 			else
 				if (h.posicion.y < ymin) {
 					h.posicion.y = ymin;
-					h.velocidad = pm->vel;
+					h.velocidad = pm->vel+h.velocidad;
+					h.aceleracion = 0;
 					h.salto = 1;
 				}
 		}
