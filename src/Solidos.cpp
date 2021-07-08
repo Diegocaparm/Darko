@@ -109,8 +109,8 @@ void Pared::dibuja(int i)
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0.4, 0.2);		glVertex2f(limite1.x + 0.5f, limite1.y - 1);
-		glTexCoord2d(0.6, 0.2);		glVertex2f(limite2.x + 0.5f, limite2.y - 1);
+		glTexCoord2d(0.4, 0.2);	glVertex2f(limite1.x + 0.5f, limite1.y - 1);
+		glTexCoord2d(0.6, 0.2);	glVertex2f(limite2.x + 0.5f, limite2.y - 1);
 		glTexCoord2d(0.6, 0.1);	glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
 		glTexCoord2d(0.4, 0.1);	glVertex2f(limite1.x - 0.5f, limite1.y + 0.5f);
 		glEnd();
@@ -119,7 +119,18 @@ void Pared::dibuja(int i)
 	}
 	else if (i == 2)
 	{
-
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo2.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0.1, 0.95);	glVertex2f(limite1.x + 0.5f, limite1.y - 1);
+		glTexCoord2d(0.9, 0.95);	glVertex2f(limite2.x + 0.5f, limite2.y - 1);
+		glTexCoord2d(0.9, 0.7);		glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
+		glTexCoord2d(0.1, 0.7);		glVertex2f(limite1.x - 0.5f, limite1.y + 0.5f);
+		glEnd();
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
 	}
 	else
 	{
@@ -232,7 +243,18 @@ void Suelo::dibuja(int i)
 	}
 	else if (i == 2)
 	{
-
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo2.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0.1, 0.95);	glVertex2f(bajo1.x, bajo1.y);
+		glTexCoord2d(0.9, 0.95);	glVertex2f(bajo2.x, bajo2.y);
+		glTexCoord2d(0.9, 0.7);		glVertex2f(limite2.x, limite2.y);
+		glTexCoord2d(0.1, 0.7);		glVertex2f(limite1.x, limite1.y);
+		glEnd();
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
 	}
 	else
 	{
@@ -243,14 +265,14 @@ void Suelo::dibuja(int i)
 void Final::dibuja(int i)
 {
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo1.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/final.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
-	glTexCoord2d(0.68, 0.4);	glVertex2f(limite1.x + 0.5f, limite1.y - 1);
-	glTexCoord2d(0.95, 0.4);	glVertex2f(limite2.x + 0.5f, limite2.y - 1);
-	glTexCoord2d(0.95, 0.3);	glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
-	glTexCoord2d(0.68, 0.3);	glVertex2f(limite1.x - 0.5f, limite1.y + 0.5f);
+	glTexCoord2d(0.4, 0.2);	glVertex2f(limite1.x + 0.5f, limite1.y - 1);
+	glTexCoord2d(0.6, 0.2);	glVertex2f(limite2.x + 0.5f, limite2.y - 1);
+	glTexCoord2d(0.6, 0.1);	glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
+	glTexCoord2d(0.4, 0.1);	glVertex2f(limite1.x - 0.5f, limite1.y + 0.5f);
 	glEnd();
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);

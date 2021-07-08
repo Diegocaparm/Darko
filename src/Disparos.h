@@ -72,6 +72,6 @@ public:
     void dibuja();
     
     friend class Interaccion;
-    SpriteSequence misil{ "bin/imagenes/misil.png", 4,1 };
+    SpriteSequence misil{ "bin/imagenes/misil.png", 2,2 };
 };
 

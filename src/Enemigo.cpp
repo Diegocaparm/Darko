@@ -78,19 +78,6 @@ BossFinal::BossFinal(float px, float py) {
 	setPos(px, py);
 	setAc(0, -9.8f);
 
-	/*
-	misil1->setVel(-misil1., 0.0f);
-	misil2->setVel(-misil1->vel * 0.94, misil1->vel * 0.342);
-	misil3->setVel(-misil1->vel * 0.766, misil1->vel * 0.643);
-	misil4->setVel(-misil1->vel * 0.5, misil1->vel * 0.866);
-	misil5->setVel(-misil1->vel * 0.174, misil1->vel * 0.985);
-
-	misil6->setVel(-misil1->vel, -misil1->vel * 0.174);
-	misil7->setVel(-misil1->vel * 0.94, -misil1->vel * 0.342);
-	misil8->setVel(misil1->vel * 0.766, misil1->vel * 0.643);
-	misil9->setVel(misil1->vel * 0.5, misil1->vel * 0.866);
-	misil10->setVel(misil1->vel * 0.174, misil1->vel * 0.985);*/
-
 	misil1->setColor(10, 0, 0);
 	misil2->setColor(10, 0, 0);
 	misil3->setColor(10, 0, 0);
@@ -101,8 +88,8 @@ BossFinal::BossFinal(float px, float py) {
 	misil8->setColor(10, 0, 0);
 	misil9->setColor(10, 0, 0);
 	misil10->setColor(10, 0, 0);
-	sprite.setCenter(5, 0.5);
-	sprite.setSize(10, 10);
+	sprite.setCenter(10, 4.5);
+	sprite.setSize(20, 20);
 }
 
 //Método dibuja de cada enemigo
@@ -367,7 +354,7 @@ void Tank::dibuja()
 void BossFinal::dibuja()
 {
 	glPushMatrix();
-	glTranslatef(posicion.x, posicion.y, 0);
+	glTranslatef(posicion.x, posicion.y, 0.1);
 	glColor3f(color.r, color.g, color.b);
 	if (velocidad.x > 0.01)sprite.flip(true, false);
 	if (velocidad.x < -0.01)sprite.flip(false, false);
@@ -680,11 +667,11 @@ void BossFinal::mueve(float t)
 {
 	ObjetoMovil::mueve(t);
 
-	if (temp < 120) {		//40 para 1 seg
+	if (temp < 200) {		//40 para 1 seg
 		temp++;
 		//mueve?
 
-		if (temp == 120) {
+		if (temp == 200) {
 			misil1->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 			misil2->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial
 			misil3->setPos(posicion.x, posicion.y + altura / 2);	//esta aqui para que este bien la posicion del disparo inicial

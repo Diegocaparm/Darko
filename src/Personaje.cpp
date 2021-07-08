@@ -15,8 +15,6 @@ Personaje::Personaje() :sprite_darko("bin/imagenes/darkopist.png", 2), sprite_hu
 		puntero = &sprite_darko;
 	if (guardapersonaje == 2)
 		puntero = &sprite_humano;
-	//guardapersonaje = 1;
-	//bala->setPos(posicion.x, posicion.y + altura * 2 / 3);
 }
 
 int Personaje::setPersonaje(unsigned char key)		//Elección de personajes Sofía
@@ -40,25 +38,6 @@ void Personaje::dibuja() {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
 	glColor3f(color.r, color.g, color.b);
-	/*glRotatef(-90, 1, 0, 0);		//dibujar persona
-	glTranslatef(-0.2, 0, 0);
-	glutSolidCylinder(0.1, altura / 3, 30, 30);
-	glTranslatef(0.4, 0, 0);
-	glutSolidCylinder(0.1, altura / 3, 30, 30);
-	glTranslatef(-0.2, 0, altura / 3);
-	glutSolidCylinder(0.4, altura / 3, 30, 30);
-	glTranslatef(0, 0, altura / 2);
-	glutSolidSphere(altura / 6, 30, 30);
-	glTranslatef(0, 0, -altura * 5 / 6);
-	glRotatef(90, 1, 0, 0);*/
-	//gestion de direccion y animacion
-	/*if (velocidad.x > 0.01)sprite.flip(false, false);
-	if (velocidad.x < -0.01)sprite.flip(true, false);
-	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
-		sprite.setState(0);
-	else if (sprite.getState() == 0)
-		sprite.setState(1, false);
-	sprite.draw();*/
 	if (velocidad.x > 0.01)puntero->flip(false, false); //Para la selección del personaje pongo un puntero para no poner el sprite directamente
 	if (velocidad.x < -0.01)puntero->flip(true, false);
 	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
@@ -136,6 +115,15 @@ void Personaje::mueve(float t) {
 
 	sprite_darko.loop();
 	sprite_humano.loop();
+}
+bool Personaje::caida(VidasRecolectadas* v)
+{
+	if (posicion.y < -10.0f) {
+		setPos(-4, 16);
+		v->reduceVida();
+		return true;
+	}
+	return false;
 }
 int Personaje::getNivel()
 {

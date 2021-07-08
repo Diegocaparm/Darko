@@ -65,8 +65,8 @@ Misiles::Misiles(float px, float py) {
 	setPos(px, py);
 	radio = 0.5f;
 	setVel(-vel, 0);
-	misil.setCenter(3, 2.9);
-	misil.setSize(3, 6);
+	misil.setCenter(1,2);
+	misil.setSize(3, 3);
 }
 
 //Métodos virtuales de Disparos
@@ -75,8 +75,8 @@ void Disparos::dibuja()
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0.2);
 	glColor3f(color.r, color.g, color.b);
-	if (velocidad.x > 0.01)sprite.flip(true, false);
-	if (velocidad.x < -0.01)sprite.flip(false, false);
+	if (velocidad.x > 0.01)sprite.flip(false, false);
+	if (velocidad.x < -0.01)sprite.flip(true, false);
 	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
 		sprite.setState(0);
 	else if (sprite.getState() == 0)
@@ -160,9 +160,14 @@ float Espada::getLong() {
 
 //Métodos propios de Misiles
 void Misiles::mueve(float t) {
-	Disparos::mueve(t);
+	ObjetoMovil::mueve(t);
+	if (temp < 200) {
+		temp++;
+	}
+	else {
+		temp = 0;
+	}
 	misil.loop();
-
 	if (cerca) {
 		if (prx)
 			aceleracion.x = -1.5;
@@ -195,12 +200,10 @@ void Misiles::mueve(float t) {
 			velocidad.y = 3.5;
 	}
 }
-
 void Misiles::dibuja()
 {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0.2);
-	glColor3f(color.r, color.g, color.b);
 	if (velocidad.x > 0.01)misil.flip(true, false);
 	if (velocidad.x < -0.01)misil.flip(false, false);
 	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
