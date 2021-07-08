@@ -124,17 +124,28 @@ void Pared::dibuja(int i)
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0.1, 0.95);	glVertex2f(limite1.x + 0.5f, limite1.y - 1);
-		glTexCoord2d(0.9, 0.95);	glVertex2f(limite2.x + 0.5f, limite2.y - 1);
-		glTexCoord2d(0.9, 0.7);		glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
-		glTexCoord2d(0.1, 0.7);		glVertex2f(limite1.x - 0.5f, limite1.y + 0.5f);
+		glTexCoord2d(0.15, 0.92);	glVertex2f(limite1.x + 0.5f, limite1.y - 1);
+		glTexCoord2d(0.85, 0.92);	glVertex2f(limite2.x + 0.5f, limite2.y - 1);
+		glTexCoord2d(0.85, 0.8);	glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
+		glTexCoord2d(0.15, 0.8);	glVertex2f(limite1.x - 0.5f, limite1.y + 0.5f);
 		glEnd();
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 	}
 	else
 	{
-
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/Plat_Marte.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0.15, 0.2);	glVertex2f(limite1.x + 0.5f, limite1.y - 1);
+		glTexCoord2d(0.85, 0.2);	glVertex2f(limite2.x + 0.5f, limite2.y - 1);
+		glTexCoord2d(0.85, 0.1);	glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
+		glTexCoord2d(0.15, 0.1);	glVertex2f(limite1.x - 0.5f, limite1.y + 0.5f);
+		glEnd();
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
 	}
 }
 float Pared::distancia(Vector2D punto, Vector2D* direccion)
@@ -233,10 +244,10 @@ void Suelo::dibuja(int i)
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0.1, 1);			glVertex2f(bajo1.x, bajo1.y);
+		glTexCoord2d(0.1, 1);		glVertex2f(bajo1.x, bajo1.y);
 		glTexCoord2d(0.95, 1);		glVertex2f(bajo2.x, bajo2.y);
 		glTexCoord2d(0.95, 0.75);	glVertex2f(limite2.x, limite2.y);
-		glTexCoord2d(0.1, 0.75);		glVertex2f(limite1.x, limite1.y);
+		glTexCoord2d(0.1, 0.75);	glVertex2f(limite1.x, limite1.y);
 		glEnd();
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
@@ -248,17 +259,28 @@ void Suelo::dibuja(int i)
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0.1, 0.95);	glVertex2f(bajo1.x, bajo1.y);
-		glTexCoord2d(0.9, 0.95);	glVertex2f(bajo2.x, bajo2.y);
-		glTexCoord2d(0.9, 0.7);		glVertex2f(limite2.x, limite2.y);
-		glTexCoord2d(0.1, 0.7);		glVertex2f(limite1.x, limite1.y);
+		glTexCoord2d(0.15, 0.92);	glVertex2f(bajo1.x, bajo1.y);
+		glTexCoord2d(0.85, 0.92);	glVertex2f(bajo2.x, bajo2.y);
+		glTexCoord2d(0.85, 0.8);	glVertex2f(limite2.x, limite2.y);
+		glTexCoord2d(0.15, 0.8);	glVertex2f(limite1.x, limite1.y);
 		glEnd();
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 	}
 	else
 	{
-
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/SueloMarte.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0.15, 0.9);	glVertex2f(bajo1.x, bajo1.y);
+		glTexCoord2d(0.85, 0.9);	glVertex2f(bajo2.x, bajo2.y);
+		glTexCoord2d(0.85, 0.5);	glVertex2f(limite2.x, limite2.y);
+		glTexCoord2d(0.15, 0.5);	glVertex2f(limite1.x, limite1.y);
+		glEnd();
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
 	}
 }
 //Métodos propios de Final
