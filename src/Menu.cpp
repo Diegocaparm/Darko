@@ -445,17 +445,17 @@ void Menu::Musica()
 		if (aux6 == 2)
 		{
 			ETSIDI::stopMusica();
-			ETSIDI::playMusica("bin/musica/mundo1.ogg", true);
+			ETSIDI::playMusica("bin/musica/mundo7.ogg", true);
 		}
 		if (aux7 == 2)
 		{
 			ETSIDI::stopMusica();
-			ETSIDI::playMusica("bin/musica/mundo1.ogg", true);
+			ETSIDI::playMusica("bin/musica/mundo8.ogg", true);
 		}
 		if (aux8 == 2)
 		{
 			ETSIDI::stopMusica();
-			ETSIDI::playMusica("bin/musica/mundo1.ogg", true);
+			ETSIDI::playMusica("bin/musica/mundo9.ogg", true);
 		}
 
 		break;
