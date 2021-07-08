@@ -41,8 +41,8 @@ Tentaculo::Tentaculo(float px, float py) {
 	vida = 19;
 	setColor(150, 0, 0);
 	setPos(px, py);
-	sprite.setCenter(7, 2);
-	sprite.setSize(10, 23);
+	//sprite.setCenter(1, 0);
+	//sprite.setSize(2, 2);
 }
 Tank::Tank() {}
 Tank::Tank(float px, float py) {
@@ -218,27 +218,28 @@ void Bomber::dibuja()
 void Tentaculo::dibuja() {
 	glPushMatrix();
 	glColor3f(color.r, color.g, color.b);
-	glTranslatef(posicion.x, posicion.y, -0.1);
-	//glRotatef(-90, 1, 0, 0);
-	//glRotatef(angulo, 0, 1, 0);
-	//glutSolidCylinder(altura / 6, altura, 30, 30);
-	//glutSolidSphere(altura / 6, 30, 30);
+	glTranslatef(posicion.x, posicion.y, 0);
+	glRotatef(-90, 1, 0, 0);
+	glRotatef(angulo, 0, 1, 0);
+	glutSolidCylinder(altura / 6, altura, 30, 30);
+	glutSolidSphere(altura / 6, 30, 30);
 
-	//glTranslatef(0, 0, altura);
-	//glRotatef(angulo, 0, 1, 0);
-	//glutSolidCylinder(altura / 7, altura, 30, 30);
-	//glutSolidSphere(altura / 7, 30, 30);
+	glTranslatef(0, 0, altura);
+	glRotatef(angulo, 0, 1, 0);
+	glutSolidCylinder(altura / 7, altura, 30, 30);
+	glutSolidSphere(altura / 7, 30, 30);
 
-	//glTranslatef(0, 0, altura);
-	//glRotatef(angulo, 0, 1, 0);
-	//glutSolidCylinder(altura / 8, altura, 30, 30);
-	//glutSolidSphere(altura / 8, 30, 30);
-
-	glTranslatef(0, 0, altura-5);
-	glRotatef(angulo*2, 0, 0, -1);
-	if (angulo > 0.01)sprite.flip(true, false);
-	if (angulo < -0.01)sprite.flip(false, false);
-	sprite.draw();
+	glTranslatef(0, 0, altura);
+	glRotatef(angulo, 0, 1, 0);
+	glutSolidCylinder(altura / 8, altura, 30, 30);
+	glutSolidSphere(altura / 8, 30, 30);
+	/*if (velocidad.x > 0.01)sprite.flip(false, false);
+	if (velocidad.x < -0.01)sprite.flip(true, false);
+	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
+		sprite.setState(0);
+	else if (sprite.getState() == 0)
+		sprite.setState(1, false);
+	sprite.draw();*/
 	glPopMatrix();
 
 
@@ -542,10 +543,6 @@ void Bomber::mueve(float t)
 	}
 }
 void Tentaculo::mueve(float t) {
-	/*posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
-	velocidad = velocidad + aceleracion * t;
-	velocidad.x = aceleracion.x = 0;*/      //creo que se puede quitar todo
-	//sprite.loop();
 
 	int lim = 15;
 	if (angulo > lim)
@@ -559,13 +556,7 @@ void Tentaculo::mueve(float t) {
 		angulo -= 0.2f;
 
 	Vector2D e1, e2, e3, e4;
-	/*float h0 = sqrt(altura * altura + altura * altura / 36);
-	float beta0 = atan(1 / 6);
-	e1.x = h0 * sin((angulo) * pi / 180 - beta0);		e1.y = h0 * sin((angulo )*pi/180 - beta0);
-	e2.x = h0* sin((angulo) * pi / 180 + beta0);			e2.y = h0 * cos((angulo ) * pi / 180 + beta0);
-	e3.x = -(altura / 6) * cos(angulo * pi / 180);		e3.y = (altura / 6) * (sin(angulo * pi / 180));
-	e4.x = (altura / 6) * cos(angulo * pi / 180);		e4.y = -(altura / 6) * (sin(angulo * pi / 180));*/
-
+	
 	e1.x = -(altura / 6) + altura * sin(angulo * pi / 180) + posicion.x;		e1.y = (altura) * (cos(-angulo * pi / 180)) + posicion.y;
 	e2.x = (altura / 6) + altura * sin(angulo * pi / 180) + posicion.x;			e2.y = (altura) * (cos(-angulo * pi / 180)) + posicion.y;
 	e3.x = -(altura / 6) * cos(-angulo * pi / 180) + posicion.x;				e3.y = -(altura / 6) * (sin(-angulo * pi / 180)) + posicion.y;
@@ -621,11 +612,6 @@ void Tank::mueve(float t)
 			dispTank3->setVel(0.0f + velocidad.x, dispTank1->getVelDef());
 			dispTank4->setVel(dispTank1->getVelDef() * 0.707 + velocidad.x, dispTank1->getVelDef() * 0.707);
 			dispTank5->setVel(dispTank1->getVelDef() + velocidad.x, 0.0f);
-			/*dispTank1->flagdibujar = 1;
-			dispTank2->flagdibujar = 1;
-			dispTank3->flagdibujar = 1;
-			dispTank4->flagdibujar = 1;
-			dispTank5->flagdibujar = 1;*/
 		}
 
 	}
@@ -692,17 +678,6 @@ void BossFinal::mueve(float t)
 			misil8->setVel(misil1->getVelDef() * 0.766, misil1->getVelDef() * 0.643);
 			misil9->setVel(misil1->getVelDef() * 0.5, misil1->getVelDef() * 0.866);
 			misil10->setVel(misil1->getVelDef() * 0.174, misil1->getVelDef() * 0.985);
-
-			/*misil1->flagdibujar = 1;
-			misil2->flagdibujar = 1;
-			misil3->flagdibujar = 1;
-			misil4->flagdibujar = 1;
-			misil5->flagdibujar = 1;
-			misil6->flagdibujar = 1;
-			misil7->flagdibujar = 1;
-			misil8->flagdibujar = 1;
-			misil9->flagdibujar = 1;
-			misil10->flagdibujar = 1;*/
 		}
 
 	}

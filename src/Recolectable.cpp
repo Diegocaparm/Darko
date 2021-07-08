@@ -47,7 +47,6 @@ Vidas::Vidas()
 	for (int i = 0; i < MAX_VIDAS; i++)
 		lista[i] = 0;
 }
-
 Dinero::Dinero()
 {
 	numero = 0;
@@ -160,7 +159,6 @@ void Vidas::eliminar(Corazon* e)
 			return;
 		}
 }
-
 Corazon* Vidas::recoleccion(Personaje h)
 {
 	for (int i = 0; i < numero; i++)
@@ -170,7 +168,6 @@ Corazon* Vidas::recoleccion(Personaje h)
 	}
 	return 0; //no hay colisión
 }
-
 Corazon* Vidas::operator[](int i)
 {
 	if (i >= numero)//si me paso, devuelvo la ultima
@@ -179,6 +176,7 @@ Corazon* Vidas::operator[](int i)
 		i = 0;
 	return lista[i];
 }
+
 //Métodos de la lista de Vidas Recolectadas
 bool VidasRecolectadas::agregar(Corazon* c)
 {
@@ -272,7 +270,6 @@ void Dinero::eliminar(Moneda* e)
 			return;
 		}
 }
-
 Moneda* Dinero::recoleccion(Personaje h)
 {
 	for (int i = 0; i < numero; i++)
@@ -282,7 +279,6 @@ Moneda* Dinero::recoleccion(Personaje h)
 	}
 	return 0; //no hay colisión
 }
-
 Moneda* Dinero::operator[](int i)
 {
 	if (i >= numero)//si me paso, devuelvo la ultima
@@ -291,6 +287,7 @@ Moneda* Dinero::operator[](int i)
 		i = 0;
 	return lista[i];
 }
+
 //Métodos de la lista de DineroRecolectado
 void DineroRecolectados::mueve(float t, Vector2D v)
 {

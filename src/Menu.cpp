@@ -33,7 +33,6 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;
@@ -93,13 +92,11 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-
 		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
 		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
 		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;
@@ -128,93 +125,62 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    		
 
 		nivel.dibuja();
-		//vida1.GetMov(ojo);
-
-		/*if (nivel1.SetVida() == 2)        // Vida en la convocatoria ordinaria
-			vida1.Dibuja();
-
-		if (nivel1.SetVida() == 1) {      // Vida en la convocatoria de julio
-			ETSIDI::stopMusica();
-			ETSIDI::playMusica("bin/bso/julio.mp3", true);
-			guardanivel = 1;
-			estado = JULIO;
-		}*/
-
-			/*switch (nivel.hombre.getguardapersonaje()) {         //Dibuja el personaje escogido
-			case 0:
-				nivel.hombre.setDarko();	//Cargo a Darko
-				break;
-			case 1:
-				nivel.hombre.setHumano();	//Cargo Astronauta
-				break;
-			}*/
 		nivel.inicializa();
 		if (nivel.nivel == 1)
 		{
 			estado = NIVEL;
 			Musica();
 			aux++;
-
-
 		}
-		if (nivel.nivel == 2)	//CAMBIAR?? En algún punto hay que poner un nivel ++, quizás aquí es buena opción
+		else if (nivel.nivel == 2)	//CAMBIAR?? En algún punto hay que poner un nivel ++, quizás aquí es buena opción
 		{
-
 			estado = NIVEL;
 			Musica();
 			aux1++;
-
 		}
-		if (nivel.nivel == 3)
+		else if (nivel.nivel == 3)
 		{
-
 			estado = NIVEL;
 			Musica();
 			aux2++;
 		}
-		if (nivel.nivel == 4)
+		else if (nivel.nivel == 4)
 		{
-
 			estado = NIVEL;
 			Musica();
 			aux3++;
 		}
-		if (nivel.nivel == 5)
+		else if (nivel.nivel == 5)
 		{
-
 			estado = NIVEL;
 			Musica();
 			aux4++;
 		}
-		if (nivel.nivel == 6)
+		else if (nivel.nivel == 6)
 		{
-
 			estado = NIVEL;
 			Musica();
 			aux5++;
 		}
-		if (nivel.nivel == 7)
+		else if (nivel.nivel == 7)
 		{
-
 			estado = NIVEL;
 			Musica();
 			aux6++;
 		}
-		if (nivel.nivel == 8)
+		else if (nivel.nivel == 8)
 		{
-
 			estado = NIVEL;
 			Musica();
 			aux7++;
 		}
-		if (nivel.nivel == 9)
+		else if (nivel.nivel == 9)
 		{
-
 			estado = NIVEL;
 			Musica();
 			aux8++;
 		}
-		if (nivel.nivel > 9)
+		else if (nivel.nivel > 9)
 			estado = VICTORIA;
 		//Musica();
 
@@ -226,13 +192,11 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-
 		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
 		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
 		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;
@@ -244,13 +208,11 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-
 		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
 		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
 		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;
@@ -266,13 +228,11 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-
 		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
 		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
 		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
 		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		break;

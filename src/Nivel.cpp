@@ -7,8 +7,8 @@ void Nivel::dibuja()
 
 	if (nivel <= 3)
 	{
-		caja.dibuja(2);		//Dibujamos la caja del mundo 1
-		solidos.dibuja(2);	//Dibujamos los solidos del mundo 1
+		caja.dibuja(1);		//Dibujamos la caja del mundo 1
+		solidos.dibuja(1);	//Dibujamos los solidos del mundo 1
 		glPushMatrix();
 		glTranslatef(hombre.getPos().x, 0, -1);
 		glEnable(GL_TEXTURE_2D);
@@ -43,8 +43,8 @@ void Nivel::dibuja()
 	}
 	else
 	{
-		caja.dibuja(1);		//Dibujamos la caja del mundo 3
-		solidos.dibuja(1);	//Dibujamos los solidos del mundo 1
+		caja.dibuja(3);		//Dibujamos la caja del mundo 3
+		solidos.dibuja(3);	//Dibujamos los solidos del mundo 1
 		glPushMatrix();
 		glTranslatef(hombre.getPos().x, 0, -1);
 		glEnable(GL_TEXTURE_2D);
@@ -104,7 +104,7 @@ void Nivel::mueve()
 	Interaccion::rebote(hombre, caja, vidasR);
 	Interaccion::rebote(hombre, solidos, vidasR);
 	Interaccion::rebote(enemigos, solidos);
-	Interaccion::choque(disparos, solidos);
+	//Interaccion::choque(disparos, solidos);
 
 	//Interacciones del hombre con los enemigos
 	Interaccion::colision(hombre, enemigos, vidasR);
@@ -126,6 +126,12 @@ void Nivel::mueve()
 		dineros.eliminar(aux_m);
 		dinerosR.aumentaDinero();
 	}
+	//Elimina los enemigos al morirse estos
+	Enemigo* aux_e = enemigos.colision(espada);
+	if (aux_e != 0)
+	{
+		enemigos.eliminar(aux_e);
+	}
 }
 
 void Nivel::inicializa()
@@ -133,9 +139,6 @@ void Nivel::inicializa()
 	x_ojo = 0;
 	y_ojo = 7.5;
 	z_ojo = 30;
-
-	/*nivel = hombre.getNivel();
-	cargarnivel();*/
 }
 
 bool Nivel::cargarnivel()
@@ -917,9 +920,8 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(123.0f, 5.0f, 72.0f, 5.0f, 200, 150, 50));        //suelo3
 		solidos.agregar(new Suelo(72.0f, 5.0f, 200.0f, -10.0f));
 		solidos.agregar(new Pared(110.0f, 10.0f, 80.0f, 10.0f, 200, 150, 250));     //suelo4 
-		solidos.agregar(new Suelo(80.0f, 10.0f, 110.0f, -10.0f));
-		solidos.agregar(new Pared(110.0f, 8.0f, 80.0f, 8.0f, 200, 150, 250));       //suelo4 debajo
-		solidos.agregar(new Suelo(80.0f, 8.0f, 110.0f, -10.0f));
+		solidos.agregar(new Suelo(80.0f, 10.0f, 110.0f, 8.0f));
+		solidos.agregar(new Pared(110.0f, 8.0f, 80.0f, 8.0f, 200, 150, 250));       //suelo4
 		solidos.agregar(new Pared(133.0f, 10.0f, 123.0f, 10.0f, 200, 150, 250));    //suelo5
 		solidos.agregar(new Suelo(123.0f, 10.0f, 133.0f, -10.0f));
 		solidos.agregar(new Pared(153.0f, 7.5f, 138.0f, 7.5f, 200, 150, 50));       //suelo6

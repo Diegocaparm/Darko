@@ -1,5 +1,6 @@
 #pragma once
 #include "Enemigo.h"
+#include "ListaDisparos.h"
 #define MAX_ENEM 100
 
 class ListaEnemigos
@@ -16,6 +17,7 @@ public:
 	void eliminar(int index);
 	void eliminar(Enemigo* e);
 	Enemigo* operator [] (int i);
+	Enemigo* colision(Espada esp);
 	friend class Interaccion;
 };
 

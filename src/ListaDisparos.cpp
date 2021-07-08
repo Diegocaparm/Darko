@@ -52,6 +52,7 @@ void ListaDisparos::eliminar(Disparos* e)
 			return;
 		}
 }
+
 Disparos* ListaDisparos::operator[](int i)
 {
 	if (i >= numero)//si me paso, devuelvo la ultima

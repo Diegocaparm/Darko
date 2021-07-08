@@ -1,5 +1,5 @@
 #include "ListaEnemigos.h"
-//#include "Interaccion.h"
+#include "Interaccion.h"
 
 //Métodos de la lista de enemigos
 ListaEnemigos::ListaEnemigos()
@@ -62,4 +62,16 @@ Enemigo* ListaEnemigos::operator[](int i)
 	if (i < 0) //si el indice es negativo, devuelvo la primera
 		i = 0;
 	return lista[i];
+}
+
+Enemigo* ListaEnemigos::colision(Espada esp)
+{
+	{
+		for (int i = 0; i < numero; i++)
+		{
+			if (Interaccion::colision(esp, lista[i]))
+				return lista[i];
+		}
+		return 0;
+	}
 }
