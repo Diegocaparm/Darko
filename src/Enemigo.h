@@ -11,7 +11,7 @@ class Enemigo : public ObjetoMovil
 {
 protected:
     int cosa = 0;   //1 disp, 2 tank, 3 babosa, 4 bomber, 5 tent, 6 boss
-    int tempdmg = 0, flagdmg = 0, flagesp = 0, vida = 0;	////////////////////////////////////
+    int tempdmg = 0, flagdmg = 0, flagesp = 0, vida = 1;	////////////////////////////////////
     float altura = 0.5;   //altura, radio, longitud
     int temp = 40, sentido = 1;	//temp contador para disparar	sentido=0 izq =1 dcha
     int var=0; //variable para cambiar de sprite cada seg
@@ -19,8 +19,9 @@ public:
     Enemigo();
     virtual void dibuja();
     virtual void mueve(float t);
-    friend class Interaccion;
+    virtual int getVida(){ return vida; };
 
+    friend class Interaccion;
 };
 //EnemigoDisp herencia de ENEMIGO
 class EnemigoDisp : public Enemigo

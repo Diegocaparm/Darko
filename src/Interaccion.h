@@ -33,9 +33,9 @@ public:
 	//si eso un metodo dispara flambeante pero por ahora vacio
 	//Disparos malos y misiles
 	static void colision(Personaje& h, ListaDisparos ld, VidasRecolectadas& v);
-	static bool colision(Personaje& h, Disparos* d, VidasRecolectadas& v);
-	static bool colision(Personaje& h, DisparosEnemigos* de, VidasRecolectadas& v);
-	static bool colision(Personaje& h, Misiles* m, VidasRecolectadas& v);
+	static void colision(Personaje& h, Disparos* d, VidasRecolectadas& v);
+	static void colision(Personaje& h, DisparosEnemigos* de, VidasRecolectadas& v);
+	static void colision(Personaje& h, Misiles* m, VidasRecolectadas& v);
 	//Enemigos y listas
 	static void colision(Personaje& h, ListaEnemigos le, VidasRecolectadas& v);
 	static void colision(Personaje& h, Enemigo& e, VidasRecolectadas& v);
@@ -57,7 +57,6 @@ public:
 	static void rebote(Enemigo* e, Final p);
 	static void rebote(Enemigo* e, Pincho p);
 	static void rebote(Enemigo* e, BolaFuego b);
-	//void rebote(Enemigo& e, Caja c);
 	static void rebote(EnemigoDisp* e, Solidos* s);
 	static void rebote(EnemigoDisp* e, Pared* p);
 	static void rebote(EnemigoDisp* e, PlatMovil* pm);
@@ -65,7 +64,6 @@ public:
 	static void rebote(EnemigoDisp* e, Final* p);
 	static void rebote(EnemigoDisp* e, Pincho* p);
 	static void rebote(EnemigoDisp* e, BolaFuego* p);
-	//void rebote(EnemigoDisp& e, Caja c);
 	static void rebote(Babosa* b, Solidos* s);
 	static void rebote(Babosa* b, Pared* p);
 	static void rebote(Babosa* b, PlatMovil* pm);
@@ -73,7 +71,6 @@ public:
 	static void rebote(Babosa* b, Final* p);
 	static void rebote(Babosa* b, Pincho* p);
 	static void rebote(Babosa* b, BolaFuego* p);
-	//void rebote(Babosa& b, Caja c);
 	static void rebote(Bomber* b, Solidos* s);
 	static void rebote(Bomber* b, Pared* p);
 	static void rebote(Bomber* b, PlatMovil* pm);
@@ -81,7 +78,6 @@ public:
 	static void rebote(Bomber* b, Final* p);
 	static void rebote(Bomber* b, Pincho* p);
 	static void rebote(Bomber* b, BolaFuego* p);
-	//void rebote(Bomber& b, Caja c);
 	static void rebote(Tentaculo* t, Solidos* s);
 	static void rebote(Tentaculo* t, Pared* p);
 	static void rebote(Tentaculo* t, PlatMovil* pm);
@@ -89,7 +85,6 @@ public:
 	static void rebote(Tentaculo* t, Final* p);
 	static void rebote(Tentaculo* t, Pincho* p);
 	static void rebote(Tentaculo* t, BolaFuego* p);
-	//void rebote(Tentaculo& t, Caja c);
 	static void rebote(Tank* t, Solidos* s);
 	static void rebote(Tank* t, Pared* p);
 	static void rebote(Tank* t, PlatMovil* pm);
@@ -97,7 +92,6 @@ public:
 	static void rebote(Tank* t, Final* p);
 	static void rebote(Tank* t, Pincho* p);
 	static void rebote(Tank* t, BolaFuego* p);
-	//void rebote(Tank& t, Caja c);
 	static void rebote(BossFinal* bf, Solidos* s);
 	static void rebote(BossFinal* bf, Pared* p);
 	static void rebote(BossFinal* bf, PlatMovil* pm);
@@ -105,32 +99,31 @@ public:
 	static void rebote(BossFinal* bf, Final* p);
 	static void rebote(BossFinal* bf, Pincho* p);
 	static void rebote(BossFinal* bf, BolaFuego* p);
-	//void rebote(BossFinal& bf, Caja c);
 	//Espada y disparos buenos
 	static void colision(Espada& esp, ListaEnemigos le);
-	static bool colision(Espada& esp, Enemigo* e);
-	static bool colision(Espada& esp, EnemigoDisp* e);
-	static bool colision(Espada& esp, Babosa* b);
-	static bool colision(Espada& esp, Bomber* b);
-	static bool colision(Espada& esp, Tentaculo* t);
-	static bool colision(Espada& esp, Tank* t);
-	static bool colision(Espada& esp, BossFinal* b);
+	static void colision(Espada& esp, Enemigo* e);
+	static void colision(Espada& esp, EnemigoDisp* e);
+	static void colision(Espada& esp, Babosa* b);
+	static void colision(Espada& esp, Bomber* b);
+	static void colision(Espada& esp, Tentaculo* t);
+	static void colision(Espada& esp, Tank* t);
+	static void colision(Espada& esp, BossFinal* b);
 	static void colision(ListaDisparos ld, ListaEnemigos le);
-	static bool colision(Disparos* d, Enemigo* e); //Este vale
-	static bool colision(Disparos* d, EnemigoDisp* e);
-	static bool colision(Disparos* d, Babosa* b);
-	static bool colision(Disparos* d, Bomber* b);
-	static bool colision(Disparos* d, Tentaculo* t);
-	static bool colision(Disparos* d, Tank* t);
-	static bool colision(Disparos* d, BossFinal* b);
-	static bool colision(DisparosAmigos* d, ListaEnemigos le);
-	static bool colision(DisparosAmigos* d, Enemigo* e);
-	static bool colision(DisparosAmigos* d, EnemigoDisp* e);
-	static bool colision(DisparosAmigos* d, Babosa* b);
-	static bool colision(DisparosAmigos* d, Bomber* b);
-	static bool colision(DisparosAmigos* d, Tentaculo* t);
-	static bool colision(DisparosAmigos* d, Tank* t);
-	static bool colision(DisparosAmigos* d, BossFinal* b);
+	static void colision(Disparos* d, Enemigo* e); //Este vale
+	static void colision(Disparos* d, EnemigoDisp* e);
+	static void colision(Disparos* d, Babosa* b);
+	static void colision(Disparos* d, Bomber* b);
+	static void colision(Disparos* d, Tentaculo* t);
+	static void colision(Disparos* d, Tank* t);
+	static void colision(Disparos* d, BossFinal* b);
+	static void colision(DisparosAmigos* d, ListaEnemigos le);
+	static void colision(DisparosAmigos* d, Enemigo* e);
+	static void colision(DisparosAmigos* d, EnemigoDisp* e);
+	static void colision(DisparosAmigos* d, Babosa* b);
+	static void colision(DisparosAmigos* d, Bomber* b);
+	static void colision(DisparosAmigos* d, Tentaculo* t);
+	static void colision(DisparosAmigos* d, Tank* t);
+	static void colision(DisparosAmigos* d, BossFinal* b);
 	////////////////////////////////////////////////////////////////////
 
 	//////////////////////////////////////////////////////////////////// Disparos
