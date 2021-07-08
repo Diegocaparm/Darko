@@ -41,8 +41,8 @@ Tentaculo::Tentaculo(float px, float py) {
 	vida = 19;
 	setColor(150, 0, 0);
 	setPos(px, py);
-	//sprite.setCenter(1, 0);
-	//sprite.setSize(2, 2);
+	sprite.setCenter(7, 2);
+	sprite.setSize(10, 23);
 }
 Tank::Tank() {}
 Tank::Tank(float px, float py) {
@@ -218,28 +218,27 @@ void Bomber::dibuja()
 void Tentaculo::dibuja() {
 	glPushMatrix();
 	glColor3f(color.r, color.g, color.b);
-	glTranslatef(posicion.x, posicion.y, 0);
-	glRotatef(-90, 1, 0, 0);
-	glRotatef(angulo, 0, 1, 0);
-	glutSolidCylinder(altura / 6, altura, 30, 30);
-	glutSolidSphere(altura / 6, 30, 30);
+	glTranslatef(posicion.x, posicion.y, -0.1);
+	//glRotatef(-90, 1, 0, 0);
+	//glRotatef(angulo, 0, 1, 0);
+	//glutSolidCylinder(altura / 6, altura, 30, 30);
+	//glutSolidSphere(altura / 6, 30, 30);
 
-	glTranslatef(0, 0, altura);
-	glRotatef(angulo, 0, 1, 0);
-	glutSolidCylinder(altura / 7, altura, 30, 30);
-	glutSolidSphere(altura / 7, 30, 30);
+	//glTranslatef(0, 0, altura);
+	//glRotatef(angulo, 0, 1, 0);
+	//glutSolidCylinder(altura / 7, altura, 30, 30);
+	//glutSolidSphere(altura / 7, 30, 30);
 
-	glTranslatef(0, 0, altura);
-	glRotatef(angulo, 0, 1, 0);
-	glutSolidCylinder(altura / 8, altura, 30, 30);
-	glutSolidSphere(altura / 8, 30, 30);
-	/*if (velocidad.x > 0.01)sprite.flip(false, false);
-	if (velocidad.x < -0.01)sprite.flip(true, false);
-	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
-		sprite.setState(0);
-	else if (sprite.getState() == 0)
-		sprite.setState(1, false);
-	sprite.draw();*/
+	//glTranslatef(0, 0, altura);
+	//glRotatef(angulo, 0, 1, 0);
+	//glutSolidCylinder(altura / 8, altura, 30, 30);
+	//glutSolidSphere(altura / 8, 30, 30);
+
+	glTranslatef(0, 0, altura-5);
+	glRotatef(angulo*2, 0, 0, -1);
+	if (angulo > 0.01)sprite.flip(true, false);
+	if (angulo < -0.01)sprite.flip(false, false);
+	sprite.draw();
 	glPopMatrix();
 
 

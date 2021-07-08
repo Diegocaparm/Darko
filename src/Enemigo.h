@@ -70,7 +70,7 @@ public:
     void dibuja();
     void mueve(float t);
     friend class Interaccion;
-   // SpriteSequence sprite{ "bin/imagenes/tentfvect.png", 3 };
+   SpriteSequence sprite{ "bin/imagenes/tentfvect1.png", 4 };
 };
 //Tank herencia de ENEMIGO
 class Tank : public Enemigo
