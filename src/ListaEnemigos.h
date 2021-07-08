@@ -17,7 +17,7 @@ public:
 	void eliminar(int index);
 	void eliminar(Enemigo* e);
 	Enemigo* operator [] (int i);
-	Enemigo* muerto();
+	Enemigo* colision(Espada esp);
 	friend class Interaccion;
 };
 

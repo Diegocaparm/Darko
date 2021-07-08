@@ -81,6 +81,7 @@ public:
 	int getVidas();
 	int getVidasInicial();
 	void reduceVida();
+	bool FinVida();
 	friend class Interaccion;
 };
 
@@ -117,5 +118,6 @@ public:
 	void mueve(float t, Vector2D v);
 	void aumentaDinero();
 	void dibujaContador();
+	void getVida(VidasRecolectadas *v); //Si coge 100 monedas, se le añade 2 vidas
 	friend class Interaccion;
 };

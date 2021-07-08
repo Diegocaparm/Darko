@@ -113,6 +113,7 @@ void Nivel::mueve()
 	Interaccion::colision(disparos, enemigos);
 	Interaccion::colision(hombre, disparos, vidasR);
 
+
 	//Interaccion Pj con Vida y Monedas
 	//Elimina Vida recogida
 	Corazon* aux_c = vidas.recoleccion(hombre);
@@ -125,13 +126,17 @@ void Nivel::mueve()
 	if (aux_m != 0) {				//si alguna Moneda ha chocado
 		dineros.eliminar(aux_m);
 		dinerosR.aumentaDinero();
+		dinerosR.getVida(&vidasR);
 	}
 	//Elimina los enemigos al morirse estos
-	Enemigo* aux_e = enemigos.muerto();
+	Enemigo* aux_e = enemigos.colision(espada);
 	if (aux_e != 0)
 	{
 		enemigos.eliminar(aux_e);
 	}
+
+	//Final de partida
+
 }
 
 void Nivel::inicializa()
@@ -1181,15 +1186,18 @@ void Nivel::teclaDown(unsigned char key)
 	switch (key)
 	{
 	case 'a':
+		//hombre.setVelx(-7.50f);	//hombre.setVel(-5.0f,0.0f);
 		hombre.flagH = -1;
 		break;
 	case 'd':
+		//hombre.setVelx(7.50f);
 		hombre.flagH = 1;
 		break;
 	case 'w':
 		hombre.flag = 1;
 		break;
 	case 'q':
+		//cosas de espada
 		espada.setFlag(1);
 		break;
 	case 'z':

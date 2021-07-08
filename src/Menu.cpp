@@ -274,7 +274,8 @@ void Menu::Tecla(unsigned char key)
 		if (nivel.hombre.setPersonaje(key))
 			//if (key == 80 || key == 112 || key == 72 || key == 104)
 			estado = HISTORIA;
-
+		if (key == 13)
+			estado = MENU;
 		//Musica();					//Comenzaría la música de la historia 
 		break;
 
@@ -455,6 +456,10 @@ void Menu::TeclaEspecial(unsigned char key)
 
 void Menu::Mueve()
 {
-	if (estado == NIVEL)       //El juego está en el estado nivel
+	if (estado == NIVEL) {       //El juego está en el estado nivel
 		nivel.mueve();         //Se llama a la función mueve de espacio para controlar los distintos objetos que aparecen en pantalla
+		if (nivel.vidasR.FinVida()) {
+			estado=GAMEOVER;
+		}
+	}
 }

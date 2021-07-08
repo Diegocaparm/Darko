@@ -222,6 +222,14 @@ void VidasRecolectadas::reduceVida()
 	eliminar(contador_vidas);
 }
 
+bool VidasRecolectadas::FinVida()
+{
+	if (contador_vidas < 0) {
+		return true;
+	}
+	return false;
+}
+
 //Métodos de la lista de Dinero
 bool Dinero::agregar(Moneda* d)
 {
@@ -308,6 +316,7 @@ void DineroRecolectados::dibujaContador()
 	glTranslatef(pos.x + 8.5, 13.5, 1);
 
 	//glutSolidSphere(0.2, 20, 20);
+
 	for (int i = 0; i < 10; i++) {
 		if (i == dinero_actual) {
 			nUnidad.setState(i, true);
@@ -336,4 +345,13 @@ void DineroRecolectados::dibujaContador()
 	glTranslatef(pos.x + 6.5, 13.5, 1);
 	nDecena.draw();
 	glPopMatrix();
+}
+
+void DineroRecolectados::getVida(VidasRecolectadas *v)
+{
+	if (dinero_actual > 99) {
+		dinero_actual = dinero_actual - 99;
+		v->agregar(new Corazon());
+		v->agregar(new Corazon());
+	}
 }

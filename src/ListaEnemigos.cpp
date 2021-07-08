@@ -64,12 +64,14 @@ Enemigo* ListaEnemigos::operator[](int i)
 	return lista[i];
 }
 
-Enemigo* ListaEnemigos::muerto()
+Enemigo* ListaEnemigos::colision(Espada esp)
 {
-	for (int i = 0; i < numero; i++)
 	{
-		if (lista[i]->getVida() <= 0)
-			return lista[i];
+		for (int i = 0; i < numero; i++)
+		{
+			if (Interaccion::colision(esp, lista[i]))
+				return lista[i];
+		}
+		return 0;
 	}
-	return 0;
 }
