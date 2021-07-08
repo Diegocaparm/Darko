@@ -41,8 +41,8 @@ Tentaculo::Tentaculo(float px, float py) {
 	vida = 19;
 	setColor(150, 0, 0);
 	setPos(px, py);
-	//sprite.setCenter(1, 0);
-	//sprite.setSize(2, 2);
+	sprite.setCenter(7, 2);
+	sprite.setSize(10, 23);
 }
 Tank::Tank() {}
 Tank::Tank(float px, float py) {
@@ -92,7 +92,7 @@ BossFinal::BossFinal(float px, float py) {
 	sprite.setSize(20, 20);
 }
 
-//Método dibuja de cada enemigo
+//MÃ©todo dibuja de cada enemigo
 void Enemigo::dibuja()
 {
 
@@ -111,7 +111,7 @@ void EnemigoDisp::dibuja()
 	sprite.draw();
 	glPopMatrix();
 
-	//Añadido por Miguel (Dibuja los bordes de choque)
+	//AÃ±adido por Miguel (Dibuja los bordes de choque)
 	glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
@@ -191,7 +191,7 @@ void Bomber::dibuja()
 	sprite.draw();
 	glPopMatrix();
 
-	//Añadido por Miguel (Dibuja los bordes de choque)
+	//AÃ±adido por Miguel (Dibuja los bordes de choque)
 	glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
@@ -218,28 +218,12 @@ void Bomber::dibuja()
 void Tentaculo::dibuja() {
 	glPushMatrix();
 	glColor3f(color.r, color.g, color.b);
-	glTranslatef(posicion.x, posicion.y, 0);
-	glRotatef(-90, 1, 0, 0);
-	glRotatef(angulo, 0, 1, 0);
-	glutSolidCylinder(altura / 6, altura, 30, 30);
-	glutSolidSphere(altura / 6, 30, 30);
-
-	glTranslatef(0, 0, altura);
-	glRotatef(angulo, 0, 1, 0);
-	glutSolidCylinder(altura / 7, altura, 30, 30);
-	glutSolidSphere(altura / 7, 30, 30);
-
-	glTranslatef(0, 0, altura);
-	glRotatef(angulo, 0, 1, 0);
-	glutSolidCylinder(altura / 8, altura, 30, 30);
-	glutSolidSphere(altura / 8, 30, 30);
-	/*if (velocidad.x > 0.01)sprite.flip(false, false);
-	if (velocidad.x < -0.01)sprite.flip(true, false);
-	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
-		sprite.setState(0);
-	else if (sprite.getState() == 0)
-		sprite.setState(1, false);
-	sprite.draw();*/
+	glTranslatef(posicion.x, posicion.y, -0.1);
+	glTranslatef(0, 0, altura-5);
+	glRotatef(angulo*2, 0, 0, -1);
+	if (angulo > 0.01)sprite.flip(true, false);
+	if (angulo < -0.01)sprite.flip(false, false);
+	sprite.draw();
 	glPopMatrix();
 
 
@@ -393,7 +377,7 @@ void BossFinal::dibuja()
 	glPopMatrix();
 }
 
-//Métodos mueve de cada enemigo
+//MÃ©todos mueve de cada enemigo
 void Enemigo::mueve(float t)
 {
 }
@@ -430,7 +414,7 @@ void EnemigoDisp::mueve(float t)
 			velocidad.x = 1;
 	}
 
-	//Añadido por Miguel (crea las paredes de choque)
+	//AÃ±adido por Miguel (crea las paredes de choque)
 	Vector2D e1, e2, e3, e4;
 	e1.x = posicion.x - 0.3f;	e1.y = posicion.y + 2.0f;
 	e2.x = posicion.x + 0.3f;	e2.y = posicion.y + 2.0f;
@@ -521,7 +505,7 @@ void Bomber::mueve(float t)
 		velocidad.x = 1;
 	//}
 
-	//Añadido por Miguel (crea las paredes de choque)
+	//AÃ±adido por Miguel (crea las paredes de choque)
 	Vector2D e1, e2, e3, e4;
 	e1.x = posicion.x - altura;		e1.y = posicion.y + altura;
 	e2.x = posicion.x + altura;		e2.y = posicion.y + altura;
