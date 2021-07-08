@@ -125,6 +125,7 @@ void Nivel::mueve()
 	if (aux_m != 0) {				//si alguna Moneda ha chocado
 		dineros.eliminar(aux_m);
 		dinerosR.aumentaDinero();
+		dinerosR.getVida(&vidasR);
 	}
 	//Elimina los enemigos al morirse estos
 	Enemigo* aux_e = enemigos.muerto();
@@ -165,7 +166,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(139.0f, 0.0f, 139.0f, -10.0f, 0, 250, 0));
 		solidos.agregar(new Pared(150.0f, 0.0f, 150.0f, -10.0f, 0, 250, 0));
 		solidos.agregar(new Pared(156.0f, 0.0f, 156.0f, -10.0f, 0, 250, 0));
-		//Agregamos las plataformas aéreas
+		//Agregamos las plataformas aÃ©reas
 		solidos.agregar(new Pared(2.0f, 10.0f, -5.0f, 10.0f, 50, 150, 250));
 		solidos.agregar(new Pared(16.0f, 2.50f, 11.0f, 2.50f, 150, 150, 50));
 		solidos.agregar(new Pared(27.0f, 5.0f, 18.0f, 5.0f, 150, 150, 50));
@@ -206,7 +207,7 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new Tank(193.0f, 7.0f));
 		enemigos.agregar(new Babosa(10.0f, 13.0f));
 		//enemigos.agregar(new BossFinal(10, 10));
-		Interaccion::dispara(enemigos, &disparos); //Aún no se donde va jaja
+		Interaccion::dispara(enemigos, &disparos); //AÃºn no se donde va jaja
 
 		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
 		vidas.agregar(new Corazon(32.5f, 8.0f)); //La vida a la que invita la casa
@@ -282,14 +283,14 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(172.0f, 0.0f, 172.0f, -10.0f, 0, 250, 0));
 		solidos.agregar(new Pared(186.0f, 0.0f, 186.0f, -10.0f, 0, 250, 0));
 		solidos.agregar(new Pared(190.0f, 0.0f, 190.0f, -10.0f, 0, 250, 0));
-		//Agregamos las plataformas aéreas
+		//Agregamos las plataformas aÃ©reas
 		solidos.agregar(new Pared(40.0f, 2.5f, 37.0f, 2.5f, 50, 150, 250));//plat entre medias
 		solidos.agregar(new Pared(45.0f, 5.0f, 41.0f, 5.0f, 50, 150, 250));
 		solidos.agregar(new Pared(63.0f, 5.0f, 48.0f, 5.0f, 50, 150, 250));
 		solidos.agregar(new Pared(69.0f, 7.0f, 65.0f, 7.0f, 50, 150, 250));
 		solidos.agregar(new Pared(75.0f, 9.0f, 71.0f, 9.0f, 50, 150, 250));
 		solidos.agregar(new Pared(82.0f, 10.5f, 78.0f, 10.50f, 50, 150, 250));//la siguiente plat es movil
-		solidos.agregar(new PlatMovil(86.0f, 8.0f, 92.0f, 8.0f, 3.0f, 0.0f, 86.0f, 8.0f, 120.0f, 8.0f));//Plataforma móvil
+		solidos.agregar(new PlatMovil(86.0f, 8.0f, 92.0f, 8.0f, 3.0f, 0.0f, 86.0f, 8.0f, 120.0f, 8.0f));//Plataforma mÃ³vil
 		solidos.agregar(new Pared(145.0f, 2.50f, 137.0f, 2.50f, 50, 150, 250));
 		solidos.agregar(new Pared(175.0f, 2.5f, 167.5f, 2.5f, 150, 150, 250));
 		solidos.agregar(new Pared(183.0f, 6.0f, 177.0f, 6.0f, 50, 150, 250));//plat movil en esta posicion
@@ -533,7 +534,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(132.0f, 0.0f, 132.0f, -10.0f, 5, 150, 25));  //pozo7_i
 		solidos.agregar(new Pared(187.0f, 0.0f, 187.0f, -10.0f, 5, 150, 25));  //pozo11_d
 		solidos.agregar(new Pared(190.0f, 0.0f, 190.0f, -10.0f, 5, 150, 25)); //pozo12_i 
-		//Agregamos las plataformas aéreas
+		//Agregamos las plataformas aÃ©reas
 		solidos.agregar(new Pared(101.0f, 2.25f, 96.0f, 2.25f, 50, 150, 250)); //plat1
 		solidos.agregar(new Pared(106.0f, 5.0f, 102.5f, 5.0f, 50, 150, 250));   //plat2
 		solidos.agregar(new Pared(112.0f, 6.25f, 108.0f, 6.25f, 50, 150, 250));   //plat3
@@ -556,7 +557,7 @@ bool Nivel::cargarnivel()
 		enemigos.agregar(new Bomber(85.0f, 10.0f));
 		enemigos.agregar(new EnemigoDisp(40.0f, 5.0f)); //suelo3
 		enemigos.agregar(new EnemigoDisp(150.0f, 2.5f)); //suelo4
-		enemigos.agregar(new EnemigoDisp(170.0f, 0.0f)); //suelo5 y AÑADIR BABOSA
+		enemigos.agregar(new EnemigoDisp(170.0f, 0.0f)); //suelo5 y AÃ‘ADIR BABOSA
 		enemigos.agregar(new EnemigoDisp(110.0f, 6.25f)); //p3
 		enemigos.agregar(new EnemigoDisp(132.0f, 10.5f)); //p8
 		enemigos.agregar(new EnemigoDisp(124.0f, 2.5f)); //p6
@@ -628,7 +629,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(180.0f, 12.0f, 180.0f, 8.0f, 0, 250, 0)); //Pared vertical medio
 		solidos.agregar(new Pared(180.0f, 2.0f, 180.0f, -10.0f, 0, 250, 0)); //Pared vertical bajo
 		solidos.agregar(new Pared(195.0f, 2.0f, 195.0f, -10.0f, 0, 250, 0));
-		//Agregamos el resto de plataformas aéreas
+		//Agregamos el resto de plataformas aÃ©reas
 		solidos.agregar(new Pared(90.0f, 2.5f, 85.0f, 2.5f, 0, 100, 0)); //Plat4
 		solidos.agregar(new Pared(97.0f, 5.0f, 92.0f, 5.0f, 0, 100, 0)); //Plat5
 		solidos.agregar(new Pared(105.0f, 7.5f, 100.0f, 7.5f, 0, 100, 0)); //Plat6
@@ -709,7 +710,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(71.0f, 0.0f, 71.0f, -10.0f, 200, 150, 250));    //pozo 2 izq
 		solidos.agregar(new Pared(82.0f, 0.0f, 82.0f, -10.0f, 200, 150, 250));    //pozo 2 drcha
 		solidos.agregar(new Pared(180.0f, 0.0f, 180.0f, -10.0f, 200, 150, 50));    //pozo 3 izq
-		//Agregamos las plataformas aéreas
+		//Agregamos las plataformas aÃ©reas
 		solidos.agregar(new Pared(20.0f, 5.0f, -10.0f, 5.0f, 50, 150, 50));       //plat1
 		solidos.agregar(new Pared(37.0f, 7.5f, 25.0f, 7.5f, 50, 150, 50));        //plat2 
 		solidos.agregar(new Pared(47.0f, 2.5f, 38.0f, 2.5f, 50, 150, 50));        //plat3
@@ -804,7 +805,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(55.0f, -10.0f, 55.0f, 0.0f, 5, 150, 25));    //pozo 3 izq
 		solidos.agregar(new Pared(60.0f, 2.5f, 60.0f, -0.01f, 5, 150, 25));    //PARED 3 
 		solidos.agregar(new Pared(67.0f, -10.0f, 67.0f, 2.5f, 5, 150, 25));    //pozo 4 drcha
-		//Agregamos las plataformas aéreas
+		//Agregamos las plataformas aÃ©reas
 		solidos.agregar(new PlatMovil(27.0f, 2.5f, 32.0f, 2.5f, 5.0f, 0.0f, 27.0f, 2.5f, 39.0f, 2.5f));//plat1
 		solidos.agregar(new Pared(75.0f, 5.0f, 69.0f, 5.0f, 50, 150, 50));     //plat2
 		solidos.agregar(new Pared(86.0f, 7.5f, 77.0f, 7.5f, 50, 150, 50));     //plat3
@@ -918,7 +919,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(153.0f, 7.5f, 153.0f, -10.0f, 200, 150, 50));     //pozo 6 drcha
 		solidos.agregar(new Pared(158.0f, 7.5f, 158.0f, -10.0f, 200, 150, 250));    //pozo 7 izq
 		solidos.agregar(new Pared(178.0f, 7.5f, 178.0f, -10.0f, 200, 150, 50));     //pozo 7 drcha
-		//Agregamos las plataformas aéreas
+		//Agregamos las plataformas aÃ©reas
 		solidos.agregar(new Pared(27.0f, 15.0f, 17.0f, 15.0f, 50, 150, 50));        //plat1
 		solidos.agregar(new Pared(34.0f, 12.5f, 29.0f, 12.5f, 50, 150, 50));        //plat2 
 		solidos.agregar(new Pared(44.0f, 10.0f, 35.0f, 10.0f, 50, 150, 50));        //plat3
@@ -1032,7 +1033,7 @@ bool Nivel::cargarnivel()
 		solidos.agregar(new Pared(85.0f, 11.5f, 85.0f, 8.73f, 5, 150, 25));  //PARED5 y 6
 		solidos.agregar(new Pared(100.0f, 9.5f, 100.0f, -10.0f, 5, 150, 25)); //PARED7 
 		solidos.agregar(new Pared(135.0f, 20.0f, 135.0f, 10.99f, 5, 150, 25));  //PARED8
-		//Agregamos las plataformas aéreas
+		//Agregamos las plataformas aÃ©reas
 		solidos.agregar(new Pared(20.0f, 11.75f, 15.0f, 11.75f, 50, 150, 50)); //plat1
 		solidos.agregar(new Pared(7.0f, 2.5f, 0.0f, 2.5f, 50, 150, 50)); //plat2 para subir 
 		solidos.agregar(new Pared(68.0f, 2.5f, 63.0f, 2.5f, 50, 150, 50)); //plat7
