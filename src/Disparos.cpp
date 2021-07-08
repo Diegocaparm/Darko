@@ -34,7 +34,7 @@ DisparosAmigos::DisparosAmigos(float px, float py, float vx, float vy) {
 Espada::Espada() {
 	cosa = 1;
 	setColor(0, 1, 1);
-	radio = 1.5f;
+	radio = 3.0f;
 	sprite.setCenter(3.1, 1.5);
 	sprite.setSize(4,4);
 
@@ -72,18 +72,19 @@ Misiles::Misiles(float px, float py) {
 //Métodos virtuales de Disparos
 void Disparos::dibuja()
 {
-	glPushMatrix();
-	glTranslatef(posicion.x, posicion.y, 0.2);
-	glColor3f(color.r, color.g, color.b);
-	if (velocidad.x > 0.01)sprite.flip(false, false);
-	if (velocidad.x < -0.01)sprite.flip(true, false);
-	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
-		sprite.setState(0);
-	else if (sprite.getState() == 0)
-		sprite.setState(0, true);
-	sprite.draw();
-	glPopMatrix();
-
+	if (existe) {
+		glPushMatrix();
+		glTranslatef(posicion.x, posicion.y, 0.2);
+		glColor3f(color.r, color.g, color.b);
+		if (velocidad.x > 0.01)sprite.flip(false, false);
+		if (velocidad.x < -0.01)sprite.flip(true, false);
+		if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
+			sprite.setState(0);
+		else if (sprite.getState() == 0)
+			sprite.setState(0, true);
+		sprite.draw();
+		glPopMatrix();
+	}
 }
 void Disparos::mueve(float t)
 {
@@ -131,6 +132,7 @@ void Espada::dibuja() {
 	glPushMatrix();
 	glColor3f(color.r, color.g, color.b);
 	glTranslatef(posicion.x, posicion.y, 0.2);
+	//glutSolidSphere(radio, 30, 30);
 	glRotatef(angulo , 0, 0, -1);
 	sprite.draw();
 	glPopMatrix();

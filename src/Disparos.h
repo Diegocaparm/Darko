@@ -11,6 +11,7 @@ protected:
     float radio=0.15f;
     float temp = 0;
     float vel = 3;      //velocidad inicial
+    bool existe = true;
 public:
     Disparos();
     Disparos(float px, float py);
@@ -22,6 +23,7 @@ public:
     virtual void setColor(Byte, Byte, Byte);
     virtual float getRadio();
     float getVelDef() { return vel; }
+    void setExiste(bool ex) { existe = ex; }
 
     friend class Interaccion;
     SpriteSequence sprite{ "bin/imagenes/disparo.png", 4 };

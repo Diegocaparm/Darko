@@ -399,6 +399,7 @@ void EnemigoDisp::mueve(float t)
 		if (temp == 120) {		//volver a disparar
 			dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);
 			dispEnem1->setVel(-dispEnem1->getVelDef() + velocidad.x, 0.0f);
+			dispEnem1->setExiste(true);
 			//dispEnem1->flagdibujar = 1;
 		}
 	}
@@ -422,19 +423,20 @@ void EnemigoDisp::mueve(float t)
 	e4.x = posicion.x + 0.3f;	e4.y = posicion.y - 0.0f;
 	hitbox.setPos(e1, e2, e3, e4);
 
+	if (flagdmg && tempdmg == 40) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
 	if (tempdmg) {
 		tempdmg--;
 		if (vida <= 0) {	//muerto
 			setColor(1, 1, 1);
 		}
 	}
-	else if (flagdmg) {
-		vida -= 1 + flagesp;
-		//destruir la vida de la interfaz
-		flagdmg = 0;
-		flagesp = 0;
-	}
 }
+
 void Babosa::mueve(float t) {
 	ObjetoMovil::mueve(t);
 	//if interaccioon entre enemigo pj= true, cambia de sprite
@@ -478,17 +480,17 @@ void Babosa::mueve(float t) {
 	e4.x = posicion.x + 0;			e4.y = posicion.y - altura / 3;
 	hitbox.setPos(e1, e2, e3, e4);
 
+	if (flagdmg && tempdmg == 40) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
 	if (tempdmg) {
 		tempdmg--;
 		if (vida <= 0) {	//muerto
 			setColor(1, 1, 1);
 		}
-	}
-	else if (flagdmg) {
-		vida -= 1 + flagesp;
-		//destruir la vida de la interfaz
-		flagdmg = 0;
-		flagesp = 0;
 	}
 }
 void Bomber::mueve(float t)
@@ -512,17 +514,17 @@ void Bomber::mueve(float t)
 	e4.x = posicion.x + altura;		e4.y = posicion.y - altura;
 	hitbox.setPos(e1, e2, e3, e4);
 
+	if (flagdmg && tempdmg == 40) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
 	if (tempdmg) {
 		tempdmg--;
 		if (vida <= 0) {	//muerto
 			setColor(1, 1, 1);
 		}
-	}
-	else if (flagdmg) {
-		vida -= 1 + flagesp;
-		//destruir la vida de la interfaz
-		flagdmg = 0;
-		flagesp = 0;
 	}
 }
 void Tentaculo::mueve(float t) {
@@ -563,17 +565,17 @@ void Tentaculo::mueve(float t) {
 	Vector2D e121 = { e12.x + posicion.x, e111.y + e12.y }, e221 = { e22.x + posicion.x, e211.y + e22.y };
 	hitbox[2].setPos(e121, e221, e111, e211);
 
+	if (flagdmg && tempdmg == 40) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
 	if (tempdmg) {
 		tempdmg--;
 		if (vida <= 0) {	//muerto
 			setColor(1, 1, 1);
 		}
-	}
-	else if (flagdmg) {
-		vida -= 1 + flagesp;
-		//destruir la vida de la interfaz
-		flagdmg = 0;
-		flagesp = 0;
 	}
 }
 void Tank::mueve(float t)
@@ -595,6 +597,11 @@ void Tank::mueve(float t)
 			dispTank3->setVel(0.0f + velocidad.x, dispTank1->getVelDef());
 			dispTank4->setVel(dispTank1->getVelDef() * 0.707 + velocidad.x, dispTank1->getVelDef() * 0.707);
 			dispTank5->setVel(dispTank1->getVelDef() + velocidad.x, 0.0f);
+			dispTank1->setExiste(true);
+			dispTank2->setExiste(true);
+			dispTank3->setExiste(true);
+			dispTank4->setExiste(true);
+			dispTank5->setExiste(true);
 		}
 
 	}
@@ -618,17 +625,17 @@ void Tank::mueve(float t)
 	e4.x = posicion.x + altura / 3;		e4.y = posicion.y - 0;
 	hitbox.setPos(e1, e2, e3, e4);
 
+	if (flagdmg && tempdmg == 40) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
 	if (tempdmg) {
 		tempdmg--;
 		if (vida <= 0) {	//muerto
 			setColor(1, 1, 1);
 		}
-	}
-	else if (flagdmg) {
-		vida -= 1 + flagesp;
-		//destruir la vida de la interfaz
-		flagdmg = 0;
-		flagesp = 0;
 	}
 }
 void BossFinal::mueve(float t)
@@ -661,6 +668,17 @@ void BossFinal::mueve(float t)
 			misil8->setVel(misil1->getVelDef() * 0.766, misil1->getVelDef() * 0.643);
 			misil9->setVel(misil1->getVelDef() * 0.5, misil1->getVelDef() * 0.866);
 			misil10->setVel(misil1->getVelDef() * 0.174, misil1->getVelDef() * 0.985);
+			
+			misil1->setExiste(true);
+			misil2->setExiste(true);
+			misil3->setExiste(true);
+			misil4->setExiste(true);
+			misil5->setExiste(true);
+			misil6->setExiste(true);
+			misil7->setExiste(true);
+			misil8->setExiste(true);
+			misil9->setExiste(true);
+			misil10->setExiste(true);
 		}
 
 	}
@@ -684,16 +702,19 @@ void BossFinal::mueve(float t)
 	e4.x = posicion.x + altura / 3;		e4.y = posicion.y - 0;
 	hitbox.setPos(e1, e2, e3, e4);
 
+	if (flagdmg && tempdmg == 40) {
+		vida -= 1 + flagesp;
+		//destruir la vida de la interfaz
+		flagdmg = 0;
+		flagesp = 0;
+	}
 	if (tempdmg) {
 		tempdmg--;
 		if (vida <= 0) {	//muerto
 			setColor(1, 1, 1);
 		}
 	}
-	else if (flagdmg) {
-		vida -= 1 + flagesp;
-		//destruir la vida de la interfaz
-		flagdmg = 0;
-		flagesp = 0;
-	}
 }
+
+
+
