@@ -128,6 +128,16 @@ void Nivel::mueve()
 	}
 }
 
+void Nivel::inicializa()
+{
+	x_ojo = 0;
+	y_ojo = 7.5;
+	z_ojo = 30;
+
+	/*nivel = hombre.getNivel();
+	cargarnivel();*/
+}
+
 bool Nivel::cargarnivel()
 {
 	if (nivel == 1)

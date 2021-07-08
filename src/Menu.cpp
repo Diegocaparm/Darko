@@ -1,10 +1,11 @@
 #include "Menu.h"
 #include "freeglut.h"
+#include "stdio.h"
 
 Menu::Menu()  //Constructor
 {
 	estado = START;                                  //Comienza el juego en START
-	ETSIDI::playMusica("bin/bso/intro.mp3", true);   //Se activa la música del inicio
+	ETSIDI::playMusica("bin/musica/menu.ogg", true);   //Se activa la música del inicio
 	camara = 0;
 }
 
@@ -37,7 +38,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_TEXTURE_2D);
 		break;
 
-	case MENU: //Menu princupal (comenzar, controles, salir)
+	case MENU: //Menu principal (comenzar, controles, salir)
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/menu.png").id);
 		glDisable(GL_LIGHTING);
@@ -87,6 +88,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		break;
 
 	case HISTORIA: //Presentacion de la historia
+		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/historia.png").id); //foto correo
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
@@ -146,25 +148,75 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 				nivel.hombre.setHumano();	//Cargo Astronauta
 				break;
 			}*/
-			if (nivel.nivel == 1)
-				estado = NIVEL;
-			else if (nivel.nivel == 2)	//CAMBIAR?? En algún punto hay que poner un nivel ++, quizás aquí es buena opción
-				estado = NIVEL;			//nivel.nivel++??????
-			else if (nivel.nivel == 3)
-				estado = NIVEL;
-			else if (nivel.nivel == 4)
-				estado = NIVEL;
-			else if (nivel.nivel == 5)
-				estado = NIVEL;
-			else if (nivel.nivel == 6)
-				estado = NIVEL;
-			else if (nivel.nivel == 7)
-				estado = NIVEL;
-			else if (nivel.nivel == 8)
-				estado = NIVEL;
-			else if (nivel.nivel == 9)
-				estado = VICTORIA;
+		nivel.inicializa();
+		if (nivel.nivel == 1)
+		{
+			estado = NIVEL;
 			Musica();
+			aux++;
+
+
+		}
+		if (nivel.nivel == 2)	//CAMBIAR?? En algún punto hay que poner un nivel ++, quizás aquí es buena opción
+		{
+
+			estado = NIVEL;
+			Musica();
+			aux1++;
+
+		}
+		if (nivel.nivel == 3)
+		{
+
+			estado = NIVEL;
+			Musica();
+			aux2++;
+		}
+		if (nivel.nivel == 4)
+		{
+
+			estado = NIVEL;
+			Musica();
+			aux3++;
+		}
+		if (nivel.nivel == 5)
+		{
+
+			estado = NIVEL;
+			Musica();
+			aux4++;
+		}
+		if (nivel.nivel == 6)
+		{
+
+			estado = NIVEL;
+			Musica();
+			aux5++;
+		}
+		if (nivel.nivel == 7)
+		{
+
+			estado = NIVEL;
+			Musica();
+			aux6++;
+		}
+		if (nivel.nivel == 8)
+		{
+
+			estado = NIVEL;
+			Musica();
+			aux7++;
+		}
+		if (nivel.nivel == 9)
+		{
+
+			estado = NIVEL;
+			Musica();
+			aux8++;
+		}
+		if (nivel.nivel > 9)
+			estado = VICTORIA;
+		//Musica();
 
 		break;
 
@@ -263,14 +315,14 @@ void Menu::Tecla(unsigned char key)
 			//if (key == 80 || key == 112 || key == 72 || key == 104)
 			estado = HISTORIA;
 
-		Musica();					//Comenzaría la música de la historia 
+		//Musica();					//Comenzaría la música de la historia 
 		break;
 
 	case HISTORIA:
 		if (key == 27)              //Pulsa esc para volver al MENU
 		{
 			estado = MENU;
-			Musica();				//Comenzaría la música del menú
+			//Musica();				//Comenzaría la música del menú
 		}
 		if (key == 13)              //Pulsa enter para pasar a la siguiente pantalla
 			estado = SUERTE;
@@ -282,6 +334,7 @@ void Menu::Tecla(unsigned char key)
 
 		if (key == 13)              //Pulsa enter para empezar a jugar
 		{
+			nivel.inicializa();
 			estado = NIVEL;
 			Musica();				//COMENZARÍA LA MÚSICA QUE QUISIÉRAMOS PONERLE AL NIVEL1
 		}
@@ -293,7 +346,10 @@ void Menu::Tecla(unsigned char key)
 		nivel.teclaDown(key);
 
 		if (key == 27)              //Pulsa esc para volver al MENU
+		{
 			estado = MENU;
+			Musica();				//Comenzaría la música del menú
+		}
 
 	case GAMEOVER:
 		if (key == 27)              //Pulsa esc para salir del juego
@@ -340,34 +396,83 @@ void Menu::Musica()
 {
 	switch (estado)
 	{
-	case HISTORIA:
+	/*case HISTORIA:
 		ETSIDI::stopMusica();
 		ETSIDI::playMusica("bin/bso/historia.mp3", true);
-		break;
+		break;*/
 
 	case MENU:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/intro.mp3", true);
+		ETSIDI::playMusica("bin/musica/intro.ogg", true);
 		break;
 
 	case NIVEL:
+		/*printf_s("No entro");
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/nivel.mp3", true);
+		ETSIDI::playMusica("bin/musica/mundo1.ogg", true);*/
+		if (aux == 2)
+		{
+			printf_s("No entro");
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo1.ogg", true);
+		}
+		if (aux1 == 2)	//CAMBIAR?? En algún punto hay que poner un nivel ++, quizás aquí es buena opción
+		{
+			printf_s("No entro2");
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo2.ogg", true);
+		}
+		if (aux2 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo3o4.ogg", true);
+		}
+		if (aux3 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo4o3.ogg", true);
+		}
+		if (aux4 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo5.ogg", true);
+		}
+		if (aux5 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo6.ogg", true);
+		}
+		if (aux6 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo1.ogg", true);
+		}
+		if (aux7 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo1.ogg", true);
+		}
+		if (aux8 == 2)
+		{
+			ETSIDI::stopMusica();
+			ETSIDI::playMusica("bin/musica/mundo1.ogg", true);
+		}
+
 		break;
 
 	case VICTORIA:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/victoria.mp3", true);
+		ETSIDI::playMusica("bin/musica/victoria.ogg", true);
 		break;
 
 	case GAMEOVER:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/gameover.mp3", true);
+		ETSIDI::playMusica("bin/musica/derrota.ogg", true);
 		break;
 
 	case FIN:
 		ETSIDI::stopMusica();
-		ETSIDI::playMusica("bin/bso/fin.mp3", true);
+		ETSIDI::playMusica("bin/musica/victoria.ogg", true);
 		break;
 	}
 

@@ -10,6 +10,10 @@ class Nivel
 {
 	//Atributos
 public:
+	//Interfaz intz;
+	float x_ojo;
+	float y_ojo;
+	float z_ojo;
 
 	int nivel; //Será lo que usemos para identificar en que nivel estamos
 
@@ -41,6 +45,7 @@ public://Métodos
 	void teclaEspecial(unsigned char key);
 	void mueve();
 	void dibuja(); //Aquí le podemos meter como parámetro un int con el mundo en el que estamos
+	void inicializa();
 	bool cargarnivel();
 	bool borrarnivel();
 	//void teclaEspecialUp(unsigned char key);
