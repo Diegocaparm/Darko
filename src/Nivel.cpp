@@ -330,9 +330,6 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(117.5f, 0.5f)); //suelo 2
 		vidas.agregar(new Corazon(170.0f, 2.5f)); //plat 8
 
-		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidasInicial(); i++)
-			vidasR.agregar(new Corazon());
 
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(19.0f, 0.5f));//suelo1
@@ -378,9 +375,6 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(181.0f, 4.0f));
 		dineros.agregar(new Moneda(183.0f, 0.5f));
 		dineros.agregar(new Moneda(185.0f, 0.5f));
-
-		//Creaccion de Monedas del Pj
-		dinerosR.agregar(new Moneda(8.0f, 14.0f));
 		return true;
 	}
 	else if (nivel == 3)
@@ -457,9 +451,7 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(107.5f, 5.5f)); //plat 5
 		vidas.agregar(new Corazon(135.0f, 3.0f)); //suelo7
 		vidas.agregar(new Corazon(163.0f, 9.5f)); //plat12
-		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidasInicial(); i++)
-			vidasR.agregar(new Corazon());
+
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(-2.0f, 0.5f));//suelo1
 		dineros.agregar(new Moneda(0.0f, 0.5f));
@@ -493,8 +485,6 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(150.5f, 4.0f));
 		dineros.agregar(new Moneda(178.0f, 8.0f));//plat10
 		dineros.agregar(new Moneda(169.0f, 10.5f));//plat13
-		//Creaccion de Monedas del Pj
-		dinerosR.agregar(new Moneda(8.0f, 14.0f));
 		return true;
 	}
 	else if (nivel == 4)
@@ -579,9 +569,8 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(114.5f, 8.5f)); //plat 4
 		vidas.agregar(new Corazon(133.0f, 10.5f)); //suelo7
 		vidas.agregar(new Corazon(160.0f, 6.0f)); //plat12
-		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidasInicial(); i++)
-			vidasR.agregar(new Corazon());
+
+
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(17.0f, 8.0f));  //suelo2
 		dineros.agregar(new Moneda(19.0f, 8.0f));
@@ -602,8 +591,6 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(137.0f, 0.5f));
 		dineros.agregar(new Moneda(139.0f, 0.5f));
 		dineros.agregar(new Moneda(141.0f, 0.5f));
-		//Creaccion de Monedas del Pj
-		dinerosR.agregar(new Moneda(8.0f, 14.0f));
 		return true;
 	}
 	else if (nivel == 5)
@@ -682,9 +669,7 @@ bool Nivel::cargarnivel()
 		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
 		vidas.agregar(new Corazon(160.0f, 2.5f));
 		vidas.agregar(new Corazon(170.0f, 2.5f));
-		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidasInicial(); i++)
-			vidasR.agregar(new Corazon());
+
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(66.0f, 0.5f));
 		dineros.agregar(new Moneda(68.0f, 0.5f));
@@ -705,8 +690,7 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(174.0f, 3.0f));
 		dineros.agregar(new Moneda(176.0f, 3.0f));
 		dineros.agregar(new Moneda(178.0f, 3.0f));
-		//Creaccion de Monedas del Pj
-		dinerosR.agregar(new Moneda(8.0f, 14.0f));
+
 		return true;
 	}
 	else if (nivel == 6)
@@ -767,9 +751,7 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(30.0f, 8.0f)); //plat2
 		vidas.agregar(new Corazon(130.0f, 8.0f)); //plat movil 10
 		vidas.agregar(new Corazon(76.0f, 10.5f)); //plat6
-		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidasInicial(); i++)
-			vidasR.agregar(new Corazon());
+
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(54.0f, 0.5f));  //suelo1
 		dineros.agregar(new Moneda(56.0f, 0.5f));
@@ -801,8 +783,7 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(160.0f, 8.0f));
 		dineros.agregar(new Moneda(168.0f, 8.0f));
 		dineros.agregar(new Moneda(171.0f, 8.0f));
-		//Creaccion de Monedas del Pj
-		dinerosR.agregar(new Moneda(8.0f, 14.0f));
+
 		return true;
 	}
 	else if (nivel == 7)
@@ -874,9 +855,7 @@ bool Nivel::cargarnivel()
 		//Creaccion de Vidas Recolectables (Posicion x, Posicion y)
 		vidas.agregar(new Corazon(90.0f, 10.5f)); //plat4
 		vidas.agregar(new Corazon(120.0f, 10.5f)); //plat8
-		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidas(); i++)
-			vidasR.agregar(new Corazon());
+
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(7.0f, 3.0f));  //suelo1
 		dineros.agregar(new Moneda(9.0f, 3.0f));
@@ -906,8 +885,7 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(159.0f, 3.0f));
 		dineros.agregar(new Moneda(162.0f, 3.0f));
 		dineros.agregar(new Moneda(177.5f, 5.5f)); //plat14
-		//Creaccion de Monedas del Pj
-		dinerosR.agregar(new Moneda(8.0f, 14.0f));
+
 		return true;
 	}
 	else if (nivel == 8)
@@ -991,9 +969,7 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(78.0f, 5.5f)); //suelo3
 		vidas.agregar(new Corazon(107.0f, 10.5f)); //suelo4
 		vidas.agregar(new Corazon(141.0f, 8.0f)); //suelo6
-		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidasInicial(); i++)
-			vidasR.agregar(new Corazon());
+
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(0.0f, 13.0f));  //suelo1
 		dineros.agregar(new Moneda(5.0f, 13.0f));
@@ -1032,8 +1008,6 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(176.0f, 8.0f));
 		dineros.agregar(new Moneda(185.0f, 10.5f));  // plat6
 		dineros.agregar(new Moneda(193.0f, 13.0f));  //plat7
-		//Creaccion de Monedas del Pj
-		dinerosR.agregar(new Moneda(8.0f, 14.0f));
 		return true;
 	}
 	else if (nivel == 9)
@@ -1107,9 +1081,7 @@ bool Nivel::cargarnivel()
 		vidas.agregar(new Corazon(155.0f, 8.0f)); //suelo9
 		vidas.agregar(new Corazon(167.0f, 10.5f)); //suelo10
 		vidas.agregar(new Corazon(137.0f, 12.0f)); //suelo11
-		//Creaccion de las Vidas del Pj
-		for (int i = 0; i < vidasR.getVidasInicial(); i++)
-			vidasR.agregar(new Corazon());
+
 		//Creaccion de Monedas Recolectables
 		dineros.agregar(new Moneda(17.0f, 6.5f));  //suelo3
 		dineros.agregar(new Moneda(19.0f, 6.5f));
@@ -1135,8 +1107,6 @@ bool Nivel::cargarnivel()
 		dineros.agregar(new Moneda(192.0f, 0.5f));
 		dineros.agregar(new Moneda(194.0f, 0.5f));
 		dineros.agregar(new Moneda(141.0f, 0.5f));
-		//Creaccion de Monedas del Pj
-		dinerosR.agregar(new Moneda(8.0f, 14.0f));
 		return true;
 	}
 	else return false;
