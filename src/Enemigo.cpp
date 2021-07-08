@@ -3,7 +3,7 @@
 
 //Constructores de los enemigos varios
 Enemigo::Enemigo() {
-
+	
 }
 EnemigoDisp::EnemigoDisp(float px, float py) {
 	cosa = 1;
@@ -177,7 +177,7 @@ void Babosa::dibuja() {
 void Bomber::dibuja()
 {
 	glPushMatrix();
-	glTranslatef(posicion.x, posicion.y, 0);
+	glTranslatef(posicion.x, posicion.y, 0.1);
 	glColor3f(color.r, color.g, color.b);
 	//glutSolidSphere(altura, 30, 30);
 	//gestion de direccion y animacion
@@ -495,7 +495,6 @@ void Bomber::mueve(float t)
 {
 	posicion = posicion + velocidad * t + aceleracion * 0.5f * t * t;
 	velocidad = velocidad + aceleracion * t;
-
 
 	//if (zonaH == 0) {
 	if (sentido == 0) {

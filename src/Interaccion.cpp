@@ -252,7 +252,6 @@ void Interaccion::rebote(Personaje& h, Pincho *p, VidasRecolectadas& v)
 			v.reduceVida();
 			h.tempdmg = 40;
 		}
-		h.setColor(0, 1, 1);
 	}
 }
 void Interaccion::rebote(Personaje& h, BolaFuego* b, VidasRecolectadas& v)
@@ -262,7 +261,6 @@ void Interaccion::rebote(Personaje& h, BolaFuego* b, VidasRecolectadas& v)
 			v.reduceVida();
 			h.tempdmg = 40;
 		}
-		h.setColor(1, 0, 1);
 	}
 }
 void Interaccion::rebote(Personaje& h, Caja c, VidasRecolectadas& v)
@@ -311,41 +309,35 @@ void Interaccion::colision(Personaje& h, ListaDisparos ld, VidasRecolectadas& v)
 	for (int i = 0; i < ld.numero;i++)
 		colision(h, ld.lista[i], v);
 }
-bool Interaccion::colision(Personaje& h, Disparos* d, VidasRecolectadas& v) {
+void Interaccion::colision(Personaje& h, Disparos* d, VidasRecolectadas& v) {
 	if (d->cosa == 2) {
 		DisparosEnemigos* p;
 		p = dynamic_cast <DisparosEnemigos*> (d);
-		return Interaccion::colision(h, p, v);
+		Interaccion::colision(h, p, v);
 	}
 	else if (d->cosa == 3) {
 		Misiles* p;
 		p = dynamic_cast <Misiles*> (d);
-		return Interaccion::colision(h, p, v);
+		Interaccion::colision(h, p, v);
 	}
 }
-bool Interaccion::colision(Personaje& h, DisparosEnemigos* de, VidasRecolectadas& v) {
+void Interaccion::colision(Personaje& h, DisparosEnemigos* de, VidasRecolectadas& v)
+{
 	if (de->getPos().y - de->getRadio() < h.hitbox.top_l.y && de->getPos().y + de->getRadio() > h.hitbox.bot_l.y)
 		if (de->getPos().x - de->getRadio() < h.hitbox.top_r.x && de->getPos().x + de->getRadio() > h.hitbox.top_l.x) {
 			de->setColor(0, 1, 0);
 			if (h.tempdmg == 0) {
 				v.reduceVida();
-				return true;
 				h.tempdmg = 40;
 			}
 		}
-		else
-			return false;
-	else
-		return false;
-	
 }
-bool Interaccion::colision(Personaje& h, Misiles* m, VidasRecolectadas& v) {
+void Interaccion::colision(Personaje& h, Misiles* m, VidasRecolectadas& v) {
 	if (m->getPos().y - m->getRadio() < h.hitbox.top_l.y && m->getPos().y + m->getRadio() > h.hitbox.bot_l.y)
 		if (m->getPos().x - m->getRadio() < h.hitbox.top_r.x && m->getPos().x + m->getRadio() > h.hitbox.top_l.x) {
 			m->setColor(0, 1, 0);
 			if (h.tempdmg == 0) {
 				v.reduceVida();
-				return true;
 				h.tempdmg = 40;
 			}
 		}
@@ -454,7 +446,6 @@ void Interaccion::colision(Personaje& h, Bomber* ene, VidasRecolectadas& v) {
 			v.reduceVida();
 			h.tempdmg = 40;
 		}
-		h.setColor(0, 1, 0);
 	}
 
 	if ((h.getPos() - ene->getPos()).modulo() < 4) {
@@ -464,10 +455,11 @@ void Interaccion::colision(Personaje& h, Bomber* ene, VidasRecolectadas& v) {
 		ene->temp--;
 		ene->setVel(0, 0);
 	}
-	if (ene->temp == 0) {
+	if (ene->temp == 5) {
 		ene->altura = 6;
-		//v.reduceVida();		//arreglar esto
 	}
+	if (ene->temp == 0)
+		ene->vida = 0;
 }
 void Interaccion::colision(Personaje& h, Tank& t, VidasRecolectadas& v)
 {
@@ -1032,125 +1024,110 @@ void Interaccion::colision(Espada& esp, ListaEnemigos le)
 	for (int i = 0; i < le.numero; i++)
 		colision(esp, le.lista[i]);
 }
-bool Interaccion::colision(Espada& esp, Enemigo* e)
+void Interaccion::colision(Espada& esp, Enemigo* e)
 {
 	if (e->cosa == 1) {
 		EnemigoDisp* ene;
 		ene = dynamic_cast <EnemigoDisp*> (e);
-		return Interaccion::colision(esp, ene);
+		Interaccion::colision(esp, ene);
 	}
 	else if (e->cosa == 2) {
 		Tank* ene;
 		ene = dynamic_cast <Tank*> (e);
-		return Interaccion::colision(esp, ene);
+		Interaccion::colision(esp, ene);
 	}
 	else if (e->cosa == 3) {
 		Babosa* ene;
 		ene = dynamic_cast <Babosa*> (e);
-		return Interaccion::colision(esp, ene);
+		Interaccion::colision(esp, ene);
 	}
 	else if (e->cosa == 4) {
 		Bomber* ene;
 		ene = dynamic_cast <Bomber*> (e);
-		return Interaccion::colision(esp, ene);
+		Interaccion::colision(esp, ene);
 	}
 	else if (e->cosa == 5) {
 		Tentaculo* ene;
 		ene = dynamic_cast <Tentaculo*> (e);
-		return Interaccion::colision(esp, ene);
+		Interaccion::colision(esp, ene);
 	}
 	else if (e->cosa == 6) {
 		BossFinal* ene;
 		ene = dynamic_cast <BossFinal*> (e);
-		return Interaccion::colision(esp, ene);
+		Interaccion::colision(esp, ene);
 	}
 }
-bool Interaccion::colision(Espada& esp, EnemigoDisp* e)
+void Interaccion::colision(Espada& esp, EnemigoDisp* e)
 {
 	if ((esp.getPos() - e->hitbox.top_l).modulo() < esp.getLong() ||
 		(esp.getPos() - e->hitbox.top_r).modulo() < esp.getLong() ||
 		(esp.getPos() - e->hitbox.bot_l).modulo() < esp.getLong() ||
 		(esp.getPos() - e->hitbox.bot_r).modulo() < esp.getLong())
 	{
-		return true;
-		e->setColor(0, 1, 0);
 		e->flagdmg = 1;
-		e->flagesp = 1;
-		if (e->tempdmg == 0)
-			e->tempdmg = 40;
+		e->flagesp = 3;
 	}
-	else return false;
 }
-bool Interaccion::colision(Espada& esp, Babosa* b)
+void Interaccion::colision(Espada& esp, Babosa* b)
 {
 	if (esp.getPos().y - esp.getLong() < b->hitbox.top_l.y && esp.getPos().y + esp.getLong() > b->hitbox.bot_l.y)
 		if (esp.getPos().x - esp.getLong() < b->hitbox.top_r.x && esp.getPos().x + esp.getLong() > b->hitbox.top_l.x)
 		{
-			return true;
-			b->setColor(0, 1, 0);
+			b->flagdmg = 1;
+			b->flagesp = 5;
+		}
+}
+void Interaccion::colision(Espada& esp, Bomber* b)
+{
+	if (esp.getPos().y - esp.getLong() < b->hitbox.top_l.y && esp.getPos().y + esp.getLong() > b->hitbox.bot_l.y)
+		if (esp.getPos().x - esp.getLong() < b->hitbox.top_r.x && esp.getPos().x + esp.getLong() > b->hitbox.top_l.x)
+		{
 			b->flagdmg = 1;
 			b->flagesp = 1;
 			if (b->tempdmg == 0)
 				b->tempdmg = 40;
 		}
-		else return false;
 }
-bool Interaccion::colision(Espada& esp, Bomber* b)
-{
-	if (esp.getPos().y - esp.getLong() < b->hitbox.top_l.y && esp.getPos().y + esp.getLong() > b->hitbox.bot_l.y)
-		if (esp.getPos().x - esp.getLong() < b->hitbox.top_r.x && esp.getPos().x + esp.getLong() > b->hitbox.top_l.x)
-		{
-			return true;
-			b->setColor(0, 1, 0);
-			b->flagdmg = 1;
-			b->flagesp = 1;
-			if (b->tempdmg == 0)
-				b->tempdmg = 40;
-		}
-		else return false;
-}
-bool Interaccion::colision(Espada& esp, Tentaculo* t)
+void Interaccion::colision(Espada& esp, Tentaculo* t)
 {
 	for (int i = 0; i < 3; i++) {
 		float dist1 = DistSeg(t->hitbox[i], esp.getPos());
 		if (dist1 < esp.getLong())
 		{
-			return true;
 			esp.setColor(0, 1, 0);
 			t->flagdmg = 1;
 			t->flagesp = 1;
 			if (t->tempdmg == 0)
 				t->tempdmg = 40;
 		}
-		else return false;
 	}
 }
-bool Interaccion::colision(Espada& esp, Tank* t)
+void Interaccion::colision(Espada& esp, Tank* t)
 {
 	if (esp.getPos().y - esp.getLong() < t->hitbox.top_l.y && esp.getPos().y + esp.getLong() > t->hitbox.bot_l.y)
 		if (esp.getPos().x - esp.getLong() < t->hitbox.top_r.x && esp.getPos().x + esp.getLong() > t->hitbox.top_l.x)
 		{
-			return true;
 			t->flagdmg = 1;
 			t->flagesp = 1;
 			if (t->tempdmg == 0)
+			{
 				t->tempdmg = 40;
+			}
 		}
-		else return false;
 }
-bool Interaccion::colision(Espada& esp, BossFinal* b)
+void Interaccion::colision(Espada& esp, BossFinal* b)
 {
 	if (esp.getPos().y - esp.getLong() < b->hitbox.top_l.y && esp.getPos().y + esp.getLong() > b->hitbox.bot_l.y)
 		if (esp.getPos().x - esp.getLong() < b->hitbox.top_r.x && esp.getPos().x + esp.getLong() > b->hitbox.top_l.x)
 		{
-			return true;
-			b->setColor(0, 1, 0);
 			b->flagdmg = 1;
 			b->flagesp = 1;
 			if (b->tempdmg == 0)
+			{
 				b->tempdmg = 40;
+			}
+
 		}
-		else return false;
 }
 void Interaccion::colision(ListaDisparos ld, ListaEnemigos le)
 {
@@ -1160,7 +1137,7 @@ void Interaccion::colision(ListaDisparos ld, ListaEnemigos le)
 			Interaccion::colision(ld.lista[i], le.lista[j]);
 		}
 }
-bool Interaccion::colision(Disparos* d, Enemigo* e)
+void Interaccion::colision(Disparos* d, Enemigo* e)
 {
 	if (d->cosa == 1) {	
 		DisparosAmigos* p;
@@ -1168,175 +1145,136 @@ bool Interaccion::colision(Disparos* d, Enemigo* e)
 		return Interaccion::colision(p, e);
 	}
 	if (d->cosa == 2) {
-		return false;
+		;
 	}
 	else if (d->cosa == 3) {
-		return false;
+		;
 	}
 }
-bool Interaccion::colision(Disparos* d, EnemigoDisp* e)
+void Interaccion::colision(Disparos* d, EnemigoDisp* e)
 {
 	if (d->cosa == 1) {
 		DisparosAmigos* p;
 		p = dynamic_cast <DisparosAmigos*> (d);
-		return Interaccion::colision(p, e);
+		Interaccion::colision(p, e);
 	}
 }
-bool Interaccion::colision(Disparos* d, Babosa* b)
+void Interaccion::colision(Disparos* d, Babosa* b)
 {
 	if (d->cosa == 1) {
 		DisparosAmigos* p;
 		p = dynamic_cast <DisparosAmigos*> (d);
-		return Interaccion::colision(p, b);
+		Interaccion::colision(p, b);
 	}
 }
-bool Interaccion::colision(Disparos* d, Bomber* b)
+void Interaccion::colision(Disparos* d, Bomber* b)
 {
 	if (d->cosa == 1) {
 		DisparosAmigos* p;
 		p = dynamic_cast <DisparosAmigos*> (d);
-		return Interaccion::colision(p, b);
+		Interaccion::colision(p, b);
 	}
 }
-bool Interaccion::colision(Disparos* d, Tentaculo* t)
+void Interaccion::colision(Disparos* d, Tentaculo* t)
 {
 	if (d->cosa == 1) {
 		DisparosAmigos* p;
 		p = dynamic_cast <DisparosAmigos*> (d);
-		return Interaccion::colision(p, t);
+		Interaccion::colision(p, t);
 	}
 }
-bool Interaccion::colision(Disparos* d, Tank* t)
+void Interaccion::colision(Disparos* d, Tank* t)
 {
 	if (d->cosa == 1) {
 		DisparosAmigos* p;
 		p = dynamic_cast <DisparosAmigos*> (d);
-		return Interaccion::colision(p, t);
+		Interaccion::colision(p, t);
 	}
 }
-bool Interaccion::colision(Disparos* d, BossFinal* b)
+void Interaccion::colision(Disparos* d, BossFinal* b)
 {
 	if (d->cosa == 1) {
 		DisparosAmigos* p;
 		p = dynamic_cast <DisparosAmigos*> (d);
-		return Interaccion::colision(p, b);
+		Interaccion::colision(p, b);
 	}
 }
-bool Interaccion::colision(DisparosAmigos* d, ListaEnemigos le)
+void Interaccion::colision(DisparosAmigos* d, ListaEnemigos le)
 {
 	for (int i = 0; i < le.numero; i++)
-		return Interaccion::colision(d, le.lista[i]);
+		Interaccion::colision(d, le.lista[i]);
 }
-bool Interaccion::colision(DisparosAmigos* d, Enemigo* e)
+void Interaccion::colision(DisparosAmigos* d, Enemigo* e)
 {
 	if (d->getPos().y - d->getRadio() < e->hitbox.top_l.y && d->getPos().y + d->getRadio() > e->hitbox.bot_l.y)
 		if (d->getPos().x - d->getRadio() < e->hitbox.top_r.x && d->getPos().x + d->getRadio() > e->hitbox.top_l.x) {
 			d->setColor(0, 1, 1);
 			e->flagdmg = 1;
-			return true;
 			if (e->tempdmg == 0)
 				e->tempdmg = 40;
 		}
-		else return false;
 }
-bool Interaccion::colision(DisparosAmigos* d, EnemigoDisp* e)
+void Interaccion::colision(DisparosAmigos* d, EnemigoDisp* e)
 {
 	if (d->getPos().y - d->getRadio() < e->hitbox.top_l.y && d->getPos().y + d->getRadio() > e->hitbox.bot_l.y)
 		if (d->getPos().x - d->getRadio() < e->hitbox.top_r.x && d->getPos().x + d->getRadio() > e->hitbox.top_l.x) {
 			d->setColor(0, 1, 1);
 			e->flagdmg = 1;
-			return true;
 			if (e->tempdmg == 0)
 				e->tempdmg = 40;
 		}
-		else return false;
 }
-bool Interaccion::colision(DisparosAmigos* d, Babosa* b)
+void Interaccion::colision(DisparosAmigos* d, Babosa* b)
 {
 	if (d->getPos().y - d->getRadio() < b->hitbox.top_l.y && d->getPos().y + d->getRadio() > b->hitbox.bot_l.y)
 		if (d->getPos().x - d->getRadio() < b->hitbox.top_r.x && d->getPos().x + d->getRadio() > b->hitbox.top_l.x) {
 			d->setColor(0, 1, 0);
 			b->flagdmg = 1;
-			return true;
 			if (b->tempdmg == 0)
 				b->tempdmg = 40;
 		}
-		else return false;
 }
-bool Interaccion::colision(DisparosAmigos* d, Bomber* b)
+void Interaccion::colision(DisparosAmigos* d, Bomber* b)
 {
 	if (d->getPos().y - d->getRadio() < b->hitbox.top_l.y && d->getPos().y + d->getRadio() > b->hitbox.bot_l.y)
 		if (d->getPos().x - d->getRadio() < b->hitbox.top_r.x && d->getPos().x + d->getRadio() > b->hitbox.top_l.x) {
 			d->setColor(0, 1, 0);
 			b->flagdmg = 1;
-			return true;
 			if (b->tempdmg == 0)
 				b->tempdmg = 40;
 		}
-		else return false;
 }
-bool Interaccion::colision(DisparosAmigos* d, Tentaculo* t)
+void Interaccion::colision(DisparosAmigos* d, Tentaculo* t)
 {
-	for (int i = 0; i < 3; i++) {
-		float dist1 = DistSeg(t->hitbox[i], d->getPos());
-		if (dist1 < d->getRadio())
-		{
-			d->setColor(0, 1, 0);
-			t->flagdmg = 1;
-			return true;
-			if (t->tempdmg == 0)
-				t->tempdmg = 40;
-		}
-		else
-		{
-			d->setColor(1, 0, 0);
-			return false;
-		}
-
-	}
-	bool b1;
-	for (int i = 0; i < 3; i++) {
-		b1 = DistHitbox(t->hitbox[i], d->getPos());
-		if (b1)
-			return true;
-	}
 	for (int i = 0; i < 3; i++) {
 			float dist1 = DistSeg(t->hitbox[i], d->getPos());
 			if (dist1 < d->getRadio())
 			{
-				d->setColor(0, 1, 0);
 				t->flagdmg = 1;
-				return true;
 				if (t->tempdmg == 0)
 					t->tempdmg = 40;
 			}
-			else
-				return false;
 		}
 }
-bool Interaccion::colision(DisparosAmigos* d, Tank* t)
+void Interaccion::colision(DisparosAmigos* d, Tank* t)
 {
 	if (d->getPos().y - d->getRadio() < t->hitbox.top_l.y && d->getPos().y + d->getRadio() > t->hitbox.bot_l.y)
 		if (d->getPos().x - d->getRadio() < t->hitbox.top_r.x && d->getPos().x + d->getRadio() > t->hitbox.top_l.x) {
 			d->setColor(1, 1, 0);
 			t->flagdmg = 1;
-			return true;
 			if (t->tempdmg == 0)
 				t->tempdmg = 40;
 		}
-		else return false;
 }
-bool Interaccion::colision(DisparosAmigos* d, BossFinal* b)
+void Interaccion::colision(DisparosAmigos* d, BossFinal* b)
 {
 	if (d->getPos().y - d->getRadio() < b->hitbox.top_l.y && d->getPos().y + d->getRadio() > b->hitbox.bot_l.y)
 		if (d->getPos().x - d->getRadio() < b->hitbox.top_r.x && d->getPos().x + d->getRadio() > b->hitbox.top_l.x) {
 			d->setColor(0, 1, 0);
 			b->flagdmg = 1;
-			return true;
 			if (b->tempdmg == 0)
 				b->tempdmg = 40;
 		}
-		else return false;
 }
 ////////////////////////////////////////////////////////////////////
 

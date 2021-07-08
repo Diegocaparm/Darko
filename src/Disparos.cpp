@@ -40,7 +40,7 @@ Espada::Espada() {
 
 }
 Espada::Espada(float px, float py) {
-	Disparos(px, py);
+	setPos(px, py);
 	radio = 1.5f;
 
 }
@@ -131,10 +131,7 @@ void Espada::dibuja() {
 	glPushMatrix();
 	glColor3f(color.r, color.g, color.b);
 	glTranslatef(posicion.x, posicion.y, 0.2);
-	//glRotatef(90, -1, 0, 0);
 	glRotatef(angulo , 0, 0, -1);
-	//sprite.flip(true, true);
-	//glutSolidCylinder(radio / 12, radio, 30, 30);
 	sprite.draw();
 	glPopMatrix();
 }
