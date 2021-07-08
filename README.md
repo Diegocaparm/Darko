@@ -1,6 +1,10 @@
 # Darko
 Repositorio para el trabajo de Informática Industrial
 
+@Miguel
+Changes v4.0
+- Monedas con limite en 100, otorgando 2 vidas.
+- Se ha incorporado fin de partida.
 
 @Sofía
 Changes v3.9
