@@ -6,9 +6,9 @@ Personaje::Personaje() :sprite_darko("bin/imagenes/darkopist.png", 2), sprite_hu
 	setPos(-4, 16);		//-4 o 180
 	setAc(0, -9.8);
 	setColor(1, 1, 0);
-	sprite_darko.setCenter(1.5, 0);
+	sprite_darko.setCenter(1.5, 0.1);
 	sprite_darko.setSize(3, 3);
-	sprite_humano.setCenter(1.5, 0);
+	sprite_humano.setCenter(1.5, 0.1);
 	sprite_humano.setSize(3, 3);
 
 	if (guardapersonaje == 1)
@@ -49,7 +49,7 @@ void Personaje::dibuja() {
 	glPopMatrix();
 
 	//Añadido por Miguel (Dibuja los bordes de choque)
-	glPushMatrix();
+	/*glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
@@ -70,7 +70,7 @@ void Personaje::dibuja() {
 	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 
 void Personaje::mueve(float t) {

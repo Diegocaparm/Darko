@@ -22,7 +22,7 @@ Babosa::Babosa(float px, float py) {
 	vida = 5;
 	setColor(2, 0, 0);
 	setPos(px, py);
-	sprite.setCenter(1.25,1.25);
+	sprite.setCenter(1,1);
 	sprite.setSize(2, 2);
 }
 Bomber::Bomber(float px, float py) {
@@ -106,13 +106,11 @@ void EnemigoDisp::dibuja()
 	if (velocidad.x < -0.01)sprite.flip(false, false);
 	if ((velocidad.x < 0.01) && (velocidad.x > -0.01))
 		sprite.setState(0);
-	//else if (sprite.getState() == 0)
-		//sprite.setState(0, true);
 	sprite.draw();
 	glPopMatrix();
 
 	//Añadido por Miguel (Dibuja los bordes de choque)
-	glPushMatrix();
+	/*glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
@@ -133,11 +131,11 @@ void EnemigoDisp::dibuja()
 	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 void Babosa::dibuja() {
 	glPushMatrix();
-	glTranslatef(posicion.x, posicion.y, 0.1);
+	glTranslatef(posicion.x-1, posicion.y, 0.1);
 	//glRotatef(-90, 0, 1, 0);
 	//glutSolidCylinder(altura / 3, altura, 30, 30);
 	//gestion de direccion y animacion
@@ -151,7 +149,7 @@ void Babosa::dibuja() {
 	glRotatef(90, 0, 1, 0);
 	glPopMatrix();
 
-	glPushMatrix();
+	/*glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
@@ -172,7 +170,7 @@ void Babosa::dibuja() {
 	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 void Bomber::dibuja()
 {
@@ -192,7 +190,7 @@ void Bomber::dibuja()
 	glPopMatrix();
 
 	//Añadido por Miguel (Dibuja los bordes de choque)
-	glPushMatrix();
+	/*glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
@@ -213,7 +211,7 @@ void Bomber::dibuja()
 	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 void Tentaculo::dibuja() {
 	glPushMatrix();
@@ -227,7 +225,7 @@ void Tentaculo::dibuja() {
 	glPopMatrix();
 
 
-	glPushMatrix();
+	/*glPushMatrix();
 	//glTranslatef(posicion.x, posicion.y, 0);
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
@@ -292,7 +290,7 @@ void Tentaculo::dibuja() {
 	glVertex3f(hitbox[2].bot_l.x, hitbox[2].bot_l.y, 0);
 	glVertex3f(hitbox[2].top_l.x, hitbox[2].top_l.y, 0);
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 void Tank::dibuja()
 {
@@ -312,7 +310,7 @@ void Tank::dibuja()
 	sprite.draw();
 	glPopMatrix();
 
-	glPushMatrix();
+	/*glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
@@ -333,7 +331,7 @@ void Tank::dibuja()
 	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 void BossFinal::dibuja()
 {
@@ -353,7 +351,7 @@ void BossFinal::dibuja()
 	glutSolidSphere(altura / 3, 30, 30);*/
 	glPopMatrix();
 
-	glPushMatrix();
+	/*glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
@@ -374,7 +372,7 @@ void BossFinal::dibuja()
 	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 
 //Métodos mueve de cada enemigo

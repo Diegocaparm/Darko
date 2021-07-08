@@ -309,7 +309,7 @@ void Pincho::dibuja(int i)
 	glPopMatrix();
 
 	//Hitbox
-	glPushMatrix();
+	/*glPushMatrix();
 	glBegin(GL_LINES);
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
@@ -330,7 +330,7 @@ void Pincho::dibuja(int i)
 	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
 	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 //Métodos propios de BolaFuego
 void BolaFuego::dibuja(int i)
