@@ -17,9 +17,9 @@ Menu::~Menu() //Destructor
 void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 {
 	if (estado != NIVEL && estado != FIN)						 //Posición del menú si no estamos en el estado FIN
-		gluLookAt(0.0, 4.5, 13,
-			0.0, 4.5, 0.0,
-			0.0, 1.0, 0.0);
+		gluLookAt(0.0f, 4.5f, 13.0f,
+			0.0f, 4.5f, 0.0f,
+			0.0f, 1.0f, 0.0f);
 	switch (estado)
 	{
 	case START:  //Estado de INICIO
