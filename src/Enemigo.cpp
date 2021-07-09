@@ -336,7 +336,7 @@ void Tank::dibuja()
 void BossFinal::dibuja()
 {
 	glPushMatrix();
-	glTranslatef(posicion.x, posicion.y, 0.1);
+	glTranslatef(posicion.x, posicion.y, 0.001);
 	glColor3f(color.r, color.g, color.b);
 	if (velocidad.x > 0.01)sprite.flip(true, false);
 	if (velocidad.x < -0.01)sprite.flip(false, false);
