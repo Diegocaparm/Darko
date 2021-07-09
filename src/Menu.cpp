@@ -5,7 +5,7 @@
 Menu::Menu()  //Constructor
 {
 	estado = START;                                  //Comienza el juego en START
-	ETSIDI::playMusica("bin/musica/menu.ogg", true);   //Se activa la m˙sica del inicio
+	ETSIDI::playMusica("bin/musica/menu.ogg", true);   //Se activa la m√∫sica del inicio
 	camara = 0;
 }
 
@@ -16,7 +16,7 @@ Menu::~Menu() //Destructor
 
 void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 {
-	if (estado != NIVEL && estado != FIN)						 //PosiciÛn del men˙ si no estamos en el estado FIN
+	if (estado != NIVEL && estado != FIN)						 //Posici√≥n del men√∫ si no estamos en el estado FIN
 		gluLookAt(0.0, 4.5, 13,
 			0.0, 4.5, 0.0,
 			0.0, 1.0, 0.0);
@@ -29,7 +29,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
 		glTexCoord2d(0, 1);		glVertex3f(-6.5f, -0.25f, -0.1f);
-		glTexCoord2d(1, 1);		glVertex3f(6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1f);
 		glTexCoord2d(1, 0);		glVertex3f(6.5f, 9.25f, -0.1f);
 		glTexCoord2d(0, 0);		glVertex3f(-6.5f, 9.25f, -0.1f);
 		glEnd();
@@ -119,7 +119,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		break;
 
 	case NIVEL: //Comenzamos el juego
-		camara = nivel.hombre.getPos().x;   // recoge la posicion x del muÒeco en la variable ojo
+		camara = nivel.hombre.getPos().x;   // recoge la posicion x del mu√±eco en la variable ojo
 		gluLookAt(camara, 11.5, 30,  // posicion del ojo  
 			camara, 7.5f, 0.0,      // hacia que punto mira  (hombre.posicion.y + 8)
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    		
@@ -132,7 +132,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 			Musica();
 			aux++;
 		}
-		else if (nivel.nivel == 2)	//CAMBIAR?? En alg˙n punto hay que poner un nivel ++, quiz·s aquÌ es buena opciÛn
+		else if (nivel.nivel == 2)	//CAMBIAR?? En alg√∫n punto hay que poner un nivel ++, quiz√°s aqu√≠ es buena opci√≥n
 		{
 			estado = NIVEL;
 			Musica();
@@ -193,7 +193,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
 		glTexCoord2d(0, 1);		glVertex3f(-6.5f, -0.25f, -0.1f);
-		glTexCoord2d(1, 1);		glVertex3f(6.5f, -0.25f, -0.1);
+		glTexCoord2d(1, 1);		glVertex3f(6.5f, -0.25f, -0.1f);
 		glTexCoord2d(1, 0);		glVertex3f(6.5f, 9.25f, -0.1f);
 		glTexCoord2d(0, 0);		glVertex3f(-6.5f, 9.25f, -0.1f);
 		glEnd();
@@ -219,7 +219,7 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 
 	case FIN: //Fin del juego
 
-		gluLookAt(0.0, 8, 10,   // PosiciÛn del ojo si esta en el menu
+		gluLookAt(0.0, 8, 10,   // Posici√≥n del ojo si esta en el menu
 			0.0, 4.5, 0.0,
 			0.0, 1.0, 0.0);
 
@@ -276,14 +276,14 @@ void Menu::Tecla(unsigned char key)
 			estado = HISTORIA;
 		if (key == 13)
 			estado = MENU;
-		//Musica();					//ComenzarÌa la m˙sica de la historia 
+		//Musica();					//Comenzar√≠a la m√∫sica de la historia 
 		break;
 
 	case HISTORIA:
 		if (key == 27)              //Pulsa esc para volver al MENU
 		{
 			estado = MENU;
-			//Musica();				//ComenzarÌa la m˙sica del men˙
+			//Musica();				//Comenzar√≠a la m√∫sica del men√∫
 		}
 		if (key == 13)              //Pulsa enter para pasar a la siguiente pantalla
 			estado = SUERTE;
@@ -297,7 +297,7 @@ void Menu::Tecla(unsigned char key)
 		{
 			nivel.inicializa();
 			estado = NIVEL;
-			Musica();				//COMENZARÕA LA M⁄SICA QUE QUISI…RAMOS PONERLE AL NIVEL1
+			Musica();				//COMENZAR√çA LA M√öSICA QUE QUISI√âRAMOS PONERLE AL NIVEL1
 		}
 		break;
 
@@ -309,7 +309,7 @@ void Menu::Tecla(unsigned char key)
 		if (key == 27)              //Pulsa esc para volver al MENU
 		{
 			estado = MENU;
-			Musica();				//ComenzarÌa la m˙sica del men˙
+			Musica();				//Comenzar√≠a la m√∫sica del men√∫
 		}
 
 	case GAMEOVER:
@@ -377,7 +377,7 @@ void Menu::Musica()
 			ETSIDI::stopMusica();
 			ETSIDI::playMusica("bin/musica/mundo1.ogg", true);
 		}
-		if (aux1 == 2)	//CAMBIAR?? En alg˙n punto hay que poner un nivel ++, quiz·s aquÌ es buena opciÛn
+		if (aux1 == 2)	//CAMBIAR?? En alg√∫n punto hay que poner un nivel ++, quiz√°s aqu√≠ es buena opci√≥n
 		{
 			printf_s("No entro2");
 			ETSIDI::stopMusica();
@@ -456,8 +456,8 @@ void Menu::TeclaEspecial(unsigned char key)
 
 void Menu::Mueve()
 {
-	if (estado == NIVEL) {       //El juego est· en el estado nivel
-		nivel.mueve();         //Se llama a la funciÛn mueve de espacio para controlar los distintos objetos que aparecen en pantalla
+	if (estado == NIVEL) {       //El juego est√° en el estado nivel
+		nivel.mueve();         //Se llama a la funci√≥n mueve de espacio para controlar los distintos objetos que aparecen en pantalla
 		if (nivel.vidasR.FinVida()) {
 			estado=GAMEOVER;
 		}
