@@ -175,7 +175,7 @@ void EnemigoDisp::mueve(float t)
 		temp++;
 		if (temp == 120) {		//volver a disparar
 			dispEnem1->setPos(posicion.x, posicion.y + altura * 2 / 3);
-			dispEnem1->setVel(-dispEnem1->getVelDef() + velocidad.x, 0.0f);
+			dispEnem1->setVel(dispEnem1->getVelDef()*dispEnem1->getSentido(), 0.0f);
 			dispEnem1->setExiste(true);
 		}
 	}
