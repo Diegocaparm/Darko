@@ -26,7 +26,7 @@ DisparosAmigos::DisparosAmigos(float px, float py, float vx, float vy) {
 Espada::Espada() {
 	cosa = 1;
 	radio = 2.0f;
-	sprite.setCenter(3.1, 1.5f);
+	sprite.setCenter(3.1f, 1.5f);
 	sprite.setSize(4,4);
 }
 Espada::Espada(float px, float py) {
@@ -59,7 +59,7 @@ Misiles::Misiles(float px, float py)
 	misil.setSize(3, 3);
 }
 
-//MÈtodos virtuales de Disparos
+//M√©todos virtuales de Disparos
 void Disparos::dibuja()
 {
 	if (existe) {
@@ -77,7 +77,7 @@ void Disparos::dibuja()
 }
 void Disparos::mueve(float t)
 {
-	//Este virtual genÈrico si que est· con cosas porque es el que usan 
+	//Este virtual gen√©rico si que est√° con cosas porque es el que usan 
 	//los disparos buenos y malos 
 	ObjetoMovil::mueve(t);
 	sprite.loop();
@@ -102,7 +102,7 @@ float Disparos::getRadio() {
 	return radio;
 }
 
-//MÈtodos propios de Espada
+//M√©todos propios de Espada
 void Espada::dibuja() {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0.2f);
@@ -130,7 +130,7 @@ float Espada::getLong() {
 	return radio;
 }
 
-//MÈtodos propios de Misiles
+//M√©todos propios de Misiles
 void Misiles::mueve(float t) {
 	ObjetoMovil::mueve(t);
 	if (temp < 200) {
