@@ -28,10 +28,10 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
-		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
-		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
-		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
+		glTexCoord2d(0, 1);		glVertex3f(-6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 1);		glVertex3f(6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 0);		glVertex3f(6.5f, 9.25f, -0.1f);
+		glTexCoord2d(0, 0);		glVertex3f(-6.5f, 9.25f, -0.1f);
 		glEnd();
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
@@ -43,10 +43,10 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
-		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
-		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
-		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
+		glTexCoord2d(0, 1);		glVertex3f(-6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 1);		glVertex3f(6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 0);		glVertex3f(6.5f, 9.25f, -0.1f);
+		glTexCoord2d(0, 0);		glVertex3f(-6.5f, 9.25f, -0.1f);
 		glEnd();
 
 		glEnable(GL_LIGHTING);
@@ -60,10 +60,10 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
-		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
-		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
-		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
+		glTexCoord2d(0, 1);		glVertex3f(-6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 1);		glVertex3f(6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 0);		glVertex3f(6.5f, 9.25f, -0.1f);
+		glTexCoord2d(0, 0);		glVertex3f(-6.5f, 9.25f, -0.1f);
 		glEnd();
 
 		glEnable(GL_LIGHTING);
@@ -76,10 +76,10 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
-		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
-		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
-		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
+		glTexCoord2d(0, 1);		glVertex3f(-6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 1);		glVertex3f(6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 0);		glVertex3f(6.5f, 9.25f, -0.1f);
+		glTexCoord2d(0, 0);		glVertex3f(-6.5f, 9.25f, -0.1f);
 		glEnd();
 
 		glEnable(GL_LIGHTING);
@@ -92,10 +92,10 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
-		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
-		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
-		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
+		glTexCoord2d(0, 1);		glVertex3f(-6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 1);		glVertex3f(6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 0);		glVertex3f(6.5f, 9.25f, -0.1f);
+		glTexCoord2d(0, 0);		glVertex3f(-6.5f, 9.25f, -0.1f);
 		glEnd();
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
@@ -108,10 +108,10 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
 
-		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
-		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
-		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
-		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
+		glTexCoord2d(0, 1);		glVertex3f(-6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 1);		glVertex3f(6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 0);		glVertex3f(6.5f, 9.25f, -0.1f);
+		glTexCoord2d(0, 0);		glVertex3f(-6.5f, 9.25f, -0.1f);
 		glEnd();
 
 		glEnable(GL_LIGHTING);
@@ -192,10 +192,10 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
-		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
-		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
-		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
+		glTexCoord2d(0, 1);		glVertex3f(-6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 1);		glVertex3f(6.5f, -0.25f, -0.1);
+		glTexCoord2d(1, 0);		glVertex3f(6.5f, 9.25f, -0.1f);
+		glTexCoord2d(0, 0);		glVertex3f(-6.5f, 9.25f, -0.1f);
 		glEnd();
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
@@ -208,10 +208,10 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
-		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
-		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
-		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
+		glTexCoord2d(0, 1);		glVertex3f(-6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 1);		glVertex3f(6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 0);		glVertex3f(6.5f, 9.25f, -0.1f);
+		glTexCoord2d(0, 0);		glVertex3f(-6.5f, 9.25f, -0.1f);
 		glEnd();
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
@@ -228,10 +228,10 @@ void Menu::Dibuja()							 //Para dibujar en pantalla los distintos estados
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 1);		glVertex3f(-6.5, -0.25, -0.1);
-		glTexCoord2d(1, 1);		glVertex3f(6.5, -0.25, -0.1);
-		glTexCoord2d(1, 0);		glVertex3f(6.5, 9.25, -0.1);
-		glTexCoord2d(0, 0);		glVertex3f(-6.5, 9.25, -0.1);
+		glTexCoord2d(0, 1);		glVertex3f(-6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 1);		glVertex3f(6.5f, -0.25f, -0.1f);
+		glTexCoord2d(1, 0);		glVertex3f(6.5f, 9.25f, -0.1f);
+		glTexCoord2d(0, 0);		glVertex3f(-6.5f, 9.25f, -0.1f);
 		glEnd();
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
