@@ -16,7 +16,7 @@ Personaje::Personaje() :sprite_darko("bin/imagenes/darkopist.png", 2), sprite_hu
 		puntero = &sprite_humano;
 }
 
-int Personaje::setPersonaje(unsigned char key)		//ElecciÛn de personajes SofÌa
+int Personaje::setPersonaje(unsigned char key)		//Elecci√≥n de personajes Sof√≠a
 {
 	if (key == 'P' || key == 'p')  //Elegimos Darko
 	{
@@ -36,7 +36,7 @@ int Personaje::setPersonaje(unsigned char key)		//ElecciÛn de personajes SofÌa
 void Personaje::dibuja() {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0.05f);
-	if (velocidad.x > 0.01f)puntero->flip(false, false); //Para la selecciÛn del personaje pongo un puntero para no poner el sprite directamente
+	if (velocidad.x > 0.01f)puntero->flip(false, false); //Para la selecci√≥n del personaje pongo un puntero para no poner el sprite directamente
 	if (velocidad.x < -0.01f)puntero->flip(true, false);
 	if ((velocidad.x < 0.01f) && (velocidad.x > -0.01))
 		puntero->setState(0);
@@ -70,13 +70,13 @@ void Personaje::mueve(float t) {
 		if (salto == 1) {
 			aceleracion.y = 300;
 			flag = 0;
-			//salto = 1; //SALTO INFINITO
+			salto = 0; //1 para SALTO INFINITO
 		}
 	}
 	if (tempdmg)	//volverse invulnerable
 		tempdmg--;
 
-	//AÒadido por Miguel (crea las paredes hitbox)
+	//A√±adido por Miguel (crea las paredes hitbox)
 	Vector2D e1, e2, e3, e4;
 	e1.x = posicion.x - 0.3f;	e1.y = posicion.y + 1.8f;
 	e2.x = posicion.x + 0.3f;	e2.y = posicion.y + 1.8f;
