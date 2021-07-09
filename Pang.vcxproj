@@ -38,7 +38,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Caja.h" />
-    <ClInclude Include="src\ColorRGB.h" />
     <ClInclude Include="src\Disparos.h" />
     <ClInclude Include="src\Enemigo.h" />
     <ClInclude Include="src\Hitbox.h" />

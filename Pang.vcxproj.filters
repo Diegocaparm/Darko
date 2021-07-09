@@ -71,9 +71,6 @@
     <ClInclude Include="src\ObjetoMovil.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\ColorRGB.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="src\Disparos.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
