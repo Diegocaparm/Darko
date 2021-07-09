@@ -10,11 +10,10 @@ Pared::Pared()
 {
 	//Necesario para las herencias y que se llame desde caja sin tener que especificar posiciones
 }
-Pared::Pared(float x1, float y1, float x2, float y2, Byte r, Byte g, Byte b) 
+Pared::Pared(float x1, float y1, float x2, float y2) 
 {
 	setCosa(1);
 	setLims(x1, y1, x2, y2);
-	setColor(r, g, b);
 }
 PlatMovil::PlatMovil(float lim1x, float lim1y, float lim2x, float lim2y, float vx, float vy, float ex1x, float ex1y, float ex2x, float ex2y)
 {
@@ -53,12 +52,6 @@ Pincho::Pincho(float px, float py) {
 	hitbox.bot_r.x = posicion.x + 1.3f;	hitbox.bot_r.y = posicion.y;
 	hitbox.top_l.x = posicion.x - 1.3f;	hitbox.top_l.y = posicion.y + 2.5f;
 	hitbox.top_r.x = posicion.x + 1.3f;	hitbox.top_r.y = posicion.y + 2.5f;
-	/*Vector2D e1, e2, e3, e4;
-	e1.x = posicion.x - 1.3;		e1.y = posicion.y + 2.5;
-	e2.x = posicion.x + 1.3;		e2.y = posicion.y + 2.5;
-	e3.x = posicion.x - 1.3;		e3.y = posicion.y - 0;
-	e4.x = posicion.x + 1.3;		e4.y = posicion.y - 0;
-	hitbox.setPos(e1, e2, e3, e4);*/
 }
 BolaFuego::BolaFuego(float px, float py, float limtop, float limbot) : fireball("bin/imagenes/fireball.png", 4, 3)
 {
@@ -68,16 +61,9 @@ BolaFuego::BolaFuego(float px, float py, float limtop, float limbot) : fireball(
 	vel.y = 10.0f;
 	setPos(px, py);
 	borde = { limbot, limtop };
-	setColor(1, 0, 0);
 }
 
 //Métodos virtuales de Solidos
-void Solidos::setColor(Byte r, Byte g, Byte b)
-{
-	color.r = r;
-	color.g = g;
-	color.b = b;
-}
 void Solidos::setPos(float px, float py)
 {
 	posicion.x = px;
@@ -123,7 +109,6 @@ void Pared::dibuja(int i)
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo2.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
 		glTexCoord2d(0.15, 0.92);	glVertex2f(limite1.x + 0.5f, limite1.y - 1);
 		glTexCoord2d(0.85, 0.92);	glVertex2f(limite2.x + 0.5f, limite2.y - 1);
 		glTexCoord2d(0.85, 0.8);	glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
@@ -138,7 +123,6 @@ void Pared::dibuja(int i)
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/Plat_Marte.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
 		glTexCoord2d(0.15, 0.2);	glVertex2f(limite1.x + 0.5f, limite1.y - 1);
 		glTexCoord2d(0.85, 0.2);	glVertex2f(limite2.x + 0.5f, limite2.y - 1);
 		glTexCoord2d(0.85, 0.1);	glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
@@ -198,10 +182,10 @@ void PlatMovil::dibuja(int i)
 		platmovil2.setSize((limite2.x - limite1.x) * 3, 5);
 		//Dibujo
 		glPushMatrix();
-		glTranslatef(posicion.x, posicion.y, 0.5);
+		glTranslatef(posicion.x, posicion.y, 0.5f);
 		if (vel.x < -0.01)platmovil2.flip(true, false);
 		if (vel.x > 0.01)platmovil2.flip(false, false);
-		if ((vel.x < 0.01) && (vel.x > -0.01))
+		if ((vel.x < 0.01) && (vel.x > -0.01f))
 			platmovil2.setState(0);
 		platmovil2.draw();
 		glPopMatrix();
@@ -213,7 +197,7 @@ void PlatMovil::dibuja(int i)
 		platmovil3.setSize((limite2.x - limite1.x) * 3, 5);
 		//Dibujo
 		glPushMatrix();
-		glTranslatef(posicion.x, posicion.y, 0.5);
+		glTranslatef(posicion.x, posicion.y, 0.5f);
 		platmovil3.draw();
 		glPopMatrix();
 	}
@@ -243,7 +227,6 @@ void Suelo::dibuja(int i)
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo1.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
 		glTexCoord2d(0.1, 1);		glVertex2f(bajo1.x, bajo1.y);
 		glTexCoord2d(0.95, 1);		glVertex2f(bajo2.x, bajo2.y);
 		glTexCoord2d(0.95, 0.75);	glVertex2f(limite2.x, limite2.y);
@@ -258,7 +241,6 @@ void Suelo::dibuja(int i)
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/mundo2.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
 		glTexCoord2d(0.15, 0.92);	glVertex2f(bajo1.x, bajo1.y);
 		glTexCoord2d(0.85, 0.92);	glVertex2f(bajo2.x, bajo2.y);
 		glTexCoord2d(0.85, 0.8);	glVertex2f(limite2.x, limite2.y);
@@ -273,7 +255,6 @@ void Suelo::dibuja(int i)
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/SueloMarte.png").id);
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
-		glColor3f(1, 1, 1);
 		glTexCoord2d(0.15, 0.9);	glVertex2f(bajo1.x, bajo1.y);
 		glTexCoord2d(0.85, 0.9);	glVertex2f(bajo2.x, bajo2.y);
 		glTexCoord2d(0.85, 0.5);	glVertex2f(limite2.x, limite2.y);
@@ -290,7 +271,6 @@ void Final::dibuja(int i)
 	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/imagenes/final.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 1);
 	glTexCoord2d(0.4, 0.2);	glVertex2f(limite1.x + 0.5f, limite1.y - 1);
 	glTexCoord2d(0.6, 0.2);	glVertex2f(limite2.x + 0.5f, limite2.y - 1);
 	glTexCoord2d(0.6, 0.1);	glVertex2f(limite2.x - 0.5f, limite2.y + 0.5f);
@@ -307,30 +287,6 @@ void Pincho::dibuja(int i)
 	sprite.setState(1, true);
 	sprite.draw();
 	glPopMatrix();
-
-	//Hitbox
-	/*glPushMatrix();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
-	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
-	glEnd();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.top_r.x, hitbox.top_r.y, 0);
-	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
-	glEnd();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.bot_r.x, hitbox.bot_r.y, 0);
-	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
-	glEnd();
-	glBegin(GL_LINES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(hitbox.bot_l.x, hitbox.bot_l.y, 0);
-	glVertex3f(hitbox.top_l.x, hitbox.top_l.y, 0);
-	glEnd();
-	glPopMatrix();*/
 }
 //Métodos propios de BolaFuego
 void BolaFuego::dibuja(int i)
@@ -344,7 +300,6 @@ void BolaFuego::dibuja(int i)
 	fireball.draw();
 	fireball.loop();
 	glPopMatrix();
-	//glPopMatrix();
 }
 void BolaFuego::mueve(float t)
 {

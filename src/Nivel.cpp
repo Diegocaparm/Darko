@@ -147,39 +147,39 @@ bool Nivel::cargarnivel()
 	if (nivel == 1)
 	{
 		//Agregamos los suelos
-		solidos.agregar(new Pared(50.0f, 0.0f, -30.0f, 0.0f, 0, 100, 0));
+		solidos.agregar(new Pared(50.0f, 0.0f, -30.0f, 0.0f));
 		solidos.agregar(new Suelo(-30.0f, 0.0f, 50.0f, -10.0f));
-		solidos.agregar(new Pared(80.0f, 0.0f, 55.0f, 0.0f, 0, 100, 0));
+		solidos.agregar(new Pared(80.0f, 0.0f, 55.0f, 0.0f));
 		solidos.agregar(new Suelo(55.0f, 0.0f, 80.0f, -10.0f));
-		solidos.agregar(new Pared(132.0f, 0.0f, 87.0f, 0.0f, 0, 100, 0));
+		solidos.agregar(new Pared(132.0f, 0.0f, 87.0f, 0.0f));
 		solidos.agregar(new Suelo(87.0f, 0.0f, 132.0f, -10.0f));
-		solidos.agregar(new Pared(150.0f, 0.0f, 139.0f, 0.0f, 0, 100, 0));
+		solidos.agregar(new Pared(150.0f, 0.0f, 139.0f, 0.0f));
 		solidos.agregar(new Suelo(139.0f, 0.0f, 150.0f, -10.0f));
-		solidos.agregar(new Pared(200.0f, 0.0f, 156.0f, 0.0f, 0, 100, 0));
+		solidos.agregar(new Pared(200.0f, 0.0f, 156.0f, 0.0f));
 		solidos.agregar(new Suelo(156.0f, 0.0f, 200.0f, -10.0f));
 		//Agregamos las paredes de los pozos
-		solidos.agregar(new Pared(50.0f, 0.0f, 50.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(55.0f, 0.0f, 55.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(80.0f, 0.0f, 80.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(87.0f, 0.0f, 87.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(132.0f, 0.0f, 132.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(139.0f, 0.0f, 139.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(150.0f, 0.0f, 150.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(156.0f, 0.0f, 156.0f, -10.0f, 0, 250, 0));
+		solidos.agregar(new Pared(50.0f, 0.0f, 50.0f, -10.0f));
+		solidos.agregar(new Pared(55.0f, 0.0f, 55.0f, -10.0f));
+		solidos.agregar(new Pared(80.0f, 0.0f, 80.0f, -10.0f));
+		solidos.agregar(new Pared(87.0f, 0.0f, 87.0f, -10.0f));
+		solidos.agregar(new Pared(132.0f, 0.0f, 132.0f, -10.0f));
+		solidos.agregar(new Pared(139.0f, 0.0f, 139.0f, -10.0f));
+		solidos.agregar(new Pared(150.0f, 0.0f, 150.0f, -10.0f));
+		solidos.agregar(new Pared(156.0f, 0.0f, 156.0f, -10.0f));
 		//Agregamos las plataformas aéreas
-		solidos.agregar(new Pared(2.0f, 10.0f, -5.0f, 10.0f, 50, 150, 250));
-		solidos.agregar(new Pared(16.0f, 2.50f, 11.0f, 2.50f, 150, 150, 50));
-		solidos.agregar(new Pared(27.0f, 5.0f, 18.0f, 5.0f, 150, 150, 50));
-		solidos.agregar(new Pared(35.0f, 7.50f, 30.0f, 7.50f, 150, 150, 50));
-		solidos.agregar(new Pared(45.0f, 10.0f, 36.0f, 10.0f, 50, 150, 250));
-		solidos.agregar(new Pared(68.0f, 5.0f, 57.0f, 5.0f, 150, 150, 50));
-		solidos.agregar(new Pared(90.0f, 8.0f, 70.0f, 8.0f, 50, 150, 250));
-		solidos.agregar(new Pared(102.0f, 7.50f, 98.0f, 7.50f, 150, 150, 50));
-		solidos.agregar(new Pared(118.0f, 5.0f, 104.0f, 5.0f, 150, 150, 50));
-		solidos.agregar(new Pared(130.0f, 7.50f, 124.0f, 7.50f, 150, 150, 50));
-		solidos.agregar(new Pared(145.0f, 10.0f, 135.0f, 10.0f, 50, 150, 250));
-		solidos.agregar(new Pared(155.0f, 7.50f, 150.0f, 7.50f, 150, 150, 50));
-		solidos.agregar(new Pared(175.0f, 5.0f, 158.0f, 5.0f, 150, 150, 50));
+		solidos.agregar(new Pared(2.0f, 10.0f, -5.0f, 10.0f));
+		solidos.agregar(new Pared(16.0f, 2.50f, 11.0f, 2.50f));
+		solidos.agregar(new Pared(27.0f, 5.0f, 18.0f, 5.0f));
+		solidos.agregar(new Pared(35.0f, 7.50f, 30.0f, 7.50f));
+		solidos.agregar(new Pared(45.0f, 10.0f, 36.0f, 10.0f));
+		solidos.agregar(new Pared(68.0f, 5.0f, 57.0f, 5.0f));
+		solidos.agregar(new Pared(90.0f, 8.0f, 70.0f, 8.0f));
+		solidos.agregar(new Pared(102.0f, 7.50f, 98.0f, 7.50f));
+		solidos.agregar(new Pared(118.0f, 5.0f, 104.0f, 5.0f));
+		solidos.agregar(new Pared(130.0f, 7.50f, 124.0f, 7.50f));
+		solidos.agregar(new Pared(145.0f, 10.0f, 135.0f, 10.0f));
+		solidos.agregar(new Pared(155.0f, 7.50f, 150.0f, 7.50f));
+		solidos.agregar(new Pared(175.0f, 5.0f, 158.0f, 5.0f));
 		solidos.agregar(new Final(197.0f, 5.0f, 182.0f, 5.0f));
 		//Agregamos los pinchos
 		solidos.agregar(new Pincho(25.0f, 0.0f));
@@ -260,44 +260,44 @@ bool Nivel::cargarnivel()
 	else if (nivel == 2)
 	{
 		//Agregamos el suelo
-		solidos.agregar(new Pared(37.0f, 0.0f, -10.0f, 0.0f, 50, 150, 250));
+		solidos.agregar(new Pared(37.0f, 0.0f, -10.0f, 0.0f));
 		solidos.agregar(new Suelo(-10.0f, 0.0f, 37.0f, -10.0f));
-		solidos.agregar(new Pared(125.0f, 0.0f, 112.0f, 0.0f, 50, 150, 250));
+		solidos.agregar(new Pared(125.0f, 0.0f, 112.0f, 0.0f));
 		solidos.agregar(new Suelo(112.0f, 0.0f, 125.0f, -10.0f));
-		solidos.agregar(new Pared(135.0f, 0.0f, 130.0f, 0.0f, 50, 150, 250));
+		solidos.agregar(new Pared(135.0f, 0.0f, 130.0f, 0.0f));
 		solidos.agregar(new Suelo(130.0f, 0.0f, 135.0f, -10.0f));
-		solidos.agregar(new Pared(167.0f, 0.0f, 147.0f, 0.0f, 50, 150, 250));
+		solidos.agregar(new Pared(167.0f, 0.0f, 147.0f, 0.0f));
 		solidos.agregar(new Suelo(147.0f, 0.0f, 167.0f, -10.0f));
-		solidos.agregar(new Pared(186.0f, 0.0f, 172.0f, 0.0f, 50, 150, 250)); //suelo entre plataformas para meter monedas
+		solidos.agregar(new Pared(186.0f, 0.0f, 172.0f, 0.0f)); //suelo entre plataformas para meter monedas
 		solidos.agregar(new Suelo(172.0f, 0.0f, 186.0f, -10.0f));
-		solidos.agregar(new Pared(200.0f, 0.0f, 190.0f, 0.0f, 50, 150, 250));
+		solidos.agregar(new Pared(200.0f, 0.0f, 190.0f, 0.0f));
 		solidos.agregar(new Suelo(190.0f, 0.0f, 200.0f, -10.0f));
 		//Agregamos las paredes de los pozos
-		solidos.agregar(new Pared(37.0f, 0.0f, 37.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(112.0f, 0.0f, 112.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(125.0f, 0.0f, 125.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(130.0f, 0.0f, 130.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(135.0f, 0.0f, 135.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(147.0f, 0.0f, 147.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(167.0f, 0.0f, 167.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(172.0f, 0.0f, 172.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(186.0f, 0.0f, 186.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(190.0f, 0.0f, 190.0f, -10.0f, 0, 250, 0));
+		solidos.agregar(new Pared(37.0f, 0.0f, 37.0f, -10.0f));
+		solidos.agregar(new Pared(112.0f, 0.0f, 112.0f, -10.0f));
+		solidos.agregar(new Pared(125.0f, 0.0f, 125.0f, -10.0f));
+		solidos.agregar(new Pared(130.0f, 0.0f, 130.0f, -10.0f));
+		solidos.agregar(new Pared(135.0f, 0.0f, 135.0f, -10.0f));
+		solidos.agregar(new Pared(147.0f, 0.0f, 147.0f, -10.0f));
+		solidos.agregar(new Pared(167.0f, 0.0f, 167.0f, -10.0f));
+		solidos.agregar(new Pared(172.0f, 0.0f, 172.0f, -10.0f));
+		solidos.agregar(new Pared(186.0f, 0.0f, 186.0f, -10.0f));
+		solidos.agregar(new Pared(190.0f, 0.0f, 190.0f, -10.0f));
 		//Agregamos las plataformas aéreas
-		solidos.agregar(new Pared(40.0f, 2.5f, 37.0f, 2.5f, 50, 150, 250));//plat entre medias
-		solidos.agregar(new Pared(45.0f, 5.0f, 41.0f, 5.0f, 50, 150, 250));
-		solidos.agregar(new Pared(63.0f, 5.0f, 48.0f, 5.0f, 50, 150, 250));
-		solidos.agregar(new Pared(69.0f, 7.0f, 65.0f, 7.0f, 50, 150, 250));
-		solidos.agregar(new Pared(75.0f, 9.0f, 71.0f, 9.0f, 50, 150, 250));
-		solidos.agregar(new Pared(82.0f, 10.5f, 78.0f, 10.50f, 50, 150, 250));//la siguiente plat es movil
+		solidos.agregar(new Pared(40.0f, 2.5f, 37.0f, 2.5f));//plat entre medias
+		solidos.agregar(new Pared(45.0f, 5.0f, 41.0f, 5.0f));
+		solidos.agregar(new Pared(63.0f, 5.0f, 48.0f, 5.0f));
+		solidos.agregar(new Pared(69.0f, 7.0f, 65.0f, 7.0f));
+		solidos.agregar(new Pared(75.0f, 9.0f, 71.0f, 9.0f));
+		solidos.agregar(new Pared(82.0f, 10.5f, 78.0f, 10.50f));//la siguiente plat es movil
 		solidos.agregar(new PlatMovil(86.0f, 8.0f, 92.0f, 8.0f, 3.0f, 0.0f, 86.0f, 8.0f, 120.0f, 8.0f));//Plataforma móvil
-		solidos.agregar(new Pared(145.0f, 2.50f, 137.0f, 2.50f, 50, 150, 250));
-		solidos.agregar(new Pared(175.0f, 2.5f, 167.5f, 2.5f, 150, 150, 250));
-		solidos.agregar(new Pared(183.0f, 6.0f, 177.0f, 6.0f, 50, 150, 250));//plat movil en esta posicion
-		solidos.agregar(new Pared(190.0f, 7.5f, 185.0f, 7.50f, 50, 150, 250));
-		solidos.agregar(new Pared(200.0f, 12.0f, 197.0f, 12.0f, 250, 150, 250));
-		solidos.agregar(new Pared(200.0f, 10.0f, 197.0f, 10.0f, 250, 150, 250));
-		solidos.agregar(new Pared(200.0f, 8.0f, 197.0f, 8.0f, 250, 150, 250));
+		solidos.agregar(new Pared(145.0f, 2.50f, 137.0f, 2.50f));
+		solidos.agregar(new Pared(175.0f, 2.5f, 167.5f, 2.5f));
+		solidos.agregar(new Pared(183.0f, 6.0f, 177.0f, 6.0f));//plat movil en esta posicion
+		solidos.agregar(new Pared(190.0f, 7.5f, 185.0f, 7.50f));
+		solidos.agregar(new Pared(200.0f, 12.0f, 197.0f, 12.0f));
+		solidos.agregar(new Pared(200.0f, 10.0f, 197.0f, 10.0f));
+		solidos.agregar(new Pared(200.0f, 8.0f, 197.0f, 8.0f));
 		solidos.agregar(new Final(200.0f, 2.0f, 197.0f, 2.0f));
 		//Agregamos los pinchos
 		solidos.agregar(new Pincho(25.0f, 0.0f));//suelo1
@@ -381,52 +381,52 @@ bool Nivel::cargarnivel()
 	else if (nivel == 3)
 	{
 		//Agregamos los suelos 
-		solidos.agregar(new Pared(10.0f, 0.0f, -10.0f, 0.0f, 50, 150, 250)); //suelo1
+		solidos.agregar(new Pared(10.0f, 0.0f, -10.0f, 0.0f)); //suelo1
 		solidos.agregar(new Suelo(-10.0f, 0.0f, 10.0f, -10.0f));
-		solidos.agregar(new Pared(20.0f, 0.0f, 14.0f, 0.0f, 50, 150, 250));  //suelo2
+		solidos.agregar(new Pared(20.0f, 0.0f, 14.0f, 0.0f));  //suelo2
 		solidos.agregar(new Suelo(14.0f, 0.0f, 20.0f, -10.0f));
-		solidos.agregar(new Pared(30.0f, 0.0f, 24.0f, 0.0f, 50, 150, 250));  //suelo3
+		solidos.agregar(new Pared(30.0f, 0.0f, 24.0f, 0.0f));  //suelo3
 		solidos.agregar(new Suelo(24.0f, 0.0f, 30.0f, -10.0f));
-		solidos.agregar(new Pared(39.0f, 0.0f, 34.0f, 0.0f, 50, 150, 250));  //suelo4
+		solidos.agregar(new Pared(39.0f, 0.0f, 34.0f, 0.0f));  //suelo4
 		solidos.agregar(new Suelo(34.0f, 0.0f, 39.0f, -10.0f));
-		solidos.agregar(new Pared(62.0f, 0.0f, 42.0f, 0.0f, 50, 150, 250));  //suelo5
+		solidos.agregar(new Pared(62.0f, 0.0f, 42.0f, 0.0f));  //suelo5
 		solidos.agregar(new Suelo(42.0f, 0.0f, 62.0f, -10.0f));
-		solidos.agregar(new Pared(101.0f, 0.0f, 94.0f, 0.0f, 50, 150, 250));  //suelo6
+		solidos.agregar(new Pared(101.0f, 0.0f, 94.0f, 0.0f));  //suelo6
 		solidos.agregar(new Suelo(94.0f, 0.0f, 101.0f, -10.0f));
-		solidos.agregar(new Pared(140.0f, 5.0f, 123.0f, 5.0f, 50, 150, 250));  //suelo7_1
+		solidos.agregar(new Pared(140.0f, 5.0f, 123.0f, 5.0f));  //suelo7_1
 		solidos.agregar(new Suelo(123.0f, 5.0f, 140.0f, -10.0f));
-		solidos.agregar(new Pared(140.0f, 5.0f, 140.0f, -1.0f, 50, 150, 250)); //suelo7_2 vertical
+		solidos.agregar(new Pared(140.0f, 5.0f, 140.0f, -1.0f)); //suelo7_2 vertical
 
-		solidos.agregar(new Pared(162.0f, 0.0f, 140.0f, 0.0f, 50, 150, 250));  //suelo7_3
+		solidos.agregar(new Pared(162.0f, 0.0f, 140.0f, 0.0f));  //suelo7_3
 		solidos.agregar(new Suelo(140.0f, 0.0f, 162.0f, -10.0f));
 		//Agregamos las paredes de los pozos
-		solidos.agregar(new Pared(10.0f, 0.0f, 10.0f, -10.0f, 0, 250, 0)); //pozo 1_i
-		solidos.agregar(new Pared(14.0f, 0.0f, 14.0f, -10.0f, 0, 250, 0));  //pozo 2_i
-		solidos.agregar(new Pared(20.0f, 0.0f, 20.0f, -10.0f, 0, 250, 0));  //pozo 2_d
-		solidos.agregar(new Pared(24.0f, 0.0f, 24.0f, -10.0f, 0, 250, 0));  //pozo 3_i
-		solidos.agregar(new Pared(30.0f, 0.0f, 30.0f, -10.0f, 0, 250, 0));  //pozo 3_d
-		solidos.agregar(new Pared(34.0f, 0.0f, 34.0f, -10.0f, 0, 250, 0));  //pozo 4_i
-		solidos.agregar(new Pared(39.0f, 0.0f, 39.0f, -10.0f, 0, 250, 0));  //pozo 4_d
-		solidos.agregar(new Pared(42.0f, 0.0f, 42.0f, -10.0f, 0, 250, 0)); // pozo 5_i
-		solidos.agregar(new Pared(62.0f, 0.0f, 62.0f, -10.0f, 0, 250, 0)); // pozo 5_d
-		solidos.agregar(new Pared(94.0f, 0.0f, 94.0f, -10.0f, 0, 250, 0));  //pozo 6_i
-		solidos.agregar(new Pared(101.0f, 0.0f, 101.0f, -10.0f, 0, 250, 0));  //pozo 6_d
-		solidos.agregar(new Pared(123.0f, 5.0f, 123.0f, -10.0f, 0, 250, 0)); //pozo 7_i
-		solidos.agregar(new Pared(162.0f, 0.0f, 162.0f, -10.0f, 0, 250, 0));  //pozo 7_d
+		solidos.agregar(new Pared(10.0f, 0.0f, 10.0f, -10.0f)); //pozo 1_i
+		solidos.agregar(new Pared(14.0f, 0.0f, 14.0f, -10.0f));  //pozo 2_i
+		solidos.agregar(new Pared(20.0f, 0.0f, 20.0f, -10.0f));  //pozo 2_d
+		solidos.agregar(new Pared(24.0f, 0.0f, 24.0f, -10.0f));  //pozo 3_i
+		solidos.agregar(new Pared(30.0f, 0.0f, 30.0f, -10.0f));  //pozo 3_d
+		solidos.agregar(new Pared(34.0f, 0.0f, 34.0f, -10.0f));  //pozo 4_i
+		solidos.agregar(new Pared(39.0f, 0.0f, 39.0f, -10.0f));  //pozo 4_d
+		solidos.agregar(new Pared(42.0f, 0.0f, 42.0f, -10.0f)); // pozo 5_i
+		solidos.agregar(new Pared(62.0f, 0.0f, 62.0f, -10.0f)); // pozo 5_d
+		solidos.agregar(new Pared(94.0f, 0.0f, 94.0f, -10.0f));  //pozo 6_i
+		solidos.agregar(new Pared(101.0f, 0.0f, 101.0f, -10.0f));  //pozo 6_d
+		solidos.agregar(new Pared(123.0f, 5.0f, 123.0f, -10.0f)); //pozo 7_i
+		solidos.agregar(new Pared(162.0f, 0.0f, 162.0f, -10.0f));  //pozo 7_d
 		//Agregamos las plataformas
-		solidos.agregar(new Pared(78.0f, 2.5f, 65.0f, 2.5f, 50, 150, 250));   //plat2
-		solidos.agregar(new Pared(90.0f, 2.5f, 82.0f, 2.5f, 50, 150, 250));   //plat3
-		solidos.agregar(new Pared(105.0f, 2.5f, 102.0f, 2.5f, 50, 150, 250));  //plat4
-		solidos.agregar(new Pared(110.0f, 5.0f, 104.0f, 5.0f, 50, 150, 250));  //plat5
-		solidos.agregar(new Pared(120.0f, 7.5f, 114.0f, 7.50f, 50, 150, 250)); //plat6
-		solidos.agregar(new Pared(170.0f, 0.75f, 165.0f, 0.75f, 50, 150, 250)); //plat7
-		solidos.agregar(new Pared(179.0f, 2.0f, 173.5f, 2.0f, 150, 150, 250));  //plat8
-		solidos.agregar(new Pared(187.0f, 4.0f, 180.0f, 4.0f, 50, 150, 250));  //plat9
-		solidos.agregar(new Pared(181.0f, 6.75f, 176.0f, 6.75f, 50, 150, 250));  //plat10
-		solidos.agregar(new Pared(173.0f, 7.50f, 167.0f, 7.50f, 50, 150, 250)); //plat11
-		solidos.agregar(new Pared(165.0f, 9.0f, 161.5f, 9.0f, 150, 150, 250));  //plat12
-		solidos.agregar(new Pared(171.0f, 10.50f, 166.0f, 10.50f, 50, 150, 250)); //plat13
-		solidos.agregar(new Pared(180.0f, 12.0f, 173.0f, 12.0f, 50, 150, 250));	  //plat14
+		solidos.agregar(new Pared(78.0f, 2.5f, 65.0f, 2.5f));   //plat2
+		solidos.agregar(new Pared(90.0f, 2.5f, 82.0f, 2.5f));   //plat3
+		solidos.agregar(new Pared(105.0f, 2.5f, 102.0f, 2.5f));  //plat4
+		solidos.agregar(new Pared(110.0f, 5.0f, 104.0f, 5.0f));  //plat5
+		solidos.agregar(new Pared(120.0f, 7.5f, 114.0f, 7.50f)); //plat6
+		solidos.agregar(new Pared(170.0f, 0.75f, 165.0f, 0.75f)); //plat7
+		solidos.agregar(new Pared(179.0f, 2.0f, 173.5f, 2.0f));  //plat8
+		solidos.agregar(new Pared(187.0f, 4.0f, 180.0f, 4.0f));  //plat9
+		solidos.agregar(new Pared(181.0f, 6.75f, 176.0f, 6.75f));  //plat10
+		solidos.agregar(new Pared(173.0f, 7.50f, 167.0f, 7.50f)); //plat11
+		solidos.agregar(new Pared(165.0f, 9.0f, 161.5f, 9.0f));  //plat12
+		solidos.agregar(new Pared(171.0f, 10.50f, 166.0f, 10.50f)); //plat13
+		solidos.agregar(new Pared(180.0f, 12.0f, 173.0f, 12.0f));	  //plat14
 		solidos.agregar(new Final(200.0f, 12.0f, 183.0f, 12.0f));  //plat15	
 		//Creamos las bolas de fuego
 		solidos.agregar(new BolaFuego(12.0f, -13.0f, 5.0f, -15.0f));
@@ -491,59 +491,59 @@ bool Nivel::cargarnivel()
 	else if (nivel == 4)
 	{
 		//Agregamos los suelos
-		solidos.agregar(new Pared(15.0f, 10.5f, -10.0f, 10.5f, 50, 150, 250)); //suelo1
+		solidos.agregar(new Pared(15.0f, 10.5f, -10.0f, 10.5f)); //suelo1
 		solidos.agregar(new Suelo(15.0f, 10.5f, -10.0f, -10.0f));
-		solidos.agregar(new Pared(30.0f, 7.5f, 15.0f, 7.5f, 50, 150, 250));  //suelo2
+		solidos.agregar(new Pared(30.0f, 7.5f, 15.0f, 7.5f));  //suelo2
 		solidos.agregar(new Suelo(15.0f, 7.3f, 30.0f, -10.0f));
-		solidos.agregar(new Pared(42.0f, 5.0f, 30.0f, 5.0f, 50, 150, 250));  //suelo3
+		solidos.agregar(new Pared(42.0f, 5.0f, 30.0f, 5.0f));  //suelo3
 		solidos.agregar(new Suelo(30.0f, 5.0f, 42.0f, -10.0f));
-		solidos.agregar(new Pared(55.0f, 5.0f, 45.0f, 5.0f, 50, 150, 250));  //suelo3.5
+		solidos.agregar(new Pared(55.0f, 5.0f, 45.0f, 5.0f));  //suelo3.5
 		solidos.agregar(new Suelo(45.0f, 5.0f, 55.0f, -10.0f));
-		solidos.agregar(new Pared(65.0f, 2.5f, 55.0f, 2.5f, 50, 150, 250));  //suelo4
+		solidos.agregar(new Pared(65.0f, 2.5f, 55.0f, 2.5f));  //suelo4
 		solidos.agregar(new Suelo(55.0f, 2.5f, 65.0f, -10.0f));
-		solidos.agregar(new Pared(95.0f, 0.0f, 65.0f, 0.0f, 50, 150, 250));  //suelo5
+		solidos.agregar(new Pared(95.0f, 0.0f, 65.0f, 0.0f));  //suelo5
 		solidos.agregar(new Suelo(65.0f, 0.0f, 95.0f, -10.0f));
-		solidos.agregar(new Pared(120.0f, 0.0f, 102.0f, 0.0f, 50, 150, 250));  //suelo6
+		solidos.agregar(new Pared(120.0f, 0.0f, 102.0f, 0.0f));  //suelo6
 		solidos.agregar(new Suelo(102.0f, 0.0f, 120.0f, -10.0f));
-		solidos.agregar(new Pared(145.0f, 0.0f, 132.0f, 0.0f, 50, 150, 250));  //suelo7
+		solidos.agregar(new Pared(145.0f, 0.0f, 132.0f, 0.0f));  //suelo7
 		solidos.agregar(new Suelo(132.0f, 0.0f, 145.0f, -10.0f));
-		solidos.agregar(new Pared(150.0f, 2.5f, 145.0f, 2.5f, 50, 150, 250)); //suelo8 
+		solidos.agregar(new Pared(150.0f, 2.5f, 145.0f, 2.5f)); //suelo8 
 		solidos.agregar(new Suelo(145.0f, 2.5f, 150.0f, -10.0f));
-		solidos.agregar(new Pared(170.0f, 5.0f, 150.0f, 5.0f, 50, 150, 250));  //suelo9
+		solidos.agregar(new Pared(170.0f, 5.0f, 150.0f, 5.0f));  //suelo9
 		solidos.agregar(new Suelo(150.0f, 5.0f, 170.0f, -10.0f));
-		solidos.agregar(new Pared(180.0f, 2.5f, 170.0f, 2.5f, 50, 150, 250));  //suelo10
+		solidos.agregar(new Pared(180.0f, 2.5f, 170.0f, 2.5f));  //suelo10
 		solidos.agregar(new Suelo(170.0f, 2.5f, 180.0f, -10.0f));
-		solidos.agregar(new Pared(187.0f, 0.0f, 180.0f, 0.0f, 50, 150, 250));  //suelo11
+		solidos.agregar(new Pared(187.0f, 0.0f, 180.0f, 0.0f));  //suelo11
 		solidos.agregar(new Suelo(180.0f, 0.0f, 187.0f, -10.0f));
 		solidos.agregar(new Final(200.0f, 0.0f, 190.0f, 0.0f)); //suelo12 
 		solidos.agregar(new Suelo(190.0f, 0.0f, 200.0f, -10.0f));
 		//Agregamos las paredes de los pozos
-		solidos.agregar(new Pared(15.0f, 10.5f, 15.0f, -10.0f, 5, 150, 25)); //PARED1
-		solidos.agregar(new Pared(30.0f, 7.5f, 30.0f, -10.0f, 5, 150, 25));  //PARED2
-		solidos.agregar(new Pared(42.0f, 5.0f, 42.0f, -10.0f, 5, 150, 25)); //PARED1*
-		solidos.agregar(new Pared(45.0f, 5.0f, 45.0f, -10.0f, 5, 150, 25));  //PARED2*
-		solidos.agregar(new Pared(55.0f, 5.0f, 55.0f, -10.0f, 5, 150, 25));  //PARED3
-		solidos.agregar(new Pared(65.0f, 2.5f, 65.0f, -10.0f, 5, 150, 25));  //PARED4
-		solidos.agregar(new Pared(145.0f, 2.5f, 145.0f, -10.0f, 5, 150, 25));  //PARED7
-		solidos.agregar(new Pared(150.0f, 5.0f, 150.0f, -10.0f, 5, 150, 25)); //PARED8 
-		solidos.agregar(new Pared(170.0f, 5.0f, 170.0f, -10.0f, 5, 150, 25));  //PARED9
-		solidos.agregar(new Pared(180.0f, 2.5f, 180.0f, -10.0f, 5, 150, 25));  //PARED10
-		solidos.agregar(new Pared(95.0f, 0.0f, 95.0f, -10.0f, 5, 150, 25));  //pozo 5_d
-		solidos.agregar(new Pared(102.0f, 0.0f, 102.0f, -10.0f, 5, 150, 25));  //pozo6_i
-		solidos.agregar(new Pared(120.0f, 0.0f, 120.0f, -10.0f, 5, 150, 25));  //pozo6_d
-		solidos.agregar(new Pared(132.0f, 0.0f, 132.0f, -10.0f, 5, 150, 25));  //pozo7_i
-		solidos.agregar(new Pared(187.0f, 0.0f, 187.0f, -10.0f, 5, 150, 25));  //pozo11_d
-		solidos.agregar(new Pared(190.0f, 0.0f, 190.0f, -10.0f, 5, 150, 25)); //pozo12_i 
+		solidos.agregar(new Pared(15.0f, 10.5f, 15.0f, -10.0f)); //PARED1
+		solidos.agregar(new Pared(30.0f, 7.5f, 30.0f, -10.0f));  //PARED2
+		solidos.agregar(new Pared(42.0f, 5.0f, 42.0f, -10.0f)); //PARED1*
+		solidos.agregar(new Pared(45.0f, 5.0f, 45.0f, -10.0f));  //PARED2*
+		solidos.agregar(new Pared(55.0f, 5.0f, 55.0f, -10.0f));  //PARED3
+		solidos.agregar(new Pared(65.0f, 2.5f, 65.0f, -10.0f));  //PARED4
+		solidos.agregar(new Pared(145.0f, 2.5f, 145.0f, -10.0f));  //PARED7
+		solidos.agregar(new Pared(150.0f, 5.0f, 150.0f, -10.0f)); //PARED8 
+		solidos.agregar(new Pared(170.0f, 5.0f, 170.0f, -10.0f));  //PARED9
+		solidos.agregar(new Pared(180.0f, 2.5f, 180.0f, -10.0f));  //PARED10
+		solidos.agregar(new Pared(95.0f, 0.0f, 95.0f, -10.0f));  //pozo 5_d
+		solidos.agregar(new Pared(102.0f, 0.0f, 102.0f, -10.0f));  //pozo6_i
+		solidos.agregar(new Pared(120.0f, 0.0f, 120.0f, -10.0f));  //pozo6_d
+		solidos.agregar(new Pared(132.0f, 0.0f, 132.0f, -10.0f));  //pozo7_i
+		solidos.agregar(new Pared(187.0f, 0.0f, 187.0f, -10.0f));  //pozo11_d
+		solidos.agregar(new Pared(190.0f, 0.0f, 190.0f, -10.0f)); //pozo12_i 
 		//Agregamos las plataformas aéreas
-		solidos.agregar(new Pared(101.0f, 2.25f, 96.0f, 2.25f, 50, 150, 250)); //plat1
-		solidos.agregar(new Pared(106.0f, 5.0f, 102.5f, 5.0f, 50, 150, 250));   //plat2
-		solidos.agregar(new Pared(112.0f, 6.25f, 108.0f, 6.25f, 50, 150, 250));   //plat3
-		solidos.agregar(new Pared(116.0f, 7.5f, 113.0f, 7.5f, 50, 150, 250));  //plat4
-		solidos.agregar(new Pared(123.0f, 5.0f, 117.0f, 5.0f, 50, 150, 250));  //plat5
-		solidos.agregar(new Pared(140.0f, 7.5f, 136.0f, 7.5f, 50, 150, 250)); //plat7
-		solidos.agregar(new Pared(130.0f, 2.5f, 122.0f, 2.5f, 50, 150, 250)); //plat6
-		solidos.agregar(new Pared(136.0f, 10.0f, 130.0f, 10.0f, 150, 150, 250));  //plat8
-		solidos.agregar(new Pared(145.0f, 5.0f, 138.0f, 5.0f, 50, 150, 250));  //plat9
+		solidos.agregar(new Pared(101.0f, 2.25f, 96.0f, 2.25f)); //plat1
+		solidos.agregar(new Pared(106.0f, 5.0f, 102.5f, 5.0f));   //plat2
+		solidos.agregar(new Pared(112.0f, 6.25f, 108.0f, 6.25f));   //plat3
+		solidos.agregar(new Pared(116.0f, 7.5f, 113.0f, 7.5f));  //plat4
+		solidos.agregar(new Pared(123.0f, 5.0f, 117.0f, 5.0f));  //plat5
+		solidos.agregar(new Pared(140.0f, 7.5f, 136.0f, 7.5f)); //plat7
+		solidos.agregar(new Pared(130.0f, 2.5f, 122.0f, 2.5f)); //plat6
+		solidos.agregar(new Pared(136.0f, 10.0f, 130.0f, 10.0f));  //plat8
+		solidos.agregar(new Pared(145.0f, 5.0f, 138.0f, 5.0f));  //plat9
 		//Agregamos el resto de elementos
 		solidos.agregar(new Pincho(140.0f, 5.0f));
 		solidos.agregar(new Pincho(157.0f, 5.0f));
@@ -597,42 +597,42 @@ bool Nivel::cargarnivel()
 	else if (nivel == 5)
 	{
 		//Agregamos las plataformas del inicio
-		solidos.agregar(new Pared(20.0f, 5.0f, -30.0f, 5.0f, 0, 100, 0)); //Plat1
-		solidos.agregar(new Pared(30.0f, 7.5f, 25.0f, 7.5f, 0, 100, 0)); //Plat2
-		solidos.agregar(new Pared(38.0f, 2.5f, 30.0f, 2.5f, 0, 100, 0)); //Plat3
+		solidos.agregar(new Pared(20.0f, 5.0f, -30.0f, 5.0f)); //Plat1
+		solidos.agregar(new Pared(30.0f, 7.5f, 25.0f, 7.5f)); //Plat2
+		solidos.agregar(new Pared(38.0f, 2.5f, 30.0f, 2.5f)); //Plat3
 		//Agregamos los suelos
-		solidos.agregar(new Pared(60.0f, 0.0f, 40.0f, 0.0f, 0, 100, 0)); //Suelo1
+		solidos.agregar(new Pared(60.0f, 0.0f, 40.0f, 0.0f)); //Suelo1
 		solidos.agregar(new Suelo(40.0f, 0.0f, 60.0f, -10.0f));
-		solidos.agregar(new Pared(80.0f, 0.0f, 65.0f, 0.0f, 0, 100, 0)); //suelo 2
+		solidos.agregar(new Pared(80.0f, 0.0f, 65.0f, 0.0f)); //suelo 2
 		solidos.agregar(new Suelo(65.0f, 0.0f, 80.0f, -10.0f));
-		solidos.agregar(new Pared(132.0f, 8.0f, 110.0f, 8.0f, 0, 100, 0)); //Suelo 3 (elige)
+		solidos.agregar(new Pared(132.0f, 8.0f, 110.0f, 8.0f)); //Suelo 3 (elige)
 		solidos.agregar(new Suelo(110.0f, 8.0f, 132.0f, -10.0f));
-		solidos.agregar(new Pared(180.0f, 18.0f, 150.0f, 18.0f, 0, 100, 0)); //Techo malo
-		solidos.agregar(new Pared(180.0f, 12.0f, 150.0f, 12.0f, 0, 100, 0)); //Suelo malo
+		solidos.agregar(new Pared(180.0f, 18.0f, 150.0f, 18.0f)); //Techo malo
+		solidos.agregar(new Pared(180.0f, 12.0f, 150.0f, 12.0f)); //Suelo malo
 		solidos.agregar(new Suelo(150.0f, 12.0f, 180.0f, 8.0f));
-		solidos.agregar(new Pared(180.0f, 8.0f, 150.0f, 8.0f, 0, 100, 0)); //Techo bueno
-		solidos.agregar(new Pared(180.0f, 2.0f, 150.0f, 2.0f, 0, 100, 0)); //Suelo bueno
+		solidos.agregar(new Pared(180.0f, 8.0f, 150.0f, 8.0f)); //Techo bueno
+		solidos.agregar(new Pared(180.0f, 2.0f, 150.0f, 2.0f)); //Suelo bueno
 		solidos.agregar(new Suelo(150.0f, 2.0f, 180.0f, -10.0f));
 		solidos.agregar(new Final(200.0f, 2.0f, 195.0f, 2.0f)); //Suelo fin
 		solidos.agregar(new Suelo(195.0f, 2.0f, 200.0f, -10.0f));
 		//Agregamos las paredes de los pozos
-		solidos.agregar(new Pared(40.0f, 0.0f, 40.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(60.0f, 0.0f, 60.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(65.0f, 0.0f, 65.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(80.0f, 0.0f, 80.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(110.0f, 8.0f, 110.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(132.0f, 8.0f, 132.0f, -10.0f, 0, 250, 0));
-		solidos.agregar(new Pared(150.0f, 20.0f, 150.0f, 18.0f, 0, 250, 0)); //Pared vertical alto
-		solidos.agregar(new Pared(150.0f, 12.0f, 150.0f, 8.0f, 0, 250, 0)); //Pared vertical medio
-		solidos.agregar(new Pared(150.0f, 2.0f, 150.0f, -10.0f, 0, 250, 0)); //Pared vertical bajo
-		solidos.agregar(new Pared(180.0f, 20.0f, 180.0f, 18.0f, 0, 250, 0)); //Pared vertical alto
-		solidos.agregar(new Pared(180.0f, 12.0f, 180.0f, 8.0f, 0, 250, 0)); //Pared vertical medio
-		solidos.agregar(new Pared(180.0f, 2.0f, 180.0f, -10.0f, 0, 250, 0)); //Pared vertical bajo
-		solidos.agregar(new Pared(195.0f, 2.0f, 195.0f, -10.0f, 0, 250, 0));
+		solidos.agregar(new Pared(40.0f, 0.0f, 40.0f, -10.0f));
+		solidos.agregar(new Pared(60.0f, 0.0f, 60.0f, -10.0f));
+		solidos.agregar(new Pared(65.0f, 0.0f, 65.0f, -10.0f));
+		solidos.agregar(new Pared(80.0f, 0.0f, 80.0f, -10.0f));
+		solidos.agregar(new Pared(110.0f, 8.0f, 110.0f, -10.0f));
+		solidos.agregar(new Pared(132.0f, 8.0f, 132.0f, -10.0f));
+		solidos.agregar(new Pared(150.0f, 20.0f, 150.0f, 18.0f)); //Pared vertical alto
+		solidos.agregar(new Pared(150.0f, 12.0f, 150.0f, 8.0f)); //Pared vertical medio
+		solidos.agregar(new Pared(150.0f, 2.0f, 150.0f, -10.0f)); //Pared vertical bajo
+		solidos.agregar(new Pared(180.0f, 20.0f, 180.0f, 18.0f)); //Pared vertical alto
+		solidos.agregar(new Pared(180.0f, 12.0f, 180.0f, 8.0f)); //Pared vertical medio
+		solidos.agregar(new Pared(180.0f, 2.0f, 180.0f, -10.0f)); //Pared vertical bajo
+		solidos.agregar(new Pared(195.0f, 2.0f, 195.0f, -10.0f));
 		//Agregamos el resto de plataformas aéreas
-		solidos.agregar(new Pared(90.0f, 2.5f, 85.0f, 2.5f, 0, 100, 0)); //Plat4
-		solidos.agregar(new Pared(97.0f, 5.0f, 92.0f, 5.0f, 0, 100, 0)); //Plat5
-		solidos.agregar(new Pared(105.0f, 7.5f, 100.0f, 7.5f, 0, 100, 0)); //Plat6
+		solidos.agregar(new Pared(90.0f, 2.5f, 85.0f, 2.5f)); //Plat4
+		solidos.agregar(new Pared(97.0f, 5.0f, 92.0f, 5.0f)); //Plat5
+		solidos.agregar(new Pared(105.0f, 7.5f, 100.0f, 7.5f)); //Plat6
 		solidos.agregar(new PlatMovil(142.0f, 11.0f, 148.0f, 11.0f, 5.0f, 1.0f, 135.0f, 9.0f, 150.0f, 12.0f));//Arriba MAL
 		solidos.agregar(new PlatMovil(142.0f, 3.0f, 148.0f, 3.0f, 5.0f, -1.0f, 135.0f, 5.0f, 150.0f, 2.0f));//Abajo BIEN
 		solidos.agregar(new PlatMovil(184.0f, 2.0f, 189.0f, 2.0f, 3.0f, 0.0f, 182.0f, 2.0f, 192.0f, 2.0f));//Movil fin
@@ -697,31 +697,31 @@ bool Nivel::cargarnivel()
 	else if (nivel == 6)
 	{
 		//Agregamos los suelos
-		solidos.agregar(new Pared(68.0f, 0.0f, 52.0f, 0.0f, 200, 150, 250));      //suelo1 
+		solidos.agregar(new Pared(68.0f, 0.0f, 52.0f, 0.0f));      //suelo1 
 		solidos.agregar(new Suelo(52.0f, 0.0f, 68.0f, -10.0f));
-		solidos.agregar(new Pared(82.0f, 0.0f, 71.0f, 0.0f, 200, 150, 250));      //suelo2
+		solidos.agregar(new Pared(82.0f, 0.0f, 71.0f, 0.0f));      //suelo2
 		solidos.agregar(new Suelo(71.0f, 0.0f, 82.0f, -10.0f));
-		solidos.agregar(new Pared(200.0f, 0.0f, 180.0f, 0.0f, 200, 150, 50));     //suelo3
+		solidos.agregar(new Pared(200.0f, 0.0f, 180.0f, 0.0f));     //suelo3
 		solidos.agregar(new Suelo(180.0f, 0.0f, 200.0f, -10.0f));
 		solidos.agregar(new Final(200.0f, 4.0f, 193.0f, 4.0f));
 		//Agregamos las paredes de los pozos
-		solidos.agregar(new Pared(52.0f, 0.0f, 52.0f, -10.0f, 200, 150, 250));    //pozo 1 izq
-		solidos.agregar(new Pared(68.0f, 0.0f, 68.0f, -10.0f, 200, 150, 250));    //pozo 1 drcha
-		solidos.agregar(new Pared(71.0f, 0.0f, 71.0f, -10.0f, 200, 150, 250));    //pozo 2 izq
-		solidos.agregar(new Pared(82.0f, 0.0f, 82.0f, -10.0f, 200, 150, 250));    //pozo 2 drcha
-		solidos.agregar(new Pared(180.0f, 0.0f, 180.0f, -10.0f, 200, 150, 50));    //pozo 3 izq
+		solidos.agregar(new Pared(52.0f, 0.0f, 52.0f, -10.0f));    //pozo 1 izq
+		solidos.agregar(new Pared(68.0f, 0.0f, 68.0f, -10.0f));    //pozo 1 drcha
+		solidos.agregar(new Pared(71.0f, 0.0f, 71.0f, -10.0f));    //pozo 2 izq
+		solidos.agregar(new Pared(82.0f, 0.0f, 82.0f, -10.0f));    //pozo 2 drcha
+		solidos.agregar(new Pared(180.0f, 0.0f, 180.0f, -10.0f));    //pozo 3 izq
 		//Agregamos las plataformas aéreas
-		solidos.agregar(new Pared(20.0f, 5.0f, -10.0f, 5.0f, 50, 150, 50));       //plat1
-		solidos.agregar(new Pared(37.0f, 7.5f, 25.0f, 7.5f, 50, 150, 50));        //plat2 
-		solidos.agregar(new Pared(47.0f, 2.5f, 38.0f, 2.5f, 50, 150, 50));        //plat3
-		solidos.agregar(new Pared(60.0f, 5.0f, 52.0f, 5.0f, 50, 150, 50));        //plat4
-		solidos.agregar(new Pared(70.0f, 7.5f, 64.0f, 7.5f, 50, 150, 50));        //plat5
-		solidos.agregar(new Pared(80.0f, 10.0f, 74.0f, 10.0f, 50, 150, 50));      //plat6
-		solidos.agregar(new Pared(92.0f, 2.5f, 86.0f, 2.5f, 50, 150, 50));        //plat7
-		solidos.agregar(new Pared(104.0f, 5.0f, 96.0f, 5.0f, 50, 150, 50));       //plat8
-		solidos.agregar(new Pared(115.0f, 7.5f, 107.0f, 7.5f, 50, 150, 50));      //plat9
+		solidos.agregar(new Pared(20.0f, 5.0f, -10.0f, 5.0f));       //plat1
+		solidos.agregar(new Pared(37.0f, 7.5f, 25.0f, 7.5f));        //plat2 
+		solidos.agregar(new Pared(47.0f, 2.5f, 38.0f, 2.5f));        //plat3
+		solidos.agregar(new Pared(60.0f, 5.0f, 52.0f, 5.0f));        //plat4
+		solidos.agregar(new Pared(70.0f, 7.5f, 64.0f, 7.5f));        //plat5
+		solidos.agregar(new Pared(80.0f, 10.0f, 74.0f, 10.0f));      //plat6
+		solidos.agregar(new Pared(92.0f, 2.5f, 86.0f, 2.5f));        //plat7
+		solidos.agregar(new Pared(104.0f, 5.0f, 96.0f, 5.0f));       //plat8
+		solidos.agregar(new Pared(115.0f, 7.5f, 107.0f, 7.5f));      //plat9
 		solidos.agregar(new PlatMovil(117.0f, 7.5f, 122.0f, 7.5f, 5.0f, 0.0f, 119.5f, 7.5f, 150.5f, 7.5f));
-		solidos.agregar(new Pared(175.0f, 7.5f, 155.0f, 7.5f, 50, 150, 50));      //plat11
+		solidos.agregar(new Pared(175.0f, 7.5f, 155.0f, 7.5f));      //plat11
 		//Agregamos el resto de elementos
 		solidos.agregar(new Pincho(63.5f, 0.0f)); //suelo1
 		solidos.agregar(new Pincho(76.0f, 0.0f)); //suelo2	
@@ -790,37 +790,37 @@ bool Nivel::cargarnivel()
 	else if (nivel == 7)
 	{
 		//Agregamos los suelos
-		solidos.agregar(new Pared(23.0f, 2.5f, -10.0f, 2.5f, 200, 150, 250));  //suelo1
+		solidos.agregar(new Pared(23.0f, 2.5f, -10.0f, 2.5f));  //suelo1
 		solidos.agregar(new Suelo(-10.0f, 2.5f, 23.0f, -10.0f));
-		solidos.agregar(new Pared(52.0f, 0.0f, 42.0f, 0.0f, 200, 150, 250));   //suelo2
+		solidos.agregar(new Pared(52.0f, 0.0f, 42.0f, 0.0f));   //suelo2
 		solidos.agregar(new Suelo(42.0f, 0.0f, 52.0f, -10.0f));
-		solidos.agregar(new Pared(60.0f, 0.0f, 55.0f, 0.0f, 200, 150, 50));    //suelo3
+		solidos.agregar(new Pared(60.0f, 0.0f, 55.0f, 0.0f));    //suelo3
 		solidos.agregar(new Suelo(55.0f, 0.0f, 60.0f, -10.0f));
-		solidos.agregar(new Pared(67.0f, 2.5f, 60.0f, 2.5f, 200, 150, 50));    //suelo4
+		solidos.agregar(new Pared(67.0f, 2.5f, 60.0f, 2.5f));    //suelo4
 		solidos.agregar(new Suelo(60.0f, 2.5f, 67.0f, -10.0f));
 		//Agregamos las paredes de los pozos
-		solidos.agregar(new Pared(23.0f, -10.0f, 23.0f, 2.5f, 5, 150, 25));    //pozo 1 drcha
-		solidos.agregar(new Pared(42.0f, -10.0f, 42.0f, 0.0f, 5, 150, 25));    //pozo 2 izq
-		solidos.agregar(new Pared(52.0f, -10.0f, 52.0f, 0.0f, 5, 150, 25));    //pozo 2 drcha
-		solidos.agregar(new Pared(55.0f, -10.0f, 55.0f, 0.0f, 5, 150, 25));    //pozo 3 izq
-		solidos.agregar(new Pared(60.0f, 2.5f, 60.0f, -0.01f, 5, 150, 25));    //PARED 3 
-		solidos.agregar(new Pared(67.0f, -10.0f, 67.0f, 2.5f, 5, 150, 25));    //pozo 4 drcha
+		solidos.agregar(new Pared(23.0f, -10.0f, 23.0f, 2.5f));    //pozo 1 drcha
+		solidos.agregar(new Pared(42.0f, -10.0f, 42.0f, 0.0f));    //pozo 2 izq
+		solidos.agregar(new Pared(52.0f, -10.0f, 52.0f, 0.0f));    //pozo 2 drcha
+		solidos.agregar(new Pared(55.0f, -10.0f, 55.0f, 0.0f));    //pozo 3 izq
+		solidos.agregar(new Pared(60.0f, 2.5f, 60.0f, -0.01f));    //PARED 3 
+		solidos.agregar(new Pared(67.0f, -10.0f, 67.0f, 2.5f));    //pozo 4 drcha
 		//Agregamos las plataformas aéreas
 		solidos.agregar(new PlatMovil(27.0f, 2.5f, 32.0f, 2.5f, 5.0f, 0.0f, 27.0f, 2.5f, 39.0f, 2.5f));//plat1
-		solidos.agregar(new Pared(75.0f, 5.0f, 69.0f, 5.0f, 50, 150, 50));     //plat2
-		solidos.agregar(new Pared(86.0f, 7.5f, 77.0f, 7.5f, 50, 150, 50));     //plat3
-		solidos.agregar(new Pared(92.0f, 10.0f, 87.0f, 10.0f, 50, 150, 50));   //plat4
-		solidos.agregar(new Pared(114.0f, 12.0f, 94.0f, 12.0f, 50, 150, 50));  //plat5
-		solidos.agregar(new Pared(105.0f, 7.5f, 95.0f, 7.5f, 50, 150, 50));    //plat6
-		solidos.agregar(new Pared(112.0f, 7.5f, 107.0f, 7.5f, 50, 150, 50));   //plat7
-		solidos.agregar(new Pared(123.0f, 10.0f, 117.0f, 10.0f, 50, 150, 50)); //plat8
-		solidos.agregar(new Pared(130.0f, 7.5f, 125.0f, 7.5f, 50, 150, 50));   //plat9
-		solidos.agregar(new Pared(138.0f, 5.0f, 132.0f, 5.0f, 50, 150, 50));   //plat10
-		solidos.agregar(new Pared(141.0f, 2.5f, 135.0f, 2.5f, 50, 150, 50));   //plat11
+		solidos.agregar(new Pared(75.0f, 5.0f, 69.0f, 5.0f));     //plat2
+		solidos.agregar(new Pared(86.0f, 7.5f, 77.0f, 7.5f));     //plat3
+		solidos.agregar(new Pared(92.0f, 10.0f, 87.0f, 10.0f));   //plat4
+		solidos.agregar(new Pared(114.0f, 12.0f, 94.0f, 12.0f));  //plat5
+		solidos.agregar(new Pared(105.0f, 7.5f, 95.0f, 7.5f));    //plat6
+		solidos.agregar(new Pared(112.0f, 7.5f, 107.0f, 7.5f));   //plat7
+		solidos.agregar(new Pared(123.0f, 10.0f, 117.0f, 10.0f)); //plat8
+		solidos.agregar(new Pared(130.0f, 7.5f, 125.0f, 7.5f));   //plat9
+		solidos.agregar(new Pared(138.0f, 5.0f, 132.0f, 5.0f));   //plat10
+		solidos.agregar(new Pared(141.0f, 2.5f, 135.0f, 2.5f));   //plat11
 		solidos.agregar(new PlatMovil(145.0f, 2.5f, 150.0f, 2.5f, 5.0f, 0.0f, 143.0f, 2.5f, 163.0f, 2.5f));  //plat12
-		solidos.agregar(new Pared(173.0f, 2.5f, 167.0f, 2.5f, 50, 150, 50));   //plat13
-		solidos.agregar(new Pared(180.0f, 5.0f, 175.0f, 5.0f, 50, 150, 50));   //plat14
-		solidos.agregar(new Pared(187.0f, 7.5f, 182.0f, 7.5f, 50, 150, 50));   //plat15
+		solidos.agregar(new Pared(173.0f, 2.5f, 167.0f, 2.5f));   //plat13
+		solidos.agregar(new Pared(180.0f, 5.0f, 175.0f, 5.0f));   //plat14
+		solidos.agregar(new Pared(187.0f, 7.5f, 182.0f, 7.5f));   //plat15
 		solidos.agregar(new Final(200.0f, 10.0f, 190.0f, 10.0f)); //plat16
 		//Agregamos el resto de elementos
 		solidos.agregar(new Pincho(5.0f, 2.5f)); //suelo1
@@ -892,46 +892,46 @@ bool Nivel::cargarnivel()
 	else if (nivel == 8)
 	{
 		//Agregamos los suelos
-		solidos.agregar(new Pared(15.0f, 12.5f, -10.0f, 12.5f, 200, 150, 250));     //suelo1 
+		solidos.agregar(new Pared(15.0f, 12.5f, -10.0f, 12.5f));     //suelo1 
 		solidos.agregar(new Suelo(-10.0f, 12.5f, 15.0f, -10.0f));
-		solidos.agregar(new Pared(72.0f, 10.0f, 65.0f, 10.0f, 200, 150, 250));      //suelo2
+		solidos.agregar(new Pared(72.0f, 10.0f, 65.0f, 10.0f));      //suelo2
 		solidos.agregar(new Suelo(65.0f, 10.0f, 72.0f, -10.0f));
-		solidos.agregar(new Pared(123.0f, 5.0f, 72.0f, 5.0f, 200, 150, 50));        //suelo3
+		solidos.agregar(new Pared(123.0f, 5.0f, 72.0f, 5.0f));        //suelo3
 		solidos.agregar(new Suelo(72.0f, 5.0f, 123.0f, -10.0f));
-		solidos.agregar(new Pared(110.0f, 10.0f, 80.0f, 10.0f, 200, 150, 250));     //suelo4 
+		solidos.agregar(new Pared(110.0f, 10.0f, 80.0f, 10.0f));     //suelo4 
 		solidos.agregar(new Suelo(80.0f, 10.0f, 110.0f, 8.0f));
-		solidos.agregar(new Pared(110.0f, 8.0f, 80.0f, 8.0f, 200, 150, 250));       //suelo4
-		solidos.agregar(new Pared(133.0f, 10.0f, 123.0f, 10.0f, 200, 150, 250));    //suelo5
+		solidos.agregar(new Pared(110.0f, 8.0f, 80.0f, 8.0f));       //suelo4
+		solidos.agregar(new Pared(133.0f, 10.0f, 123.0f, 10.0f));    //suelo5
 		solidos.agregar(new Suelo(123.0f, 10.0f, 133.0f, -10.0f));
-		solidos.agregar(new Pared(153.0f, 7.5f, 138.0f, 7.5f, 200, 150, 50));       //suelo6
+		solidos.agregar(new Pared(153.0f, 7.5f, 138.0f, 7.5f));       //suelo6
 		solidos.agregar(new Suelo(138.0f, 7.3f, 153.0f, -10.0f));
-		solidos.agregar(new Pared(178.0f, 7.5f, 158.0f, 7.5f, 200, 150, 250));      //suelo7
+		solidos.agregar(new Pared(178.0f, 7.5f, 158.0f, 7.5f));      //suelo7
 		solidos.agregar(new Suelo(158.0f, 7.3f, 178.0f, -10.0f));
 		//Agregamos las paredes de los pozos
-		solidos.agregar(new Pared(15.0f, 12.5f, 15.0f, -10.0f, 200, 150, 250));     //pozo 1 izq
-		solidos.agregar(new Pared(65.0f, 10.0f, 65.0f, -10.0f, 200, 150, 250));     //pozo 2 izq
-		solidos.agregar(new Pared(72.0f, 10.0f, 72.0f, -10.0f, 200, 150, 250));     //pozo 2 drcha
-		solidos.agregar(new Pared(80.0f, 10.0f, 80.0f, 8.0f, 200, 150, 250));       //pozo 4 izq
-		solidos.agregar(new Pared(110.0f, 10.0f, 110.0f, 8.0f, 200, 150, 50));      //pozo 4 drcha
-		solidos.agregar(new Pared(123.0f, 10.0f, 123.0f, -10.0f, 200, 150, 250));   //pozo 5 izq
-		solidos.agregar(new Pared(133.0f, 10.0f, 133.0f, -10.0f, 200, 150, 250));   //pozo 5 drcha
-		solidos.agregar(new Pared(138.0f, 7.5f, 138.0f, -10.0f, 200, 150, 250));    //pozo 6 izq
-		solidos.agregar(new Pared(153.0f, 7.5f, 153.0f, -10.0f, 200, 150, 50));     //pozo 6 drcha
-		solidos.agregar(new Pared(158.0f, 7.5f, 158.0f, -10.0f, 200, 150, 250));    //pozo 7 izq
-		solidos.agregar(new Pared(178.0f, 7.5f, 178.0f, -10.0f, 200, 150, 50));     //pozo 7 drcha
+		solidos.agregar(new Pared(15.0f, 12.5f, 15.0f, -10.0f));     //pozo 1 izq
+		solidos.agregar(new Pared(65.0f, 10.0f, 65.0f, -10.0f));     //pozo 2 izq
+		solidos.agregar(new Pared(72.0f, 10.0f, 72.0f, -10.0f));     //pozo 2 drcha
+		solidos.agregar(new Pared(80.0f, 10.0f, 80.0f, 8.0f));       //pozo 4 izq
+		solidos.agregar(new Pared(110.0f, 10.0f, 110.0f, 8.0f));      //pozo 4 drcha
+		solidos.agregar(new Pared(123.0f, 10.0f, 123.0f, -10.0f));   //pozo 5 izq
+		solidos.agregar(new Pared(133.0f, 10.0f, 133.0f, -10.0f));   //pozo 5 drcha
+		solidos.agregar(new Pared(138.0f, 7.5f, 138.0f, -10.0f));    //pozo 6 izq
+		solidos.agregar(new Pared(153.0f, 7.5f, 153.0f, -10.0f));     //pozo 6 drcha
+		solidos.agregar(new Pared(158.0f, 7.5f, 158.0f, -10.0f));    //pozo 7 izq
+		solidos.agregar(new Pared(178.0f, 7.5f, 178.0f, -10.0f));     //pozo 7 drcha
 		//Agregamos las plataformas aéreas
-		solidos.agregar(new Pared(27.0f, 15.0f, 17.0f, 15.0f, 50, 150, 50));        //plat1
-		solidos.agregar(new Pared(34.0f, 12.5f, 29.0f, 12.5f, 50, 150, 50));        //plat2 
-		solidos.agregar(new Pared(44.0f, 10.0f, 35.0f, 10.0f, 50, 150, 50));        //plat3
-		solidos.agregar(new Pared(52.0f, 10.0f, 46.0f, 10.0f, 50, 150, 50));        //plat4
-		solidos.agregar(new Pared(61.0f, 7.5f, 51.0f, 7.5f, 50, 150, 50));          //plat5
-		solidos.agregar(new Pared(188.0f, 10.0f, 183.0f, 10.0f, 50, 150, 50));      //plat6
+		solidos.agregar(new Pared(27.0f, 15.0f, 17.0f, 15.0f));        //plat1
+		solidos.agregar(new Pared(34.0f, 12.5f, 29.0f, 12.5f));        //plat2 
+		solidos.agregar(new Pared(44.0f, 10.0f, 35.0f, 10.0f));        //plat3
+		solidos.agregar(new Pared(52.0f, 10.0f, 46.0f, 10.0f));        //plat4
+		solidos.agregar(new Pared(61.0f, 7.5f, 51.0f, 7.5f));          //plat5
+		solidos.agregar(new Pared(188.0f, 10.0f, 183.0f, 10.0f));      //plat6
 		solidos.agregar(new Final(200.0f, 12.5f, 190.0f, 12.5f));      //plat7
 		//plataformas para salir del subterraneo
-		solidos.agregar(new Pared(80.0f, 9.0f, 76.0f, 9.0f, 50, 150, 50));          //plat8
-		solidos.agregar(new Pared(74.0f, 7.0f, 72.0f, 7.0f, 50, 150, 50));          //plat9
-		solidos.agregar(new Pared(117.0f, 9.0f, 110.0f, 9.0f, 50, 150, 50));        //plat10
-		solidos.agregar(new Pared(123.0f, 7.0f, 119.0f, 7.0f, 50, 150, 50));        //plat11
+		solidos.agregar(new Pared(80.0f, 9.0f, 76.0f, 9.0f));          //plat8
+		solidos.agregar(new Pared(74.0f, 7.0f, 72.0f, 7.0f));          //plat9
+		solidos.agregar(new Pared(117.0f, 9.0f, 110.0f, 9.0f));        //plat10
+		solidos.agregar(new Pared(123.0f, 7.0f, 119.0f, 7.0f));        //plat11
 		//Agregamos el resto de elementos
 		solidos.agregar(new Pincho(85.5f, 5.0f)); //suelo3
 		solidos.agregar(new Pincho(95.0f, 5.0f));
@@ -1014,37 +1014,37 @@ bool Nivel::cargarnivel()
 	else if (nivel == 9)
 	{
 		//Agregamos los suelos
-		solidos.agregar(new Pared(200.0f, 0.0f, -10.0f, 0.0f, 200, 150, 250)); //suelo1 de todo
+		solidos.agregar(new Pared(200.0f, 0.0f, -10.0f, 0.0f)); //suelo1 de todo
 		solidos.agregar(new Suelo(-10.0f, 0.0f, 200.0f, -10.0f));
-		solidos.agregar(new Pared(15.0f, 9.5f, -10.0f, 9.5f, 200, 150, 250));  //suelo2
-		solidos.agregar(new Pared(50.0f, 6.0f, 7.0f, 6.0f, 200, 150, 50));  //suelo3
-		solidos.agregar(new Pared(35.0f, 13.5f, 20.0f, 13.5f, 200, 150, 250));  //suelo4
-		solidos.agregar(new Pared(85.0f, 8.75f, 35.0f, 8.75f, 200, 150, 250));  //suelo5
-		solidos.agregar(new Pared(85.0f, 11.5f, 65.0f, 11.5f, 200, 150, 250));  //suelo6
-		solidos.agregar(new Pared(100.0f, 9.50f, 85.0f, 9.50f, 200, 150, 250));  //suelo7
-		solidos.agregar(new Pared(135.0f, 11.0f, 115.0f, 11.0f, 200, 150, 250)); //suelo8 
-		solidos.agregar(new Pared(170.0f, 7.0f, 139.0f, 7.0f, 200, 150, 250));  //suelo9
-		solidos.agregar(new Pared(147.0f, 11.0f, 135.0f, 11.0f, 200, 150, 250));  //suelo11
-		solidos.agregar(new Pared(200.0f, 9.5f, 160.0f, 9.5f, 200, 150, 250));  //suelo10
+		solidos.agregar(new Pared(15.0f, 9.5f, -10.0f, 9.5f));  //suelo2
+		solidos.agregar(new Pared(50.0f, 6.0f, 7.0f, 6.0f));  //suelo3
+		solidos.agregar(new Pared(35.0f, 13.5f, 20.0f, 13.5f));  //suelo4
+		solidos.agregar(new Pared(85.0f, 8.75f, 35.0f, 8.75f));  //suelo5
+		solidos.agregar(new Pared(85.0f, 11.5f, 65.0f, 11.5f));  //suelo6
+		solidos.agregar(new Pared(100.0f, 9.50f, 85.0f, 9.50f));  //suelo7
+		solidos.agregar(new Pared(135.0f, 11.0f, 115.0f, 11.0f)); //suelo8 
+		solidos.agregar(new Pared(170.0f, 7.0f, 139.0f, 7.0f));  //suelo9
+		solidos.agregar(new Pared(147.0f, 11.0f, 135.0f, 11.0f));  //suelo11
+		solidos.agregar(new Pared(200.0f, 9.5f, 160.0f, 9.5f));  //suelo10
 		//Agregamos las paredes de los pozos
-		solidos.agregar(new Pared(-10.0f, 20.0f, -10.0f, -10.0f, 5, 150, 25)); //PARED1 inicial
-		solidos.agregar(new Pared(50.0f, 6.0f, 50.0f, -10.0f, 5, 150, 25));  //PARED3
-		solidos.agregar(new Pared(35.0f, 13.5f, 35.0f, 8.73f, 5, 150, 25));  //PARED4
-		solidos.agregar(new Pared(85.0f, 11.5f, 85.0f, 8.73f, 5, 150, 25));  //PARED5 y 6
-		solidos.agregar(new Pared(100.0f, 9.5f, 100.0f, -10.0f, 5, 150, 25)); //PARED7 
-		solidos.agregar(new Pared(135.0f, 20.0f, 135.0f, 10.99f, 5, 150, 25));  //PARED8
+		solidos.agregar(new Pared(-10.0f, 20.0f, -10.0f, -10.0f)); //PARED1 inicial
+		solidos.agregar(new Pared(50.0f, 6.0f, 50.0f, -10.0f));  //PARED3
+		solidos.agregar(new Pared(35.0f, 13.5f, 35.0f, 8.73f));  //PARED4
+		solidos.agregar(new Pared(85.0f, 11.5f, 85.0f, 8.73f));  //PARED5 y 6
+		solidos.agregar(new Pared(100.0f, 9.5f, 100.0f, -10.0f)); //PARED7 
+		solidos.agregar(new Pared(135.0f, 20.0f, 135.0f, 10.99f));  //PARED8
 		//Agregamos las plataformas aéreas
-		solidos.agregar(new Pared(20.0f, 11.75f, 15.0f, 11.75f, 50, 150, 50)); //plat1
-		solidos.agregar(new Pared(7.0f, 2.5f, 0.0f, 2.5f, 50, 150, 50)); //plat2 para subir 
-		solidos.agregar(new Pared(68.0f, 2.5f, 63.0f, 2.5f, 50, 150, 50)); //plat7
-		solidos.agregar(new Pared(85.0f, 4.5f, 75.0f, 4.5f, 50, 150, 50)); //plat8
-		solidos.agregar(new Pared(108.0f, 10.25f, 103.0f, 10.25f, 50, 150, 50));  //plat10
-		solidos.agregar(new Pared(122.0f, 2.5f, 117.0f, 2.5f, 50, 150, 50));  //plat11
-		solidos.agregar(new Pared(128.0f, 5.0f, 124.0f, 5.0f, 50, 150, 50));  //plat12
-		solidos.agregar(new Pared(135.0f, 7.0f, 130.0f, 7.0f, 50, 150, 50)); //plat13
-		solidos.agregar(new Pared(185.0f, 2.5f, 178.0f, 2.5f, 50, 150, 50)); //plat14
-		solidos.agregar(new Pared(180.0f, 5.0f, 170.0f, 5.0f, 50, 150, 50));  //plat15
-		solidos.agregar(new Pared(165.0f, 9.5f, 160.0f, 9.5f, 50, 150, 50));  //plat16
+		solidos.agregar(new Pared(20.0f, 11.75f, 15.0f, 11.75f)); //plat1
+		solidos.agregar(new Pared(7.0f, 2.5f, 0.0f, 2.5f)); //plat2 para subir 
+		solidos.agregar(new Pared(68.0f, 2.5f, 63.0f, 2.5f)); //plat7
+		solidos.agregar(new Pared(85.0f, 4.5f, 75.0f, 4.5f)); //plat8
+		solidos.agregar(new Pared(108.0f, 10.25f, 103.0f, 10.25f));  //plat10
+		solidos.agregar(new Pared(122.0f, 2.5f, 117.0f, 2.5f));  //plat11
+		solidos.agregar(new Pared(128.0f, 5.0f, 124.0f, 5.0f));  //plat12
+		solidos.agregar(new Pared(135.0f, 7.0f, 130.0f, 7.0f)); //plat13
+		solidos.agregar(new Pared(185.0f, 2.5f, 178.0f, 2.5f)); //plat14
+		solidos.agregar(new Pared(180.0f, 5.0f, 170.0f, 5.0f));  //plat15
+		solidos.agregar(new Pared(165.0f, 9.5f, 160.0f, 9.5f));  //plat16
 		solidos.agregar(new Final(200.0f, 13.0f, 195.0f, 13.0f));
 		//Agregamos el resto de elementos
 		solidos.agregar(new Pincho(68.5f, 0.0f)); //suelo1
@@ -1128,11 +1128,9 @@ void Nivel::teclaUp(unsigned char key)
 	switch (key)
 	{
 	case 'a':
-		//hombre.setVelx(0.0f);	//hombre.setVel(-5.0f,0.0f);
 		hombre.flagH = 0;
 		break;
 	case 'd':
-		//hombre.setVelx(0.0f);
 		hombre.flagH = 0;
 		break;
 	case 'w':
@@ -1163,8 +1161,6 @@ void Nivel::teclaDown(unsigned char key)
 	case 'q':
 		espada.setFlag(1);
 		break;
-	case 'z':
-		hombre.setColor(1, 0, 0);
 	case ' ':
 		DisparosAmigos * dispam = new DisparosAmigos(hombre.getPos().x, hombre.getPos().y + 1.8f * 2 / 3, hombre.velocidad.x, 0);
 		if (disparos.agregar(dispam))

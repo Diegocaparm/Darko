@@ -127,8 +127,38 @@ public:
 	////////////////////////////////////////////////////////////////////
 
 	//////////////////////////////////////////////////////////////////// Disparos
-	
-	//InvocaciÃ³n de disparos desde cada enemigo
+	//Entorno
+	/*
+	static void choque(ListaDisparos ld, ListaSolidos ls);
+	static void choque(Disparos& d, Solidos s);
+	static void choque(Disparos& d, Pared p);
+	static void choque(Disparos& d, PlatMovil pm);
+	static void choque(Disparos& d, Suelo s);
+	static void choque(Disparos& d, Final f);
+	static void choque(Disparos& d, Pincho s);
+	static void choque(Disparos& d, BolaFuego b);
+	static void choque(DisparosAmigos& d, Solidos s);
+	static void choque(DisparosAmigos& d, Pared p);
+	static void choque(DisparosAmigos& d, PlatMovil pm);
+	static void choque(DisparosAmigos& d, Suelo s);
+	static void choque(DisparosAmigos& d, Final f);
+	static void choque(DisparosAmigos& d, Pincho s);
+	static void choque(DisparosAmigos& d, BolaFuego b);
+	static void choque(DisparosEnemigos& d, Solidos s);
+	static void choque(DisparosEnemigos& d, Pared p);
+	static void choque(DisparosEnemigos& d, PlatMovil pm);
+	static void choque(DisparosEnemigos& d, Suelo s);
+	static void choque(DisparosEnemigos& d, Final f);
+	static void choque(DisparosEnemigos& d, Pincho s);
+	static void choque(DisparosEnemigos& d, BolaFuego b);
+	static void choque(Misiles& d, Solidos s);
+	static void choque(Misiles& d, Pared p);
+	static void choque(Misiles& d, PlatMovil pm);
+	static void choque(Misiles& d, Suelo s);
+	static void choque(Misiles& d, Final f);
+	static void choque(Misiles& d, Pincho s);
+	static void choque(Misiles& d, BolaFuego b);*/
+	//Invocación de disparos desde cada enemigo
 	static void dispara(ListaEnemigos le, ListaDisparos *ld);
 	static void dispara(Enemigo* e, ListaDisparos *ld);
 	static void dispara(EnemigoDisp* e, ListaDisparos* ld);

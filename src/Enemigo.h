@@ -20,7 +20,6 @@ public:
     virtual void dibuja();
     virtual void mueve(float t);
     virtual int getVida(){ return vida; };
-
     friend class Interaccion;
 };
 //EnemigoDisp herencia de ENEMIGO

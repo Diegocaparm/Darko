@@ -1,19 +1,16 @@
 #pragma once
 #include "Hitbox.h"
-#include "ColorRGB.h"
 #include "ETSIDI.h"
 using ETSIDI::SpriteSequence;
 class Solidos
 {
 protected:
 	Vector2D posicion;
-	ColorRGB color;
 	int cosa=0;	//1 pared, 2 plat movil, 3 suelo, 4 final, 5 pincho, 6 bola
 public:
 	Solidos();
 	//~Solidos();
 	virtual void setPos(float px, float py);
-	virtual void setColor(Byte r, Byte g, Byte b);
 	virtual void dibuja(int i);
 	virtual void mueve(float t);
 	void setCosa(int);
@@ -28,7 +25,7 @@ protected:
 	Vector2D limite1, limite2;
 public:
 	Pared();
-	Pared(float x1, float y1, float x2, float y2, Byte r, Byte g, Byte b); //Constructor automático
+	Pared(float x1, float y1, float x2, float y2); //Constructor automático
 	virtual void setLims(float x1, float y1, float x2, float y2); //Establece los dos limites de la plataforma
 	virtual void dibuja(int i);
 	virtual float distancia(Vector2D punto, Vector2D* direccion = 0);

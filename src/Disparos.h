@@ -1,6 +1,5 @@
 #pragma once
 #include "ObjetoMovil.h"
-#include "ColorRGB.h"
 #include "ETSIDI.h"
 using ETSIDI::SpriteSequence;
 
@@ -10,7 +9,7 @@ protected:
     int cosa;
     float radio=0.15f;
     float temp = 0;
-    float vel = 3;      //velocidad inicial
+    float vel = 4;      //velocidad inicial
     bool existe = true;
 public:
     Disparos();
@@ -20,7 +19,6 @@ public:
     virtual void setPos(float, float);
     virtual void setVel(float, float);
     virtual void setAc(float, float);
-    virtual void setColor(Byte, Byte, Byte);
     virtual float getRadio();
     float getVelDef() { return vel; }
     void setExiste(bool ex) { existe = ex; }
@@ -56,9 +54,12 @@ public:
 //DisparosEnemigos herencia de DISPAROS
 class DisparosEnemigos : public Disparos
 {
+    int sentido = 0;
 public:
     DisparosEnemigos();
     DisparosEnemigos(float px, float py);
+    int getSentido() { return sentido; }
+    void setSentido(int a) { sentido = a; }
     friend class Interaccion;
 
 };
