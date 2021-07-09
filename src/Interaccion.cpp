@@ -1269,11 +1269,20 @@ void Interaccion::colision(DisparosAmigos* d, Bomber* b)
 }
 void Interaccion::colision(DisparosAmigos* d, Tentaculo* t)
 {
-	for (int i = 0; i < 3; i++) {
+	if ((d->posicion.x >= t->hitbox[0].top_l.x) && (d->posicion.x <= t->hitbox[0].top_r.x))
+	{
+		if ((d->posicion.y >= t->hitbox[0].bot_l.y) && (d->posicion.y <= t->hitbox[0].top_l.y))
+		{
+			t->flagdmg = 1;
+			if (t->tempdmg == 0)
+				t->tempdmg = 40;
+			d->existe = false;
+		}
+	}
+	for (int i = 1; i < 3; i++) {
 		float dist = DistSeg(t->hitbox[i], d->getPos());
 		if (dist < d->getRadio() && d->existe)
 		{
-			d->setColor(0, 1, 1);
 			t->flagdmg = 1;
 			if (t->tempdmg == 0)
 				t->tempdmg = 40;
