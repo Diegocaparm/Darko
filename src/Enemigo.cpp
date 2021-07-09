@@ -312,18 +312,18 @@ void Tentaculo::mueve(float t) {
 
 
 	Vector2D e11, e21, e31, e41;
-	e11.x = float(-(altura / 6) + altura * sin(3 * float(angulo) * pi / 180));		e11.y = (altura) * (cos(3 * float(angulo) * pi / 180)) + 2 * sin(angulo * pi / 180) * sin(angulo * pi / 180);
-	e21.x = float((altura / 6) + altura * sin(3 * float(angulo) * pi / 180));		e21.y = (altura) * (cos(3 * float(angulo) * pi / 180)) + 2 * sin(angulo * pi / 180) * sin(angulo * pi / 180);
+	e11.x = float(-(altura / 6) + altura * sin(3 * long float(angulo) * pi / 180));		e11.y = (altura) * (cos(3 * long float(angulo) * pi / 180)) + 2 * sin(angulo * pi / 180) * sin(angulo * pi / 180);
+	e21.x = float((altura / 6) + altura * sin(3 * long float(angulo) * pi / 180));		e21.y = (altura) * (cos(3 * long float(angulo) * pi / 180)) + 2 * sin(angulo * pi / 180) * sin(angulo * pi / 180);
 	e31.x = float(-(altura / 6) + altura * sin(angulo * pi / 180) + posicion.x);			e31.y = (altura) * (cos(-angulo * pi / 180)) + posicion.y;
 	e41.x = float((altura / 6) + altura * sin(angulo * pi / 180) + posicion.x);			e41.y = (altura) * (cos(-angulo * pi / 180)) + posicion.y;
 	Vector2D e111 = { e11.x + posicion.x, e1.y + e11.y }, e211 = { e21.x + posicion.x, e2.y + e21.y };
 	hitbox[1].setPos(e111, e211, e31, e41);
 
 	Vector2D e12, e22, e32, e42;
-	e12.x = -(altura / 6) + float(altura) * 2 * sin(3.2 * angulo * pi / 180);		e12.y = (altura) * (cos(angulo * pi / 180)) - 0.5 * (cos(angulo * pi / 180));
-	e22.x = (altura / 6) + float(altura) * 2 * sin(3.2 * angulo * pi / 180);		e22.y = (altura) * (cos(angulo * pi / 180)) - 0.5 * (cos(angulo * pi / 180));
-	e32.x = -(altura / 6) + altura * sin(3 * float(angulo) * pi / 180);			e32.y = (altura) * (cos(3 * float(angulo) * pi / 180)) + 2 * sin(angulo * pi / 180) * sin(angulo * pi / 180);
-	e42.x = (altura / 6) + altura * sin(3 * float(angulo) * pi / 180);			e42.y = (altura) * (cos(3 * float(angulo) * pi / 180)) + 2 * sin(angulo * pi / 180) * sin(angulo * pi / 180);
+	e12.x = -(altura / 6) + 2 * long float(altura) * sin(3.2 * angulo * pi / 180);		e12.y = (altura) * (cos(angulo * pi / 180)) - 0.5 * (cos(angulo * pi / 180));
+	e22.x = (altura / 6) + 2 * long float(altura) * sin(3.2 * angulo * pi / 180);		e22.y = (altura) * (cos(angulo * pi / 180)) - 0.5 * (cos(angulo * pi / 180));
+	e32.x = -(altura / 6) + altura * sin(3 * long float(angulo) * pi / 180);			e32.y = (altura) * (cos(3 * long float(angulo) * pi / 180)) + 2 * sin(angulo * pi / 180) * sin(angulo * pi / 180);
+	e42.x = (altura / 6) + altura * sin(3 * long float(angulo) * pi / 180);			e42.y = (altura) * (cos(3 * long float(angulo) * pi / 180)) + 2 * sin(angulo * pi / 180) * sin(angulo * pi / 180);
 	Vector2D e121 = { e12.x + posicion.x, e111.y + e12.y }, e221 = { e22.x + posicion.x, e211.y + e22.y };
 	hitbox[2].setPos(e121, e221, e111, e211);
 
