@@ -461,6 +461,8 @@ void Interaccion::colision(Personaje& h, Bomber* ene, VidasRecolectadas& v) {
 	}
 	if (ene->temp == 5) {
 		ene->altura = 6;
+		ene->sprite.setCenter(3.5, 1);
+		ene->sprite.setSize(7, 7);
 	}
 	if (ene->temp == 0)
 		ene->vida = 0;
